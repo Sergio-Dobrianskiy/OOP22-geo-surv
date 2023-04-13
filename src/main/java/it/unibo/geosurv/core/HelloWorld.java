@@ -1,4 +1,4 @@
-package it.ubibo.geosurv.core;
+package it.unibo.geosurv.core;
 
 public class HelloWorld {
 	public static void main(String[] args) {
