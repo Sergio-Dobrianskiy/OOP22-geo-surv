@@ -3,16 +3,18 @@
 bin/
 
 # Ignore gradle
+#gradle
 build
 
 # Package Files
-*.jar
+#*.jar
 *.war
 *.nar
 *.ear
 *.zip
 *.tar.gz
 *.rar
+*.lock
 
 # Ignore ide files
 .idea
