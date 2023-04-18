@@ -5,7 +5,7 @@ import java.awt.Rectangle;
 
 public abstract class GameObject {
 	protected int x,y;
-	protected int velX,velY;
+	protected float velX,velY;
 	protected ID id;
 	
 	public GameObject(int x, int y,ID id) {
@@ -42,19 +42,19 @@ public abstract class GameObject {
 		this.y = y;
 	}
 
-	public int getVelX() {
+	public float getVelX() {
 		return velX;
 	}
 
-	public void setVelX(int velX) {
+	public void setVelX(float velX) {
 		this.velX = velX;
 	}
 
-	public int getVelY() {
+	public float getVelY() {
 		return velY;
 	}
 
-	public void setVelY(int velY) {
+	public void setVelY(float velY) {
 		this.velY = velY;
 	}
 	
