@@ -4,6 +4,7 @@ bin/
 
 # Ignore gradle
 #gradle
+.gradle
 build
 
 # Package Files
@@ -15,6 +16,7 @@ build
 *.zip
 *.tar.gz
 *.rar
+*.bin
 *.lock
 
 # Ignore ide files
