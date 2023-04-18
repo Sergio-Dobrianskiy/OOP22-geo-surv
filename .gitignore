@@ -3,7 +3,6 @@
 bin/
 
 # Ignore gradle
-.gradle
 build
 
 # Package Files
