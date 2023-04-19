@@ -4,6 +4,7 @@ import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
+import java.awt.image.BufferedImage;
 
 public class Game extends Canvas implements Runnable {
 
@@ -12,6 +13,9 @@ public class Game extends Canvas implements Runnable {
 	private boolean isRunning=false;
 	private Thread thread;
 	private Handler handler;
+
+	private BufferedImage map = null;
+	
 	public Game(){
 		
 		new Window(1000,563,"Geo Survival", this);
@@ -21,9 +25,13 @@ public class Game extends Canvas implements Runnable {
 		handler = new Handler();
 		this.addKeyListener(new KeyInput(handler));
 		
-		handler.addObject(new MainPlayer(100, 100, ID.Player, handler));
-	
+		BufferedImageLoader loader = new BufferedImageLoader();
+		map = loader.loadImage("/mapGame.png");
+
+		//handler.addObject(new MainPlayer(100, 100,ID.Player, handler));
 		
+		loadLevel(map);
+	
 	}
 	
 	private void Start() {
@@ -89,7 +97,7 @@ public class Game extends Canvas implements Runnable {
 		Graphics g = bs.getDrawGraphics();
 		/////////////////////////////////////
 		
-		g.setColor(Color.red);
+		g.setColor(Color.white);
 		g.fillRect(0, 0, 1000, 563);
 		handler.render(g);
 		
@@ -97,6 +105,31 @@ public class Game extends Canvas implements Runnable {
 		g.dispose();
 		bs.show();
 		
+	}
+
+	/* loading the mapgame */
+	 
+	private void loadLevel(BufferedImage image) {
+		int w = image.getWidth();
+		int h = image.getHeight();
+
+		for(int xx =0; xx < w; xx++) {
+			for(int yy = 0; yy < h; yy++) {
+				int pixel = image.getRGB(xx, yy);
+				int red = (pixel >> 16) & 0xff;
+				int green = (pixel >> 8) & 0xff;
+				int blue = (pixel) & 0xff;
+
+				if(blue == 255) {
+					handler.addObject(new Block(xx*24, yy*24, ID.Block));
+				}
+
+				if(red == 255) {
+					handler.addObject(new MainPlayer(xx*24, yy*24, ID.Player, handler));
+				}
+			}
+
+		}
 	}
 	
 	public static void main(String args[]) {
