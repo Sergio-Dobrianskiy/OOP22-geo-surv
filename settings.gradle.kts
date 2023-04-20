@@ -1,0 +1,1 @@
+rootProject.name = "OOP22-geo-surv"
