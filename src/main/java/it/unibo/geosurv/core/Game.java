@@ -3,8 +3,10 @@ package it.unibo.geosurv.core;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
+import java.awt.Graphics.translate;
 
 public class Game extends Canvas implements Runnable {
 
@@ -13,6 +15,8 @@ public class Game extends Canvas implements Runnable {
 	private boolean isRunning=false;
 	private Thread thread;
 	private Handler handler;
+
+	private Camera camera;
 
 	private BufferedImage map = null;
 	
@@ -23,6 +27,9 @@ public class Game extends Canvas implements Runnable {
 		
 		
 		handler = new Handler();
+
+		camera = new Camera(0, 0);
+
 		this.addKeyListener(new KeyInput(handler));
 		
 		BufferedImageLoader loader = new BufferedImageLoader();
@@ -83,6 +90,13 @@ public class Game extends Canvas implements Runnable {
 	}
 	
 	public void tick() {
+
+		/* Posiziono il player all'interno della mia camera*/
+		for(int i = 0; i < handler.object.size(); i++) {
+			if(handler.object.get(i).getId() == ID.Player) {
+				camera.tick(handler.object.get(i));
+			}
+		}
 		
 		handler.tick();
 	}
@@ -95,12 +109,19 @@ public class Game extends Canvas implements Runnable {
 			return;
 		}
 		Graphics g = bs.getDrawGraphics();
+
+		Graphics g2d = (Graphics2D) g;
 		/////////////////////////////////////
-		
+
 		g.setColor(Color.white);
 		g.fillRect(0, 0, 1000, 563);
+
+		g2d.translate(-camera.getX(), -camera.getY());
+		
+
 		handler.render(g);
 		
+		g2d.translate(camera.getX(), camera.getY());
 		//////////////////////////////////////
 		g.dispose();
 		bs.show();
