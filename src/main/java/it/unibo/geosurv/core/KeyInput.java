@@ -41,8 +41,8 @@ public class KeyInput extends KeyAdapter {
                 if(key == KeyEvent.VK_A) handler.setLeft(false);
                 if(key == KeyEvent.VK_D) handler.setRight(false);
 
-    }
-    
-}
+		    }
+		    
+		}
     }
 }

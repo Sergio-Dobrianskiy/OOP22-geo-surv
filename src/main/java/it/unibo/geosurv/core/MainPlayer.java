@@ -16,6 +16,8 @@ public class MainPlayer extends GameObject {
     public void tick() {
         x += velX;
         y += velY;
+        
+        collision();
 
         /*movimenti */
         if(handler.isUp()) {
@@ -46,8 +48,18 @@ public class MainPlayer extends GameObject {
             velX = 0;
 
         }
-
-
+    }
+    
+    private void collision() {
+    	for (int i = 0; i < handler.object.size(); i++) {
+    		GameObject tempObject = handler.object.get(i);
+    		if (tempObject.getId() == ID.Block) {			// if plater touches wall => stop
+    			if (getBounds().intersects(tempObject.getBounds())) {
+					x += velX * -1;
+					y += velY * -1;
+				}
+    		}
+    	}
     }
 
     public void render(Graphics g) {
