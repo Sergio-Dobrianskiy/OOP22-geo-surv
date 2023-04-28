@@ -2,13 +2,14 @@ package it.unibo.geosurv.core;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;
+import java.util.LinkedList;
 import java.awt.Color;
 
 public class MainPlayer extends GameObject {
 
     Handler handler;
 
-    public MainPlayer(int x, int y, ID id, Handler handler) {
+    public MainPlayer(float x, float y, ID id, Handler handler) {
         super(x, y, id);
         this.handler = handler;
     }
@@ -51,9 +52,10 @@ public class MainPlayer extends GameObject {
     }
     
     private void collision() {
-    	for (int i = 0; i < handler.object.size(); i++) {
-    		GameObject tempObject = handler.object.get(i);
-    		if (tempObject.getId() == ID.Block) {			// if plater touches wall => stop
+    	LinkedList<GameObject> tmpObjects = handler.getObjects();
+    	for (int i = 0; i < tmpObjects.size(); i++) {
+    		GameObject tempObject = tmpObjects.get(i);
+    		if (tempObject.getId() == ID.Block) {			// if player touches wall => stop
     			if (getBounds().intersects(tempObject.getBounds())) {
 					x += velX * -1;
 					y += velY * -1;
@@ -64,12 +66,12 @@ public class MainPlayer extends GameObject {
 
     public void render(Graphics g) {
         g.setColor(Color.blue);
-        g.fillRect(x, y, 32, 48);
+        g.fillRect((int) x, (int) y, 32, 48);
 
     }
 
     public Rectangle getBounds() {
-        return new Rectangle(x, y, 32, 48);
+        return new Rectangle((int) x, (int) y, 32, 48);
 
     }
     

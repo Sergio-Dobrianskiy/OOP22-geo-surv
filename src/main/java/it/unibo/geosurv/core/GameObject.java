@@ -4,11 +4,11 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 
 public abstract class GameObject {
-	protected int x,y;
+	protected float x, y;
 	protected float velX,velY;
 	protected ID id;
 	
-	public GameObject(int x, int y,ID id) {
+	public GameObject(float x, float y, ID id) {
 		this.x = x;
 		this.y = y;
 		this.id=id;
@@ -26,19 +26,19 @@ public abstract class GameObject {
 	public abstract void render(Graphics g); 
 	public abstract Rectangle getBounds();
 
-	public int getX() {
+	public float getX() {
 		return x;
 	}
 
-	public void setX(int x) {
+	public void setX(float x) {
 		this.x = x;
 	}
 
-	public int getY() {
+	public float getY() {
 		return y;
 	}
 
-	public void setY(int y) {
+	public void setY(float y) {
 		this.y = y;
 	}
 
