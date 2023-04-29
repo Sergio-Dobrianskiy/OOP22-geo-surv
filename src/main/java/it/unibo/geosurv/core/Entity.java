@@ -1,11 +1,13 @@
 package it.unibo.geosurv.core;
 
+import it.unibo.geosurv.weapons.Weapon;
+
 /** Interface for generic evil */
 public interface Entity {
 
     /**
      * 
-     * @return
+     * @return a new {@link Entity}
      */
     Entity born();
 
@@ -23,6 +25,11 @@ public interface Entity {
      */
     Experience dropExperience();
 
-    /** Entity's been hit by player weapon */
-    void hitByWeapon();
+    /**
+     * Entity's been hit by player weapon
+     * 
+     * @param weapon whih hits the entity
+     */
+    void takeHit(Weapon weapon);
+
 }
