@@ -16,6 +16,9 @@ public class Game extends Canvas implements Runnable {
 
 	private BufferedImage map = null;
 	
+	private int fps;
+	private boolean showFps = true;
+	
 	public Game(){
 		
 		new Window(1000,563,"Geo Survival", this);
@@ -56,36 +59,35 @@ public class Game extends Canvas implements Runnable {
 		double ns = 1000000000 / amountofTicks;
 		double delta = 0;
 		long timer = System.currentTimeMillis();
-		@SuppressWarnings("unused")
 		int frames = 0;
+		
 		while(isRunning) {
 			long now = System.nanoTime();
-			delta +=(now - lastTime) / ns;		
+			delta += (now - lastTime) / ns;		
 			lastTime = now;
-			while(delta > 1) {
+			while (delta > 1) {
 				tick();
+				render();
 				delta--;
-				
+				frames++;
 			}
 			
 			
-			render();
-			frames++;
-			
-			if(System.currentTimeMillis() - timer > 1000) {
+			if (System.currentTimeMillis() - timer > 1000) {
 				timer += 1000;
+				this.fps = frames;
 				frames = 0;
 			}
 		}
 		
 		Stop();
-		
 	}
 	
+	
 	public void tick() {
-		
 		handler.tick();
 	}
+	
 	
 	public void render() {
 		
@@ -95,13 +97,18 @@ public class Game extends Canvas implements Runnable {
 			return;
 		}
 		Graphics g = bs.getDrawGraphics();
-		/////////////////////////////////////
 		
+		///////////////////////////////////// below here we draw to the game
 		g.setColor(Color.white);
 		g.fillRect(0, 0, 1000, 563);
 		handler.render(g);
 		
-		//////////////////////////////////////
+		if (this.showFps  == true) {			
+			g.setColor(Color.BLUE);
+			g.drawString("FPS: " + this.fps, 900, 50);
+		}
+		////////////////////////////////////// above here we draw to the game
+		
 		g.dispose();
 		bs.show();
 		
