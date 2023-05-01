@@ -35,6 +35,12 @@ public interface Entity {
      * 
      * @param weapon whih hits the entity
      */
-    void takeHit(Weapon weapon);
+    // TODO: int or void??
+    int takeHit(Weapon weapon);
+
+    /**
+     * Entity dies and is removed
+     */
+    void die();
 
 }
