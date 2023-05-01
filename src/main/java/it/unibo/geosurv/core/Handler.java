@@ -68,8 +68,9 @@ public class Handler {
 		}
 	}
 	
-	public void addObject(GameObject tempObject) {
+	public GameObject addObject(GameObject tempObject) {
 		gameObjects.add(tempObject);
+		return tempObject;
 	}
 	
 	public void removeObject(GameObject tempObject) {

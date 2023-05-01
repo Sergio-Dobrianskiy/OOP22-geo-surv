@@ -8,9 +8,8 @@ import it.unibo.geosurv.core.ID;
 
 public abstract class Bullet extends GameObject {
 
-	public Bullet(int x, int y, ID id) {
+	public Bullet(float x, float y, ID id) {
 		super(x, y, id);
-		
 	}
 
 	@Override
@@ -26,5 +25,4 @@ public abstract class Bullet extends GameObject {
 
 		return null;
 	}
-
 }
