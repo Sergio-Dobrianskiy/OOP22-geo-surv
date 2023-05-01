@@ -11,7 +11,7 @@ public abstract class GameObject {
 	public GameObject(float x, float y, ID id) {
 		this.x = x;
 		this.y = y;
-		this.id=id;
+		this.id = id;
 	}
 	
 	public ID getId() {

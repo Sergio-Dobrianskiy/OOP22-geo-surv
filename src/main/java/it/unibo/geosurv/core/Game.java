@@ -6,6 +6,8 @@ import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 
+import it.unibo.geosurv.weapons.SatelliteGun;
+
 public class Game extends Canvas implements Runnable {
 
 	private static final long serialVersionUID = 1L;
@@ -18,6 +20,7 @@ public class Game extends Canvas implements Runnable {
 	
 	private int fps;
 	private boolean showFps = true;
+	
 	
 	public Game(){
 		
@@ -34,6 +37,8 @@ public class Game extends Canvas implements Runnable {
 		//handler.addObject(new MainPlayer(100, 100,ID.Player, handler));
 		
 		loadLevel(map);
+		
+//		handler.addObject(new SatelliteGun(0, 0, this.handler, this));
 	
 	}
 	

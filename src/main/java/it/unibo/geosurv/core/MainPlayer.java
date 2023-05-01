@@ -20,7 +20,7 @@ public class MainPlayer extends GameObject {
         
         collision();
 
-        /*movimenti */
+        /* movements */
         if(handler.isUp()) {
             velY = -5;
         }
@@ -47,7 +47,6 @@ public class MainPlayer extends GameObject {
         }
         else if(!handler.isRight()) {
             velX = 0;
-
         }
     }
     

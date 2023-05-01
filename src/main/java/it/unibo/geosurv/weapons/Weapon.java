@@ -8,9 +8,8 @@ import it.unibo.geosurv.core.ID;
 
 public abstract class Weapon extends GameObject {
 
-	public Weapon(int x, int y, ID id) {
+	public Weapon(float x, float y, ID id) {
 		super(x, y, id);
-		
 	}
 
 	@Override
