@@ -17,6 +17,9 @@ public class MainPlayer extends GameObject {
         x += velX;
         y += velY;
 
+        
+
+
         /*movimenti */
         if(handler.isUp()) {
             velY = -5;
@@ -52,6 +55,9 @@ public class MainPlayer extends GameObject {
 
     public void render(Graphics g) {
         g.setColor(Color.blue);
+        //System.out.println(x + " " + y);
+
+        //g.setClip(x, y, 32, 48);
         g.fillRect(x, y, 32, 48);
 
     }

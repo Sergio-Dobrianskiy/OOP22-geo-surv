@@ -26,7 +26,7 @@ public class Game extends Canvas implements Runnable {
 		this.addKeyListener(new KeyInput(handler));
 		
 		BufferedImageLoader loader = new BufferedImageLoader();
-		map = loader.loadImage("/mapGame.png");
+		map = loader.loadImage("/mapGame_copia.png");
 
 		//handler.addObject(new MainPlayer(100, 100,ID.Player, handler));
 		
@@ -68,8 +68,9 @@ public class Game extends Canvas implements Runnable {
 				
 			}
 			
-			
+			//System.out.println("prova1");
 			render();
+			//System.out.println("prova2");
 			frames++;
 			
 			if(System.currentTimeMillis() - timer > 1000) {
@@ -107,7 +108,7 @@ public class Game extends Canvas implements Runnable {
 		
 	}
 
-	/* loading the mapgame */
+	/* loading the mapGame */
 	 
 	private void loadLevel(BufferedImage image) {
 		int w = image.getWidth();
@@ -121,11 +122,11 @@ public class Game extends Canvas implements Runnable {
 				int blue = (pixel) & 0xff;
 
 				if(blue == 255) {
-					handler.addObject(new Block(xx*24, yy*24, ID.Block));
+					handler.addObject(new Block(xx*32, yy*32, ID.Block));
 				}
 
 				if(red == 255) {
-					handler.addObject(new MainPlayer(xx*24, yy*24, ID.Player, handler));
+					handler.addObject(new MainPlayer(xx*32, yy*32, ID.Player, handler));
 				}
 			}
 
