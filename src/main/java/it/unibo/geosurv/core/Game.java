@@ -13,7 +13,7 @@ public class Game extends Canvas implements Runnable {
 
 	private static final long serialVersionUID = 1L;
 	
-	private boolean isRunning=false;
+	private boolean isRunning = false;
 	private Thread thread;
 	private Handler handler;
 	private Camera camera;
@@ -24,36 +24,34 @@ public class Game extends Canvas implements Runnable {
 	private boolean showFps = true;
 	
 	
-	public Game(){
+	public Game() {
 		
 		new Window(1000,563,"Geo Survival", this);
-		Start();
-		
 		
 		handler = new Handler();
-
-		camera = new Camera(0, 0);
 		this.addKeyListener(new KeyInput(handler));
-		
 		BufferedImageLoader loader = new BufferedImageLoader();
 		map = loader.loadImage("/mapGame.png");
-
-		//handler.addObject(new MainPlayer(100, 100,ID.Player, handler));
-		
 		loadLevel(map);
+		System.out.println("player =" + handler.getPlayer() == null);
+		camera = new Camera(0, 0, handler);		
+
+		start();
+		
+		//handler.addObject(new MainPlayer(100, 100,ID.Player, handler));
 		
 //		handler.addObject(new SatelliteGun(0, 0, this.handler, this));
 	
 	}
 	
-	private void Start() {
-		isRunning=true;
-		thread=new Thread(this);
+	private synchronized void start() {
+		isRunning = true;
+		thread = new Thread(this);
 		thread.start();
 	}
 	
-	private void Stop() {
-		isRunning=false;
+	private synchronized void stop() {
+		isRunning = false;
 		try {
 			thread.join();
 		} catch (InterruptedException e) {
@@ -81,34 +79,26 @@ public class Game extends Canvas implements Runnable {
 				frames++;
 			}
 			
-			
 			if (System.currentTimeMillis() - timer > 1000) {
 				timer += 1000;
 				this.fps = frames;
 				frames = 0;
 			}
 		}
-		
-		Stop();
+		stop();
 	}
 	
 	
 	public void tick() {
-
-//		for(int i = 0; i < handler.object.size(); i++) {
-//			if(handler.object.get(i).getId() == ID.Player) {
-//				camera.tick(handler.object.get(i));
-//			}
-//		}
-		
 		handler.tick();
+		camera.tick();
 	}
 	
 	
 	public void render() {
 		
 		BufferStrategy bs = this.getBufferStrategy();
-		if ( bs == null) {
+		if (bs == null) {
 			this.createBufferStrategy(3);
 			return;
 		}
@@ -120,14 +110,14 @@ public class Game extends Canvas implements Runnable {
 		g.setColor(Color.white);
 		g.fillRect(0, 0, 1000, 563);
 
-		g2d.translate(-camera.getX(), -camera.getY());
-		
-		handler.render(g);
 		
 		if (this.showFps  == true) {			
 			g.setColor(Color.BLUE);
 			g.drawString("FPS: " + this.fps, 900, 50);
 		}
+		g2d.translate(-camera.getX(), -camera.getY());
+		
+		handler.render(g);
 		////////////////////////////////////// above here we draw to the game
 		
 		g.dispose();
@@ -141,7 +131,7 @@ public class Game extends Canvas implements Runnable {
 		int w = image.getWidth();
 		int h = image.getHeight();
 
-		for(int xx =0; xx < w; xx++) {
+		for(int xx = 0; xx < w; xx++) {
 			for(int yy = 0; yy < h; yy++) {
 				int pixel = image.getRGB(xx, yy);
 				int red = (pixel >> 16) & 0xff;
@@ -153,7 +143,7 @@ public class Game extends Canvas implements Runnable {
 				}
 
 				if(red == 255) {
-					handler.addObject(new MainPlayer(xx*32, yy*32, ID.Player, handler));
+					handler.addPlayer(new MainPlayer(xx*32, yy*32, ID.Player, handler));
 				}
 			}
 

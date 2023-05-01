@@ -6,7 +6,7 @@ import java.util.LinkedList;
 public class Handler {
 	
 	private LinkedList<GameObject> gameObjects = new LinkedList<GameObject>();
-
+	private MainPlayer player;
 	private boolean up = false, down = false, left = false, right = false;
 	
 	public LinkedList<GameObject> getObjects() {
@@ -73,7 +73,18 @@ public class Handler {
 		return tempObject;
 	}
 	
+	public GameObject addPlayer(MainPlayer player) {
+		this.player = player;
+		this.gameObjects.add(player);
+		return player;
+	}
+	
 	public void removeObject(GameObject tempObject) {
 		gameObjects.remove(tempObject);
 	}
+	
+	public MainPlayer getPlayer() {
+		return this.player;
+	}
+	
 }

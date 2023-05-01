@@ -2,15 +2,17 @@ package it.unibo.geosurv.utility;
 import it.unibo.geosurv.core.Handler;
 import it.unibo.geosurv.core.GameObject;
 import it.unibo.geosurv.core.ID;
+import it.unibo.geosurv.core.MainPlayer;
+
 import java.util.LinkedList;
 
 public class Func {
 	
-	public static GameObject findPlayer(Handler handler) {
+	public static MainPlayer findPlayer(Handler handler) {
 		LinkedList<GameObject> tmpObjects = handler.getObjects();
 		for (int i = 0; i < tmpObjects.size(); i++) {
 			if (tmpObjects.get(i).getId() == ID.Player) {
-				return tmpObjects.get(i);
+				return (MainPlayer) tmpObjects.get(i);
 			}
 		}
 		return null;
