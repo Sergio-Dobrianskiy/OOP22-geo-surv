@@ -32,7 +32,7 @@ public class Camera {
         if (y >= 1500) {
             y = 1500;
         }
-//        if (tempPlayer != null) {
+//	    if (tempPlayer != null) {
 //    	} else {
 //    		this.tempPlayer = handler.getPlayer();
 //    	}

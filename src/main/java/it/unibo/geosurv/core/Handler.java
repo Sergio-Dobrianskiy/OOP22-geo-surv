@@ -87,4 +87,8 @@ public class Handler {
 		return this.player;
 	}
 	
+	public int getObjectsSize() {
+		return this.gameObjects.size();
+	}
+	
 }

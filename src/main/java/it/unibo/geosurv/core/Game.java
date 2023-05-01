@@ -20,8 +20,11 @@ public class Game extends Canvas implements Runnable {
 
 	private BufferedImage map = null;
 	
+	//// debug
 	private int fps;
 	private boolean showFps = true;
+	private int objectsCounter;
+	private boolean showObjectsCounter = true;
 	
 	
 	public Game() {
@@ -31,16 +34,19 @@ public class Game extends Canvas implements Runnable {
 		handler = new Handler();
 		this.addKeyListener(new KeyInput(handler));
 		BufferedImageLoader loader = new BufferedImageLoader();
-		map = loader.loadImage("/mapGame.png");
+		map = loader.loadImage("/maps/mapGame.png");
+//		map = loader.loadImage("/maps/mapGame_big.png");
+//		map = loader.loadImage("/maps/testMap.png");
+//		handler.addPlayer(new MainPlayer(100, 100,ID.Player, handler));
+		
 		loadLevel(map);
 		System.out.println("player =" + handler.getPlayer() == null);
 		camera = new Camera(0, 0, handler);		
 
 		start();
 		
-		//handler.addObject(new MainPlayer(100, 100,ID.Player, handler));
 		
-//		handler.addObject(new SatelliteGun(0, 0, this.handler, this));
+		handler.addObject(new SatelliteGun(0, 0, this.handler, this));
 	
 	}
 	
@@ -80,8 +86,9 @@ public class Game extends Canvas implements Runnable {
 			}
 			
 			if (System.currentTimeMillis() - timer > 1000) {
-				timer += 1000;
 				this.fps = frames;
+				this.objectsCounter = handler.getObjectsSize();
+				timer += 1000;
 				frames = 0;
 			}
 		}
@@ -115,6 +122,11 @@ public class Game extends Canvas implements Runnable {
 			g.setColor(Color.BLUE);
 			g.drawString("FPS: " + this.fps, 900, 50);
 		}
+		if (this.showObjectsCounter  == true) {			
+			g.setColor(Color.BLUE);
+			g.drawString("Objects: " + this.objectsCounter, 900, 65);
+		}
+		
 		g2d.translate(-camera.getX(), -camera.getY());
 		
 		handler.render(g);
