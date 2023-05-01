@@ -12,6 +12,11 @@ public interface Entity {
     Entity born();
 
     /**
+     * @return
+     */
+    int getHealth();
+
+    /**
      * Check if Entity is alive
      * 
      * @return boolen value
