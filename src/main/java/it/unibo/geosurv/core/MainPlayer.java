@@ -20,6 +20,9 @@ public class MainPlayer extends GameObject {
         
         collision();
 
+        
+
+
         /*movimenti */
         if(handler.isUp()) {
             velY = -5;

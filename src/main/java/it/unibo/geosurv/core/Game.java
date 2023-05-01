@@ -3,6 +3,7 @@ package it.unibo.geosurv.core;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 
@@ -13,6 +14,7 @@ public class Game extends Canvas implements Runnable {
 	private boolean isRunning=false;
 	private Thread thread;
 	private Handler handler;
+	private Camera camera;
 
 	private BufferedImage map = null;
 	
@@ -23,6 +25,8 @@ public class Game extends Canvas implements Runnable {
 		
 		
 		handler = new Handler();
+
+		camera = new Camera(0, 0);
 		this.addKeyListener(new KeyInput(handler));
 		
 		BufferedImageLoader loader = new BufferedImageLoader();
@@ -68,8 +72,9 @@ public class Game extends Canvas implements Runnable {
 				
 			}
 			
-			
+			//System.out.println("prova1");
 			render();
+			//System.out.println("prova2");
 			frames++;
 			
 			if(System.currentTimeMillis() - timer > 1000) {
@@ -83,6 +88,12 @@ public class Game extends Canvas implements Runnable {
 	}
 	
 	public void tick() {
+
+		for(int i = 0; i < handler.object.size(); i++) {
+			if(handler.object.get(i).getId() == ID.Player) {
+				camera.tick(handler.object.get(i));
+			}
+		}
 		
 		handler.tick();
 	}
@@ -94,11 +105,16 @@ public class Game extends Canvas implements Runnable {
 			this.createBufferStrategy(3);
 			return;
 		}
+
 		Graphics g = bs.getDrawGraphics();
+		Graphics2D g2d = (Graphics2D) g;
 		/////////////////////////////////////
 		
 		g.setColor(Color.white);
 		g.fillRect(0, 0, 1000, 563);
+
+		g2d.translate(-camera.getX(), -camera.getY());
+		
 		handler.render(g);
 		
 		//////////////////////////////////////
@@ -107,7 +123,7 @@ public class Game extends Canvas implements Runnable {
 		
 	}
 
-	/* loading the mapgame */
+	/* loading the mapGame */
 	 
 	private void loadLevel(BufferedImage image) {
 		int w = image.getWidth();
@@ -121,11 +137,11 @@ public class Game extends Canvas implements Runnable {
 				int blue = (pixel) & 0xff;
 
 				if(blue == 255) {
-					handler.addObject(new Block(xx*24, yy*24, ID.Block));
+					handler.addObject(new Block(xx*32, yy*32, ID.Block));
 				}
 
 				if(red == 255) {
-					handler.addObject(new MainPlayer(xx*24, yy*24, ID.Player, handler));
+					handler.addObject(new MainPlayer(xx*32, yy*32, ID.Player, handler));
 				}
 			}
 
