@@ -6,3 +6,5 @@ public enum EntityType {
     MONSTER,
     PLANT
 }
+
+// TODO: move this to ID class? Or 4 different classes from GameObject
