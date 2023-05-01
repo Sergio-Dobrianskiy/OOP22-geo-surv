@@ -95,11 +95,11 @@ public class Game extends Canvas implements Runnable {
 	
 	public void tick() {
 
-		for(int i = 0; i < handler.object.size(); i++) {
-			if(handler.object.get(i).getId() == ID.Player) {
-				camera.tick(handler.object.get(i));
-			}
-		}
+//		for(int i = 0; i < handler.object.size(); i++) {
+//			if(handler.object.get(i).getId() == ID.Player) {
+//				camera.tick(handler.object.get(i));
+//			}
+//		}
 		
 		handler.tick();
 	}

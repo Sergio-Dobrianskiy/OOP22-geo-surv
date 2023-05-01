@@ -22,12 +22,7 @@ public class MonsterImpl implements Monster {
         throw new UnsupportedOperationException("Unimplemented method 'dropExperience'");
     }
 
-    @Override
-    public void takeHit(Weapon weapon) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'takeHit'");
-    }
-
+    
     @Override
     public void reachTarget() {
         // TODO Auto-generated method stub
@@ -38,6 +33,25 @@ public class MonsterImpl implements Monster {
     public int getHealth() {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'getHealth'");
+    }
+
+    @Override
+    public void die() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'die'");
+    }
+
+
+    // @Override
+    // public void takeHit(Weapon weapon) {
+    //     // TODO Auto-generated method stub
+    //     throw new UnsupportedOperationException("Unimplemented method 'takeHit'");
+    // }
+
+    @Override
+    public int takeHit(Weapon weapon) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'takeHit'");
     }
 
 }
