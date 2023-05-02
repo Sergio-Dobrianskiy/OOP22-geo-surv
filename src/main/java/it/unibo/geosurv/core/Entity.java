@@ -12,7 +12,7 @@ public interface Entity {
     Entity born();
 
     /**
-     * @return
+     * @return an integer showing how much health entity has left
      */
     int getHealth();
 
@@ -39,7 +39,7 @@ public interface Entity {
     int takeHit(Weapon weapon);
 
     /**
-     * Entity dies and is removed
+     * Entity dies and it is removed
      */
     void die();
 

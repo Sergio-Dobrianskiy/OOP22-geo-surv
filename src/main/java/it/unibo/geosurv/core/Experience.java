@@ -8,7 +8,6 @@ public class Experience extends GameObject {
 
     public Experience(float x, float y, ID id) {
         super(x, y, id);
-
     }
 
     @Override
@@ -17,8 +16,8 @@ public class Experience extends GameObject {
 
     @Override
     public void render(Graphics g) {
-        g.setColor(Color.CYAN);
-        g.fillOval((int) x, (int) y, 16, 16);
+        g.setColor(Color.PINK);
+        g.fillOval((int) x, (int) y, 8, 8);
     }
 
     @Override
