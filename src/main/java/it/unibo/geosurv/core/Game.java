@@ -7,10 +7,7 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.io.InputStream;
 import it.unibo.geosurv.graphics.*;
-
-import javax.imageio.ImageIO;
 
 import it.unibo.geosurv.weapons.SatelliteGun;
 
@@ -18,15 +15,10 @@ public class Game extends Canvas implements Runnable {
 
 	private static final long serialVersionUID = 1L;
 	
-	String fs = System.getProperty("file.separator");
-	String jh = System.getProperty("java.home");
-	
 	private boolean isRunning = false;
 	private Thread thread;
 	private Handler handler;
 	private Camera camera;
-
-	private BufferedImage map;
 	
 	//// debug
 	private int fps;
@@ -43,17 +35,12 @@ public class Game extends Canvas implements Runnable {
 		this.addKeyListener(new KeyInput(handler));
 				
 		loadTextures();
-		map = Texture.SMALL_MAP.getTexture();
-		loadLevel(map);
+		loadLevel(Texture.SMALL_MAP.getTexture());
 		
 		camera = new Camera(0, 0, handler);	
-
-		start();
-		
-		
 		handler.addObject(new SatelliteGun(0, 0, this.handler, this));
 		
-	
+		start();
 	}
 	
 	private synchronized void start() {
@@ -140,11 +127,14 @@ public class Game extends Canvas implements Runnable {
 		
 		g.dispose();
 		bs.show();
-		
 	}
 
-	/* loading the mapGame */
-	 
+
+	/**
+     * Load the game world.
+     *
+     * @param image that models the game world
+     */
 	private void loadLevel(BufferedImage image) {
 		int w = image.getWidth();
 		int h = image.getHeight();
@@ -164,7 +154,6 @@ public class Game extends Canvas implements Runnable {
 					handler.addPlayer(new MainPlayer(xx*32, yy*32, ID.Player, handler));
 				}
 			}
-
 		}
 	}
 	
@@ -186,7 +175,4 @@ public class Game extends Canvas implements Runnable {
 	public static void main(String args[]) {
 		new Game();
 	}
-
-	
 }
-
