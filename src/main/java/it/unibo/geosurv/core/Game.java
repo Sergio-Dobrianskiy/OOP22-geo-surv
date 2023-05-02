@@ -6,6 +6,10 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.io.InputStream;
+
+import javax.imageio.ImageIO;
 
 import it.unibo.geosurv.weapons.SatelliteGun;
 
@@ -13,12 +17,15 @@ public class Game extends Canvas implements Runnable {
 
 	private static final long serialVersionUID = 1L;
 	
+	String fs = System.getProperty("file.separator");
+	String jh = System.getProperty("java.home");
+	
 	private boolean isRunning = false;
 	private Thread thread;
 	private Handler handler;
 	private Camera camera;
 
-	private BufferedImage map = null;
+	private BufferedImage map;
 	
 	//// debug
 	private int fps;
@@ -34,7 +41,19 @@ public class Game extends Canvas implements Runnable {
 		handler = new Handler();
 		this.addKeyListener(new KeyInput(handler));
 		BufferedImageLoader loader = new BufferedImageLoader();
-		map = loader.loadImage("/maps/mapGame.png");
+		System.out.println(fs + "maps"+ fs + "mapGame.png");
+		
+		final InputStream is = getClass().getResourceAsStream("/maps/mapGame.png");
+		if (is == null) {
+			System.out.println("failed load");
+		}
+		try {
+			map = ImageIO.read(is);
+			System.out.println("letto");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+//		map = loader.loadImage(fs + "maps"+ fs + "mapGame.png");
 //		map = loader.loadImage("/maps/mapGame_big.png");
 //		map = loader.loadImage("/maps/testMap.png");
 //		handler.addPlayer(new MainPlayer(100, 100,ID.Player, handler));
