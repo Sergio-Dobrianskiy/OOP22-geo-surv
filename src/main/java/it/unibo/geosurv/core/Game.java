@@ -41,26 +41,13 @@ public class Game extends Canvas implements Runnable {
 		
 		handler = new Handler();
 		this.addKeyListener(new KeyInput(handler));
-		BufferedImageLoader loader = new BufferedImageLoader();
-		
-		final InputStream is = getClass().getResourceAsStream(Texture.SMALL_MAP.getPath());
-		if (is == null) {
-			System.out.println("failed load");
-		}
-		try {
-			map = ImageIO.read(is);
-			System.out.println("letto");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-		
+				
+		loadTextures();
+		map = Texture.SMALL_MAP.getTexture();
 		loadLevel(map);
-		System.out.println("player =" + handler.getPlayer() == null);
+		
 		camera = new Camera(0, 0, handler);	
-		Texture filepath = Texture.BIG_MAP;
-		System.out.println(Texture.BIG_MAP.getPath());
-		System.out.println(filepath);
+
 		start();
 		
 		
@@ -178,6 +165,21 @@ public class Game extends Canvas implements Runnable {
 				}
 			}
 
+		}
+	}
+	
+	/**
+     * Loads game textures
+     */
+	private void loadTextures() {
+		for (final Texture texture : Texture.values()) {
+			try {
+				texture.load();
+			} catch (IOException e) {
+				System.out.println("Error while loading texture " + texture.getPath());
+				System.out.println(e);
+				System.exit(1);
+			}
 		}
 	}
 	
