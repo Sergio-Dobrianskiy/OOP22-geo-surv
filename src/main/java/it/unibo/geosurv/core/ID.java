@@ -1,9 +1,13 @@
 package it.unibo.geosurv.core;
 
 public enum ID {
-	Block,
-	Bullet,
+    Block,
+    Bullet,
     Player,
-    Satellite;
-
+    Satellite,
+    Death, // Entities
+    SuperMonster, // Entities
+    Monster, // Entities
+    Plant, // Entities
+    Experience;
 }
