@@ -6,8 +6,12 @@ import java.awt.Rectangle;
 
 public class Experience extends GameObject {
 
-    public Experience(float x, float y, ID id) {
+    /** more experience make player go to new levels */
+    private int experience;
+
+    public Experience(float x, float y, ID id, int exp) {
         super(x, y, id);
+        this.experience = exp;
     }
 
     @Override

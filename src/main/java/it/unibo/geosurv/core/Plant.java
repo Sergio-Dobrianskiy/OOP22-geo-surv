@@ -5,9 +5,9 @@ import java.awt.Rectangle;
 
 import it.unibo.geosurv.weapons.Weapon;
 
-public class Monster extends GameObject implements Entity {
+public class Plant extends GameObject implements Entity {
 
-    public Monster(float x, float y, ID id) {
+    public Plant(float x, float y, ID id) {
         super(x, y, id);
         // TODO Auto-generated constructor stub
     }
@@ -33,7 +33,6 @@ public class Monster extends GameObject implements Entity {
     @Override
     public Experience dropExperience() {
         // TODO Auto-generated method stub
-        // dipendentemente dal tipo do mostro rilascio un livello di esperienza diverso?
         throw new UnsupportedOperationException("Unimplemented method 'dropExperience'");
     }
 
@@ -67,9 +66,4 @@ public class Monster extends GameObject implements Entity {
         throw new UnsupportedOperationException("Unimplemented method 'getBounds'");
     }
 
-    /**
-     * Allow monster to try to reach the target/player
-     */
-    void reachTarget() {
-    };
 }

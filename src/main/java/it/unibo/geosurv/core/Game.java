@@ -39,7 +39,7 @@ public class Game extends Canvas implements Runnable {
 		camera = new Camera(0, 0, handler);
 		handler.addObject(new SatelliteGun(0, 0, this.handler, this));
 		// TODO: remove sample experience object
-		handler.addObject(new Experience(50, 50, ID.Experience));
+		handler.addObject(new Experience(50, 50, ID.Experience, 3));
 
 		start();
 	}
