@@ -8,6 +8,7 @@ import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
+import it.unibo.geosurv.graphics.*;
 
 import javax.imageio.ImageIO;
 
@@ -41,9 +42,8 @@ public class Game extends Canvas implements Runnable {
 		handler = new Handler();
 		this.addKeyListener(new KeyInput(handler));
 		BufferedImageLoader loader = new BufferedImageLoader();
-		System.out.println(fs + "maps"+ fs + "mapGame.png");
 		
-		final InputStream is = getClass().getResourceAsStream("/maps/mapGame.png");
+		final InputStream is = getClass().getResourceAsStream(Texture.SMALL_MAP.getPath());
 		if (is == null) {
 			System.out.println("failed load");
 		}
@@ -53,19 +53,19 @@ public class Game extends Canvas implements Runnable {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-//		map = loader.loadImage(fs + "maps"+ fs + "mapGame.png");
-//		map = loader.loadImage("/maps/mapGame_big.png");
-//		map = loader.loadImage("/maps/testMap.png");
-//		handler.addPlayer(new MainPlayer(100, 100,ID.Player, handler));
+
 		
 		loadLevel(map);
 		System.out.println("player =" + handler.getPlayer() == null);
-		camera = new Camera(0, 0, handler);		
-
+		camera = new Camera(0, 0, handler);	
+		Texture filepath = Texture.BIG_MAP;
+		System.out.println(Texture.BIG_MAP.getPath());
+		System.out.println(filepath);
 		start();
 		
 		
 		handler.addObject(new SatelliteGun(0, 0, this.handler, this));
+		
 	
 	}
 	
