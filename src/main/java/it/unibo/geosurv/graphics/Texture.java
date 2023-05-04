@@ -15,6 +15,10 @@ public enum Texture {
 	 */
 	BIG_MAP("/maps/map_big.png"),
 	/**
+	 * Represents the big map.
+	 */
+	BIG_MAP_2("/maps/mapGame_copia2.png"),
+	/**
 	 * Represents the small map.
 	 */
 	SMALL_MAP("/maps/map_small.png"),
@@ -28,26 +32,26 @@ public enum Texture {
 	private BufferedImage texture;
 
 	/**
-     * Constructor for this Class.
-     *
-     * @param fileName path to the texture
-     */
+	 * Constructor for this Class.
+	 *
+	 * @param fileName path to the texture
+	 */
 	Texture(String filePath) {
 		this.filePath = filePath;
 	}
-	
+
 	public String getPath() {
 		return this.filePath;
 	}
-	
-    /**
-     * Load the specific texture.
-     *
-     * @throws IOException              error while reading image
-     * @throws IllegalArgumentException if the file is null
-     * @throws NullPointerException     if the given file is null
-     */
-	public void load () throws IOException {
+
+	/**
+	 * Load the specific texture.
+	 *
+	 * @throws IOException              error while reading image
+	 * @throws IllegalArgumentException if the file is null
+	 * @throws NullPointerException     if the given file is null
+	 */
+	public void load() throws IOException {
 		final InputStream inputStream = getClass().getResourceAsStream(this.filePath);
 		if (inputStream == null) {
 			throw new NullPointerException("" + this.filePath + " is a wrong path");
@@ -55,12 +59,12 @@ public enum Texture {
 		this.texture = ImageIO.read(inputStream);
 		inputStream.close();
 	}
-	
-    /**
-     * Get texture as a BufferImage.
-     *
-     * @return texture
-     */
+
+	/**
+	 * Get texture as a BufferImage.
+	 *
+	 * @return texture
+	 */
 	public BufferedImage getTexture() {
 		return this.texture;
 	}

@@ -39,8 +39,9 @@ public class Game extends Canvas implements Runnable {
 		this.addKeyListener(new KeyInput(handler));
 
 		loadTextures();
-		// loadLevel(Texture.SMALL_MAP.getTexture());
-		loadLevel(Texture.TEST_MAP.getTexture());
+		loadLevel(Texture.SMALL_MAP.getTexture());
+		// loadLevel(Texture.TEST_MAP.getTexture());
+		// loadLevel(Texture.BIG_MAP_2.getTexture());
 
 		// randomPOint example
 		// for (int i = 0; i < 1000; i++) {
@@ -53,9 +54,9 @@ public class Game extends Canvas implements Runnable {
 		// }
 
 		// TODO: remove sample experience object
-		handler.addPlayer(new MainPlayer(300, 300, ID.Player, handler));
+		handler.addPlayer(new MainPlayer(180, 300, ID.Player, handler));
 		handler.addObject(new SatelliteGun(0, 0, this.handler, this));
-		handler.addObject(new Experience(50, 50, ID.Experience, 3));
+		handler.addObject(new Experience(50, 50, ID.Experience, 1));
 		handler.addObject(new Triangle(200, 100, ID.Monster, this.handler, this));
 		handler.addObject(new Triangle(280, 150, ID.Monster, this.handler, this));
 		handler.addObject(new MonsterSpawner(0, 0, ID.Monster, this.handler, this));
