@@ -44,6 +44,7 @@ public class Triangle extends Monster {
                 if (this.getBounds().intersects(tempObject.getBounds())) {
                     System.out.println(this.toString() + " " + this.name + " object is removed");
                     System.out.println("Position: [" + this.x + "," + this.y + "]");
+                    handler.addObject(this.dropExperience());
                     handler.removeObject(this);
                 }
             }
