@@ -56,7 +56,11 @@ public class Handler {
 	public void tick() {
 		for(int i=0; i< gameObjects.size(); i++) {
 			GameObject tempObject = gameObjects.get(i);
-			tempObject.tick();
+			if (tempObject.distanceFromPlayer < 400) {
+				tempObject.tick();
+			} else {
+				tempObject.updateDistanceFromPlayer();
+			}
 		}
 	}
 	

@@ -36,8 +36,7 @@ public class SatelliteGun extends Weapon {
 
 //	public SatelliteGun(int x, int y, Handler handler, SpriteSheet ss, Game game, Camera cam) {
 	public SatelliteGun(float x, float y, Handler handler, Game game) {
-		super(x, y, ID.Satellite);
-		this.handler = handler;
+		super(x, y, ID.Satellite, handler);
 		this.game = game;
 //		this.cam = cam;
 //		this.ss = ss;

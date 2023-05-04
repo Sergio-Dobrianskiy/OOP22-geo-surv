@@ -9,13 +9,10 @@ import it.unibo.geosurv.core.Handler;
 import it.unibo.geosurv.core.ID;
 
 public class Satellite extends Bullet {	
-	
-	private Handler handler;
 
 //	public Satellite(float x, float y, ID id, Handler handler, SpriteSheet ss) {
 	public Satellite(float x, float y, Handler handler) {
-		super(x, y, ID.Satellite);
-		this.handler = handler;
+		super(x, y, ID.Satellite, handler);
 	}
 
 	@Override

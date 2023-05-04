@@ -7,11 +7,8 @@ import java.awt.Color;
 
 public class MainPlayer extends GameObject {
 
-    Handler handler;
-
     public MainPlayer(float x, float y, ID id, Handler handler) {
-        super(x, y, id);
-        this.handler = handler;
+        super(x, y, id, handler);
     }
 
     public void tick() {
@@ -54,11 +51,13 @@ public class MainPlayer extends GameObject {
     	LinkedList<GameObject> tmpObjects = handler.getObjects();
     	for (int i = 0; i < tmpObjects.size(); i++) {
     		GameObject tempObject = tmpObjects.get(i);
-    		if (tempObject.getId() == ID.Block) {			// if player touches wall => stop
-    			if (getBounds().intersects(tempObject.getBounds())) {
-					x += velX * -1;
-					y += velY * -1;
-				}
+    		if (tempObject.distanceFromPlayer < 400) {
+    			if (tempObject.getId() == ID.Block) {			// if player touches wall => stop
+    				if (getBounds().intersects(tempObject.getBounds())) {
+    					x += velX * -1;
+    					y += velY * -1;
+    				}
+    			}    			
     		}
     	}
     }
