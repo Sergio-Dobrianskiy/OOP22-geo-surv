@@ -7,6 +7,9 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+
+import it.unibo.geosurv.entity.Experience;
+import it.unibo.geosurv.entity.Triangle;
 import it.unibo.geosurv.graphics.*;
 
 import it.unibo.geosurv.weapons.SatelliteGun;
@@ -40,6 +43,8 @@ public class Game extends Canvas implements Runnable {
 		handler.addObject(new SatelliteGun(0, 0, this.handler, this));
 		// TODO: remove sample experience object
 		handler.addObject(new Experience(50, 50, ID.Experience, 3));
+		handler.addObject(new Triangle(200, 100, ID.Monster, this.handler, this));
+		handler.addObject(new Triangle(280, 150, ID.Monster, this.handler, this));
 
 		start();
 	}
