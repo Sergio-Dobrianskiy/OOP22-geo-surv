@@ -35,18 +35,7 @@ public class Triangle extends Monster {
 
     @Override
     public void tick() {
-        x += velX;
-        y += velY;
-        tempPlayer = Func.findPlayer(handler);
-
-        int mx = (int) this.tempPlayer.getX();
-        int my = (int) this.tempPlayer.getY();
-
-        float angle = (float) Math.atan2(my - this.getY() + 8, mx - this.getX() + 4);
-
-        this.velX = (float) ((this.speed) * Math.cos(angle));
-        this.velY = (float) ((this.speed) * Math.sin(angle));
-
+        reachTarget();
         LinkedList<GameObject> tmpObjects = handler.getObjects();
         for (int i = 0; i < tmpObjects.size(); i++) {
             GameObject tempObject = tmpObjects.get(i);
@@ -54,7 +43,7 @@ public class Triangle extends Monster {
             if (tempObject.getId() == ID.Player) {
                 if (this.getBounds().intersects(tempObject.getBounds())) {
                     System.out.println(this.toString() + " " + this.name + " object is removed");
-                    System.out.println("Player position: [" + mx + "," + my + "]");
+                    System.out.println("Position: [" + this.x + "," + this.y + "]");
                     handler.removeObject(this);
                 }
             }
@@ -74,7 +63,18 @@ public class Triangle extends Monster {
 
     @Override
     public void reachTarget() {
-        System.out.println("T trying to reach the target");
+        x += velX;
+        y += velY;
+        tempPlayer = Func.findPlayer(handler);
+
+        int mx = (int) this.tempPlayer.getX();
+        int my = (int) this.tempPlayer.getY();
+
+        float angle = (float) Math.atan2(my - this.getY() + 8, mx - this.getX() + 4);
+
+        this.velX = (float) ((this.speed) * Math.cos(angle));
+        this.velY = (float) ((this.speed) * Math.sin(angle));
+        // System.out.println("T trying to reach the target");
     }
 
 }
