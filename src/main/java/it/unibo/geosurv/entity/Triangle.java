@@ -15,7 +15,7 @@ public class Triangle extends Monster {
 
     private Handler handler;
     private Game game;
-    private float speed = (float) 1;
+    private float speed = 1.0f;
     private static int counter = 0;
     private String name = "Triangle-";
 
@@ -26,7 +26,7 @@ public class Triangle extends Monster {
      */
     public Triangle(float x, float y, ID id, Handler handler, Game game) {
         super(x, y, ID.Monster);
-        this.speed = speed;
+        // this.speed = speed;
         this.handler = handler;
         this.game = game;
         Triangle.counter++;
@@ -42,7 +42,7 @@ public class Triangle extends Monster {
         int mx = (int) this.tempPlayer.getX();
         int my = (int) this.tempPlayer.getY();
 
-        float angle = (float) Math.atan2(my - this.getY() - 16, mx - this.getX() - 16);
+        float angle = (float) Math.atan2(my - this.getY() + 8, mx - this.getX() + 4);
 
         this.velX = (float) ((this.speed) * Math.cos(angle));
         this.velY = (float) ((this.speed) * Math.sin(angle));

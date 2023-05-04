@@ -36,7 +36,7 @@ public abstract class Monster extends GameObject {
      */
     public Experience dropExperience() {
         // TODO: to correct!
-        return new Experience((float) 11, (float) 11, ID.Experience, 1);
+        return new Experience(11.0f, 11.0f, ID.Experience, 1);
     };
 
     /**
