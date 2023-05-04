@@ -39,24 +39,20 @@ public class Game extends Canvas implements Runnable {
 		this.addKeyListener(new KeyInput(handler));
 
 		loadTextures();
-//		loadLevel(Texture.SMALL_MAP.getTexture());
-		loadLevel(Texture.TEST_MAP.getTexture());
-		
+		loadLevel(Texture.SMALL_MAP.getTexture());
+		// loadLevel(Texture.TEST_MAP.getTexture());
+
 		// randomPOint example
-//		for (int i = 0; i < 1000; i++) {
-//			float x, y; 
-//			Pair<Float, Float> pair = Func.randomPoint(100f, 350f);
-//			GameObject tempPlayer = handler.getPlayer();
-//			x = tempPlayer.getX() + pair.getX();
-//			y = tempPlayer.getY() + pair.getY();
-//			handler.addObject(new Satellite(x, y, handler));
-//		}
-		
-		
+		// for (int i = 0; i < 1000; i++) {
+		// float x, y;
+		// Pair<Float, Float> pair = Func.randomPoint(100f, 350f);
+		// GameObject tempPlayer = handler.getPlayer();
+		// x = tempPlayer.getX() + pair.getX();
+		// y = tempPlayer.getY() + pair.getY();
+		// handler.addObject(new Satellite(x, y, handler));
+		// }
 
-//		handler.addObject(new SatelliteGun(0, 0, this.handler, this));
-		
-
+		handler.addObject(new SatelliteGun(0, 0, this.handler, this));
 
 		camera = new Camera(0, 0, handler);
 
@@ -164,7 +160,8 @@ public class Game extends Canvas implements Runnable {
 			for (int yy = 0; yy < h; yy++) {
 				int pixel = image.getRGB(xx, yy);
 				int red = (pixel >> 16) & 0xff;
-				int green = (pixel >> 8) & 0xff;
+				// green not used at the moment
+				// int green = (pixel >> 8) & 0xff;
 				int blue = (pixel) & 0xff;
 
 				if (blue == 255) {
