@@ -8,7 +8,9 @@ import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import it.unibo.geosurv.graphics.*;
-
+import it.unibo.geosurv.utility.Func;
+import it.unibo.geosurv.utility.Pair;
+import it.unibo.geosurv.weapons.Satellite;
 import it.unibo.geosurv.weapons.SatelliteGun;
 
 public class Game extends Canvas implements Runnable {
@@ -35,10 +37,22 @@ public class Game extends Canvas implements Runnable {
 		this.addKeyListener(new KeyInput(handler));
 				
 		loadTextures();
-		loadLevel(Texture.SMALL_MAP.getTexture());
+//		loadLevel(Texture.SMALL_MAP.getTexture());
+		loadLevel(Texture.TEST_MAP.getTexture());
+		
+		// randomPOint example
+//		for (int i = 0; i < 1000; i++) {
+//			float x, y; 
+//			Pair<Float, Float> pair = Func.randomPoint(100f, 350f);
+//			GameObject tempPlayer = handler.getPlayer();
+//			x = tempPlayer.getX() + pair.getX();
+//			y = tempPlayer.getY() + pair.getY();
+//			handler.addObject(new Satellite(x, y, handler));
+//		}
+		
 		
 		camera = new Camera(0, 0, handler);	
-		handler.addObject(new SatelliteGun(0, 0, this.handler, this));
+//		handler.addObject(new SatelliteGun(0, 0, this.handler, this));
 		
 		start();
 	}

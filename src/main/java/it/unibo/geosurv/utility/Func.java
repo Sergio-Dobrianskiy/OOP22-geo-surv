@@ -1,10 +1,11 @@
 package it.unibo.geosurv.utility;
+
 import it.unibo.geosurv.core.Handler;
 import it.unibo.geosurv.core.GameObject;
 import it.unibo.geosurv.core.ID;
 import it.unibo.geosurv.core.MainPlayer;
-
 import java.util.LinkedList;
+import java.util.Random;
 
 public class Func {
 	
@@ -26,5 +27,23 @@ public class Func {
 			}
 		}
 		return null;
+	}
+	
+	/**
+     * Return random point on a circumference or ring.
+     *
+     * @param min minimal radius
+     * @param max maximum radius
+     * @return Pair coordinates x, y
+     */
+	public static Pair<Float, Float> randomPoint(final float min, final float max) {
+		Random random = new Random();
+		double angle = 2 * Math.PI * Math.random();
+		double minRandom = min / max; 		// proportion: max / 1 = min / x
+	    double radius = Math.sqrt(random.nextDouble(minRandom, 1));
+	    float x = (float) (radius * Math.cos(angle));
+	    float y = (float) (radius * Math.sin(angle));
+		
+		return new Pair<>(x * max, y * max);
 	}
 }
