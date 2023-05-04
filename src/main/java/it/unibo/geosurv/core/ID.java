@@ -5,9 +5,8 @@ public enum ID {
     Bullet,
     Player,
     Satellite,
-    Death, // Entities
-    SuperMonster, // Entities
+    // Death,
+    // SuperMonster,
     Monster, // Entities
-    Plant, // Entities
     Experience;
 }
