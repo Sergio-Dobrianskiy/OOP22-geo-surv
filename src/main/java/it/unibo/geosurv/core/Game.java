@@ -58,6 +58,8 @@ public class Game extends Canvas implements Runnable {
 		handler.addObject(new Experience(50, 50, ID.Experience, 3));
 		handler.addObject(new Triangle(200, 100, ID.Monster, this.handler, this));
 		handler.addObject(new Triangle(280, 150, ID.Monster, this.handler, this));
+		handler.addObject(new MonsterSpawner(0, 0, ID.Monster, this.handler, this));
+		// MonsterSpawner.spawnMonsters(this.handler);
 		// camera position above this line makes some objects null
 		camera = new Camera(0, 0, handler);
 		start();
