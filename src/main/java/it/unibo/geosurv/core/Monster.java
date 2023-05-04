@@ -1,11 +1,14 @@
 package it.unibo.geosurv.core;
 
-import it.unibo.geosurv.weapons.Weapon;
-
 /** Interface for generic evil */
-public abstract class Monster {
+public abstract class Monster extends GameObject {
 
     private int health;
+
+    private Monster(float x, float y, ID id) {
+        super(x, y, id);
+        // TODO Auto-generated constructor stub
+    }
 
     /**
      * @return an integer showing how much health entity has left
