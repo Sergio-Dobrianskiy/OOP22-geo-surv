@@ -39,8 +39,8 @@ public class Game extends Canvas implements Runnable {
 		this.addKeyListener(new KeyInput(handler));
 
 		loadTextures();
-		loadLevel(Texture.SMALL_MAP.getTexture());
-		// loadLevel(Texture.TEST_MAP.getTexture());
+		// loadLevel(Texture.SMALL_MAP.getTexture());
+		loadLevel(Texture.TEST_MAP.getTexture());
 
 		// randomPOint example
 		// for (int i = 0; i < 1000; i++) {
@@ -52,15 +52,14 @@ public class Game extends Canvas implements Runnable {
 		// handler.addObject(new Satellite(x, y, handler));
 		// }
 
-		handler.addObject(new SatelliteGun(0, 0, this.handler, this));
-
-		camera = new Camera(0, 0, handler);
-
 		// TODO: remove sample experience object
+		handler.addPlayer(new MainPlayer(300, 300, ID.Player, handler));
+		handler.addObject(new SatelliteGun(0, 0, this.handler, this));
 		handler.addObject(new Experience(50, 50, ID.Experience, 3));
 		handler.addObject(new Triangle(200, 100, ID.Monster, this.handler, this));
 		handler.addObject(new Triangle(280, 150, ID.Monster, this.handler, this));
-
+		// camera position above this line makes some objects null
+		camera = new Camera(0, 0, handler);
 		start();
 	}
 
@@ -169,7 +168,7 @@ public class Game extends Canvas implements Runnable {
 				}
 
 				if (red == 255) {
-					handler.addPlayer(new MainPlayer(xx * 32, yy * 32, ID.Player, handler));
+					// handler.addPlayer(new MainPlayer(xx * 32, yy * 32, ID.Player, handler));
 				}
 			}
 		}
