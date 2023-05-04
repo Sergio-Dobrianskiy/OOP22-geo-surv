@@ -6,6 +6,7 @@ import it.unibo.geosurv.core.ID;
 /** Interface for generic evil */
 public abstract class Monster extends GameObject {
 
+    private int DEFAULT_EXPERIENCE = 1;
     private int health;
 
     protected Monster(float x, float y, ID id) {
@@ -36,7 +37,7 @@ public abstract class Monster extends GameObject {
      */
     public Experience dropExperience() {
         // TODO: to correct!
-        return new Experience(11.0f, 11.0f, ID.Experience, 1);
+        return new Experience(this.x, this.y, ID.Experience, DEFAULT_EXPERIENCE);
     };
 
     /**
