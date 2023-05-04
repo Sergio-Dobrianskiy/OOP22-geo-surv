@@ -54,8 +54,9 @@ public class MainPlayer extends GameObject {
     	LinkedList<GameObject> tmpObjects = handler.getObjects();
     	for (int i = 0; i < tmpObjects.size(); i++) {
     		GameObject tempObject = tmpObjects.get(i);
-    		if (tempObject.getId() == ID.Block) {			// if player touches wall => stop
-    			if (getBounds().intersects(tempObject.getBounds())) {
+    		if (getRenderBounds().intersects(tempObject.getBounds())) {		// if object in rendering distance
+				if (tempObject.getId() == ID.Block && 
+					getBounds().intersects(tempObject.getBounds())) {		// if player touches wall => stop
 					x += velX * -1;
 					y += velY * -1;
 				}
@@ -66,12 +67,17 @@ public class MainPlayer extends GameObject {
     public void render(Graphics g) {
         g.setColor(Color.blue);
         g.fillRect((int) x, (int) y, 32, 48);
-
+        g.drawRect((int)x -450 +16, (int) y-250 + 24, 900, 500);
     }
 
     public Rectangle getBounds() {
         return new Rectangle((int) x, (int) y, 32, 48);
 
+    }
+    
+    public Rectangle getRenderBounds() {
+//    	return new Rectangle((int)x -450 +16, (int) y-250 + 24, 900, 500);
+    	return new Rectangle((int)x -434, (int) y-236, 900, 500);
     }
     
 }

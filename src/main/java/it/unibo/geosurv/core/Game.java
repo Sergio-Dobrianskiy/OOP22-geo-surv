@@ -31,7 +31,7 @@ public class Game extends Canvas implements Runnable {
 	
 	public Game() {
 		
-		new Window(1000,563,"Geo Survival", this);
+		new Window(1000,600,"Geo Survival", this);
 		
 		handler = new Handler();
 		this.addKeyListener(new KeyInput(handler));
@@ -39,6 +39,7 @@ public class Game extends Canvas implements Runnable {
 		loadTextures();
 //		loadLevel(Texture.SMALL_MAP.getTexture());
 		loadLevel(Texture.TEST_MAP.getTexture());
+//		loadLevel(Texture.BIG_MAP.getTexture());
 		
 		// randomPOint example
 //		for (int i = 0; i < 1000; i++) {
@@ -49,6 +50,10 @@ public class Game extends Canvas implements Runnable {
 //			y = tempPlayer.getY() + pair.getY();
 //			handler.addObject(new Satellite(x, y, handler));
 //		}
+		
+		for (int i = 0; i < 4000; i++) {
+			handler.addObject(new Satellite(0, 0, handler));
+		}
 		
 		
 		camera = new Camera(0, 0, handler);	
@@ -93,9 +98,11 @@ public class Game extends Canvas implements Runnable {
 			}
 			
 			if (System.currentTimeMillis() - timer > 1000) {
-				this.fps = frames;
+				System.out.print("[" + (System.currentTimeMillis() - timer) + "ms]");
 				this.objectsCounter = handler.getObjectsSize();
 				timer += 1000;
+				this.fps = frames;
+				System.out.println("fps: " + frames);
 				frames = 0;
 			}
 		}

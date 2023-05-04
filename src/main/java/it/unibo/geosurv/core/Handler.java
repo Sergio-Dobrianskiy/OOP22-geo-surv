@@ -62,10 +62,14 @@ public class Handler {
 	
 	
 	public void render(Graphics g) {
-		for(int i=0; i< gameObjects.size(); i++) {
-			GameObject tempObject = gameObjects.get(i);
-			tempObject.render(g);
+		GameObject tempObject;
+		for(int i = 0; i < gameObjects.size(); i++) {
+			tempObject = gameObjects.get(i);
+			if (this.player.getRenderBounds().intersects(tempObject.getBounds())) {
+    			tempObject.render(g);
+    		}
 		}
+		player.render(g);
 	}
 	
 	public GameObject addObject(GameObject tempObject) {
