@@ -18,8 +18,7 @@ public class Triangle extends Monster {
     private float speed = 1.5f;
     private static int counter = 0;
     private String name = "Triangle-";
-
-    private GameObject tempPlayer;
+    private GameObject tempPlayer = Game.returnHandler().getPlayer();
 
     /**
      * Triangle constructor
@@ -36,7 +35,7 @@ public class Triangle extends Monster {
     @Override
     public void tick() {
         reachTarget();
-        if (this.getBounds().intersects(Game.returnHandler().getPlayer().getBounds())) {
+        if (this.getBounds().intersects(tempPlayer.getBounds())) {
             this.die();
         }
         // LinkedList<GameObject> tmpObjects = handler.getObjects();
