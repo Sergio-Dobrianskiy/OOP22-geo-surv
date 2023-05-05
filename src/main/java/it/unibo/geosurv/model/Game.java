@@ -1,4 +1,4 @@
-package it.unibo.geosurv.core;
+package it.unibo.geosurv.model;
 
 import java.awt.Canvas;
 import java.awt.Color;
@@ -8,14 +8,18 @@ import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
-import it.unibo.geosurv.entity.Experience;
-import it.unibo.geosurv.entity.Monster;
-import it.unibo.geosurv.entity.Triangle;
-import it.unibo.geosurv.graphics.*;
-import it.unibo.geosurv.utility.Func;
-import it.unibo.geosurv.utility.Pair;
-import it.unibo.geosurv.weapons.Satellite;
-import it.unibo.geosurv.weapons.SatelliteGun;
+import it.unibo.geosurv.control.KeyInput;
+import it.unibo.geosurv.model.drops.Experience;
+import it.unibo.geosurv.model.monsters.Monster;
+import it.unibo.geosurv.model.monsters.MonsterSpawner;
+import it.unibo.geosurv.model.monsters.triangle.Triangle;
+import it.unibo.geosurv.model.player.MainPlayer;
+import it.unibo.geosurv.model.utility.Func;
+import it.unibo.geosurv.model.utility.Pair;
+import it.unibo.geosurv.model.walls.blocks.Block;
+import it.unibo.geosurv.model.weapons.Satellite;
+import it.unibo.geosurv.model.weapons.SatelliteGun;
+import it.unibo.geosurv.view.graphics.*;
 
 public class Game extends Canvas implements Runnable {
 
@@ -204,10 +208,5 @@ public class Game extends Canvas implements Runnable {
 				System.exit(1);
 			}
 		}
-	}
-
-	public static void main(String args[]) {
-		new Game();
-
 	}
 }

@@ -1,14 +1,14 @@
-package it.unibo.geosurv.entity;
+package it.unibo.geosurv.model.drops;
 
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
-import it.unibo.geosurv.core.Game;
-import it.unibo.geosurv.core.GameObject;
-import it.unibo.geosurv.core.Handler;
-import it.unibo.geosurv.core.ID;
-import it.unibo.geosurv.core.MainPlayer;
+import it.unibo.geosurv.model.Game;
+import it.unibo.geosurv.model.GameObject;
+import it.unibo.geosurv.model.Handler;
+import it.unibo.geosurv.model.ID;
+import it.unibo.geosurv.model.player.MainPlayer;
 
 public class Experience extends GameObject {
 

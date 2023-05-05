@@ -1,9 +1,10 @@
-package it.unibo.geosurv.utility;
+package it.unibo.geosurv.model.utility;
 
-import it.unibo.geosurv.core.Handler;
-import it.unibo.geosurv.core.GameObject;
-import it.unibo.geosurv.core.ID;
-import it.unibo.geosurv.core.MainPlayer;
+import it.unibo.geosurv.model.GameObject;
+import it.unibo.geosurv.model.Handler;
+import it.unibo.geosurv.model.ID;
+import it.unibo.geosurv.model.player.MainPlayer;
+
 import java.util.LinkedList;
 import java.util.Random;
 

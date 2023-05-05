@@ -45,7 +45,7 @@ dependencies {
 
 application {
 	// Define the main class for the application.
-	mainClass.set("it.unibo.geosurv.core.Game")
+	mainClass.set("it.unibo.geosurv.Main")
 }
 
 tasks.test {

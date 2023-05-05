@@ -1,4 +1,4 @@
-package it.unibo.geosurv.core;
+package it.unibo.geosurv.model;
 
 public enum ID {
     Block,

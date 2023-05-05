@@ -1,7 +1,9 @@
-package it.unibo.geosurv.core;
+package it.unibo.geosurv.model;
 
 import java.awt.Graphics;
 import java.util.LinkedList;
+
+import it.unibo.geosurv.model.player.MainPlayer;
 
 public class Handler {
 

@@ -1,4 +1,4 @@
-package it.unibo.geosurv.core;
+package it.unibo.geosurv.view.graphics;
 
 import java.io.IOException;
 

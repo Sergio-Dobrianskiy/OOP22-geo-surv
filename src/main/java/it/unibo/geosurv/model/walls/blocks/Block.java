@@ -1,8 +1,11 @@
-package it.unibo.geosurv.core;
+package it.unibo.geosurv.model.walls.blocks;
 
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
+
+import it.unibo.geosurv.model.GameObject;
+import it.unibo.geosurv.model.ID;
 
 public class Block extends GameObject {
 

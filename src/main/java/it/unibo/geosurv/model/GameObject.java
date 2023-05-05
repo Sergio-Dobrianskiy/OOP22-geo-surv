@@ -1,4 +1,4 @@
-package it.unibo.geosurv.core;
+package it.unibo.geosurv.model;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;

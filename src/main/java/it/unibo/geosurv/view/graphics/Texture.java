@@ -1,4 +1,4 @@
-package it.unibo.geosurv.graphics;
+package it.unibo.geosurv.view.graphics;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;

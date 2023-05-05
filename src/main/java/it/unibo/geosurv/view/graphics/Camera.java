@@ -1,4 +1,7 @@
-package it.unibo.geosurv.core;
+package it.unibo.geosurv.view.graphics;
+
+import it.unibo.geosurv.model.Handler;
+import it.unibo.geosurv.model.player.MainPlayer;
 
 public class Camera {
 

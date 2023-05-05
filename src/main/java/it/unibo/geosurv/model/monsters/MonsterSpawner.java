@@ -1,13 +1,16 @@
-package it.unibo.geosurv.core;
+package it.unibo.geosurv.model.monsters;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.util.Random;
 
-import it.unibo.geosurv.utility.Pair;
-import it.unibo.geosurv.entity.Monster;
-import it.unibo.geosurv.entity.Triangle;
-import it.unibo.geosurv.utility.Func;
+import it.unibo.geosurv.model.Game;
+import it.unibo.geosurv.model.GameObject;
+import it.unibo.geosurv.model.Handler;
+import it.unibo.geosurv.model.ID;
+import it.unibo.geosurv.model.monsters.triangle.Triangle;
+import it.unibo.geosurv.model.utility.Func;
+import it.unibo.geosurv.model.utility.Pair;
 
 public class MonsterSpawner extends GameObject {
 

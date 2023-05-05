@@ -1,8 +1,10 @@
-package it.unibo.geosurv.core;
+package it.unibo.geosurv.view.graphics;
 
 import java.awt.Dimension;
 
 import javax.swing.JFrame;
+
+import it.unibo.geosurv.model.Game;
 
 public class Window {
 	

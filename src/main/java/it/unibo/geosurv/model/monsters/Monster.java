@@ -1,9 +1,10 @@
-package it.unibo.geosurv.entity;
+package it.unibo.geosurv.model.monsters;
 
-import it.unibo.geosurv.core.Game;
-import it.unibo.geosurv.core.GameObject;
-import it.unibo.geosurv.core.Handler;
-import it.unibo.geosurv.core.ID;
+import it.unibo.geosurv.model.Game;
+import it.unibo.geosurv.model.GameObject;
+import it.unibo.geosurv.model.Handler;
+import it.unibo.geosurv.model.ID;
+import it.unibo.geosurv.model.drops.Experience;
 
 /** Interface for generic evil */
 public abstract class Monster extends GameObject {

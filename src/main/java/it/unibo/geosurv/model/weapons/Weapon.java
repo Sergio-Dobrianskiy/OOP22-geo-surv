@@ -1,14 +1,14 @@
-package it.unibo.geosurv.weapons;
+package it.unibo.geosurv.model.weapons;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
-import it.unibo.geosurv.core.GameObject;
-import it.unibo.geosurv.core.ID;
+import it.unibo.geosurv.model.GameObject;
+import it.unibo.geosurv.model.ID;
 
-public abstract class Bullet extends GameObject {
+public abstract class Weapon extends GameObject {
 
-	public Bullet(float x, float y, ID id) {
+	public Weapon(float x, float y, ID id) {
 		super(x, y, id);
 	}
 
@@ -25,4 +25,5 @@ public abstract class Bullet extends GameObject {
 
 		return null;
 	}
+
 }

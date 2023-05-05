@@ -1,8 +1,13 @@
-package it.unibo.geosurv.core;
+package it.unibo.geosurv.model.player;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.util.LinkedList;
+
+import it.unibo.geosurv.model.GameObject;
+import it.unibo.geosurv.model.Handler;
+import it.unibo.geosurv.model.ID;
+
 import java.awt.Color;
 
 public class MainPlayer extends GameObject {

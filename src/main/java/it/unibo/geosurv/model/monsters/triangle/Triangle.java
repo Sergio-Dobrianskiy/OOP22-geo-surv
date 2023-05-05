@@ -1,15 +1,16 @@
-package it.unibo.geosurv.entity;
+package it.unibo.geosurv.model.monsters.triangle;
 
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.util.LinkedList;
 
-import it.unibo.geosurv.core.Game;
-import it.unibo.geosurv.core.GameObject;
-import it.unibo.geosurv.core.Handler;
-import it.unibo.geosurv.core.ID;
-import it.unibo.geosurv.utility.Func;
+import it.unibo.geosurv.model.Game;
+import it.unibo.geosurv.model.GameObject;
+import it.unibo.geosurv.model.Handler;
+import it.unibo.geosurv.model.ID;
+import it.unibo.geosurv.model.monsters.Monster;
+import it.unibo.geosurv.model.utility.Func;
 
 public class Triangle extends Monster {
 

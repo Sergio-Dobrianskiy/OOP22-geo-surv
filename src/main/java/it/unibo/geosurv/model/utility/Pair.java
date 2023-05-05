@@ -1,4 +1,4 @@
-package it.unibo.geosurv.utility;
+package it.unibo.geosurv.model.utility;
 
 public class Pair<X,Y> {
 	

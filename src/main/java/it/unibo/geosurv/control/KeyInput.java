@@ -1,8 +1,12 @@
-package it.unibo.geosurv.core;
+package it.unibo.geosurv.control;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.LinkedList;
+
+import it.unibo.geosurv.model.GameObject;
+import it.unibo.geosurv.model.Handler;
+import it.unibo.geosurv.model.ID;
 
 public class KeyInput extends KeyAdapter {
 
