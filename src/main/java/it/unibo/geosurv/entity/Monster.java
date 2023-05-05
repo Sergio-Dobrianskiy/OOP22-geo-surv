@@ -10,10 +10,11 @@ public abstract class Monster extends GameObject {
 
     private int DEFAULT_EXPERIENCE = 1;
     private int health;
+    protected static int monstersCounter;
 
     protected Monster(float x, float y, ID id) {
         super(x, y, id);
-
+        monstersCounter++;
     }
 
     /**
@@ -63,8 +64,13 @@ public abstract class Monster extends GameObject {
     public void die() {
         Handler h = Game.returnHandler();
         h.addObject(this.dropExperience());
+        monstersCounter--;
         h.removeObject(this);
         // monster should be removed from Monsters set/list
     };
+
+    public static int getMonstersCounter() {
+        return monstersCounter;
+    }
 
 }

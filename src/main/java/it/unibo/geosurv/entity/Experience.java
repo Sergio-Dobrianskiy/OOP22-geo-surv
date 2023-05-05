@@ -11,10 +11,12 @@ public class Experience extends GameObject {
 
     /** more experience make player go to new levels */
     private int experience;
+    private static int experienceCounter = 0;
 
     public Experience(float x, float y, ID id, int exp) {
         super(x, y, ID.Experience);
         this.experience = exp;
+        experienceCounter++; // TODO: decrease the counter as Player gather experiences pills
     }
 
     @Override
@@ -37,5 +39,9 @@ public class Experience extends GameObject {
      */
     public int getExperience() {
         return experience;
+    }
+
+    public static int getExperienceCounter() {
+        return experienceCounter;
     }
 }

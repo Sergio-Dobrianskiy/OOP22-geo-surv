@@ -9,6 +9,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 import it.unibo.geosurv.entity.Experience;
+import it.unibo.geosurv.entity.Monster;
 import it.unibo.geosurv.entity.Triangle;
 import it.unibo.geosurv.graphics.*;
 import it.unibo.geosurv.utility.Func;
@@ -148,6 +149,8 @@ public class Game extends Canvas implements Runnable {
 		if (this.showObjectsCounter == true) {
 			g.setColor(Color.BLUE);
 			g.drawString("Objects: " + this.objectsCounter, 900, 65);
+			g.drawString("Experience: " + Experience.getExperienceCounter(), 900, 80);
+			g.drawString("Monsters: " + Monster.getMonstersCounter(), 900, 95);
 		}
 
 		g2d.translate(-camera.getX(), -camera.getY());
