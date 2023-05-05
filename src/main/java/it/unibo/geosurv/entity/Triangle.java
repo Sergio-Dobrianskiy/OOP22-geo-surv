@@ -15,7 +15,7 @@ public class Triangle extends Monster {
 
     private Handler handler;
     private Game game;
-    private float speed = 1.0f;
+    private float speed = 1.5f;
     private static int counter = 0;
     private String name = "Triangle-";
 
@@ -36,19 +36,21 @@ public class Triangle extends Monster {
     @Override
     public void tick() {
         reachTarget();
-        LinkedList<GameObject> tmpObjects = handler.getObjects();
-        for (int i = 0; i < tmpObjects.size(); i++) {
-            GameObject tempObject = tmpObjects.get(i);
-            // TODO: better use ID.weapon -> only one
-            if (tempObject.getId() == ID.Player) {
-                if (this.getBounds().intersects(tempObject.getBounds())) {
-                    System.out.println(this.toString() + " " + this.name + " object is removed");
-                    System.out.println("Position: [" + this.x + "," + this.y + "]");
-                    handler.addObject(this.dropExperience());
-                    handler.removeObject(this);
-                }
-            }
+        if (this.getBounds().intersects(Game.returnHandler().getPlayer().getBounds())) {
+            this.die();
         }
+        // LinkedList<GameObject> tmpObjects = handler.getObjects();
+        // for (int i = 0; i < tmpObjects.size(); i++) {
+        // GameObject tempObject = tmpObjects.get(i);
+        // // TODO: better use ID.weapon -> only one
+        // if (tempObject.getId() == ID.Player) {
+        // if (this.getBounds().intersects(tempObject.getBounds())) {
+        // System.out.println(this.toString() + " " + this.name + " object is removed");
+        // System.out.println("Position: [" + this.x + "," + this.y + "]");
+        // this.die();
+        // }
+        // }
+        // }
     }
 
     @Override
