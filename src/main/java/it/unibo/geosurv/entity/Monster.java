@@ -1,6 +1,8 @@
 package it.unibo.geosurv.entity;
 
+import it.unibo.geosurv.core.Game;
 import it.unibo.geosurv.core.GameObject;
+import it.unibo.geosurv.core.Handler;
 import it.unibo.geosurv.core.ID;
 
 /** Interface for generic evil */
@@ -59,7 +61,9 @@ public abstract class Monster extends GameObject {
      * Entity dies and it is removed
      */
     public void die() {
-        this.dropExperience();
+        Handler h = Game.returnHandler();
+        h.addObject(this.dropExperience());
+        h.removeObject(this);
         // monster should be removed from Monsters set/list
     };
 
