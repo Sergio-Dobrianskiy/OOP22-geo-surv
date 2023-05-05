@@ -22,7 +22,7 @@ public class Game extends Canvas implements Runnable {
 
 	private boolean isRunning = false;
 	private Thread thread;
-	private Handler handler;
+	private static Handler handler;
 	private Camera camera;
 
 	//// debug
@@ -43,16 +43,6 @@ public class Game extends Canvas implements Runnable {
 		// loadLevel(Texture.TEST_MAP.getTexture());
 		// loadLevel(Texture.BIG_MAP_2.getTexture());
 
-		// randomPOint example
-		// for (int i = 0; i < 1000; i++) {
-		// float x, y;
-		// Pair<Float, Float> pair = Func.randomPoint(100f, 350f);
-		// GameObject tempPlayer = handler.getPlayer();
-		// x = tempPlayer.getX() + pair.getX();
-		// y = tempPlayer.getY() + pair.getY();
-		// handler.addObject(new Satellite(x, y, handler));
-		// }
-
 		// TODO: remove sample experience object
 		handler.addPlayer(new MainPlayer(180, 300, ID.Player, handler));
 		handler.addObject(new SatelliteGun(0, 0, this.handler, this));
@@ -62,9 +52,26 @@ public class Game extends Canvas implements Runnable {
 		handler.addObject(new MonsterSpawner(0, 0, ID.Monster, this.handler, this));
 		// MonsterSpawner.spawnMonsters(this.handler);
 		// camera position above this line makes some objects null
+
+		// randomPOint example
+		/*
+		 * for (int i = 0; i < 1000; i++) {
+		 * float x, y;
+		 * Pair<Float, Float> pair = Func.randomPoint(100f, 350f);
+		 * GameObject tempPlayer = handler.getPlayer();
+		 * x = tempPlayer.getX() + pair.getX();
+		 * y = tempPlayer.getY() + pair.getY();
+		 * handler.addObject(new Satellite(x, y, handler));
+		 * }
+		 */
+
 		camera = new Camera(0, 0, handler);
 		start();
 	}
+
+	public static Handler returnHandler() {
+		return handler;
+	};
 
 	private synchronized void start() {
 		isRunning = true;
@@ -89,7 +96,10 @@ public class Game extends Canvas implements Runnable {
 		double delta = 0;
 		long timer = System.currentTimeMillis();
 		int frames = 0;
-
+		// System.out.println(Thread.currentThread().getName() + ": is running");
+		// TODO: capire bene la differenza fra qui e sopra per il discorso di creare
+		// mostri nel tempo, o usare più thread per mostri diversi
+		// handler.addObject(new MonsterSpawner(0, 0, ID.Monster, handler, this));
 		while (isRunning) {
 			long now = System.nanoTime();
 			delta += (now - lastTime) / ns;
@@ -194,5 +204,6 @@ public class Game extends Canvas implements Runnable {
 
 	public static void main(String args[]) {
 		new Game();
+
 	}
 }
