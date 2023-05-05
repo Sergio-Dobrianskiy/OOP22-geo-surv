@@ -4,23 +4,36 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
+import it.unibo.geosurv.core.Game;
 import it.unibo.geosurv.core.GameObject;
+import it.unibo.geosurv.core.Handler;
 import it.unibo.geosurv.core.ID;
+import it.unibo.geosurv.core.MainPlayer;
 
 public class Experience extends GameObject {
 
     /** more experience make player go to new levels */
     private int experience;
     private static int experienceCounter = 0;
+    private GameObject tempPlayer = Game.returnHandler().getPlayer();
+    private Handler handler;
 
     public Experience(float x, float y, ID id, int exp) {
         super(x, y, ID.Experience);
         this.experience = exp;
         experienceCounter++; // TODO: decrease the counter as Player gather experiences pills
+        handler = Game.returnHandler();
     }
 
     @Override
     public void tick() {
+        if (this.getBounds().intersects(tempPlayer.getBounds())) {
+            System.out.println("pick up experience");
+            // TODO: player should increase experience
+            handler.getPlayer().setExperience(this.getExperience());
+            // maybe these few line have to go in a method of player class
+            handler.removeObject(this);
+        }
     }
 
     @Override
