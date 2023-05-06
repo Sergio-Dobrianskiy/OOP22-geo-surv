@@ -26,8 +26,8 @@ public class MonsterSpawner extends GameObject {
     static Game game;
     float x, y;
 
-    public MonsterSpawner(float x, float y, ID id, Handler h, Game game2) {
-        super(x, y, id);
+    public MonsterSpawner(float x, float y, Handler h, Game game2) {
+        super(x, y, ID.Spawner);
         this.handler = h;
     }
 
@@ -51,7 +51,7 @@ public class MonsterSpawner extends GameObject {
                 GameObject tempPlayer = handler.getPlayer();
                 x = tempPlayer.getX() + pair.getX();
                 y = tempPlayer.getY() + pair.getY();
-                this.handler.addObject(new Triangle(x, y, ID.Monster, this.handler, game));
+                this.handler.addObject(new Triangle(x, y, this.handler, game));
                 // Monster monster = new Triangle(10, 10, ID.Monster, this.handler, game);
 
                 numMonsters++;

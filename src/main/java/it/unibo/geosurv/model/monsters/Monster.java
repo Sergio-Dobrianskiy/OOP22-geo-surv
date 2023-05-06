@@ -13,8 +13,8 @@ public abstract class Monster extends GameObject {
     private int health;
     protected static int monstersCounter;
 
-    protected Monster(float x, float y, ID id) {
-        super(x, y, id);
+    protected Monster(float x, float y) {
+        super(x, y, ID.Monster);
         monstersCounter++;
     }
 
@@ -41,7 +41,7 @@ public abstract class Monster extends GameObject {
      */
     public Experience dropExperience() {
         // TODO: to correct!
-        return new Experience(this.x, this.y, ID.Experience, DEFAULT_EXPERIENCE);
+        return new Experience(this.x, this.y, DEFAULT_EXPERIENCE);
     };
 
     /**
@@ -62,7 +62,7 @@ public abstract class Monster extends GameObject {
     /**
      * Entity dies and it is removed
      */
-    public void die() {
+    public void kill() {
         Handler h = Game.returnHandler();
         h.addObject(this.dropExperience());
         monstersCounter--;

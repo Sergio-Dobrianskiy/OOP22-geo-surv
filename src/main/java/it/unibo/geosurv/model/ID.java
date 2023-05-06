@@ -7,6 +7,7 @@ public enum ID {
     Monster, // Entities
     Player,
     Satellite,
+    Spawner,
     Weapon,
     // Death,
     // SuperMonster,

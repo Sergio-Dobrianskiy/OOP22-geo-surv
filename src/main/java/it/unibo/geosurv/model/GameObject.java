@@ -4,8 +4,8 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 
 public abstract class GameObject {
-	protected float x, y;
-	protected float velX,velY;
+	protected float x, y;			// position
+	protected float velX, velY;		// velocity
 	protected ID id;
 	
 	public GameObject(float x, float y, ID id) {

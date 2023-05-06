@@ -24,8 +24,8 @@ public class Triangle extends Monster {
     /**
      * Triangle constructor
      */
-    public Triangle(float x, float y, ID id, Handler handler, Game game) {
-        super(x, y, ID.Monster);
+    public Triangle(float x, float y, Handler handler, Game game) {
+        super(x, y);
         // this.speed = speed;
         this.handler = handler;
         this.game = game;
@@ -39,20 +39,19 @@ public class Triangle extends Monster {
 //        if (this.getBounds().intersects(tempPlayer.getBounds())) {
 //            this.die();
 //        }
-         LinkedList<GameObject> tmpObjects = handler.getObjects();
-         for (int i = 0; i < tmpObjects.size(); i++) {
-	         GameObject tempObject = tmpObjects.get(i);
-	         
-
-	         if (tempObject.getId() == ID.Bullet) { 
-		         if (this.getBounds().intersects(tempObject.getBounds())) {
-		        	 // TODO: add bullet.getDamage()
-//		         System.out.println(this.toString() + " " + this.name + " object is removed");
-//		         System.out.println("Position: [" + this.x + "," + this.y + "]");
-		         this.die();
-		         }
-	         }
-         }
+//         LinkedList<GameObject> tmpObjects = handler.getObjects();
+//         for (int i = 0; i < tmpObjects.size(); i++) {
+//	         GameObject tempObject = tmpObjects.get(i);
+//	         
+//
+//	         if (tempObject.getId() == ID.Bullet) { 
+//		         if (this.getBounds().intersects(tempObject.getBounds())) {
+//		        	 // TODO: add bullet.getDamage()
+////		         System.out.println(this.toString() + " " + this.name + " object is removed");
+////		         System.out.println("Position: [" + this.x + "," + this.y + "]");
+//		         }
+//	         }
+//         }
     }
 
     @Override

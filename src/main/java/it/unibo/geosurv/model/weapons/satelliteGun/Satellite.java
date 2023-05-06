@@ -15,8 +15,7 @@ public class Satellite extends Bullet {
 
 //	public Satellite(float x, float y, ID id, Handler handler, SpriteSheet ss) {
 	public Satellite(float x, float y, Handler handler) {
-		super(x, y, ID.Bullet);
-		this.handler = handler;
+		super(x, y, ID.Bullet, handler);
 	}
 
 	@Override

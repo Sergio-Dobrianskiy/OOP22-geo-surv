@@ -18,7 +18,7 @@ public class Experience extends GameObject {
     private GameObject tempPlayer = Game.returnHandler().getPlayer();
     private Handler handler;
 
-    public Experience(float x, float y, ID id, int exp) {
+    public Experience(float x, float y, int exp) {
         super(x, y, ID.Experience);
         this.experience = exp;
         experienceCounter++; // TODO: decrease the counter as Player gather experiences pills
