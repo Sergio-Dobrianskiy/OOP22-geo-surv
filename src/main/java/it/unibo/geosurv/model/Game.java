@@ -185,7 +185,7 @@ public class Game extends Canvas implements Runnable {
 				int blue = (pixel) & 0xff;
 
 				if (blue == 255) {
-					handler.addObject(new Block(xx * 32, yy * 32, ID.Block));
+					handler.addObject(new Block(xx * 32, yy * 32));
 				}
 
 				if (red == 255) {

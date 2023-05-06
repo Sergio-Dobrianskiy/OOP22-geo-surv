@@ -9,8 +9,8 @@ import it.unibo.geosurv.model.ID;
 
 public class Block extends GameObject {
 
-    public Block(float x, float y, ID id) {
-        super(x, y, id);
+    public Block(float x, float y) {
+        super(x, y, ID.Block);
     }
 
     public void tick() {

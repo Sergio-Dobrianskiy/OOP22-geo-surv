@@ -14,14 +14,14 @@ public class Satellite extends Bullet {
 
 //	public Satellite(float x, float y, ID id, Handler handler, SpriteSheet ss) {
 	public Satellite(float x, float y, Handler handler) {
-		super(x, y, ID.Satellite);
+		super(x, y, ID.Bullet);
 		this.handler = handler;
 	}
 
 	@Override
 	public void tick() {
-		x += velX;
-		y += velY;
+//		x += velX;
+//		y += velY;
 //		LinkedList<GameObject> tmpObjects = handler.getObjects();
 //		
 //		for (int i = 0; i < tmpObjects.size(); i++) {
