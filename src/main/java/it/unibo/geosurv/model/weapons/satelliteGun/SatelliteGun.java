@@ -1,4 +1,4 @@
-package it.unibo.geosurv.model.weapons;
+package it.unibo.geosurv.model.weapons.satelliteGun;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -10,6 +10,7 @@ import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.Handler;
 import it.unibo.geosurv.model.ID;
 import it.unibo.geosurv.model.utility.Func;
+import it.unibo.geosurv.model.weapons.Weapon;
 
 public class SatelliteGun extends Weapon {
 	
@@ -36,7 +37,7 @@ public class SatelliteGun extends Weapon {
 
 //	public SatelliteGun(int x, int y, Handler handler, SpriteSheet ss, Game game, Camera cam) {
 	public SatelliteGun(float x, float y, Handler handler, Game game) {
-		super(x, y, ID.Satellite);
+		super(x, y, ID.Weapon);
 		this.handler = handler;
 		this.game = game;
 //		this.cam = cam;

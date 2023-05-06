@@ -22,7 +22,6 @@ public abstract class Bullet extends GameObject {
 
 	@Override
 	public Rectangle getBounds() {
-
 		return null;
 	}
 }

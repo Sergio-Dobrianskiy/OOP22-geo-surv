@@ -1,4 +1,4 @@
-package it.unibo.geosurv.model.weapons;
+package it.unibo.geosurv.model.weapons.satelliteGun;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
@@ -7,6 +7,7 @@ import java.util.LinkedList;
 import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.Handler;
 import it.unibo.geosurv.model.ID;
+import it.unibo.geosurv.model.weapons.Bullet;
 
 public class Satellite extends Bullet {	
 	

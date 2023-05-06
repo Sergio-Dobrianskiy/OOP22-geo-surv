@@ -43,8 +43,8 @@ public class Triangle extends Monster {
          for (int i = 0; i < tmpObjects.size(); i++) {
 	         GameObject tempObject = tmpObjects.get(i);
 	         
-	         // TODO: understand why satellite.gerbounds() can be null
-	         if (tempObject.getId() == ID.Bullet && tempObject.getBounds() != null) { 
+
+	         if (tempObject.getId() == ID.Bullet) { 
 		         if (this.getBounds().intersects(tempObject.getBounds())) {
 		        	 // TODO: add bullet.getDamage()
 //		         System.out.println(this.toString() + " " + this.name + " object is removed");

@@ -17,8 +17,8 @@ import it.unibo.geosurv.model.player.MainPlayer;
 import it.unibo.geosurv.model.utility.Func;
 import it.unibo.geosurv.model.utility.Pair;
 import it.unibo.geosurv.model.walls.blocks.Block;
-import it.unibo.geosurv.model.weapons.Satellite;
-import it.unibo.geosurv.model.weapons.SatelliteGun;
+import it.unibo.geosurv.model.weapons.satelliteGun.Satellite;
+import it.unibo.geosurv.model.weapons.satelliteGun.SatelliteGun;
 import it.unibo.geosurv.view.graphics.*;
 
 public class Game extends Canvas implements Runnable {
@@ -50,7 +50,7 @@ public class Game extends Canvas implements Runnable {
 
 		// TODO: remove sample experience object
 		handler.addPlayer(new MainPlayer(180, 300, ID.Player, handler));
-		handler.addObject(new SatelliteGun(0, 0, this.handler, this));
+//		handler.addObject(new SatelliteGun(0, 0, this.handler, this));
 		handler.addObject(new Experience(50, 50, ID.Experience, 1));
 		handler.addObject(new Triangle(200, 100, ID.Monster, this.handler, this));
 		handler.addObject(new Triangle(280, 150, ID.Monster, this.handler, this));
