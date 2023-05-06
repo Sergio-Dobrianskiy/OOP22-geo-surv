@@ -36,7 +36,7 @@ public class Triangle extends Monster {
     @Override
     public void tick() {
         reachTarget();
-//        if (this.getBounds().intersects(tempPlayer.getBounds())) {
+//        if (this.getShape().intersects(tempPlayer.getShape())) {
 //            this.die();
 //        }
 //         LinkedList<GameObject> tmpObjects = handler.getObjects();
@@ -45,7 +45,7 @@ public class Triangle extends Monster {
 //	         
 //
 //	         if (tempObject.getId() == ID.Bullet) { 
-//		         if (this.getBounds().intersects(tempObject.getBounds())) {
+//		         if (this.getShape().intersects(tempObject.getShape())) {
 //		        	 // TODO: add bullet.getDamage()
 ////		         System.out.println(this.toString() + " " + this.name + " object is removed");
 ////		         System.out.println("Position: [" + this.x + "," + this.y + "]");
@@ -61,7 +61,7 @@ public class Triangle extends Monster {
     }
 
     @Override
-    public Rectangle getBounds() {
+    public Rectangle getShape() {
         return new Rectangle((int) x, (int) y, 20, 20);
     }
 

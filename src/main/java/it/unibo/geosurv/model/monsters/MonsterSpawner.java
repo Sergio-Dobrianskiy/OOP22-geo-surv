@@ -76,7 +76,7 @@ public class MonsterSpawner extends GameObject {
     }
 
     @Override
-    public Rectangle getBounds() {
+    public Rectangle getShape() {
         throw new UnsupportedOperationException("Unimplemented method 'getBounds'");
     }
 

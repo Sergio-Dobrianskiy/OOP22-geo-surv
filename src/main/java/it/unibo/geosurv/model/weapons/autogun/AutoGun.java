@@ -1,4 +1,4 @@
-package it.unibo.geosurv.model.weapons;
+package it.unibo.geosurv.model.weapons.autogun;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;
@@ -8,6 +8,8 @@ import java.util.LinkedList;
 import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.Handler;
 import it.unibo.geosurv.model.ID;
+import it.unibo.geosurv.model.weapons.BulletImpl;
+import it.unibo.geosurv.model.weapons.Weapon;
 
 public class AutoGun extends Weapon {
 	
@@ -27,7 +29,7 @@ public class AutoGun extends Weapon {
 	private float bulletVelocity = 10;
 
 	public AutoGun(float x, float y, Handler handler) {
-		super(x, y, ID.Weapon);
+		super(x, y);
 		this.handler = handler;
 		this.lastTime = System.nanoTime();
 		this.player = handler.getPlayer();
@@ -54,10 +56,8 @@ public class AutoGun extends Weapon {
 			if (this.delta >= 1) {
 				this.lastTime = now;
 				this.findClosestEnemy();
-				System.out.println("distance: " + this.closestEnemyDistance);
 				
 				if (this.closestEnemyDistance <= 400) {
-					System.out.println("shoot");
 					this.shoot();
 					
 					if (autoGunLvl >= 2) {				// TODO: sistemare

@@ -26,9 +26,6 @@ public class SatelliteGun extends Weapon {
 	private double angle = 0d;
 	private final float orbitSpeed = 0.05f;
 	private final float orbitRadius = 150;
-	
-	private float centerX;
-	private float centerY;
 	private GameObject bullet;
 	ArrayList<GameObject> bullets;
 	private int numberOfBullets = 0;
@@ -37,7 +34,7 @@ public class SatelliteGun extends Weapon {
 
 //	public SatelliteGun(int x, int y, Handler handler, SpriteSheet ss, Game game, Camera cam) {
 	public SatelliteGun(float x, float y, Handler handler, Game game) {
-		super(x, y, ID.Weapon);
+		super(x, y);
 		this.handler = handler;
 		this.game = game;
 //		this.cam = cam;

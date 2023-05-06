@@ -3,9 +3,6 @@ package it.unibo.geosurv.model.weapons;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
-import java.util.LinkedList;
-
-import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.Handler;
 import it.unibo.geosurv.model.ID;
 
@@ -25,7 +22,7 @@ public class BulletImpl extends Bullet {
 	}
 
 	@Override
-	public Rectangle getBounds() {
+	public Rectangle getShape() {
 		return new Rectangle((int)x, (int)y, 8, 8);
 	}
 

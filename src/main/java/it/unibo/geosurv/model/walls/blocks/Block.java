@@ -21,7 +21,7 @@ public class Block extends GameObject {
         g.fillRect((int)x, (int)y, 32, 32);
     }
 
-    public Rectangle getBounds() {
+    public Rectangle getShape() {
         return new Rectangle((int)x, (int)y, 32, 32);
     }
     

@@ -1,7 +1,7 @@
 package it.unibo.geosurv.model;
 
 import java.awt.Graphics;
-import java.awt.Rectangle;
+import java.awt.geom.RectangularShape;
 
 public abstract class GameObject {
 	protected float x, y;			// position
@@ -24,7 +24,7 @@ public abstract class GameObject {
 
 	public abstract void tick();
 	public abstract void render(Graphics g); 
-	public abstract Rectangle getBounds();
+	public abstract RectangularShape getShape();
 
 	public float getX() {
 		return x;

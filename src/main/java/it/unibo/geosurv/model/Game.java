@@ -14,13 +14,13 @@ import it.unibo.geosurv.model.monsters.Monster;
 import it.unibo.geosurv.model.monsters.MonsterSpawner;
 import it.unibo.geosurv.model.monsters.triangle.Triangle;
 import it.unibo.geosurv.model.player.MainPlayer;
-import it.unibo.geosurv.model.utility.Func;
-import it.unibo.geosurv.model.utility.Pair;
 import it.unibo.geosurv.model.walls.blocks.Block;
-import it.unibo.geosurv.model.weapons.AutoGun;
-import it.unibo.geosurv.model.weapons.satelliteGun.Satellite;
-import it.unibo.geosurv.model.weapons.satelliteGun.SatelliteGun;
-import it.unibo.geosurv.view.graphics.*;
+import it.unibo.geosurv.model.weapons.ExplosionGun.Explosion;
+import it.unibo.geosurv.model.weapons.ExplosionGun.ExplosionGun;
+import it.unibo.geosurv.model.weapons.autogun.AutoGun;
+import it.unibo.geosurv.view.graphics.Camera;
+import it.unibo.geosurv.view.graphics.Texture;
+import it.unibo.geosurv.view.graphics.Window;
 
 public class Game extends Canvas implements Runnable {
 
@@ -51,25 +51,14 @@ public class Game extends Canvas implements Runnable {
 
 		// TODO: remove sample experience object
 		handler.addPlayer(new MainPlayer(180, 300, ID.Player, handler));
-//		handler.addObject(new SatelliteGun(0, 0, this.handler, this));
-		handler.addObject(new AutoGun(0f, 0f, this.handler));
 		handler.addObject(new Experience(50, 50, 1));
 		handler.addObject(new Triangle(200, 100, this.handler, this));
 //		handler.addObject(new Triangle(280, 150, ID.Monster, this.handler, this));
-		handler.addObject(new MonsterSpawner(0, 0, this.handler, this));
+//		handler.addObject(new MonsterSpawner(0, 0, this.handler, this));
 		// camera position above this line makes some objects null
+		
+		this.loadGuns();
 
-		// randomPOint example
-		/*
-		 * for (int i = 0; i < 1000; i++) {
-		 * float x, y;
-		 * Pair<Float, Float> pair = Func.randomPoint(100f, 350f);
-		 * GameObject tempPlayer = handler.getPlayer();
-		 * x = tempPlayer.getX() + pair.getX();
-		 * y = tempPlayer.getY() + pair.getY();
-		 * handler.addObject(new Satellite(x, y, handler));
-		 * }
-		 */
 
 		camera = new Camera(0, 0, handler);
 		start();
@@ -210,4 +199,12 @@ public class Game extends Canvas implements Runnable {
 			}
 		}
 	}
+	
+	private void loadGuns() {
+//		handler.addObject(new SatelliteGun(0, 0, this.handler, this));
+//		handler.addObject(new AutoGun(0f, 0f, this.handler));
+		handler.addObject(new ExplosionGun(0f, 0f, handler));
+	}
+	
+	
 }

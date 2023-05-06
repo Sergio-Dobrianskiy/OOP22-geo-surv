@@ -8,7 +8,6 @@ import it.unibo.geosurv.model.Game;
 import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.Handler;
 import it.unibo.geosurv.model.ID;
-import it.unibo.geosurv.model.player.MainPlayer;
 
 public class Experience extends GameObject {
 
@@ -27,8 +26,8 @@ public class Experience extends GameObject {
 
     @Override
     public void tick() {
-        if (this.getBounds().intersects(tempPlayer.getBounds())) {
-            System.out.println("pick up experience");
+        if (this.getShape().getBounds2D().intersects(tempPlayer.getShape().getBounds2D())) {
+//            System.out.println("pick up experience");
             // TODO: player should increase experience
             handler.getPlayer().setExperience(this.getExperience());
             // maybe these few line have to go in a method of player class
@@ -43,7 +42,7 @@ public class Experience extends GameObject {
     }
 
     @Override
-    public Rectangle getBounds() {
+    public Rectangle getShape() {
         return new Rectangle((int) x, (int) y, 16, 16);
     }
 

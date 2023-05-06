@@ -28,7 +28,7 @@ public class Satellite extends Bullet {
 //			GameObject tempObject = tmpObjects.get(i);
 //			
 //			if (tempObject.getId() == ID.Block && id == ID.Satellite) {
-//				if (getBounds().intersects(tempObject.getBounds())) {
+//				if (getShape().intersects(tempObject.getShape())) {
 //					System.out.println(this.id);
 //					handler.removeObject(this);
 //				}
@@ -43,7 +43,7 @@ public class Satellite extends Bullet {
 	}
 
 	@Override
-	public Rectangle getBounds() {
+	public Rectangle getShape() {
 		return new Rectangle((int)x, (int)y, 8, 8);
 	}
 
