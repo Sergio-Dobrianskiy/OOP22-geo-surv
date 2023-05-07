@@ -1,4 +1,4 @@
-package it.unibo.geosurv.model.weapons.ExplosionGun;
+package it.unibo.geosurv.model.weapons.explosionGun;
 
 import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.Handler;

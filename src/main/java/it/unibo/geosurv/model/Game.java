@@ -15,9 +15,11 @@ import it.unibo.geosurv.model.monsters.MonsterSpawner;
 import it.unibo.geosurv.model.monsters.triangle.Triangle;
 import it.unibo.geosurv.model.player.MainPlayer;
 import it.unibo.geosurv.model.walls.blocks.Block;
-import it.unibo.geosurv.model.weapons.ExplosionGun.Explosion;
-import it.unibo.geosurv.model.weapons.ExplosionGun.ExplosionGun;
 import it.unibo.geosurv.model.weapons.autogun.AutoGun;
+import it.unibo.geosurv.model.weapons.explosionGun.ExplosionGun;
+import it.unibo.geosurv.model.weapons.satelliteGun.SatelliteGun;
+import it.unibo.geosurv.model.weaposn.laserGun.Laser;
+import it.unibo.geosurv.model.weaposn.laserGun.LaserGun;
 import it.unibo.geosurv.view.graphics.Camera;
 import it.unibo.geosurv.view.graphics.Texture;
 import it.unibo.geosurv.view.graphics.Window;
@@ -54,7 +56,7 @@ public class Game extends Canvas implements Runnable {
 		handler.addObject(new Experience(50, 50, 1));
 		handler.addObject(new Triangle(200, 100, this.handler, this));
 //		handler.addObject(new Triangle(280, 150, ID.Monster, this.handler, this));
-//		handler.addObject(new MonsterSpawner(0, 0, this.handler, this));
+		handler.addObject(new MonsterSpawner(0, 0, this.handler, this));
 		// camera position above this line makes some objects null
 		
 		this.loadGuns();
@@ -156,7 +158,7 @@ public class Game extends Canvas implements Runnable {
 		g.dispose();
 		bs.show();
 	}
-
+	
 	/**
 	 * Load the game world.
 	 *
@@ -200,10 +202,17 @@ public class Game extends Canvas implements Runnable {
 		}
 	}
 	
+	/**
+	 * Loads game Weapons/Guns
+	 */
 	private void loadGuns() {
-//		handler.addObject(new SatelliteGun(0, 0, this.handler, this));
-//		handler.addObject(new AutoGun(0f, 0f, this.handler));
-		handler.addObject(new ExplosionGun(0f, 0f, handler));
+		handler.addObject(new SatelliteGun(0, 0, this.handler, this));
+		handler.addObject(new AutoGun(0f, 0f, this.handler));
+		handler.addObject(new ExplosionGun(0f, 0f, this.handler));
+		GameObject laser = new Laser(150f, 150f, this.handler, 100, 100);
+		System.out.println("laserPos " + laser.getX() + " " + laser.getY());
+		handler.addObject(laser);
+		handler.addObject(new LaserGun(0f, 0f, this.handler));
 	}
 	
 	

@@ -11,7 +11,6 @@ public class BulletImpl extends Bullet {
 
 	public BulletImpl(float x, float y, Handler handler) {
 		super(x, y, ID.Bullet, handler);
-		
 	}
 	
 	
