@@ -206,12 +206,9 @@ public class Game extends Canvas implements Runnable {
 	 * Loads game Weapons/Guns
 	 */
 	private void loadGuns() {
-//		handler.addObject(new SatelliteGun(0, 0, this.handler, this));
-//		handler.addObject(new AutoGun(0f, 0f, this.handler));
-//		handler.addObject(new ExplosionGun(0f, 0f, this.handler));
-		GameObject laser = new Laser(150f, 150f, this.handler, 100, 100);
-		System.out.println("laserPos " + laser.getX() + " " + laser.getY());
-		handler.addObject(laser);
+		handler.addObject(new SatelliteGun(0, 0, this.handler, this));
+		handler.addObject(new AutoGun(0f, 0f, this.handler));
+		handler.addObject(new ExplosionGun(0f, 0f, this.handler));
 		handler.addObject(new LaserGun(0f, 0f, this.handler));
 	}
 	

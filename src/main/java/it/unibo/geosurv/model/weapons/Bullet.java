@@ -1,7 +1,5 @@
 package it.unibo.geosurv.model.weapons;
 
-import java.awt.Graphics;
-import java.awt.Rectangle;
 import java.util.LinkedList;
 
 import it.unibo.geosurv.model.GameObject;
@@ -42,7 +40,6 @@ public abstract class Bullet extends GameObject {
 		long currentTime = System.currentTimeMillis();
 		if ((currentTime - this.creationTime) > LIFE_SPAN) {
 			handler.removeObject(this);
-			System.out.println("removing" + this);
 			return false;
 		}
 		return true;
@@ -54,14 +51,16 @@ public abstract class Bullet extends GameObject {
 			GameObject tempObject = tmpObjects.get(i);
 			
 			if (tempObject.getId() == ID.Block) { // if bullet touches wall => removed
-				if (! (this instanceof  Satellite) && (this instanceof  Laser)) {
-					handler.removeObject(this);
+				if (this.getShape().getBounds2D().intersects(tempObject.getShape().getBounds2D())) {
+					if (this instanceof BulletImpl) {
+						handler.removeObject(this);
+					}					
 				}
 			}
 			
 			if (tempObject.getId() == ID.Monster) { // if bullet touches wall => removed
 				if (this.getShape().getBounds2D().intersects(tempObject.getShape().getBounds2D())) {
-					if (! (this instanceof  Explosion) && (this instanceof  Laser)) {
+					if (this instanceof BulletImpl) {
 						handler.removeObject(this);
 					}
 					((Monster)tempObject).kill();

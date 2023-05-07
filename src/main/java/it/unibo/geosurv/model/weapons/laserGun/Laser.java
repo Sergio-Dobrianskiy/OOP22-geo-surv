@@ -3,7 +3,6 @@ package it.unibo.geosurv.model.weapons.laserGun;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
-
 import it.unibo.geosurv.model.Handler;
 import it.unibo.geosurv.model.ID;
 import it.unibo.geosurv.model.weapons.Bullet;
@@ -23,8 +22,8 @@ public class Laser extends Bullet {
 	@Override
 	public void render(Graphics g) {
 		System.out.println("laserRender" + x + " " + y);
-		g.setColor(Color.red);
-		g.fillRect((int) x, (int) y, 50, 50);
+		g.setColor(Color.green);
+		g.fillRect((int) x, (int) y, this.width, this.height);
 	}
 
 	@Override

@@ -12,6 +12,8 @@ public class LaserGun extends Weapon {
 	private Handler handler;
 	private long lastLaser;
 	private GameObject player;
+	private int laserHeight = 30;
+	private int laserWidth = 300;
 
 	public LaserGun(float x, float y, Handler handler) {
 		super(x, y);
@@ -39,7 +41,11 @@ public class LaserGun extends Weapon {
 	private void shoot() {
 		float px = this.player.getX();
 		float py = this.player.getY();
-		System.out.println("LaserGun " + px + " " + py);
-		this.handler.addObject(new Laser(px, py, this.handler, 1000, 100));
+
+		float yCorrection = (48 - laserHeight) / 2;
+		this.handler.addObject(new Laser(px + 32, py + yCorrection, this.handler, laserWidth, laserHeight)); // right
+		this.handler.addObject(new Laser(px - laserWidth, py + yCorrection, this.handler, laserWidth, laserHeight)); // left
+		this.handler.addObject(new Laser(px, py - laserWidth, this.handler, laserHeight, laserWidth)); // up
+		this.handler.addObject(new Laser(px, py + 48, this.handler, laserHeight, laserWidth)); // down
 	}
 }
