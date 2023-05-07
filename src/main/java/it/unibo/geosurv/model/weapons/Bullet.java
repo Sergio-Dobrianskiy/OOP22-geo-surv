@@ -9,8 +9,8 @@ import it.unibo.geosurv.model.Handler;
 import it.unibo.geosurv.model.ID;
 import it.unibo.geosurv.model.monsters.Monster;
 import it.unibo.geosurv.model.weapons.explosionGun.Explosion;
+import it.unibo.geosurv.model.weapons.laserGun.Laser;
 import it.unibo.geosurv.model.weapons.satelliteGun.Satellite;
-import it.unibo.geosurv.model.weaposn.laserGun.Laser;
 
 public abstract class Bullet extends GameObject {
 	

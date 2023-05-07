@@ -1,4 +1,4 @@
-package it.unibo.geosurv.model.weaposn.laserGun;
+package it.unibo.geosurv.model.weapons.laserGun;
 
 import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.Handler;
@@ -39,7 +39,7 @@ public class LaserGun extends Weapon {
 	private void shoot() {
 		float px = this.player.getX();
 		float py = this.player.getY();
-		System.out.println("laser" + px + " " + py);
-		handler.addObject(new Laser(px, py, handler, 1000, 100));
+		System.out.println("LaserGun " + px + " " + py);
+		this.handler.addObject(new Laser(px, py, this.handler, 1000, 100));
 	}
 }
