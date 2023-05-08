@@ -10,6 +10,7 @@ import it.unibo.geosurv.model.weapons.autogun.BulletImpl;
 
 public abstract class Bullet extends GameObject {
 	
+	protected int damage = 1;
 	protected int bulletHeight;
 	protected int bulletWidth;
 	protected long lifeSpan = 5000L; // max milliseconds of life
@@ -28,6 +29,8 @@ public abstract class Bullet extends GameObject {
 		updatePosition(this.velX, this.velY);
 		if (this.stillAlive()) {
 			this.checkCollisions();
+		} else {
+			handler.removeObject(this);
 		}
 	}
 	
