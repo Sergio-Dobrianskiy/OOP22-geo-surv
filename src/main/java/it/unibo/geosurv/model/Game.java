@@ -157,7 +157,7 @@ public class Game extends Canvas implements Runnable {
 		g.dispose();
 		bs.show();
 	}
-	
+
 	/**
 	 * Load the game world.
 	 *
@@ -200,15 +200,15 @@ public class Game extends Canvas implements Runnable {
 			}
 		}
 	}
-	
+
 	/**
 	 * Loads game Weapons/Guns
 	 */
 	private void loadGuns() {
-		handler.addObject(new SatelliteGun(0, 0, this.handler, this));
-		handler.addObject(new AutoGun(0f, 0f, this.handler));
+		// handler.addObject(new SatelliteGun(0, 0, this.handler, this));
+		// handler.addObject(new AutoGun(0f, 0f, this.handler));
 		handler.addObject(new ExplosionGun(0f, 0f, this.handler));
-		handler.addObject(new LaserGun(0f, 0f, this.handler));
+		// handler.addObject(new LaserGun(0f, 0f, this.handler));
 	}
 
 }
