@@ -9,12 +9,12 @@ import it.unibo.geosurv.model.monsters.Monster;
 import it.unibo.geosurv.model.weapons.autogun.BulletImpl;
 
 public abstract class Bullet extends GameObject {
-	
+
 	protected int damage = 1;
 	protected int bulletHeight;
 	protected int bulletWidth;
 	protected long lifeSpan = 5000L; // max milliseconds of life
-	
+
 	protected long creationTime;
 	protected final Handler handler;
 
@@ -33,12 +33,12 @@ public abstract class Bullet extends GameObject {
 			handler.removeObject(this);
 		}
 	}
-	
+
 	private void updatePosition(final float velX, final float velY) {
 		x += velX;
 		y += velY;
 	}
-	
+
 	protected boolean stillAlive() {
 		long currentTime = System.currentTimeMillis();
 		if ((currentTime - this.creationTime) > lifeSpan) {
@@ -47,7 +47,7 @@ public abstract class Bullet extends GameObject {
 		}
 		return true;
 	}
-	
+
 	private void checkCollisions() {
 		LinkedList<GameObject> tmpObjects = handler.getObjects();
 		for (int i = 0; i < tmpObjects.size(); i++) {
@@ -57,7 +57,7 @@ public abstract class Bullet extends GameObject {
 				if (this.getShape().getBounds2D().intersects(tempObject.getShape().getBounds2D())) {
 					if (this instanceof BulletImpl) {
 						handler.removeObject(this);
-					}					
+					}
 				}
 			}
 
@@ -66,7 +66,7 @@ public abstract class Bullet extends GameObject {
 					if (this instanceof BulletImpl) {
 						handler.removeObject(this);
 					}
-					((Monster) tempObject).hit(BULLET_DAMAGE);
+					((Monster) tempObject).hit(this.damage);
 				}
 			}
 		}
