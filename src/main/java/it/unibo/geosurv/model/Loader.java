@@ -3,6 +3,7 @@ package it.unibo.geosurv.model;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
+import it.unibo.geosurv.model.monsters.MonsterSpawner;
 import it.unibo.geosurv.model.player.MainPlayer;
 import it.unibo.geosurv.model.walls.blocks.Block;
 import it.unibo.geosurv.model.weapons.autogun.AutoGun;
@@ -84,7 +85,7 @@ public class Loader {
 				}
 
 				if (red == 255) {
-					// handler.addPlayer(new MainPlayer(xx * 32, yy * 32, ID.Player, handler));
+					// handler.addPlayer(new MainPlayer(xx * GAME_GRID_WIDTH, yy * GAME_GRID_HEIGHT, ID.Player, handler));
 				}
 			}
 		}

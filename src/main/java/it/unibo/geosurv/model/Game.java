@@ -5,23 +5,11 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferStrategy;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-
 import it.unibo.geosurv.control.KeyInput;
 import it.unibo.geosurv.model.drops.Experience;
 import it.unibo.geosurv.model.monsters.Monster;
 import it.unibo.geosurv.model.monsters.MonsterSpawner;
-import it.unibo.geosurv.model.monsters.triangle.Triangle;
-import it.unibo.geosurv.model.player.MainPlayer;
-import it.unibo.geosurv.model.walls.blocks.Block;
-import it.unibo.geosurv.model.weapons.autogun.AutoGun;
-import it.unibo.geosurv.model.weapons.explosionGun.ExplosionGun;
-import it.unibo.geosurv.model.weapons.laserGun.Laser;
-import it.unibo.geosurv.model.weapons.laserGun.LaserGun;
-import it.unibo.geosurv.model.weapons.satelliteGun.SatelliteGun;
 import it.unibo.geosurv.view.graphics.Camera;
-import it.unibo.geosurv.view.graphics.Texture;
 import it.unibo.geosurv.view.graphics.Window;
 
 public class Game extends Canvas implements Runnable {
@@ -46,6 +34,9 @@ public class Game extends Canvas implements Runnable {
 	private boolean showFps = true;
 	private int objectsCounter;
 	private boolean showObjectsCounter = true;
+	
+	//// test
+	public boolean pause = false;
 
 	public Game() {
 		new Window(WINDOW_WIDTH, WINDOW_HEIGHT, "Geo Survival", this);
@@ -57,6 +48,8 @@ public class Game extends Canvas implements Runnable {
 		this.loader.loadAll(); 			// loads Player, textures, weapons, level
 		
 		camera = loader.loadCamera(); 	// loads camera
+		
+		handler.addObject(new MonsterSpawner(0, 0, handler, this)); // TODO: move to Loader?
 		
 		start();							// starts threads
 	}
@@ -109,7 +102,9 @@ public class Game extends Canvas implements Runnable {
 	}
 
 	public void tick() {
-		handler.tick();
+		if (pause == false) {
+			handler.tick();
+		}
 		camera.tick();
 	}
 

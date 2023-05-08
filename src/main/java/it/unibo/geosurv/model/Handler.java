@@ -59,9 +59,6 @@ public class Handler {
 	public void render(Graphics g) {
 		for (int i = 0; i < gameObjects.size(); i++) {
 			GameObject tempObject = gameObjects.get(i);
-			if (tempObject instanceof Laser) {
-				System.out.println("rendering laser");
-			}
 			tempObject.render(g);
 		}
 	}
