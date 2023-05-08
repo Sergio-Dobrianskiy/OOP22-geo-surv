@@ -16,7 +16,9 @@ public class Triangle extends Monster {
 
     // private Handler handler;
     // private Game game;
-    private float speed = 1.2f;
+    private float DEFAULT_SPEED = 1.2f; // default speed of triangle
+    private float MAX_SPEED = 3.4f; // max speed of BIG triangle
+    private float speed;
     private static int counter = 0;
     private int DEFAULT_HEALTH = 5; // default health of triangle
     private int MAX_HEALTH = 20; // default health of BIG triangle
@@ -42,9 +44,11 @@ public class Triangle extends Monster {
         if (!isBig) {
             this.health = DEFAULT_HEALTH;
             this.dimension = DEFAULT_DIMENSION;
+            this.speed = DEFAULT_SPEED;
         } else {
             this.health = MAX_HEALTH;
             this.dimension = MAX_DIMENSION;
+            this.speed = MAX_SPEED;
         }
     };
 
