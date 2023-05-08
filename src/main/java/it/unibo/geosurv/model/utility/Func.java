@@ -37,8 +37,12 @@ public class Func {
 	 * @param max maximum radius
 	 * @return Pair coordinates x, y
 	 */
-	public static Pair<Float, Float> randomPoint(final float min, final float max) {
-		// TODO: Assert.assertTrue(max > min) ....
+	public static Pair<Float, Float> randomPoint(float min, final float max) {
+		if (min >= max) {
+			min = max - 10;
+			System.out.println("Warning: min should be minor to max => automatic reset applied");
+
+		}
 		Random random = new Random();
 		double angle = 2 * Math.PI * Math.random();
 		double minRandom = min / max; // proportion: max / 1 = min / x
