@@ -51,14 +51,13 @@ public class Game extends Canvas implements Runnable {
 
 		// TODO: remove sample experience object
 		handler.addPlayer(new MainPlayer(180, 300, ID.Player, handler));
-		handler.addObject(new Experience(50, 50, 1));
-		handler.addObject(new Triangle(200, 100, this.handler, this));
-//		handler.addObject(new Triangle(280, 150, ID.Monster, this.handler, this));
-//		handler.addObject(new MonsterSpawner(0, 0, this.handler, this));
+		// handler.addObject(new Experience(50, 50, 1));
+		// handler.addObject(new Triangle(200, 100, this.handler, this));
+		// handler.addObject(new Triangle(280, 150, ID.Monster, this.handler, this));
+		handler.addObject(new MonsterSpawner(0, 0, this.handler, this));
 		// camera position above this line makes some objects null
-		
-		this.loadGuns();
 
+		this.loadGuns();
 
 		camera = new Camera(0, 0, handler);
 		start();
@@ -199,12 +198,11 @@ public class Game extends Canvas implements Runnable {
 			}
 		}
 	}
-	
+
 	private void loadGuns() {
-//		handler.addObject(new SatelliteGun(0, 0, this.handler, this));
-//		handler.addObject(new AutoGun(0f, 0f, this.handler));
+		// handler.addObject(new SatelliteGun(0, 0, this.handler, this));
+		// handler.addObject(new AutoGun(0f, 0f, this.handler));
 		handler.addObject(new ExplosionGun(0f, 0f, handler));
 	}
-	
-	
+
 }
