@@ -44,7 +44,7 @@ public class Game extends Canvas implements Runnable {
 		handler = new Handler();
 		loader = new Loader(handler);
 
-		this.addKeyListener(new KeyInput(handler));
+		this.addKeyListener(new KeyInput(this, handler));
 		this.loader.loadAll(); 			// loads Player, textures, weapons, level
 		
 		camera = loader.loadCamera(); 	// loads camera
