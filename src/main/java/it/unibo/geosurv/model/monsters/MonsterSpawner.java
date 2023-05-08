@@ -32,18 +32,22 @@ public class MonsterSpawner extends GameObject {
         super(x, y, ID.Spawner);
         this.handler = h;
         tempPlayer = handler.getPlayer();
-		// sopra o sotto	
-		//tempPlayer = Game.returnHandler().getPlayer();
+        // sopra o sotto
+        // tempPlayer = Game.returnHandler().getPlayer();
     }
 
     public void spawnMonsters() {
 
-       
-                // Check if it's time to spawn a new monster
-				long currentTime = System.currentTimeMillis();
+        // Check if it's time to spawn a new monster
+        long currentTime = System.currentTimeMillis();
 
         if (currentTime - lastSpawnTime >= SPAWN_INTERVAL && numMonsters < MAX_MONSTERS) {
+            // TODO: select monster based on time from begin of game
 
+            // TODO: con x = 350 => Exception in thread "Thread-0"
+            // java.lang.IllegalArgumentException:
+            // bound must be greater than origin at
+            // java.base/jdk.internal.util.random.RandomSupport.checkRange(Unknown Source)
             Pair<Float, Float> pair = Func.randomPoint(420.0f, 500.0f);
 
             x = tempPlayer.getX() + pair.getX();
