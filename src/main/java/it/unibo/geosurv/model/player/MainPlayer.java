@@ -16,6 +16,7 @@ public class MainPlayer extends GameObject {
 	public final static int PLAYER_WIDTH = 32;
 	public final static int HALF_PLAYER_HEIGHT = PLAYER_HEIGHT / 2;
 	public final static int HALF_PLAYER_WIDTH = PLAYER_WIDTH / 2;
+	public final static int PLAYER_SPEED = 5;
 	
     Handler handler;
     private int experience;
@@ -33,25 +34,25 @@ public class MainPlayer extends GameObject {
 
         /* movements */
         if (handler.isUp()) {
-            velY = -5;
+            velY = -PLAYER_SPEED;
         } else if (!handler.isDown()) {
             velY = 0;
         }
 
         if (handler.isDown()) {
-            velY = 5;
+            velY = PLAYER_SPEED;
         } else if (!handler.isUp()) {
             velY = 0;
         }
 
         if (handler.isRight()) {
-            velX = 5;
+            velX = PLAYER_SPEED;
         } else if (!handler.isLeft()) {
             velX = 0;
         }
 
         if (handler.isLeft()) {
-            velX = -5;
+            velX = -PLAYER_SPEED;
         } else if (!handler.isRight()) {
             velX = 0;
         }

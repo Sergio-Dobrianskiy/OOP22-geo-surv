@@ -29,11 +29,17 @@ public class Game extends Canvas implements Runnable {
 	private static final long serialVersionUID = 1L;
 	private static final int WINDOW_WIDTH = 1000;
 	private static final int WINDOW_HEIGHT = 600;
+	private static final int SECOND_IN_MILLI = 1000;
+	public static final double SECOND_IN_NANO = 1_000_000_000d;
+	private static final double TICKS_PER_SECOND = 60d;
+	private static final double NANO_PER_TICK = SECOND_IN_NANO / TICKS_PER_SECOND;
+	private static final int FRAMES_IN_BUFFER = 3;
 
 	private boolean isRunning = false;
 	private Thread thread;
 	private static Handler handler;
 	private final Camera camera;
+	private final Loader loader;
 
 	//// debug
 	private int fps;
@@ -42,30 +48,17 @@ public class Game extends Canvas implements Runnable {
 	private boolean showObjectsCounter = true;
 
 	public Game() {
-
 		new Window(WINDOW_WIDTH, WINDOW_HEIGHT, "Geo Survival", this);
-
-		handler = new Handler();
-		this.addKeyListener(new KeyInput(handler));
-
-		loadTextures();
-		loadLevel(Texture.SMALL_MAP.getTexture());
-		// loadLevel(Texture.TEST_MAP.getTexture());
-		// loadLevel(Texture.BIG_MAP_2.getTexture());
-
-		// TODO: remove sample experience object
-		handler.addPlayer(new MainPlayer(180, 300, ID.Player, handler));
-		handler.addObject(new Experience(50, 50, 1));
-		handler.addObject(new Triangle(200, 100, this.handler, this));
-//		handler.addObject(new Triangle(280, 150, ID.Monster, this.handler, this));
-		handler.addObject(new MonsterSpawner(0, 0, this.handler, this));
-		// camera position above this line makes some objects null
 		
-		this.loadGuns();
+		handler = new Handler();
+		loader = new Loader(handler);
 
-
-		camera = new Camera(handler.getPlayer().getX(), handler.getPlayer().getY(), handler);
-		start();
+		this.addKeyListener(new KeyInput(handler));
+		this.loader.loadAll(); 			// loads Player, textures, weapons, level
+		
+		camera = loader.loadCamera(); 	// loads camera
+		
+		start();							// starts threads
 	}
 
 	public static Handler returnHandler() {
@@ -90,15 +83,13 @@ public class Game extends Canvas implements Runnable {
 	public void run() {
 		this.requestFocus();
 		long lastTime = System.nanoTime();
-		double amountofTicks = 60.0;
-		double ns = 1000000000 / amountofTicks;
-		double delta = 0;
 		long timer = System.currentTimeMillis();
+		double delta = 0;
 		int frames = 0;
 
 		while (isRunning) {
 			long now = System.nanoTime();
-			delta += (now - lastTime) / ns;
+			delta += (now - lastTime) / NANO_PER_TICK;
 			lastTime = now;
 			while (delta > 1) {
 				tick();
@@ -107,10 +98,10 @@ public class Game extends Canvas implements Runnable {
 				frames++;
 			}
 
-			if (System.currentTimeMillis() - timer > 1000) {
+			if (System.currentTimeMillis() - timer > SECOND_IN_MILLI) {
 				this.fps = frames;
 				this.objectsCounter = handler.getObjectsSize();
-				timer += 1000;
+				timer += SECOND_IN_MILLI;
 				frames = 0;
 			}
 		}
@@ -123,13 +114,11 @@ public class Game extends Canvas implements Runnable {
 	}
 
 	public void render() {
-
 		BufferStrategy bs = this.getBufferStrategy();
 		if (bs == null) {
-			this.createBufferStrategy(3);
+			this.createBufferStrategy(FRAMES_IN_BUFFER);
 			return;
 		}
-
 		Graphics g = bs.getDrawGraphics();
 		Graphics2D g2d = (Graphics2D) g;
 
@@ -156,59 +145,6 @@ public class Game extends Canvas implements Runnable {
 
 		g.dispose();
 		bs.show();
-	}
-	
-	/**
-	 * Load the game world.
-	 *
-	 * @param image that models the game world
-	 */
-	private void loadLevel(BufferedImage image) {
-		int w = image.getWidth();
-		int h = image.getHeight();
-
-		for (int xx = 0; xx < w; xx++) {
-			for (int yy = 0; yy < h; yy++) {
-				int pixel = image.getRGB(xx, yy);
-				int red = (pixel >> 16) & 0xff;
-				// green not used at the moment
-				// int green = (pixel >> 8) & 0xff;
-				int blue = (pixel) & 0xff;
-
-				if (blue == 255) {
-					handler.addObject(new Block(xx * 32, yy * 32));
-				}
-
-				if (red == 255) {
-					// handler.addPlayer(new MainPlayer(xx * 32, yy * 32, ID.Player, handler));
-				}
-			}
-		}
-	}
-
-	/**
-	 * Loads game textures
-	 */
-	private void loadTextures() {
-		for (final Texture texture : Texture.values()) {
-			try {
-				texture.load();
-			} catch (IOException e) {
-				System.out.println("Error while loading texture " + texture.getPath());
-				System.out.println(e);
-				System.exit(1);
-			}
-		}
-	}
-	
-	/**
-	 * Loads game Weapons/Guns
-	 */
-	private void loadGuns() {
-		handler.addObject(new SatelliteGun(this.handler));
-		handler.addObject(new AutoGun(this.handler));
-		handler.addObject(new ExplosionGun(this.handler));
-		handler.addObject(new LaserGun(this.handler));
 	}
 	
 	

@@ -9,12 +9,13 @@ import it.unibo.geosurv.model.weapons.Bullet;
 
 public class Explosion extends Bullet {
 	
-	protected final static int BULLET_HEIGHT = 32;
-	protected final static int BULLET_WIDTH = 32;
+	protected final int BULLET_HEIGHT = 32;
+	protected final int BULLET_WIDTH = 32;
+	protected final long EXPLOSION_LIFE_SPAN = 2000L;
 
 	public Explosion(float x, float y, Handler handler) {
 		super(x, y, handler);
-		super.lifeSpan = 2000L;
+		super.lifeSpan = EXPLOSION_LIFE_SPAN;
 	}
 	
 	@Override

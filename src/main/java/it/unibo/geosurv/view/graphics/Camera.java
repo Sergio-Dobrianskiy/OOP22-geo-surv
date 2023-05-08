@@ -12,7 +12,6 @@ public class Camera {
     public Camera(float x, float y, Handler handler) {
         this.x = x;
         this.y = y;
-//        this.handler = handler;
         this.tempPlayer = handler.getPlayer();
     }
 
@@ -35,10 +34,6 @@ public class Camera {
         if (y >= 1500) {
             y = 1500;
         }
-//	    if (tempPlayer != null) {
-//    	} else {
-//    		this.tempPlayer = handler.getPlayer();
-//    	}
     }
 
     public float getX() {

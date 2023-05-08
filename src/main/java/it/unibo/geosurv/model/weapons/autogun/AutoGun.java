@@ -3,6 +3,7 @@ package it.unibo.geosurv.model.weapons.autogun;
 import java.awt.geom.Point2D;
 import java.util.LinkedList;
 
+import it.unibo.geosurv.model.Game;
 import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.Handler;
 import it.unibo.geosurv.model.ID;
@@ -39,7 +40,7 @@ public class AutoGun extends Weapon {
 	
 	@Override
 	public void tick() {
-		double second = 1000000000;
+		double second = Game.SECOND_IN_NANO;
 
 		if (currentLevel >= 0) { 							// TODO: sistemare
 			long now = System.nanoTime();

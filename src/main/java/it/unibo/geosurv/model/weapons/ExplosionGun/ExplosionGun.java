@@ -10,14 +10,15 @@ public class ExplosionGun extends Weapon {
 	
 	private final float MIN_RANGE = 10f;
 	private final float MAX_RANGE = 200f;
+	protected final long EXPLOSION_CYCLE = 4000L;
 			
 	private Handler handler;
-	private int numberOfExplosions = 5;
+	private int numberOfExplosions = 5;  // test
 
 	public ExplosionGun(Handler handler) {
 		super();
 		this.handler = handler; 
-		this.cicle = 4000L;
+		this.cicle = EXPLOSION_CYCLE;
 	}
 	
 	@Override

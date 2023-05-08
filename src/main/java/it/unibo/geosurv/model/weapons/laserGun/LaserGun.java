@@ -8,8 +8,9 @@ import it.unibo.geosurv.model.weapons.Weapon;
 
 public class LaserGun extends Weapon {
 	
-	protected final static int LASER_HEIGHT = 10;
-	protected final static int LASER_WIDTH = 300;
+	protected final int LASER_HEIGHT = 10;
+	protected final int LASER_WIDTH = 300;
+	protected final long LASER_CYCLE = 3000L;
 	
 	private Handler handler;
 	private GameObject player;
@@ -18,7 +19,7 @@ public class LaserGun extends Weapon {
 	public LaserGun(Handler handler) {
 		super();
 		this.handler = handler; 
-		this.cicle = 3000L;
+		this.cicle = LASER_CYCLE;
 		player = handler.getPlayer();
 	}
 	

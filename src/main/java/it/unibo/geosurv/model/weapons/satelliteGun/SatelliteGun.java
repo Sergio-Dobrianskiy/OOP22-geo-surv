@@ -10,7 +10,7 @@ public class SatelliteGun extends Weapon {
 	
 	private final float ORBIT_SPEED = 0.05f;
 	private final float ORBIT_RADIUS = 150f;
-	private final double RADIANS_IN_CIRCLE = 6.28319d;
+	private final double RADIANS_IN_CIRCLE = 6.28319d; // 360° = radians 6.28319
 	
 	private  double angleDifference;
 	private Handler handler;
@@ -59,7 +59,7 @@ public class SatelliteGun extends Weapon {
 	@Override
 	public void tick() {
 		this.angle += this.ORBIT_SPEED;		
-		this.angleDifference = RADIANS_IN_CIRCLE / this.numberOfBullets; // 360° = radians 6.28319
+		this.angleDifference = RADIANS_IN_CIRCLE / this.numberOfBullets;
 		this.counter = 0; 							// TODO: find a better method
 		
 		this.bullets.forEach( b -> {
@@ -76,7 +76,7 @@ public class SatelliteGun extends Weapon {
 	 * @return float y coordinate of the satellite
 	 */	
 	public float getXPos(double angle) {
-		return (float) (13d + this.tempPlayer.getX() + (Math.cos(angle) * this.ORBIT_RADIUS));
+		return (float) (13d + this.tempPlayer.getX() + (Math.cos(angle) * this.ORBIT_RADIUS)); // TODO: magic number
 	}
 	
 	/**
@@ -85,6 +85,6 @@ public class SatelliteGun extends Weapon {
 	 * @return float y coordinate of the satellite
 	 */	
 	public float getYPos(double angle) {
-		return (float) (20d + this.tempPlayer.getY() + (Math.sin(angle) * this.ORBIT_RADIUS));
+		return (float) (20d + this.tempPlayer.getY() + (Math.sin(angle) * this.ORBIT_RADIUS)); // TODO: magic number
 	}
 }
