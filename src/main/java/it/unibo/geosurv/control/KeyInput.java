@@ -16,19 +16,22 @@ public class KeyInput extends KeyAdapter {
         this.handler = handler;
     }
 
-    
-    public void keyPressed (KeyEvent e) {
+    public void keyPressed(KeyEvent e) {
         int key = e.getKeyCode();
         LinkedList<GameObject> tmpObjects = handler.getObjects();
 
-        for(int i = 0; i < tmpObjects.size(); i++) {
+        for (int i = 0; i < tmpObjects.size(); i++) {
             GameObject tempObject = tmpObjects.get(i);
-
-            if(tempObject.getId() == ID.Player) {
-                if(key == KeyEvent.VK_W) handler.setUp(true);
-                if(key == KeyEvent.VK_S) handler.setDown(true);
-                if(key == KeyEvent.VK_A) handler.setLeft(true);
-                if(key == KeyEvent.VK_D) handler.setRight(true);
+            // TODO: si può usare un'unica volta Game.returnHandler().getPlayer();
+            if (tempObject.getId() == ID.Player) {
+                if (key == KeyEvent.VK_W)
+                    handler.setUp(true);
+                if (key == KeyEvent.VK_S)
+                    handler.setDown(true);
+                if (key == KeyEvent.VK_A)
+                    handler.setLeft(true);
+                if (key == KeyEvent.VK_D)
+                    handler.setRight(true);
             }
         }
     }
@@ -37,15 +40,19 @@ public class KeyInput extends KeyAdapter {
         int key = e.getKeyCode();
         LinkedList<GameObject> tmpObjects = handler.getObjects();
 
-        for(int i = 0; i < tmpObjects.size(); i++) {
+        for (int i = 0; i < tmpObjects.size(); i++) {
             GameObject tempObject = tmpObjects.get(i);
-
-            if(tempObject.getId() == ID.Player) {
-                if(key == KeyEvent.VK_W) handler.setUp(false);
-                if(key == KeyEvent.VK_S) handler.setDown(false);
-                if(key == KeyEvent.VK_A) handler.setLeft(false);
-                if(key == KeyEvent.VK_D) handler.setRight(false);
-		    }
-		}
+            // TODO: si può usare un'unica volta Game.returnHandler().getPlayer();
+            if (tempObject.getId() == ID.Player) {
+                if (key == KeyEvent.VK_W)
+                    handler.setUp(false);
+                if (key == KeyEvent.VK_S)
+                    handler.setDown(false);
+                if (key == KeyEvent.VK_A)
+                    handler.setLeft(false);
+                if (key == KeyEvent.VK_D)
+                    handler.setRight(false);
+            }
+        }
     }
 }
