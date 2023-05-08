@@ -80,5 +80,9 @@ public class Triangle extends Monster {
         this.velY = (float) ((this.speed) * Math.sin(angle));
         // System.out.println("T trying to reach the target");
     }
+    
+    public void update() {
+    		System.out.println("" + this + " received a notification");
+    }
 
 }

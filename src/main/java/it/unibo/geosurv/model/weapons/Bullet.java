@@ -17,11 +17,21 @@ public abstract class Bullet extends GameObject {
 	
 	protected long creationTime;
 	protected final Handler handler;
+	private NotificationService notificationService;
 
 	public Bullet(float x, float y, Handler handler) {
 		super(x, y, ID.Bullet);
 		this.handler = handler;
 		this.creationTime = System.currentTimeMillis();
+		this.notificationService = new NotificationService();
+	}
+	
+	public void sendNotification() {
+		notificationService.notify();
+	}
+	
+	public NotificationService getService() {
+		return notificationService;
 	}
 
 	@Override
