@@ -15,8 +15,7 @@ public class KeyInput extends KeyAdapter {
         this.handler = handler;
     }
 
-    
-    public void keyPressed (KeyEvent e) {
+    public void keyPressed(KeyEvent e) {
         int key = e.getKeyCode();
         if (key == KeyEvent.VK_W) handler.setUp(true);					// UP
         if (key == KeyEvent.VK_S) handler.setDown(true);					// DOWN

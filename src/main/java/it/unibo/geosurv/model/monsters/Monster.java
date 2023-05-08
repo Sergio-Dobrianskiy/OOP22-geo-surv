@@ -40,7 +40,6 @@ public abstract class Monster extends GameObject {
      * @return Experience pill
      */
     public Experience dropExperience() {
-        // TODO: to correct!
         return new Experience(this.x, this.y, DEFAULT_EXPERIENCE);
     };
 
@@ -49,25 +48,29 @@ public abstract class Monster extends GameObject {
      * 
      * @param weapon whih hits the entity
      */
-    // TODO: int or void ?? -> //int takeHit(Weapon weapon);
-    public int takeHit(int damage) {
-        return this.health - damage;
+    public void hit(int weaponDamage) {
+        health -= weaponDamage;
+        if (this.isDead()) {
+            // System.out.println(this + " is dead");
+            this.die();
+        }
     };
 
     /**
      * Attach target/Player
+     * fixed monsters do not move..
      */
     public abstract void reachTarget();
 
     /**
      * Entity dies and it is removed
      */
-    public void kill() {
+    public void die() {
         Handler h = Game.returnHandler();
         h.addObject(this.dropExperience());
         monstersCounter--;
-        h.removeObject(this);
-        // monster should be removed from Monsters set/list
+        h.removeObject(this); // monster is removed from Monsters set/list
+
     };
 
     public static int getMonstersCounter() {

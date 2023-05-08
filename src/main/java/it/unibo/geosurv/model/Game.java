@@ -143,6 +143,5 @@ public class Game extends Canvas implements Runnable {
 	public void setPause(boolean pause) {
 		this.pause = pause;
 	}
-	
-	
+
 }

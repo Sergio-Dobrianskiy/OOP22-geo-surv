@@ -12,35 +12,35 @@ import it.unibo.geosurv.model.ID;
 import it.unibo.geosurv.model.monsters.Monster;
 import it.unibo.geosurv.model.utility.Func;
 
-public class Triangle extends Monster {
+public class Rect extends Monster {
 
     // private Handler handler;
     // private Game game;
-    private float DEFAULT_SPEED = 1.2f; // default speed of triangle
-    private float MAX_SPEED = 3.4f; // max speed of BIG triangle
+    private float DEFAULT_SPEED = 2f; // default speed of Rect
+    private float MAX_SPEED = 3f; // max speed of BIG Rect
     private float speed;
     private static int counter = 0;
-    private int DEFAULT_HEALTH = 5; // default health of triangle
-    private int MAX_HEALTH = 20; // default health of BIG triangle
+    private int DEFAULT_HEALTH = 8; // default health of Rect
+    private int MAX_HEALTH = 30; // default health of BIG Rect
     private int health;
-    private String name = "Triangle-";
+    private String name = "Rect-";
     private GameObject tempPlayer = Game.returnHandler().getPlayer();
-    private int DEFAULT_DIMENSION = 20; // default size of triangle
-    private int MAX_DIMENSION = 50; // max size of (big) triangle
+    private int DEFAULT_DIMENSION = 15; // default size of Rect
+    private int MAX_DIMENSION = 35; // max size of (big) Rect
     private int dimension;
     private boolean isBig = false;
 
     /**
-     * Triangle constructor
+     * Rect constructor
      */
-    public Triangle(float x, float y, Handler handler, Game game, boolean isBig) { // TODO: handler & gamo not used! to
-                                                                                   // delete
+    public Rect(float x, float y, Handler handler, Game game, boolean isBig) { // TODO: handler & gamo not used! to
+                                                                               // delete
         super(x, y);
         // this.speed = speed;
         // this.handler = handler;
         // this.game = game;
-        Triangle.counter++;
-        this.name = name + Triangle.counter;
+        Rect.counter++;
+        this.name = name + Rect.counter;
         if (!isBig) {
             this.health = DEFAULT_HEALTH;
             this.dimension = DEFAULT_DIMENSION;
@@ -55,28 +55,11 @@ public class Triangle extends Monster {
     @Override
     public void tick() {
         reachTarget();
-        // if (this.getShape().intersects(tempPlayer.getShape())) {
-        // this.die();
-        // }
-        // LinkedList<GameObject> tmpObjects = handler.getObjects();
-        // for (int i = 0; i < tmpObjects.size(); i++) {
-        // GameObject tempObject = tmpObjects.get(i);
-        //
-        //
-        // if (tempObject.getId() == ID.Bullet) {
-        // if (this.getShape().intersects(tempObject.getShape())) {
-        // // TODO: add bullet.getDamage()
-        //// System.out.println(this.toString() + " " + this.name + " object is
-        // removed");
-        //// System.out.println("Position: [" + this.x + "," + this.y + "]");
-        // }
-        // }
-        // }
     }
 
     @Override
     public void render(Graphics g) {
-        g.setColor(Color.GRAY);
+        g.setColor(Color.green);
         g.fillRect((int) x, (int) y, this.dimension, this.dimension);
     }
 
