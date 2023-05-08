@@ -52,8 +52,9 @@ public class MonsterSpawner extends GameObject {
 
             x = tempPlayer.getX() + pair.getX();
             y = tempPlayer.getY() + pair.getY();
-            Stream.generate(() -> new Triangle(x, y, this.handler, game)).limit(1).forEach(i -> handler.addObject(i)); // 1->50
-                                                                                                                       // 5->250
+            Stream.generate(() -> new Triangle(x, y, this.handler, game, false)).limit(1)
+                    .forEach(i -> handler.addObject(i)); // 1->50
+            // 5->250
             numMonsters++;
             lastSpawnTime = currentTime;
         }
