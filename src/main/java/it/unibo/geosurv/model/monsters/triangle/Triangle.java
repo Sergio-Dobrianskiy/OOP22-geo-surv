@@ -18,22 +18,34 @@ public class Triangle extends Monster {
     // private Game game;
     private float speed = 1.2f;
     private static int counter = 0;
-    private int MAX_HEALTH = 5;
+    private int DEFAULT_HEALTH = 5; // default health of triangle
+    private int MAX_HEALTH = 20; // default health of BIG triangle
     private int health;
     private String name = "Triangle-";
     private GameObject tempPlayer = Game.returnHandler().getPlayer();
+    private int DEFAULT_DIMENSION = 20; // default size of triangle
+    private int MAX_DIMENSION = 50; // max size of (big) triangle
+    private int dimension;
+    private boolean isBig = false;
 
     /**
      * Triangle constructor
      */
-    public Triangle(float x, float y, Handler handler, Game game) { // TODO: handler & gamo not used! to delete
+    public Triangle(float x, float y, Handler handler, Game game, boolean isBig) { // TODO: handler & gamo not used! to
+                                                                                   // delete
         super(x, y);
         // this.speed = speed;
         // this.handler = handler;
         // this.game = game;
         Triangle.counter++;
         this.name = name + Triangle.counter;
-        this.health = MAX_HEALTH;
+        if (!isBig) {
+            this.health = DEFAULT_HEALTH;
+            this.dimension = DEFAULT_DIMENSION;
+        } else {
+            this.health = MAX_HEALTH;
+            this.dimension = MAX_DIMENSION;
+        }
     };
 
     @Override
@@ -61,12 +73,12 @@ public class Triangle extends Monster {
     @Override
     public void render(Graphics g) {
         g.setColor(Color.GRAY);
-        g.fillRect((int) x, (int) y, 20, 20);
+        g.fillRect((int) x, (int) y, this.dimension, this.dimension);
     }
 
     @Override
     public Rectangle getShape() {
-        return new Rectangle((int) x, (int) y, 20, 20);
+        return new Rectangle((int) x, (int) y, this.dimension, this.dimension);
     }
 
     @Override
@@ -84,6 +96,10 @@ public class Triangle extends Monster {
         this.velX = (float) ((this.speed) * Math.cos(angle));
         this.velY = (float) ((this.speed) * Math.sin(angle));
         // System.out.println("T trying to reach the target");
+    }
+
+    public boolean isBig() {
+        return isBig;
     }
 
 }
