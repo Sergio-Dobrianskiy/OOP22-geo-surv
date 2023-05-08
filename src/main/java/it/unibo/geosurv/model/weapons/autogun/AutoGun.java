@@ -16,17 +16,13 @@ public class AutoGun extends Weapon {
 	private final int MAX_RANGE = 400;
 	
 	private Handler handler;
-//	private SpriteSheet ss;
-	
 	private GameObject player;
 	private GameObject closestEnemy;
-	
+	private long lastTime;
+	private float closestEnemyDistance;
 	private double delta = 0;
 	private boolean secondaryShooting = false;
 	private boolean tertiaryShooting = false;
-	
-	private long lastTime;
-	private float closestEnemyDistance;
 
 	public AutoGun(Handler handler) {
 		super();

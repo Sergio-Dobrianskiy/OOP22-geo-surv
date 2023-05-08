@@ -24,6 +24,7 @@ public class Game extends Canvas implements Runnable {
 	private static final int FRAMES_IN_BUFFER = 3;
 
 	private boolean isRunning = false;
+	private boolean pause = false;
 	private Thread thread;
 	private static Handler handler;
 	private final Camera camera;
@@ -31,12 +32,8 @@ public class Game extends Canvas implements Runnable {
 
 	//// debug
 	private int fps;
-	private boolean showFps = true;
+	private boolean showDebug = true;
 	private int objectsCounter;
-	private boolean showObjectsCounter = true;
-	
-	//// test
-	public boolean pause = false;
 
 	public Game() {
 		new Window(WINDOW_WIDTH, WINDOW_HEIGHT, "Geo Survival", this);
@@ -121,12 +118,9 @@ public class Game extends Canvas implements Runnable {
 		g.setColor(Color.white);
 		g.fillRect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
 
-		if (this.showFps == true) {
+		if (this.showDebug == true) {
 			g.setColor(Color.BLUE);
 			g.drawString("FPS: " + this.fps, 900, 50);
-		}
-		if (this.showObjectsCounter == true) {
-			g.setColor(Color.BLUE);
 			g.drawString("Objects: " + this.objectsCounter, 900, 65);
 			g.drawString("Experience: " + Experience.getExperienceCounter(), 900, 80);
 			g.drawString("Monsters: " + Monster.getMonstersCounter(), 900, 95);
@@ -140,6 +134,14 @@ public class Game extends Canvas implements Runnable {
 
 		g.dispose();
 		bs.show();
+	}
+	
+	public boolean getPause() {
+		return pause;
+	}
+
+	public void setPause(boolean pause) {
+		this.pause = pause;
 	}
 	
 	
