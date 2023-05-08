@@ -18,8 +18,9 @@ public class MonsterSpawner extends GameObject {
 
     private final static int SPAWN_INTERVAL = 500; // specifies the time interval (in milliseconds) between monster
                                                    // spawns (500 = 2 monster each sec)
-    private final static int MAX_T_MONSTERS = 50; // specifies the maximum number of monsters that can be spawned at any
-                                                  // given time
+    private final static int MAX_T_MONSTERS = 5; // 50 // specifies the maximum number of monsters that can be spawned
+                                                 // at any
+                                                 // given time
     private final static int MAX_R_MONSTERS = 100;
     private final static int IILEV = 30;
     private static int numMonsters = 0;
@@ -59,14 +60,17 @@ public class MonsterSpawner extends GameObject {
             lastSpawnTime = currentTime;
         }
 
-        if ((currentTime - lastSpawnTime) >= (SPAWN_INTERVAL * IILEV) && numMonsters < MAX_R_MONSTERS) {
-
-            Stream.generate(() -> new Rect(tempPlayer.getX() + Func.randomPoint(500.0f, 600.0f).getX(),
-                    tempPlayer.getY() + Func.randomPoint(500.0f, 600.0f).getY(), this.handler, game, false)).limit(50)
-                    .forEach(i -> handler.addObject(i));
-            numMonsters++;
-            lastSpawnTime = currentTime;
-        }
+        // if ((currentTime - lastSpawnTime) >= (SPAWN_INTERVAL * IILEV) && numMonsters
+        // < MAX_R_MONSTERS) {
+        //
+        // Stream.generate(() -> new Rect(tempPlayer.getX() + Func.randomPoint(500.0f,
+        // 600.0f).getX(),
+        // tempPlayer.getY() + Func.randomPoint(500.0f, 600.0f).getY(), this.handler,
+        // game, false)).limit(50)
+        // .forEach(i -> handler.addObject(i));
+        // numMonsters++;
+        // lastSpawnTime = currentTime;
+        // }
 
     }
 

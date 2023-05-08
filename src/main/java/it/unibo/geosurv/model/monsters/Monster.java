@@ -10,7 +10,7 @@ import it.unibo.geosurv.model.drops.Experience;
 public abstract class Monster extends GameObject {
 
     private int DEFAULT_EXPERIENCE = 1;
-    private int health;
+    protected int health; // need to be shared with monters subclasses @Sergio-Dobrianskiy
     protected static int monstersCounter;
 
     protected Monster(float x, float y) {
@@ -49,7 +49,8 @@ public abstract class Monster extends GameObject {
      * @param weapon whih hits the entity
      */
     public void hit(int weaponDamage) {
-        health -= weaponDamage;
+        // System.out.println("damage: " + weaponDamage + " health: " + this.health);
+        this.health -= weaponDamage;
         if (this.isDead()) {
             // System.out.println(this + " is dead");
             this.die();

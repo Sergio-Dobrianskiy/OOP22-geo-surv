@@ -14,16 +14,16 @@ import it.unibo.geosurv.view.graphics.Camera;
 import it.unibo.geosurv.view.graphics.Texture;
 
 public class Loader {
-	
+
 	protected final static int GAME_GRID_HEIGHT = 32;
 	protected final static int GAME_GRID_WIDTH = 32;
-	
+
 	private Handler handler;
 
 	public Loader(Handler handler) {
 		this.handler = handler;
 	}
-	
+
 	public void loadAll() {
 		handler.addPlayer(new MainPlayer(180, 300, ID.Player, handler)); // TODO: remove?
 		this.loadTextures();
@@ -33,11 +33,11 @@ public class Loader {
 		// loadLevel(Texture.BIG_MAP_2.getTexture());
 
 	}
-	
+
 	public Camera loadCamera() {
 		return new Camera(handler.getPlayer().getX(), handler.getPlayer().getY(), handler);
 	}
-	
+
 	/**
 	 * Loads game textures
 	 */
@@ -52,17 +52,17 @@ public class Loader {
 			}
 		}
 	}
-	
+
 	/**
 	 * Loads game Weapons/Guns
 	 */
 	private void loadGuns() {
-		handler.addObject(new SatelliteGun(this.handler));
+		// handler.addObject(new SatelliteGun(this.handler));
 		handler.addObject(new AutoGun(this.handler));
-		handler.addObject(new ExplosionGun(this.handler));
-		handler.addObject(new LaserGun(this.handler));
+		// handler.addObject(new ExplosionGun(this.handler));
+		// handler.addObject(new LaserGun(this.handler));
 	}
-	
+
 	/**
 	 * Load the game world.
 	 *
@@ -85,10 +85,11 @@ public class Loader {
 				}
 
 				if (red == 255) {
-					// handler.addPlayer(new MainPlayer(xx * GAME_GRID_WIDTH, yy * GAME_GRID_HEIGHT, ID.Player, handler));
+					// handler.addPlayer(new MainPlayer(xx * GAME_GRID_WIDTH, yy * GAME_GRID_HEIGHT,
+					// ID.Player, handler));
 				}
 			}
 		}
 	}
-	
+
 }

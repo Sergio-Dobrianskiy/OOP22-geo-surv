@@ -20,9 +20,8 @@ public class Triangle extends Monster {
     private float MAX_SPEED = 3.4f; // max speed of BIG triangle
     private float speed;
     private static int counter = 0;
-    private int DEFAULT_HEALTH = 5; // default health of triangle
-    private int MAX_HEALTH = 20; // default health of BIG triangle
-    private int health;
+    private int DEFAULT_HEALTH = 2; // default health of triangle
+    private int MAX_HEALTH = 10; // default health of BIG triangle
     private String name = "Triangle-";
     private GameObject tempPlayer = Game.returnHandler().getPlayer();
     private int DEFAULT_DIMENSION = 20; // default size of triangle
@@ -50,6 +49,7 @@ public class Triangle extends Monster {
             this.dimension = MAX_DIMENSION;
             this.speed = MAX_SPEED;
         }
+        // System.out.println("T: " + this.toString() + " life: " + this.health);
     };
 
     @Override
@@ -76,8 +76,10 @@ public class Triangle extends Monster {
 
     @Override
     public void render(Graphics g) {
-        g.setColor(Color.GRAY);
+        g.setColor(Color.DARK_GRAY);
         g.fillRect((int) x, (int) y, this.dimension, this.dimension);
+        g.setColor(Color.white);
+        g.drawString("" + this.health, (int) x + 3, (int) y + 8);
     }
 
     @Override

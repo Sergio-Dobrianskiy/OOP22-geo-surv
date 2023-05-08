@@ -67,6 +67,7 @@ public abstract class Bullet extends GameObject {
 						handler.removeObject(this);
 					}
 					((Monster) tempObject).hit(this.damage);
+					// System.out.println("Bullet hit " + damage + " " + tempObject.toString());
 				}
 			}
 		}
