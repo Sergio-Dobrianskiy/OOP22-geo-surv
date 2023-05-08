@@ -27,11 +27,13 @@ import it.unibo.geosurv.view.graphics.Window;
 public class Game extends Canvas implements Runnable {
 
 	private static final long serialVersionUID = 1L;
+	private static final int WINDOW_WIDTH = 1000;
+	private static final int WINDOW_HEIGHT = 600;
 
 	private boolean isRunning = false;
 	private Thread thread;
 	private static Handler handler;
-	private Camera camera;
+	private final Camera camera;
 
 	//// debug
 	private int fps;
@@ -41,7 +43,7 @@ public class Game extends Canvas implements Runnable {
 
 	public Game() {
 
-		new Window(1000, 563, "Geo Survival", this);
+		new Window(WINDOW_WIDTH, WINDOW_HEIGHT, "Geo Survival", this);
 
 		handler = new Handler();
 		this.addKeyListener(new KeyInput(handler));
@@ -62,7 +64,7 @@ public class Game extends Canvas implements Runnable {
 		this.loadGuns();
 
 
-		camera = new Camera(0, 0, handler);
+		camera = new Camera(handler.getPlayer().getX(), handler.getPlayer().getY(), handler);
 		start();
 	}
 
@@ -93,10 +95,7 @@ public class Game extends Canvas implements Runnable {
 		double delta = 0;
 		long timer = System.currentTimeMillis();
 		int frames = 0;
-		// System.out.println(Thread.currentThread().getName() + ": is running");
-		// TODO: capire bene la differenza fra qui e sopra per il discorso di creare
-		// mostri nel tempo, o usare più thread per mostri diversi
-		// handler.addObject(new MonsterSpawner(0, 0, ID.Monster, handler, this));
+
 		while (isRunning) {
 			long now = System.nanoTime();
 			delta += (now - lastTime) / ns;
@@ -136,7 +135,7 @@ public class Game extends Canvas implements Runnable {
 
 		///////////////////////////////////// below here we draw to the game
 		g.setColor(Color.white);
-		g.fillRect(0, 0, 1000, 563);
+		g.fillRect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
 
 		if (this.showFps == true) {
 			g.setColor(Color.BLUE);
@@ -206,10 +205,10 @@ public class Game extends Canvas implements Runnable {
 	 * Loads game Weapons/Guns
 	 */
 	private void loadGuns() {
-		handler.addObject(new SatelliteGun(0, 0, this.handler, this));
-		handler.addObject(new AutoGun(0f, 0f, this.handler));
-		handler.addObject(new ExplosionGun(0f, 0f, this.handler));
-		handler.addObject(new LaserGun(0f, 0f, this.handler));
+		handler.addObject(new SatelliteGun(this.handler));
+		handler.addObject(new AutoGun(this.handler));
+		handler.addObject(new ExplosionGun(this.handler));
+		handler.addObject(new LaserGun(this.handler));
 	}
 	
 	

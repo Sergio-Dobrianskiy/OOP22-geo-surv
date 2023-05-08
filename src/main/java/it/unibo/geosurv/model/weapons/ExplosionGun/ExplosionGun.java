@@ -8,40 +8,26 @@ import it.unibo.geosurv.model.weapons.Weapon;
 
 public class ExplosionGun extends Weapon {
 	
-	private final static long CYCLE = 3000L; // cycle every x milliseconds
-	
+	private final float MIN_RANGE = 10f;
+	private final float MAX_RANGE = 200f;
+			
 	private Handler handler;
-	private long lastExplosions;
+	private int numberOfExplosions = 5;
 
-	public ExplosionGun(float x, float y, Handler handler) {
-		super(x, y);
+	public ExplosionGun(Handler handler) {
+		super();
 		this.handler = handler; 
-		this.lastExplosions = 0;
+		this.cicle = 4000L;
 	}
-
+	
 	@Override
-	public void tick() {
-		if (this.checkTime()) {
-			this.shoot();
-		}
-	}
-	
-	private boolean checkTime() {
-		long currentTime = System.currentTimeMillis();
-		if ((currentTime - this.lastExplosions) > CYCLE) {
-			this.lastExplosions = currentTime;
-			return true;
-		}
-		return false;
-	}
-	
-	private void shoot() {
+	protected void shoot() {
 		GameObject player = handler.getPlayer();
 		float x = player.getX();
 		float y = player.getY();
 		Pair<Float, Float> pair;
-		for (int i = 0; i <= 5; i++) {
-			pair = Func.randomPoint(10f, 200f);
+		for (int i = 0; i <= numberOfExplosions; i++) {
+			pair = Func.randomPoint(MIN_RANGE, MAX_RANGE);
 			handler.addObject(new Explosion(pair.getX() + x, pair.getY() + y, handler));
 		}
 	}

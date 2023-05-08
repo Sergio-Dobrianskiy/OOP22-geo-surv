@@ -1,31 +1,23 @@
 package it.unibo.geosurv.model.weapons.satelliteGun;
 
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Rectangle;
 import java.util.ArrayList;
-
-import it.unibo.geosurv.model.Game;
 import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.Handler;
-import it.unibo.geosurv.model.ID;
-import it.unibo.geosurv.model.utility.Func;
+import it.unibo.geosurv.model.player.MainPlayer;
 import it.unibo.geosurv.model.weapons.Weapon;
 
 public class SatelliteGun extends Weapon {
 	
+	private final float ORBIT_SPEED = 0.05f;
+	private final float ORBIT_RADIUS = 150f;
+	private final double RADIANS_IN_CIRCLE = 6.28319d;
+	
+	private  double angleDifference;
 	private Handler handler;
-	private Game game;
 //	private Camera cam;
 //	private SpriteSheet ss;
-	
-	private int orbitGunLvl;
-	private float rotationSpeed;
 	private GameObject tempPlayer;
-	
 	private double angle = 0d;
-	private final float orbitSpeed = 0.05f;
-	private final float orbitRadius = 150;
 	private GameObject bullet;
 	ArrayList<GameObject> bullets;
 	private int numberOfBullets = 0;
@@ -33,42 +25,41 @@ public class SatelliteGun extends Weapon {
 	
 
 //	public SatelliteGun(int x, int y, Handler handler, SpriteSheet ss, Game game, Camera cam) {
-	public SatelliteGun(float x, float y, Handler handler, Game game) {
-		super(x, y);
+	public SatelliteGun(Handler handler) {
+		super();
 		this.handler = handler;
-		this.game = game;
 //		this.cam = cam;
 //		this.ss = ss;
-		this.orbitGunLvl = 1;						// test value
-		tempPlayer = Func.findPlayer(handler);
+		this.levelUp();
+		tempPlayer = handler.getPlayer();
 		this.bullets = new ArrayList<>();
-		this.addBullet();
-		this.addBullet();							// test
-		this.addBullet();
-		this.addBullet();
-		this.addBullet();
-		this.addBullet();
-		this.addBullet();
-		this.addBullet();
-		this.addBullet();
-		this.addBullet();
-		this.addBullet();
-		this.addBullet();
+		this.addSatellite();
+		this.addSatellite();							// test
+		this.addSatellite();
+		this.addSatellite();
+		this.addSatellite();
+		this.addSatellite();
+		this.addSatellite();
+		this.addSatellite();
+		this.addSatellite();
+		this.addSatellite();
+		this.addSatellite();
+		this.addSatellite();
 	}
 	
-		
-	public void addBullet() {
-//		this.bullet = handler.addObject(new Bullet(this.getXPos(angle), this.getYPos(angle), handler, ss));
-		this.bullet = handler.addObject(new Satellite(this.getXPos(angle), this.getYPos(angle), handler));
+	/**
+	 * Adds a rotating satellite
+	 */	
+	public void addSatellite() {
+		this.bullet = handler.addObject(new Satellite(this.getXPos(angle) + MainPlayer.HALF_PLAYER_WIDTH, this.getYPos(angle) + MainPlayer.HALF_PLAYER_HEIGHT, handler));
 		this.bullets.add(this.bullet);
 		this.numberOfBullets++;
 	}
 	
 	@Override
 	public void tick() {
-		this.angle += this.orbitSpeed;
-		
-		double angleDifference = 6.28319 / this.numberOfBullets; // 360° = radians 6.28319
+		this.angle += this.ORBIT_SPEED;		
+		this.angleDifference = RADIANS_IN_CIRCLE / this.numberOfBullets; // 360° = radians 6.28319
 		this.counter = 0; 							// TODO: find a better method
 		
 		this.bullets.forEach( b -> {
@@ -79,12 +70,21 @@ public class SatelliteGun extends Weapon {
 		});	
 	}
 	
-	// Math.sin and cos accept radians as input
+	/**
+	 * calculates x coordinate of a satellite, Math.sin and cos accept radians as input
+	 * 
+	 * @return float y coordinate of the satellite
+	 */	
 	public float getXPos(double angle) {
-		return (float) (16d + this.tempPlayer.getX() + (Math.cos(angle) * this.orbitRadius));
+		return (float) (13d + this.tempPlayer.getX() + (Math.cos(angle) * this.ORBIT_RADIUS));
 	}
 	
+	/**
+	 * calculates y coordinate of a satellite, Math.sin and cos accept radians as input
+	 * 
+	 * @return float y coordinate of the satellite
+	 */	
 	public float getYPos(double angle) {
-		return (float) (16d + this.tempPlayer.getY() + (Math.sin(angle) * this.orbitRadius));
+		return (float) (20d + this.tempPlayer.getY() + (Math.sin(angle) * this.ORBIT_RADIUS));
 	}
 }

@@ -12,6 +12,11 @@ import java.awt.Color;
 
 public class MainPlayer extends GameObject {
 
+	public final static int PLAYER_HEIGHT = 48;
+	public final static int PLAYER_WIDTH = 32;
+	public final static int HALF_PLAYER_HEIGHT = PLAYER_HEIGHT / 2;
+	public final static int HALF_PLAYER_WIDTH = PLAYER_WIDTH / 2;
+	
     Handler handler;
     private int experience;
 
@@ -67,13 +72,11 @@ public class MainPlayer extends GameObject {
 
     public void render(Graphics g) {
         g.setColor(Color.blue);
-        g.fillRect((int) x, (int) y, 32, 48);
-//        g.fillOval((int) x, (int) y, 32, 32);
-
+        g.fillRect((int) x, (int) y, PLAYER_WIDTH, PLAYER_HEIGHT);
     }
 
     public Rectangle getShape() {
-        return new Rectangle((int) x, (int) y, 32, 48);
+        return new Rectangle((int) x, (int) y, PLAYER_WIDTH, PLAYER_HEIGHT);
     }
 
     public int getExperience() {

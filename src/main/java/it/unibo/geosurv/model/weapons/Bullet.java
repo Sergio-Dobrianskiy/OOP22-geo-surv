@@ -6,19 +6,19 @@ import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.Handler;
 import it.unibo.geosurv.model.ID;
 import it.unibo.geosurv.model.monsters.Monster;
-import it.unibo.geosurv.model.weapons.explosionGun.Explosion;
-import it.unibo.geosurv.model.weapons.laserGun.Laser;
-import it.unibo.geosurv.model.weapons.satelliteGun.Satellite;
+import it.unibo.geosurv.model.weapons.autogun.BulletImpl;
 
 public abstract class Bullet extends GameObject {
 	
-	protected long LIFE_SPAN = 10000L; // max milliseconds of life
-	protected long creationTime;
-
-	protected final Handler handler;
+	protected int bulletHeight;
+	protected int bulletWidth;
+	protected long lifeSpan = 5000L; // max milliseconds of life
 	
-	public Bullet(float x, float y, ID id, Handler handler) {
-		super(x, y, id);
+	protected long creationTime;
+	protected final Handler handler;
+
+	public Bullet(float x, float y, Handler handler) {
+		super(x, y, ID.Bullet);
 		this.handler = handler;
 		this.creationTime = System.currentTimeMillis();
 	}
@@ -38,7 +38,7 @@ public abstract class Bullet extends GameObject {
 	
 	protected boolean stillAlive() {
 		long currentTime = System.currentTimeMillis();
-		if ((currentTime - this.creationTime) > LIFE_SPAN) {
+		if ((currentTime - this.creationTime) > lifeSpan) {
 			handler.removeObject(this);
 			return false;
 		}
