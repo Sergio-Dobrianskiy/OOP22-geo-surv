@@ -102,7 +102,7 @@ public class AutoGun extends Weapon {
 	}
 	
 	private void shoot() {
-		int mx = (int) this.closestEnemy.getX();
+		int mx = (int) this.closestEnemy.getX();  // TODO: gun is aiming the upper left corner
 		int my = (int) this.closestEnemy.getY();
 		float px = player.getX();
 		float py = player.getY();

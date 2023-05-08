@@ -19,24 +19,6 @@ public class Satellite extends Bullet {
 	}
 
 	@Override
-	public void tick() {
-//		x += velX;
-//		y += velY;
-//		LinkedList<GameObject> tmpObjects = handler.getObjects();
-//		
-//		for (int i = 0; i < tmpObjects.size(); i++) {
-//			GameObject tempObject = tmpObjects.get(i);
-//			
-//			if (tempObject.getId() == ID.Block && id == ID.Satellite) {
-//				if (getShape().intersects(tempObject.getShape())) {
-//					System.out.println(this.id);
-//					handler.removeObject(this);
-//				}
-//			}
-//		}
-	}
-
-	@Override
 	public void render(Graphics g) {
 		g.setColor(Color.cyan);
 		g.fillRect((int) x, (int) y, 8, 8);
@@ -45,6 +27,14 @@ public class Satellite extends Bullet {
 	@Override
 	public Rectangle getShape() {
 		return new Rectangle((int)x, (int)y, 8, 8);
+	}
+	
+	/**
+	 * Satellite has infinite life span
+	 */
+	@Override
+	protected boolean stillAlive() {
+		return true;
 	}
 
 }

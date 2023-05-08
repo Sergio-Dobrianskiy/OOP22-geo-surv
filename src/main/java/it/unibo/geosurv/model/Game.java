@@ -15,9 +15,11 @@ import it.unibo.geosurv.model.monsters.MonsterSpawner;
 import it.unibo.geosurv.model.monsters.triangle.Triangle;
 import it.unibo.geosurv.model.player.MainPlayer;
 import it.unibo.geosurv.model.walls.blocks.Block;
-import it.unibo.geosurv.model.weapons.ExplosionGun.Explosion;
-import it.unibo.geosurv.model.weapons.ExplosionGun.ExplosionGun;
 import it.unibo.geosurv.model.weapons.autogun.AutoGun;
+import it.unibo.geosurv.model.weapons.explosionGun.ExplosionGun;
+import it.unibo.geosurv.model.weapons.laserGun.Laser;
+import it.unibo.geosurv.model.weapons.laserGun.LaserGun;
+import it.unibo.geosurv.model.weapons.satelliteGun.SatelliteGun;
 import it.unibo.geosurv.view.graphics.Camera;
 import it.unibo.geosurv.view.graphics.Texture;
 import it.unibo.geosurv.view.graphics.Window;
@@ -155,7 +157,7 @@ public class Game extends Canvas implements Runnable {
 		g.dispose();
 		bs.show();
 	}
-
+	
 	/**
 	 * Load the game world.
 	 *
@@ -198,11 +200,15 @@ public class Game extends Canvas implements Runnable {
 			}
 		}
 	}
-
+	
+	/**
+	 * Loads game Weapons/Guns
+	 */
 	private void loadGuns() {
-		// handler.addObject(new SatelliteGun(0, 0, this.handler, this));
-		// handler.addObject(new AutoGun(0f, 0f, this.handler));
-		handler.addObject(new ExplosionGun(0f, 0f, handler));
+		handler.addObject(new SatelliteGun(0, 0, this.handler, this));
+		handler.addObject(new AutoGun(0f, 0f, this.handler));
+		handler.addObject(new ExplosionGun(0f, 0f, this.handler));
+		handler.addObject(new LaserGun(0f, 0f, this.handler));
 	}
 
 }
