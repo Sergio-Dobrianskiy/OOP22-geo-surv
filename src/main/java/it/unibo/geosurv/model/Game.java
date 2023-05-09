@@ -129,7 +129,8 @@ public class Game extends Canvas implements Runnable {
 			g.drawString("Objects: " + this.objectsCounter, 900, 65);
 			g.drawString("Experience: " + Experience.getExperienceCounter(), 900, 80);
 			g.drawString("Monsters: " + Monster.getMonstersCounter(), 900, 95);
-			g.drawString("Play Exp: " + handler.getPlayer().getExperience(), 900, 110);
+			g.drawString("Player Exp: " + handler.getPlayer().getExperience(), 900, 110);
+			g.drawString("Player Life: " + handler.getPlayer().getLife(), 900, 125);
 		}
 
 		g2d.translate(-camera.getX(), -camera.getY());
