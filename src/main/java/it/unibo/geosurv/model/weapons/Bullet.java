@@ -66,10 +66,9 @@ public abstract class Bullet extends GameObject {
 					if (this instanceof BulletImpl) {
 						handler.removeObject(this);
 					}
-					((Monster) tempObject).hit(this.damage);
-					// System.out.println("Bullet hit " + damage + " " + tempObject.toString());
-					((Monster) tempObject).bounce();
-					// System.out.println("Bouncing " + tempObject.toString());
+					((Monster) tempObject).hit(this.damage); // TODO: verify the cast
+					((Monster) tempObject).bounce(); // TODO: verify the cast
+
 				}
 			}
 		}
