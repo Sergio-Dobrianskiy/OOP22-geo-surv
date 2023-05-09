@@ -54,16 +54,19 @@ public class MonsterSpawner extends GameObject {
             SPAWN_RATE = 2;
         }
         if (elapsedTime >= 1000 / SPAWN_RATE) {
-            System.out.println(
-                    "DIFF: " + (currentSecond - begin / 1000) + " currentSecond: " + currentSecond
-                            + " currentTime: " + currentTime
-                            + " elapsedTime: " + elapsedTime);
+            // System.out.println(
+            // "DIFF: " + (currentSecond - begin / 1000) + " currentSecond: " +
+            // currentSecond
+            // + " currentTime: " + currentTime
+            // + " elapsedTime: " + elapsedTime);
 
             // Stream.generate(() -> generateMonsters())
             // .forEach(m -> handler.addObject(m));
             Monster x = generateMonsters();
             handler.addObject(x);
             lastSpawnTime = currentTime;
+
+            // gm();
         }
 
     }//
@@ -88,17 +91,17 @@ public class MonsterSpawner extends GameObject {
     }
 
     private Monster generateMonsterT(boolean big) {
-        System.out.println("--> generateMonsterT()");
+        // System.out.println("--> generateMonsterT()");
         return new Triangle(tempPlayer.getX() + Func.randomPoint(420.0f, 500.0f).getX(),
                 tempPlayer.getY() + Func.randomPoint(420.0f, 500.0f).getY(), this.handler, game, big);
     }
 
     private Monster generateMonsterR(boolean big) {
-        System.out.println("--> generateMonsterR()");
-        return new Rect(tempPlayer.getX() + Func.randomPoint(500.0f,
-                600.0f).getX(),
-                tempPlayer.getY() + Func.randomPoint(500.0f, 600.0f).getY(), this.handler,
-                game, big);
+        // System.out.println("--> generateMonsterR()");
+        Pair<Float, Float> randomPosition = Func.randomPoint(500.0f, 600.0f);
+        x = tempPlayer.getX() + randomPosition.getX();
+        y = tempPlayer.getY() + randomPosition.getY();
+        return new Rect(x, y, this.handler, game, big);
     }
 
     private Monster generateMonsters() {
@@ -116,6 +119,15 @@ public class MonsterSpawner extends GameObject {
         }
         // System.out.println("Creted Monster: " + m.toString());
         return m;
+    }
+
+    private void gm() {
+
+        GenerateMonsterImpl gm = new GenerateMonsterImpl();
+        Monster t = gm.generateMonster("Triangle", true);
+        handler.addObject(t);
+        Monster r = gm.generateMonster("Rect", false);
+        handler.addObject(r);
     }
 
 }
