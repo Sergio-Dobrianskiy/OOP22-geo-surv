@@ -7,23 +7,27 @@ import java.util.LinkedList;
 import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.Handler;
 import it.unibo.geosurv.model.ID;
+import it.unibo.geosurv.model.monsters.Monster;
 
 import java.awt.Color;
 
 public class MainPlayer extends GameObject {
 
-	public final static int PLAYER_HEIGHT = 48;
-	public final static int PLAYER_WIDTH = 32;
-	public final static int HALF_PLAYER_HEIGHT = PLAYER_HEIGHT / 2;
-	public final static int HALF_PLAYER_WIDTH = PLAYER_WIDTH / 2;
-	public final static int PLAYER_SPEED = 5;
-	
+    public final static int PLAYER_HEIGHT = 48;
+    public final static int PLAYER_WIDTH = 32;
+    public final static int HALF_PLAYER_HEIGHT = PLAYER_HEIGHT / 2;
+    public final static int HALF_PLAYER_WIDTH = PLAYER_WIDTH / 2;
+    public final static int PLAYER_SPEED = 5;
+    public final static int MAX_LIFE = 100;
+
     Handler handler;
     private int experience;
+    private int life;
 
     public MainPlayer(float x, float y, ID id, Handler handler) {
         super(x, y, id);
         this.handler = handler;
+        this.life = MAX_LIFE;
     }
 
     public void tick() {
@@ -68,6 +72,17 @@ public class MainPlayer extends GameObject {
                     y += velY * -1;
                 }
             }
+            if (tempObject.getId() == ID.Monster) { // if player touches Monsters
+                if (getShape().getBounds2D().intersects(tempObject.getShape().getBounds2D())) {
+                    System.out.println("Player hit by: " + tempObject.toString());
+                    // TODO: should be hit only once or twice a second..
+                    this.life -= ((Monster) tempObject).getPower(); // TODO: verify the cast => maybe if we call a
+                                                                    // function here that works at Monster we do not
+                                                                    // need the cast
+                                                                    // (Monster.over(handler.player)->decrease life)
+
+                }
+            }
         }
     }
 
@@ -86,5 +101,12 @@ public class MainPlayer extends GameObject {
 
     public void setExperience(int experience) {
         this.experience += experience;
+    }
+
+    /**
+     * @return how much life the Player has left
+     */
+    public int getLife() {
+        return life;
     }
 }
