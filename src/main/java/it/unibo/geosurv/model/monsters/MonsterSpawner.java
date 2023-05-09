@@ -22,55 +22,51 @@ public class MonsterSpawner extends GameObject {
                                                  // at any
                                                  // given time
     private final static int MAX_R_MONSTERS = 100;
-    private final static int IILEV = 30;
     private static int numMonsters = 0;
-    private static long lastSpawnTime = 0L;
-    private static Random random = new Random();
+    // private static long lastSpawnTime = 0L;
+    // private static Random random = new Random();
     private Handler handler;
     private static GameObject tempPlayer;
     static Game game;
     float x, y;
 
+    private static int SPAWN_RATE = 1; // in monsters per second
+    private long lastSpawnTime = 0;
+    private int currentSecond;
+    private long currentTime;
+    private long elapsedTime;
+    private long begin = Game.getStartTime();
+
     public MonsterSpawner(float x, float y, Handler h, Game game2) {
         super(x, y, ID.Spawner);
         this.handler = h;
         tempPlayer = handler.getPlayer();
-        // sopra o sotto
+        // oppure
         // tempPlayer = Game.returnHandler().getPlayer();
+
     }
 
     public void spawnMonsters() {
+        currentSecond = (int) ((currentTime / 1000)); // update current minute
+        currentTime = System.currentTimeMillis();
+        elapsedTime = currentTime - lastSpawnTime;
+        if (currentSecond - begin / 1000 > 11) {
+            SPAWN_RATE = 2;
+        }
+        if (elapsedTime >= 1000 / SPAWN_RATE) {
+            System.out.println(
+                    "DIFF: " + (currentSecond - begin / 1000) + " currentSecond: " + currentSecond
+                            + " currentTime: " + currentTime
+                            + " elapsedTime: " + elapsedTime);
 
-        // Check if it's time to spawn a new monster
-        long currentTime = System.currentTimeMillis();
-
-        if (currentTime - lastSpawnTime >= SPAWN_INTERVAL && numMonsters < MAX_T_MONSTERS) {
-            // TODO: select monster based on time from begin of game
-
-            // Pair<Float, Float> pair = Func.randomPoint(420.0f, 500.0f);
-            //
-            // x = tempPlayer.getX() + pair.getX();
-            // y = tempPlayer.getY() + pair.getY();
-            Stream.generate(() -> new Triangle(tempPlayer.getX() + Func.randomPoint(420.0f, 500.0f).getX(),
-                    tempPlayer.getY() + Func.randomPoint(420.0f, 500.0f).getY(), this.handler, game, false)).limit(1)
-                    .forEach(i -> handler.addObject(i)); // 1->50
-            // 5->250
-
-            numMonsters++;
+            // Stream.generate(() -> generateMonsters())
+            // .forEach(m -> handler.addObject(m));
+            Monster x = generateMonsters();
+            handler.addObject(x);
             lastSpawnTime = currentTime;
         }
 
-        if ((currentTime - lastSpawnTime) >= (SPAWN_INTERVAL * IILEV) && numMonsters < MAX_R_MONSTERS) {
-            Stream.generate(() -> new Rect(tempPlayer.getX() + Func.randomPoint(500.0f,
-                    600.0f).getX(),
-                    tempPlayer.getY() + Func.randomPoint(500.0f, 600.0f).getY(), this.handler,
-                    game, false)).limit(50)
-                    .forEach(i -> handler.addObject(i));
-            numMonsters++;
-            lastSpawnTime = currentTime;
-        }
-
-    }
+    }//
 
     public static int getNumMonsters() {
         return numMonsters;
@@ -89,6 +85,37 @@ public class MonsterSpawner extends GameObject {
     @Override
     public Rectangle getShape() {
         throw new UnsupportedOperationException("Unimplemented method 'getBounds'");
+    }
+
+    private Monster generateMonsterT(boolean big) {
+        System.out.println("--> generateMonsterT()");
+        return new Triangle(tempPlayer.getX() + Func.randomPoint(420.0f, 500.0f).getX(),
+                tempPlayer.getY() + Func.randomPoint(420.0f, 500.0f).getY(), this.handler, game, big);
+    }
+
+    private Monster generateMonsterR(boolean big) {
+        System.out.println("--> generateMonsterR()");
+        return new Rect(tempPlayer.getX() + Func.randomPoint(500.0f,
+                600.0f).getX(),
+                tempPlayer.getY() + Func.randomPoint(500.0f, 600.0f).getY(), this.handler,
+                game, big);
+    }
+
+    private Monster generateMonsters() {
+        Monster m = null;
+        if ((currentSecond - begin / 1000) < 10) {
+            m = generateMonsterT(false);
+        } else if (currentSecond - begin / 1000 == 10) {
+            m = generateMonsterT(true);
+        } else if (currentSecond - begin / 1000 < 20) {
+            m = generateMonsterR(false);
+        } else if (currentSecond - begin / 1000 == 20) {
+            m = generateMonsterR(true);
+        } else {
+            m = generateMonsterT(false);
+        }
+        // System.out.println("Creted Monster: " + m.toString());
+        return m;
     }
 
 }
