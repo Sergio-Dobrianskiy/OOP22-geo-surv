@@ -21,7 +21,7 @@ public class Rect extends Monster {
     private float speed;
     private static int counter = 0;
     private int DEFAULT_HEALTH = 8; // default health of Rect
-    private int MAX_HEALTH = 30; // default health of BIG Rect
+    private int MAX_HEALTH = 20; // default health of BIG Rect
     private int health;
     private String name = "Rect-";
     private GameObject tempPlayer = Game.returnHandler().getPlayer();

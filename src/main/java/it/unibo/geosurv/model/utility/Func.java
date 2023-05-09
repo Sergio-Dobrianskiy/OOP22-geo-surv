@@ -1,34 +1,30 @@
 package it.unibo.geosurv.model.utility;
 
-import it.unibo.geosurv.model.GameObject;
-import it.unibo.geosurv.model.Handler;
-import it.unibo.geosurv.model.ID;
-import it.unibo.geosurv.model.player.MainPlayer;
-
-import java.util.LinkedList;
 import java.util.Random;
 
 public class Func {
 
-	public static MainPlayer findPlayer(Handler handler) {
-		LinkedList<GameObject> tmpObjects = handler.getObjects();
-		for (int i = 0; i < tmpObjects.size(); i++) {
-			if (tmpObjects.get(i).getId() == ID.Player) {
-				return (MainPlayer) tmpObjects.get(i);
-			}
-		}
-		return null;
-	}
+	// public static MainPlayer findPlayer(Handler handler) {
+	// LinkedList<GameObject> tmpObjects = handler.getObjects();
+	// for (int i = 0; i < tmpObjects.size(); i++) {
+	// if (tmpObjects.get(i).getId() == ID.Player) {
+	// return (MainPlayer) tmpObjects.get(i);
+	// }
+	// }
+	// return null;
+	// }
 
-	public static GameObject findByID(Handler handler, ID id) {
-		LinkedList<GameObject> tmpObjects = handler.getObjects();
-		for (int i = 0; i < tmpObjects.size(); i++) {
-			if (tmpObjects.get(i).getId() == id) {
-				return tmpObjects.get(i);
-			}
-		}
-		return null;
-	}
+	/*
+	 * public static GameObject findByID(Handler handler, ID id) {
+	 * LinkedList<GameObject> tmpObjects = handler.getObjects();
+	 * for (int i = 0; i < tmpObjects.size(); i++) {
+	 * if (tmpObjects.get(i).getId() == id) {
+	 * return tmpObjects.get(i);
+	 * }
+	 * }
+	 * return null;
+	 * }
+	 */
 
 	/**
 	 * Return random point on a circumference or ring.

@@ -60,17 +60,15 @@ public class MonsterSpawner extends GameObject {
             lastSpawnTime = currentTime;
         }
 
-        // if ((currentTime - lastSpawnTime) >= (SPAWN_INTERVAL * IILEV) && numMonsters
-        // < MAX_R_MONSTERS) {
-        //
-        // Stream.generate(() -> new Rect(tempPlayer.getX() + Func.randomPoint(500.0f,
-        // 600.0f).getX(),
-        // tempPlayer.getY() + Func.randomPoint(500.0f, 600.0f).getY(), this.handler,
-        // game, false)).limit(50)
-        // .forEach(i -> handler.addObject(i));
-        // numMonsters++;
-        // lastSpawnTime = currentTime;
-        // }
+        if ((currentTime - lastSpawnTime) >= (SPAWN_INTERVAL * IILEV) && numMonsters < MAX_R_MONSTERS) {
+            Stream.generate(() -> new Rect(tempPlayer.getX() + Func.randomPoint(500.0f,
+                    600.0f).getX(),
+                    tempPlayer.getY() + Func.randomPoint(500.0f, 600.0f).getY(), this.handler,
+                    game, false)).limit(50)
+                    .forEach(i -> handler.addObject(i));
+            numMonsters++;
+            lastSpawnTime = currentTime;
+        }
 
     }
 
