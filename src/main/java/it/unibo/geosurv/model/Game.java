@@ -29,6 +29,7 @@ public class Game extends Canvas implements Runnable {
 	private static Handler handler;
 	private final Camera camera;
 	private final Loader loader;
+	private static long startTime;
 
 	//// debug
 	private int fps;
@@ -37,18 +38,22 @@ public class Game extends Canvas implements Runnable {
 
 	public Game() {
 		new Window(WINDOW_WIDTH, WINDOW_HEIGHT, "Geo Survival", this);
-		
+
 		handler = new Handler();
 		loader = new Loader(handler);
 
 		this.addKeyListener(new KeyInput(this, handler));
-		this.loader.loadAll(); 			// loads Player, textures, weapons, level
-		
-		camera = loader.loadCamera(); 	// loads camera
-		
+		this.loader.loadAll(); // loads Player, textures, weapons, level
+
+		camera = loader.loadCamera(); // loads camera
+		startTime = System.currentTimeMillis();
 		handler.addObject(new MonsterSpawner(0, 0, handler, this)); // TODO: move to Loader?
-		
-		start();							// starts threads
+
+		start(); // starts threads
+	}
+
+	public static long getStartTime() {
+		return startTime;
 	}
 
 	public static Handler returnHandler() {
@@ -135,7 +140,7 @@ public class Game extends Canvas implements Runnable {
 		g.dispose();
 		bs.show();
 	}
-	
+
 	public boolean getPause() {
 		return pause;
 	}
