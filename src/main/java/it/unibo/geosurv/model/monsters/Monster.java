@@ -92,6 +92,7 @@ public abstract class Monster extends GameObject {
      * Entity dies and it is removed
      */
     public void die() {
+
         Handler h = Game.returnHandler();
         h.addObject(this.dropExperience());
         monstersCounter--;

@@ -54,24 +54,9 @@ public class Triangle extends Monster {
 
     @Override
     public void tick() {
+
         reachTarget();
-        // if (this.getShape().intersects(tempPlayer.getShape())) {
-        // this.die();
-        // }
-        // LinkedList<GameObject> tmpObjects = handler.getObjects();
-        // for (int i = 0; i < tmpObjects.size(); i++) {
-        // GameObject tempObject = tmpObjects.get(i);
-        //
-        //
-        // if (tempObject.getId() == ID.Bullet) {
-        // if (this.getShape().intersects(tempObject.getShape())) {
-        // // TODO: add bullet.getDamage()
-        //// System.out.println(this.toString() + " " + this.name + " object is
-        // removed");
-        //// System.out.println("Position: [" + this.x + "," + this.y + "]");
-        // }
-        // }
-        // }
+
     }
 
     @Override
