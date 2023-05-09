@@ -44,10 +44,12 @@ public class Triangle extends Monster {
             this.health = DEFAULT_HEALTH;
             this.dimension = DEFAULT_DIMENSION;
             this.speed = DEFAULT_SPEED;
+            this.power = 1;
         } else {
             this.health = MAX_HEALTH;
             this.dimension = MAX_DIMENSION;
             this.speed = MAX_SPEED;
+            this.power = 5;
         }
         // System.out.println("T: " + this.toString() + " life: " + this.health);
     };

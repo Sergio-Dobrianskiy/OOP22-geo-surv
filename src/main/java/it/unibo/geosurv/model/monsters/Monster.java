@@ -13,6 +13,7 @@ public abstract class Monster extends GameObject {
     private int BOUNCING_SPEED_MULTIPLYER = 10;
 
     protected int health; // need to be shared with monters subclasses @Sergio-Dobrianskiy
+    protected int power; // power which the plyer is hit by when in contact with a monster
     protected static int monstersCounter;
 
     protected Monster(float x, float y) {
@@ -26,6 +27,13 @@ public abstract class Monster extends GameObject {
     public int getHealth() {
         return this.health;
     };
+
+    /**
+     * @return an integer showing how much power entity has tohit the player
+     */
+    public int getPower() {
+        return power;
+    }
 
     /**
      * Check if Entity is alive

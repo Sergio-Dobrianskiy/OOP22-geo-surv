@@ -44,10 +44,12 @@ public class Rect extends Monster {
             this.health = DEFAULT_HEALTH;
             this.dimension = DEFAULT_DIMENSION;
             this.speed = DEFAULT_SPEED;
+            this.power = 2;
         } else {
             this.health = MAX_HEALTH;
             this.dimension = MAX_DIMENSION;
             this.speed = MAX_SPEED;
+            this.power = 8;
         }
     };
 
