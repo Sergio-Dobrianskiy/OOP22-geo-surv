@@ -68,6 +68,8 @@ public abstract class Bullet extends GameObject {
 					}
 					((Monster) tempObject).hit(this.damage);
 					// System.out.println("Bullet hit " + damage + " " + tempObject.toString());
+					((Monster) tempObject).bounce();
+					// System.out.println("Bouncing " + tempObject.toString());
 				}
 			}
 		}

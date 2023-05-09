@@ -10,6 +10,8 @@ import it.unibo.geosurv.model.drops.Experience;
 public abstract class Monster extends GameObject {
 
     private int DEFAULT_EXPERIENCE = 1;
+    private int BOUNCING_SPEED_MULTIPLYER = 10;
+
     protected int health; // need to be shared with monters subclasses @Sergio-Dobrianskiy
     protected static int monstersCounter;
 
@@ -55,6 +57,29 @@ public abstract class Monster extends GameObject {
             // System.out.println(this + " is dead");
             this.die();
         }
+    };
+
+    /**
+     * Entity bounce if hit by weapon
+     * 
+     * @param weapon whih hits the entity
+     */
+    public void bounce() {
+
+        boolean isBouncing = false;
+
+        if (!isBouncing) { // start bouncing behavior
+            isBouncing = true;
+
+            // reverse the horizontal and vertical velocities to bounce the object off the
+            // player
+            this.velX = -this.velX * BOUNCING_SPEED_MULTIPLYER;
+            this.velY = -this.velY * BOUNCING_SPEED_MULTIPLYER;
+
+            // System.out.println(this.toString() + " inverting direction..");
+        }
+        isBouncing = false;
+
     };
 
     /**
