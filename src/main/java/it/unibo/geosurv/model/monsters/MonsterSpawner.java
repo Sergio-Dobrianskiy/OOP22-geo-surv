@@ -68,7 +68,12 @@ public class MonsterSpawner extends GameObject {
 
             // gm();
         }
-
+        if (currentSecond - begin / 1000 > 40) {
+            SPAWN_RATE = 3;
+            if (elapsedTime >= 500 / SPAWN_RATE) {
+                flood();
+            }
+        }
     }//
 
     public static int getNumMonsters() {
@@ -128,6 +133,17 @@ public class MonsterSpawner extends GameObject {
         handler.addObject(t);
         Monster r = gm.generateMonster("Rect", false);
         handler.addObject(r);
+    }
+
+    private void flood() {
+        Stream.generate(() -> new Rect(tempPlayer.getX() + Func.randomPoint(500.0f,
+                600.0f).getX(), tempPlayer.getY() + Func
+                        .randomPoint(500.0f,
+                                600.0f)
+                        .getY(),
+                this.handler, game, true))
+                .limit(1)
+                .forEach(m -> handler.addObject(m));
     }
 
 }
