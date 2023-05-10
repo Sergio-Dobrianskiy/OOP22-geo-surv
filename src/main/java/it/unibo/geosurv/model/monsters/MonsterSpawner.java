@@ -10,6 +10,7 @@ import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.Handler;
 import it.unibo.geosurv.model.ID;
 import it.unibo.geosurv.model.monsters.triangle.Rect;
+import it.unibo.geosurv.model.monsters.triangle.Rhombus;
 import it.unibo.geosurv.model.monsters.triangle.Triangle;
 import it.unibo.geosurv.model.utility.Func;
 import it.unibo.geosurv.model.utility.Pair;
@@ -136,14 +137,18 @@ public class MonsterSpawner extends GameObject {
     }
 
     private void flood() {
-        Stream.generate(() -> new Rect(tempPlayer.getX() + Func.randomPoint(500.0f,
-                600.0f).getX(), tempPlayer.getY() + Func
-                        .randomPoint(500.0f,
-                                600.0f)
-                        .getY(),
-                this.handler, game, true))
+        Stream.generate(() -> new Rect(tempPlayer.getX() + Func.randomPoint(500.0f, 600.0f).getX(),
+                tempPlayer.getY() + Func.randomPoint(500.0f, 600.0f).getY(), this.handler, game, true))
                 .limit(1)
                 .forEach(m -> handler.addObject(m));
+
+        // Stream.generate(() -> new Rhombus(tempPlayer.getX() +
+        // Func.randomPoint(280.0f, 300.0f).getX(),
+        // tempPlayer.getY() + Func.randomPoint(280.0f, 300.0f).getY(), this.handler,
+        // game, true))
+        // .limit(1)
+        // .forEach(m -> handler.addObject(m));
+
     }
 
 }

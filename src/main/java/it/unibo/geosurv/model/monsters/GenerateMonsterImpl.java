@@ -4,6 +4,7 @@ import it.unibo.geosurv.model.Game;
 import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.Handler;
 import it.unibo.geosurv.model.monsters.triangle.Rect;
+import it.unibo.geosurv.model.monsters.triangle.Rhombus;
 import it.unibo.geosurv.model.monsters.triangle.Triangle;
 import it.unibo.geosurv.model.utility.Func;
 import it.unibo.geosurv.model.utility.Pair;
@@ -28,6 +29,9 @@ public class GenerateMonsterImpl implements GenerateMonster {
 
         } else if (monsterName == "Rect") {
             return new Rect(x, y, handler, game, isBig);
+
+        } else if (monsterName == "Rhombus") {
+            return new Rhombus(x, y, handler, game, isBig);
 
         } else {
             throw new UnsupportedOperationException("Unimplemented Monster: " + monsterName);
