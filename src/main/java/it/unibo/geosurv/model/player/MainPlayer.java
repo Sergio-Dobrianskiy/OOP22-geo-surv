@@ -19,6 +19,9 @@ public class MainPlayer extends GameObject {
     public final static int HALF_PLAYER_WIDTH = PLAYER_WIDTH / 2;
     public final static int PLAYER_SPEED = 5;
     public final static int MAX_LIFE = 100;
+    private long lastHitTime; // last time Player is touched/hit by a monster
+    private static final int MAX_HITS_PER_SECOND = 2;
+    private static final long HIT_COOLDOWN = 1000 / MAX_HITS_PER_SECOND;
 
     Handler handler;
     private int experience;
@@ -28,6 +31,7 @@ public class MainPlayer extends GameObject {
         super(x, y, id);
         this.handler = handler;
         this.life = MAX_LIFE;
+        lastHitTime = 0;
     }
 
     public void tick() {
@@ -74,13 +78,16 @@ public class MainPlayer extends GameObject {
             }
             if (tempObject.getId() == ID.Monster) { // if player touches Monsters
                 if (getShape().getBounds2D().intersects(tempObject.getShape().getBounds2D())) {
-                    System.out.println("Player hit by: " + tempObject.toString());
-                    // TODO: should be hit only once or twice a second..
-                    this.life -= ((Monster) tempObject).getPower(); // TODO: verify the cast => maybe if we call a
-                                                                    // function here that works at Monster we do not
-                                                                    // need the cast
-                                                                    // (Monster.over(handler.player)->decrease life)
-
+                    long currentTime = System.currentTimeMillis();
+                    if (currentTime - lastHitTime >= HIT_COOLDOWN) {
+                        System.out.println("Player hit by: " + tempObject.toString());
+                        // DONE: should be hit only once or twice a second..
+                        this.life -= ((Monster) tempObject).getPower(); // TODO: verify the cast => maybe if we call a
+                                                                        // function here that works at Monster we do not
+                                                                        // need the cast
+                                                                        // (Monster.over(handler.player)->decrease life)
+                        lastHitTime = currentTime;
+                    }
                 }
             }
         }
