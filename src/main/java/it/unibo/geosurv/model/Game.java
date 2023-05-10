@@ -124,13 +124,14 @@ public class Game extends Canvas implements Runnable {
 		g.fillRect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
 
 		if (this.showDebug == true) {
-			g.setColor(Color.BLUE);
+			g.setColor(Color.RED);
 			g.drawString("FPS: " + this.fps, 900, 50);
 			g.drawString("Objects: " + this.objectsCounter, 900, 65);
 			g.drawString("Experience: " + Experience.getExperienceCounter(), 900, 80);
 			g.drawString("Monsters: " + Monster.getMonstersCounter(), 900, 95);
 			g.drawString("Player Exp: " + handler.getPlayer().getExperience(), 900, 110);
 			g.drawString("Player Life: " + handler.getPlayer().getLife(), 900, 125);
+			g.drawString("Time: " + (((int) ((System.currentTimeMillis() / 1000))) - startTime / 1000), 900, 140);
 		}
 
 		g2d.translate(-camera.getX(), -camera.getY());

@@ -80,7 +80,7 @@ public class MainPlayer extends GameObject {
                 if (getShape().getBounds2D().intersects(tempObject.getShape().getBounds2D())) {
                     long currentTime = System.currentTimeMillis();
                     if (currentTime - lastHitTime >= HIT_COOLDOWN) {
-                        System.out.println("Player hit by: " + tempObject.toString());
+                        // System.out.println("Player hit by: " + tempObject.toString());
                         // DONE: should be hit only once or twice a second..
                         this.life -= ((Monster) tempObject).getPower(); // TODO: verify the cast => maybe if we call a
                                                                         // function here that works at Monster we do not
