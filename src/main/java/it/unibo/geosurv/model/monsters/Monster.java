@@ -4,10 +4,12 @@ import it.unibo.geosurv.model.Game;
 import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.Handler;
 import it.unibo.geosurv.model.ID;
+import it.unibo.geosurv.model.MonstersObserver;
 import it.unibo.geosurv.model.drops.Experience;
+import it.unibo.geosurv.model.player.MainPlayer;
 
-/** Interface for generic evil */
-public abstract class Monster extends GameObject {
+/** Abstract Class for generic evil */
+public abstract class Monster extends GameObject implements MonstersObserver {
 
     private int DEFAULT_EXPERIENCE = 1;
     private int BOUNCING_SPEED_MULTIPLYER = 10;
@@ -15,10 +17,15 @@ public abstract class Monster extends GameObject {
     protected int health; // need to be shared with monters subclasses @Sergio-Dobrianskiy
     protected int power; // power which the plyer is hit by when in contact with a monster
     protected static int monstersCounter;
+    protected float mx, my; // Player Position throu observer
+    protected MainPlayer p;
 
     protected Monster(float x, float y) {
         super(x, y, ID.Monster);
         monstersCounter++;
+        p = Game.returnHandler().getPlayer();
+        p.addObserver(this);
+        System.out.println("Added Observer: " + this.toString());
     }
 
     /**
@@ -62,7 +69,7 @@ public abstract class Monster extends GameObject {
         // System.out.println("damage: " + weaponDamage + " health: " + this.health);
         this.health -= weaponDamage;
         if (this.isDead()) {
-            // System.out.println(this + " is dead");
+            p.removeObserver(this);
             this.die();
         }
     };
@@ -97,7 +104,7 @@ public abstract class Monster extends GameObject {
     public abstract void reachTarget();
 
     /**
-     * Entity dies and it is removed
+     * Entity dies, drop experience and it is removed
      */
     public void die() {
 
@@ -110,6 +117,13 @@ public abstract class Monster extends GameObject {
 
     public static int getMonstersCounter() {
         return monstersCounter;
+    }
+
+    /** Monster is update about player posistion throu notify - Observer method */
+    public void update(MainPlayer mp) {
+        mx = mp.getX();
+        my = mp.getY();
+
     }
 
 }

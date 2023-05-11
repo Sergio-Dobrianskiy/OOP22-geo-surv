@@ -11,6 +11,7 @@ import it.unibo.geosurv.model.Handler;
 import it.unibo.geosurv.model.ID;
 import it.unibo.geosurv.model.monsters.Monster;
 import it.unibo.geosurv.model.utility.Func;
+import it.unibo.geosurv.model.utility.Pair;
 
 public class Rect extends Monster {
 
@@ -76,9 +77,9 @@ public class Rect extends Monster {
         // evaluated only once at creation istead of each tick()
         // tempPlayer = Func.findPlayer(handler);
 
-        int mx = (int) this.tempPlayer.getX();
-        int my = (int) this.tempPlayer.getY();
-
+        // int mx = (int) this.tempPlayer.getX();
+        // int my = (int) this.tempPlayer.getY();
+        //
         float angle = (float) Math.atan2(my - this.getY() + 8, mx - this.getX() + 4);
 
         this.velX = (float) ((this.speed) * Math.cos(angle));

@@ -9,8 +9,11 @@ import it.unibo.geosurv.model.Game;
 import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.Handler;
 import it.unibo.geosurv.model.ID;
+import it.unibo.geosurv.model.MonstersObserver;
 import it.unibo.geosurv.model.monsters.Monster;
+import it.unibo.geosurv.model.player.MainPlayer;
 import it.unibo.geosurv.model.utility.Func;
+import it.unibo.geosurv.model.utility.Pair;
 
 public class Triangle extends Monster {
 
@@ -23,7 +26,6 @@ public class Triangle extends Monster {
     private int DEFAULT_HEALTH = 2; // default health of triangle
     private int MAX_HEALTH = 10; // default health of BIG triangle
     private String name = "Triangle-";
-    private GameObject tempPlayer = Game.returnHandler().getPlayer();
     private int DEFAULT_DIMENSION = 20; // default size of triangle
     private int MAX_DIMENSION = 50; // max size of (big) triangle
     private int dimension;
@@ -32,8 +34,9 @@ public class Triangle extends Monster {
     /**
      * Triangle constructor
      */
-    public Triangle(float x, float y, Handler handler, Game game, boolean isBig) { // TODO: handler & gamo not used! to
-                                                                                   // delete
+    public Triangle(float x, float y, Handler handler, Game game, boolean isBig) { // TODO: handler & gamo
+                                                                                   // not used! to
+        // delete
         super(x, y);
         // this.speed = speed;
         // this.handler = handler;
@@ -51,7 +54,7 @@ public class Triangle extends Monster {
             this.speed = MAX_SPEED;
             this.power = 5;
         }
-        // System.out.println("T: " + this.toString() + " life: " + this.health);
+
     };
 
     @Override
@@ -81,8 +84,8 @@ public class Triangle extends Monster {
         // evaluated only once at creation istead of each tick()
         // tempPlayer = Func.findPlayer(handler);
 
-        int mx = (int) this.tempPlayer.getX();
-        int my = (int) this.tempPlayer.getY();
+        // int mx = (int) this.tempPlayer.getX();
+        // int my = (int) this.tempPlayer.getY();
 
         float angle = (float) Math.atan2(my - this.getY() + 8, mx - this.getX() + 4);
 
