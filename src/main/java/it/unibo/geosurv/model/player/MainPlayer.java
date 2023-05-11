@@ -2,11 +2,14 @@ package it.unibo.geosurv.model.player;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 
 import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.Handler;
 import it.unibo.geosurv.model.ID;
+import it.unibo.geosurv.model.MonstersObserver;
 import it.unibo.geosurv.model.monsters.Monster;
 
 import java.awt.Color;
@@ -26,12 +29,14 @@ public class MainPlayer extends GameObject {
     Handler handler;
     private int experience;
     private int life;
+    private List<MonstersObserver> observers;
 
     public MainPlayer(float x, float y, ID id, Handler handler) {
         super(x, y, id);
         this.handler = handler;
         this.life = MAX_LIFE;
         lastHitTime = 0;
+        observers = new ArrayList<>();
     }
 
     public void tick() {
@@ -64,6 +69,8 @@ public class MainPlayer extends GameObject {
         } else if (!handler.isRight()) {
             velX = 0;
         }
+
+        notifyObservers(); // notify player position
     }
 
     private void collision() {
@@ -96,6 +103,7 @@ public class MainPlayer extends GameObject {
     public void render(Graphics g) {
         g.setColor(Color.blue);
         g.fillRect((int) x, (int) y, PLAYER_WIDTH, PLAYER_HEIGHT);
+
     }
 
     public Rectangle getShape() {
@@ -116,4 +124,21 @@ public class MainPlayer extends GameObject {
     public int getLife() {
         return life;
     }
+
+    public void addObserver(MonstersObserver observer) {
+        observers.add(observer);
+    }
+
+    public void removeObserver(MonstersObserver observer) {
+        observers.remove(observer);
+        System.out.println("Removed Observer: " + observer.toString());
+    }
+
+    private void notifyObservers() {
+        for (MonstersObserver observer : observers) {
+            observer.update(this);
+        }
+
+    }
+
 }
