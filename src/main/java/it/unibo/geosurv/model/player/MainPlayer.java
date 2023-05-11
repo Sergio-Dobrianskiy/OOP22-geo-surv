@@ -103,7 +103,7 @@ public class MainPlayer extends GameObject {
     public void render(Graphics g) {
         g.setColor(Color.blue);
         g.fillRect((int) x, (int) y, PLAYER_WIDTH, PLAYER_HEIGHT);
-
+        g.drawString("Life: " + this.getLife() + " Exp: " + this.getExperience(), (int) x, (int) y - 5);
     }
 
     public Rectangle getShape() {
