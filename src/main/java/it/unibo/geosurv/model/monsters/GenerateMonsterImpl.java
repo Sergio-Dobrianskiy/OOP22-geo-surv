@@ -11,26 +11,27 @@ import it.unibo.geosurv.model.utility.Pair;
 
 public class GenerateMonsterImpl implements GenerateMonster {
 
-    private float x;
-    private float y;
+    private static final float MIN_DISTANCE = 500.0f;
+    private static final float MAX_DISTANCE = 600.0f;
+
     private Handler handler;
     private Game game;
 
     GameObject tempPlayer = Game.returnHandler().getPlayer();
 
     @Override
-    public Monster generateMonster(String monsterName, boolean isBig) {
-        Pair<Float, Float> randomPosition = Func.randomPoint(500.0f, 600.0f);
-        x = tempPlayer.getX() + randomPosition.getX();
-        y = tempPlayer.getY() + randomPosition.getY();
+    public Monster generateMonster(final String monsterName, final boolean isBig) {
+        final Pair<Float, Float> randomPosition = Func.randomPoint(MIN_DISTANCE, MAX_DISTANCE);
+        final float x = tempPlayer.getX() + randomPosition.getX();
+        final float y = tempPlayer.getY() + randomPosition.getY();
 
-        if (monsterName == "Triangle") {
+        if ("Triangle".equals(monsterName)) {
             return new Triangle(x, y, handler, game, isBig);
 
-        } else if (monsterName == "Rect") {
+        } else if ("Rect".equals(monsterName)) {
             return new Rect(x, y, handler, game, isBig);
 
-        } else if (monsterName == "Rhombus") {
+        } else if ("Rhombus".equals(monsterName)) {
             return new Rhombus(x, y, handler, game, isBig);
 
         } else {
