@@ -18,8 +18,7 @@ public class Rhombus extends Monster {
     private static int counter = 0;
     private int DEFAULT_HEALTH = 2; // default health of Rect
     private String name = "Rhombus-";
-    private int DEFAULT_DIMENSION = 12; // default size of Rect
-    private int dimension;
+    private int DEFAULT_DIMENSION = 16; // default size of Rect
     private boolean isBig = false;
 
     /**
@@ -36,6 +35,7 @@ public class Rhombus extends Monster {
         this.health = DEFAULT_HEALTH;
         this.dimension = DEFAULT_DIMENSION;
         this.power = 2;
+        this.speed = 0;
     };
 
     @Override
@@ -45,7 +45,7 @@ public class Rhombus extends Monster {
 
     @Override
     public void render(Graphics g) {
-        g.setColor(Color.green);
+        g.setColor(Color.orange);
         g.fillOval((int) x, (int) y, this.dimension, this.dimension);
     }
 
@@ -56,10 +56,6 @@ public class Rhombus extends Monster {
 
     public boolean isBig() {
         return isBig;
-    }
-
-    @Override
-    public void reachTarget() {
     }
 
 }

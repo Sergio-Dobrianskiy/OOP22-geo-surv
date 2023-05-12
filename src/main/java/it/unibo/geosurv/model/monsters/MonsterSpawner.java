@@ -67,7 +67,7 @@ public class MonsterSpawner extends GameObject {
             handler.addObject(x);
             lastSpawnTime = currentTime;
 
-            // gm();
+            gm();
         }
         if (currentSecond - begin / 1000 > 40) {
             SPAWN_RATE = 3;
@@ -130,10 +130,12 @@ public class MonsterSpawner extends GameObject {
     private void gm() {
 
         GenerateMonsterImpl gm = new GenerateMonsterImpl();
-        Monster t = gm.generateMonster("Triangle", true);
-        handler.addObject(t);
-        Monster r = gm.generateMonster("Rect", false);
-        handler.addObject(r);
+        // Monster t = gm.generateMonster("Triangle", true);
+        // handler.addObject(t);
+        // Monster r = gm.generateMonster("Rect", false);
+        // handler.addObject(r);
+        Monster rh = gm.generateMonster("Rhombus", false);
+        handler.addObject(rh);
     }
 
     private void flood() {

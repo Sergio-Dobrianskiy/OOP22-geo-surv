@@ -1,5 +1,7 @@
 package it.unibo.geosurv.model.monsters;
 
+import java.awt.Rectangle;
+
 import it.unibo.geosurv.model.Game;
 import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.Handler;
@@ -19,6 +21,8 @@ public abstract class Monster extends GameObject implements MonstersObserver {
     protected static int monstersCounter;
     protected float mx, my; // Player Position throu observer
     protected MainPlayer p;
+    protected int dimension;
+    protected double speed;
 
     protected Monster(float x, float y) {
         super(x, y, ID.Monster);
@@ -98,12 +102,6 @@ public abstract class Monster extends GameObject implements MonstersObserver {
     };
 
     /**
-     * Attach target/Player
-     * fixed monsters do not move..
-     */
-    public abstract void reachTarget();
-
-    /**
      * Entity dies, drop experience and it is removed
      */
     public void die() {
@@ -124,6 +122,27 @@ public abstract class Monster extends GameObject implements MonstersObserver {
         mx = mp.getX();
         my = mp.getY();
 
+    }
+
+    @Override
+    public Rectangle getShape() {
+        return new Rectangle((int) x, (int) y, this.dimension, this.dimension);
+    }
+
+    public void reachTarget() {
+        x += velX;
+        y += velY;
+        // evaluated only once at creation istead of each tick()
+        // tempPlayer = Func.findPlayer(handler);
+
+        // int mx = (int) this.tempPlayer.getX();
+        // int my = (int) this.tempPlayer.getY();
+        //
+        float angle = (float) Math.atan2(my - this.getY() + 8, mx - this.getX() + 4);
+
+        this.velX = (float) ((this.speed) * Math.cos(angle));
+        this.velY = (float) ((this.speed) * Math.sin(angle));
+        // System.out.println("T trying to reach the target");
     }
 
 }
