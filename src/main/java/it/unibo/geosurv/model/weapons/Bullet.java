@@ -2,6 +2,8 @@ package it.unibo.geosurv.model.weapons;
 
 import java.awt.geom.RectangularShape;
 import java.util.ArrayList;
+
+import it.unibo.geosurv.model.Collisions;
 import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.Handler;
 import it.unibo.geosurv.model.ID;
@@ -51,10 +53,10 @@ public abstract class Bullet extends GameObject {
 		for (int i = 0; i < tmpObjects.size(); i++) {
 			GameObject tempObject = tmpObjects.get(i);
 
-			if (this instanceof BulletImpl && isColliding(tempObject, ID.Block)) {
+			if (this instanceof BulletImpl && Collisions.isColliding(this, tempObject, ID.Block)) {
 				handler.removeObject(this);
 				
-			} else if (isColliding(tempObject, ID.Monster)) {
+			} else if (Collisions.isColliding(this,tempObject, ID.Monster)) {
 				((Monster) tempObject).hit(this.damage); // TODO: verify the cast
 				if (this instanceof BulletImpl) {
 					handler.removeObject(this);
@@ -63,15 +65,6 @@ public abstract class Bullet extends GameObject {
 		}
 	}
 	
-	/**
-     * Check if a bullet is colliding with a GameObject
-     * 
-     * @param GameOnject to check
-     * @param ID that the touched object should have
-     */
-	private boolean isColliding(final GameObject obj, final ID id) {
-		return obj.getId() == id && this.getShape().getBounds2D().intersects(obj.getShape().getBounds2D());
-	}
 	
 	public RectangularShape getShape() {
         return this.setRectangleShape();

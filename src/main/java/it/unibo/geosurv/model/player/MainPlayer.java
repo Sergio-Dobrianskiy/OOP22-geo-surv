@@ -4,6 +4,8 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.List;
+
+import it.unibo.geosurv.model.Collisions;
 import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.Handler;
 import it.unibo.geosurv.model.ID;
@@ -77,24 +79,20 @@ public class MainPlayer extends GameObject {
     		ArrayList<GameObject> tmpObjects = handler.getObjects();
         for (int i = 0; i < tmpObjects.size(); i++) {
             GameObject tempObject = tmpObjects.get(i);
-            if (tempObject.getId() == ID.Block) { // if player touches wall => stop
-                if (getShape().getBounds2D().intersects(tempObject.getShape().getBounds2D())) {
-                    x += velX * -1;
-                    y += velY * -1;
-                }
+            if (Collisions.isColliding(this, tempObject, ID.Block)) { // if player touches wall => stop
+                x += velX * -1;
+                y += velY * -1;
             }
-            if (tempObject.getId() == ID.Monster) { // if player touches Monsters
-                if (getShape().getBounds2D().intersects(tempObject.getShape().getBounds2D())) {
-                    long currentTime = System.currentTimeMillis();
-                    if (currentTime - lastHitTime >= HIT_COOLDOWN) {
-                        // System.out.println("Player hit by: " + tempObject.toString());
-                        // DONE: should be hit only once or twice a second..
-                        this.life -= ((Monster) tempObject).getPower(); // TODO: verify the cast => maybe if we call a
-                                                                        // function here that works at Monster we do not
-                                                                        // need the cast
-                                                                        // (Monster.over(handler.player)->decrease life)
-                        lastHitTime = currentTime;
-                    }
+            if (Collisions.isColliding(this, tempObject, ID.Monster)) { // if player touches Monsters
+                long currentTime = System.currentTimeMillis();
+                if (currentTime - lastHitTime >= HIT_COOLDOWN) {
+                    // System.out.println("Player hit by: " + tempObject.toString());
+                    // DONE: should be hit only once or twice a second..
+                    this.life -= ((Monster) tempObject).getPower(); // TODO: verify the cast => maybe if we call a
+                                                                    // function here that works at Monster we do not
+                                                                    // need the cast
+                                                                    // (Monster.over(handler.player)->decrease life)
+                    lastHitTime = currentTime;
                 }
             }
         }

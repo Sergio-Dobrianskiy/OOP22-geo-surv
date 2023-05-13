@@ -57,8 +57,8 @@ public class Loader {
 	 * Loads game Weapons/Guns
 	 */
 	private void loadGuns() {
-		 handler.addObject(new SatelliteGun(this.handler));
-//		handler.addObject(new AutoGun(this.handler));
+//		 handler.addObject(new SatelliteGun(this.handler));
+		handler.addObject(new AutoGun(this.handler));
 //		 handler.addObject(new ExplosionGun(this.handler));
 //		 handler.addObject(new LaserGun(this.handler));
 	}

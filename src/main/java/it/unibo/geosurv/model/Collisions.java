@@ -31,13 +31,15 @@ public class Collisions {
 	// 	}
 	// }
 	
-	// /**
-    //  * Check if a bullet is colliding with a GameObject
-    //  * 
-    //  * @param GameOnject to check
-    //  * @param ID that the touched object should have
-    //  */
-	// private boolean isColliding(final GameObject obj, final ID id) {
-	// 	return obj.getId() == id && this.getShape().getBounds2D().intersects(obj.getShape().getBounds2D());
-	// }
+	 /**
+      * Check if the first GameObject is colliding with another GameObject
+      * with a specific ID
+      * 
+      * @param 1st GameOnject to check
+      * @param 2nd GameOnject to check
+      * @param ID that the touched object should have
+      */
+	 public static boolean isColliding(final GameObject obj1, final GameObject obj2, final ID id) {
+	 	return obj2.getId() == id && obj1.getShape().getBounds2D().intersects(obj2.getShape().getBounds2D());
+	 }
 }
