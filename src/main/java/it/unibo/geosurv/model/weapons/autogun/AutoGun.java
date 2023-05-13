@@ -7,6 +7,7 @@ import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.Handler;
 import it.unibo.geosurv.model.ID;
 import it.unibo.geosurv.model.player.MainPlayer;
+import it.unibo.geosurv.model.utility.Func;
 import it.unibo.geosurv.model.weapons.Weapon;
 
 public class AutoGun extends Weapon {
@@ -53,8 +54,12 @@ public class AutoGun extends Weapon {
 			
 			if (this.delta >= 1) {
 				this.lastTime = now;
-				this.findClosestEnemy();
-				
+				this.closestEnemy = Func.findClosestEnemy(handler);
+				if (this.closestEnemy == null) {
+					return;
+				}
+				this.closestEnemyDistance = (float) Point2D.distance(player.getX(), player.getX(), 
+						closestEnemy.getX(), closestEnemy.getY());
 				if (this.closestEnemyDistance <= MAX_RANGE) {
 					this.shoot();
 					
@@ -70,34 +75,6 @@ public class AutoGun extends Weapon {
 		}
 	}
 	
-	
-	public void findClosestEnemy() {
-		float closestDistance = Float.MAX_VALUE;
-		float distance;
-		ArrayList<GameObject> tmpObjects = handler.getObjects();
-		GameObject tmpObject;
-		float px, py;
-		px = this.player.getX();
-		py = this.player.getY();
-		
-		
-		for (int i = 0; i < tmpObjects.size(); i++) {
-			tmpObject = tmpObjects.get(i);
-			if (tmpObject.getId() == ID.Monster) {
-				float ex, ey;
-				
-				ex = tmpObject.getX();
-				ey = tmpObject.getY();
-				
-				distance = (float) Point2D.distance(px, py, ex, ey);
-				if (distance < closestDistance) {
-					closestDistance = distance;
-					this.closestEnemy = tmpObject;
-				}
-			}
-		}
-		this.closestEnemyDistance = closestDistance;
-	}
 	
 	protected void shoot() {
 		int mx = (int) this.closestEnemy.getX();  // TODO: gun is aiming the upper left corner

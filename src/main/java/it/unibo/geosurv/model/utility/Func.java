@@ -1,6 +1,12 @@
 package it.unibo.geosurv.model.utility;
 
+import java.awt.geom.Point2D;
+import java.util.ArrayList;
 import java.util.Random;
+
+import it.unibo.geosurv.model.GameObject;
+import it.unibo.geosurv.model.Handler;
+import it.unibo.geosurv.model.ID;
 
 public class Func {
 
@@ -51,5 +57,42 @@ public class Func {
 		float y = (float) (radius * Math.sin(angle));
 
 		return new Pair<>(x * max, y * max);
+	}
+	
+	/**
+	 * Return closest enemy to the player.
+	 *
+	 * @param Handler game handler
+
+	 * @return GameObject player
+	 */
+	public static GameObject findClosestEnemy(final Handler handler) {
+		GameObject player = handler.getPlayer();
+		GameObject closestEnemy = null;
+		float closestDistance = Float.MAX_VALUE;
+		float distance;
+		ArrayList<GameObject> tmpObjects = handler.getObjects();
+		GameObject tmpObject;
+		float px, py;
+		px = player.getX();
+		py = player.getY();
+		
+		
+		for (int i = 0; i < tmpObjects.size(); i++) {
+			tmpObject = tmpObjects.get(i);
+			if (tmpObject.getId() == ID.Monster) {
+				float ex, ey;
+				
+				ex = tmpObject.getX();
+				ey = tmpObject.getY();
+				
+				distance = (float) Point2D.distance(px, py, ex, ey);
+				if (distance < closestDistance) {
+					closestDistance = distance;
+					closestEnemy = tmpObject;
+				}
+			}
+		}
+		return closestEnemy;
 	}
 }
