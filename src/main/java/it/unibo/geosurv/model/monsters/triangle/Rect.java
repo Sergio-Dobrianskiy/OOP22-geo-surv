@@ -41,11 +41,15 @@ public class Rect extends Monster {
             this.dimension = DEFAULT_DIMENSION;
             this.speed = DEFAULT_SPEED;
             this.power = 2;
+            this.height = DEFAULT_DIMENSION;
+            this.width = DEFAULT_DIMENSION;
         } else {
             this.health = MAX_HEALTH;
             this.dimension = MAX_DIMENSION;
             this.speed = MAX_SPEED;
             this.power = 8;
+            this.height = MAX_DIMENSION;
+            this.width = MAX_DIMENSION;
         }
     };
 
@@ -56,14 +60,13 @@ public class Rect extends Monster {
 
     @Override
     public void render(Graphics g) {
-        g.setColor(Color.green);
-        g.fillRect((int) x, (int) y, this.dimension, this.dimension);
+        this.drawRect(g,  Color.green);
     }
 
-    @Override
-    public Rectangle getShape() {
-        return new Rectangle((int) x, (int) y, this.dimension, this.dimension);
-    }
+//    @Override
+//    public Rectangle getShape() {
+//        return this.setRectangleShape();
+//    }
 
     @Override
     public void reachTarget() {
@@ -75,7 +78,7 @@ public class Rect extends Monster {
         // int mx = (int) this.tempPlayer.getX();
         // int my = (int) this.tempPlayer.getY();
         //
-        float angle = (float) Math.atan2(my - this.getY() + 8, mx - this.getX() + 4);
+        float angle = (float) Math.atan2(my - this.getY(), mx - this.getX());
 
         this.velX = (float) ((this.speed) * Math.cos(angle));
         this.velY = (float) ((this.speed) * Math.sin(angle));

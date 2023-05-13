@@ -57,7 +57,7 @@ public class AutoGun extends Weapon {
 				this.lastTime = now;
 				this.closestEnemy = Func.findClosestEnemy(handler);
 
-				this.closestEnemyDistance = (float) Point2D.distance(player.getX(), player.getX(), 
+				this.closestEnemyDistance = (float) Point2D.distance(player.getX(), player.getY(), 
 						closestEnemy.getX(), closestEnemy.getY());
 				if (this.closestEnemyDistance <= MAX_RANGE) {
 					this.shoot();
@@ -76,13 +76,8 @@ public class AutoGun extends Weapon {
 	
 	
 	protected void shoot() {
-		int mx = (int) this.closestEnemy.getX();  // TODO: gun is aiming the upper left corner
-		int my = (int) this.closestEnemy.getY();
-		float px = player.getX();
-		float py = player.getY();
-		Pair<Float, Float> angle = Func.findAngle(px, py, mx - 7.5f, my - 7.5f);
-		
-		GameObject tempBullet = handler.addObject(new BulletImpl(px + MainPlayer.HALF_PLAYER_WIDTH, py + MainPlayer.HALF_PLAYER_HEIGHT, handler));
+		Pair<Float, Float> angle = Func.findAngle2(this.player, this.closestEnemy);
+		GameObject tempBullet = handler.addObject(new BulletImpl(player.getX(), player.getY(), handler));
 		tempBullet.setVelX((float) ((BULLET_VELOCITY) * angle.getX()));
 		tempBullet.setVelY((float) ((BULLET_VELOCITY) * angle.getY()));
 	}

@@ -16,17 +16,17 @@ public class Explosion extends Bullet {
 	public Explosion(float x, float y, Handler handler) {
 		super(x, y, handler);
 		super.lifeSpan = EXPLOSION_LIFE_SPAN;
+		this.height = BULLET_HEIGHT;
+		this.width = BULLET_WIDTH;
 	}
 	
 	@Override
 	public void render(Graphics g) {
-		g.setColor(Color.red);
-		g.fillOval((int) x, (int) y, BULLET_WIDTH, BULLET_HEIGHT);
+		drawOval(g, Color.red);
 	}
 
-	@Override
 	public Ellipse2D getShape() {
-		return new Ellipse2D.Float(x, y, BULLET_WIDTH, BULLET_HEIGHT);
+		return setOvalShape();
 	}
 }
 

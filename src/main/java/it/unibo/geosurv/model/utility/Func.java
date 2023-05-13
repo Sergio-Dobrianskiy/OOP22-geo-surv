@@ -106,7 +106,23 @@ public class Func {
 	 * @param flaot B'y x coordinate
 	 * @return Pair angle 
 	 */
-	public static Pair<Float, Float> findAngle(final float ax, final float ay, final float bx, final float by) {
+//	public static Pair<Float, Float> findAngle(final float ax, final float ay, final float bx, final float by) {
+//		float angle = (float) Math.atan2(by - ay, bx - ax);
+//		return new Pair<Float, Float>((float) Math.cos(angle), (float) Math.sin(angle));
+//	}
+	
+	/**
+	 * Return angle of from point A to B.
+	 *
+	 * @param origin GameObject A
+	 * @param aimed GameObject B
+	 * @return Pair angle 
+	 */
+	public static Pair<Float, Float> findAngle2(final GameObject a, final GameObject b) {
+		float ax = a.getX();
+		float ay = a.getY();
+		float bx = b.getX();
+		float by = b.getY();
 		float angle = (float) Math.atan2(by - ay, bx - ax);
 		return new Pair<Float, Float>((float) Math.cos(angle), (float) Math.sin(angle));
 	}

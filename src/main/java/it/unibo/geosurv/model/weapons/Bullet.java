@@ -1,5 +1,6 @@
 package it.unibo.geosurv.model.weapons;
 
+import java.awt.geom.RectangularShape;
 import java.util.ArrayList;
 import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.Handler;
@@ -10,8 +11,6 @@ import it.unibo.geosurv.model.weapons.autogun.BulletImpl;
 public abstract class Bullet extends GameObject {
 
 	protected int damage = 1;
-	protected int height;
-	protected int width;
 	protected long lifeSpan = 5000L; // max milliseconds of life
 
 	protected long creationTime;
@@ -74,6 +73,9 @@ public abstract class Bullet extends GameObject {
 		return obj.getId() == id && this.getShape().getBounds2D().intersects(obj.getShape().getBounds2D());
 	}
 	
+	public RectangularShape getShape() {
+        return this.setRectangleShape();
+    }
 	
 	
 }

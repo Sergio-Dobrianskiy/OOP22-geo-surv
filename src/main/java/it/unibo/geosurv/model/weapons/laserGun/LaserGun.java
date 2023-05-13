@@ -1,5 +1,7 @@
 package it.unibo.geosurv.model.weapons.laserGun;
 
+import java.util.jar.Manifest;
+
 import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.Handler;
 import it.unibo.geosurv.model.player.MainPlayer;
@@ -8,8 +10,8 @@ import it.unibo.geosurv.model.weapons.Weapon;
 
 public class LaserGun extends Weapon {
 	
-	protected final int LASER_HEIGHT = 10;
-	protected final int LASER_WIDTH = 300;
+	protected final int ShortSide = 10;
+	protected final int LongSide = 300;
 	protected final long LASER_CYCLE = 3000L;
 	
 	private Handler handler;
@@ -26,12 +28,12 @@ public class LaserGun extends Weapon {
 	protected void shoot() {
 		float px = this.player.getX();
 		float py = this.player.getY();
-		float yCorrection = MainPlayer.HALF_PLAYER_HEIGHT;
-		float xCorrection = (MainPlayer.PLAYER_WIDTH - LASER_HEIGHT) / 2;
+		float xCorrection = LongSide / 2 + MainPlayer.HALF_PLAYER_WIDTH;
+		float yCorrection = LongSide / 2 + MainPlayer.HALF_PLAYER_HEIGHT;;
 		
-		this.handler.addObject(new Laser(px + MainPlayer.PLAYER_WIDTH, py + yCorrection, this.handler, LASER_WIDTH, LASER_HEIGHT)); // right
-		this.handler.addObject(new Laser(px - LASER_WIDTH, py + yCorrection, this.handler, LASER_WIDTH, LASER_HEIGHT)); // left
-		this.handler.addObject(new Laser(px + xCorrection, py - LASER_WIDTH, this.handler, LASER_HEIGHT, LASER_WIDTH)); // up
-		this.handler.addObject(new Laser(px + xCorrection, py + MainPlayer.PLAYER_HEIGHT, this.handler, LASER_HEIGHT, LASER_WIDTH)); // down
+		this.handler.addObject(new Laser(px + xCorrection, py, this.handler, LongSide, ShortSide)); // right
+		this.handler.addObject(new Laser(px - xCorrection, py, this.handler, LongSide, ShortSide)); // left
+		this.handler.addObject(new Laser(px, py - yCorrection, this.handler, ShortSide, LongSide)); // up
+		this.handler.addObject(new Laser(px, py + yCorrection, this.handler, ShortSide, LongSide)); // down
 	}
 }

@@ -13,17 +13,13 @@ public class Satellite extends Bullet {
 
 	public Satellite(float x, float y, Handler handler) {
 		super(x, y, handler);
+		this.height = BULLET_HEIGHT;
+		this.width = BULLET_WIDTH;
 	}
 
 	@Override
 	public void render(Graphics g) {
-		g.setColor(Color.cyan);
-		g.fillRect((int) x, (int) y, BULLET_WIDTH, BULLET_HEIGHT);
-	}
-
-	@Override
-	public Rectangle getShape() {
-		return new Rectangle((int) x, (int) y, BULLET_WIDTH, BULLET_HEIGHT);
+		this.drawRect(g,  Color.cyan);
 	}
 	
 	/**

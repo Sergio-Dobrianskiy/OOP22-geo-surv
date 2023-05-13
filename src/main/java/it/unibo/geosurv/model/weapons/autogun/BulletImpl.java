@@ -20,13 +20,8 @@ public class BulletImpl extends Bullet {
 	
 	@Override
 	public void render(Graphics g) {
-		g.setColor(Color.green);
-		g.fillRect((int) x, (int) y, width, height);
+		this.drawRect(g,  Color.green);
 	}
 
-	@Override
-	public Rectangle getShape() {
-		return new Rectangle((int)x, (int)y, width, height);
-	}
 
 }

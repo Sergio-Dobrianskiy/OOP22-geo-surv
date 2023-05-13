@@ -30,6 +30,8 @@ public class Rhombus extends Monster {
         this.health = DEFAULT_HEALTH;
         this.dimension = DEFAULT_DIMENSION;
         this.power = 2;
+        this.height = DEFAULT_DIMENSION;
+        this.width = DEFAULT_DIMENSION;
     };
 
     @Override
@@ -43,10 +45,10 @@ public class Rhombus extends Monster {
         g.fillOval((int) x, (int) y, this.dimension, this.dimension);
     }
 
-    @Override
-    public Rectangle getShape() {
-        return new Rectangle((int) x, (int) y, this.dimension, this.dimension);
-    }
+//    @Override
+//    public Rectangle getShape() {
+//        return new Rectangle((int) x, (int) y, this.dimension, this.dimension);
+//    }
 
     public boolean isBig() {
         return isBig;

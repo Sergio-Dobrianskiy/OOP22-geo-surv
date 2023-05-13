@@ -33,8 +33,10 @@ public class MainPlayer extends GameObject {
         super(x, y, id);
         this.handler = handler;
         this.life = MAX_LIFE;
-        lastHitTime = 0;
-        observers = new ArrayList<>();
+        this.lastHitTime = 0;
+        this.observers = new ArrayList<>();
+        this.height = PLAYER_HEIGHT;
+        this.width = PLAYER_WIDTH;
     }
 
     public void tick() {
@@ -99,13 +101,13 @@ public class MainPlayer extends GameObject {
     }
 
     public void render(Graphics g) {
+    		this.drawRect(g,  Color.blue);
         g.setColor(Color.blue);
-        g.fillRect((int) x, (int) y, PLAYER_WIDTH, PLAYER_HEIGHT);
         g.drawString("Life: " + this.getLife() + " Exp: " + this.getExperience(), (int) x, (int) y - 5);
     }
 
     public Rectangle getShape() {
-        return new Rectangle((int) x, (int) y, PLAYER_WIDTH, PLAYER_HEIGHT);
+        return this.setRectangleShape();
     }
 
     public int getExperience() {
