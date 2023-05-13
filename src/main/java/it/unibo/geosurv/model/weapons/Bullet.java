@@ -57,7 +57,6 @@ public abstract class Bullet extends GameObject {
 				
 			} else if (isColliding(tempObject, ID.Monster)) {
 				((Monster) tempObject).hit(this.damage); // TODO: verify the cast
-				((Monster) tempObject).bounce(); // TODO: verify the cast
 				if (this instanceof BulletImpl) {
 					handler.removeObject(this);
 				}

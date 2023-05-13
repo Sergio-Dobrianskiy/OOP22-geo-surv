@@ -6,6 +6,7 @@ import java.awt.geom.RectangularShape;
 public abstract class GameObject {
 	protected float x, y;			// position
 	protected float velX, velY;		// velocity
+	protected float height, width;	// dimensions
 	protected ID id;
 	
 	public GameObject(float x, float y, ID id) {

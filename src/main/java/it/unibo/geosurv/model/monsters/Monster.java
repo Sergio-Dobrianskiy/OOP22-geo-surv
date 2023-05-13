@@ -71,6 +71,8 @@ public abstract class Monster extends GameObject implements MonstersObserver {
         if (this.isDead()) {
             p.removeObserver(this);
             this.die();
+        } else {
+        		this.bounce();
         }
     };
 

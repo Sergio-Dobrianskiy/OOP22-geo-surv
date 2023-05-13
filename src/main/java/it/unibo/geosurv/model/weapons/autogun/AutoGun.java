@@ -8,6 +8,7 @@ import it.unibo.geosurv.model.Handler;
 import it.unibo.geosurv.model.ID;
 import it.unibo.geosurv.model.player.MainPlayer;
 import it.unibo.geosurv.model.utility.Func;
+import it.unibo.geosurv.model.utility.Pair;
 import it.unibo.geosurv.model.weapons.Weapon;
 
 public class AutoGun extends Weapon {
@@ -55,9 +56,7 @@ public class AutoGun extends Weapon {
 			if (this.delta >= 1) {
 				this.lastTime = now;
 				this.closestEnemy = Func.findClosestEnemy(handler);
-				if (this.closestEnemy == null) {
-					return;
-				}
+
 				this.closestEnemyDistance = (float) Point2D.distance(player.getX(), player.getX(), 
 						closestEnemy.getX(), closestEnemy.getY());
 				if (this.closestEnemyDistance <= MAX_RANGE) {
@@ -81,10 +80,11 @@ public class AutoGun extends Weapon {
 		int my = (int) this.closestEnemy.getY();
 		float px = player.getX();
 		float py = player.getY();
+		Pair<Float, Float> angle = Func.findAngle(px, py, mx - 7.5f, my - 7.5f);
+		
 		GameObject tempBullet = handler.addObject(new BulletImpl(px + MainPlayer.HALF_PLAYER_WIDTH, py + MainPlayer.HALF_PLAYER_HEIGHT, handler));
-		float angle = (float) Math.atan2(my - py - MainPlayer.HALF_PLAYER_WIDTH, mx - px - MainPlayer.HALF_PLAYER_HEIGHT);
-		tempBullet.setVelX((float) ((BULLET_VELOCITY) * Math.cos(angle)));
-		tempBullet.setVelY((float) ((BULLET_VELOCITY) * Math.sin(angle)));
+		tempBullet.setVelX((float) ((BULLET_VELOCITY) * angle.getX()));
+		tempBullet.setVelY((float) ((BULLET_VELOCITY) * angle.getY()));
 	}
 	
 }

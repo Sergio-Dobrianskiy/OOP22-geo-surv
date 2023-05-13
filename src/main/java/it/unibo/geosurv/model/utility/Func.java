@@ -7,6 +7,7 @@ import java.util.Random;
 import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.Handler;
 import it.unibo.geosurv.model.ID;
+import it.unibo.geosurv.model.player.MainPlayer;
 
 public class Func {
 
@@ -95,4 +96,20 @@ public class Func {
 		}
 		return closestEnemy;
 	}
+	
+	/**
+	 * Return angle of from point A to B.
+	 *
+	 * @param flaot A's x coordinate
+	 * @param flaot A'y x coordinate
+	 * @param flaot B's x coordinate
+	 * @param flaot B'y x coordinate
+	 * @return Pair angle 
+	 */
+	public static Pair<Float, Float> findAngle(final float ax, final float ay, final float bx, final float by) {
+		float angle = (float) Math.atan2(by - ay, bx - ax);
+		return new Pair<Float, Float>((float) Math.cos(angle), (float) Math.sin(angle));
+	}
+	
+	
 }
