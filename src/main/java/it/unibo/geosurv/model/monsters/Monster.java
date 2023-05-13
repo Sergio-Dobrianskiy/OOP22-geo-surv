@@ -15,6 +15,9 @@ public abstract class Monster extends GameObject implements MonstersObserver {
 
     private int DEFAULT_EXPERIENCE = 1;
     private int BOUNCING_SPEED_MULTIPLYER = 10;
+    private long lastHitTime; // last time monster is touched/hit by player
+    private static final int MAX_HITS_PER_SECOND = 5;
+    private static final long HIT_COOLDOWN = 1000 / MAX_HITS_PER_SECOND;
 
     protected int health; // need to be shared with monters subclasses @Sergio-Dobrianskiy
     protected int power; // power which the plyer is hit by when in contact with a monster
@@ -27,7 +30,8 @@ public abstract class Monster extends GameObject implements MonstersObserver {
         monstersCounter++;
         p = Game.returnHandler().getPlayer();
         p.addObserver(this);
-        System.out.println("Added Observer: " + this.toString());
+        this.lastHitTime = 0;
+//        System.out.println("Added Observer: " + this.toString());
         
     }
 
@@ -51,7 +55,7 @@ public abstract class Monster extends GameObject implements MonstersObserver {
      * @return boolen value
      */
     public boolean isDead() {
-        return this.getHealth() < 0 ? true : false;
+        return this.getHealth() <= 0;
     };
 
     /**
@@ -69,13 +73,16 @@ public abstract class Monster extends GameObject implements MonstersObserver {
      * @param weapon whih hits the entity
      */
     public void hit(int weaponDamage) {
-        // System.out.println("damage: " + weaponDamage + " health: " + this.health);
-        this.health -= weaponDamage;
+    		long currentTime = System.currentTimeMillis();
+		if (currentTime - lastHitTime >= HIT_COOLDOWN) {
+			this.health -= weaponDamage;
+			lastHitTime = currentTime;
+			this.bounce();
+		}
+    		
         if (this.isDead()) {
             p.removeObserver(this);
-            this.die();
-        } else {
-        		this.bounce();
+            this.die();        		
         }
     };
 

@@ -56,6 +56,9 @@ public class AutoGun extends Weapon {
 			if (this.delta >= 1) {
 				this.lastTime = now;
 				this.closestEnemy = Func.findClosestEnemy(handler);
+				if (this.closestEnemy == null) {
+					return;
+				}
 
 				this.closestEnemyDistance = (float) Point2D.distance(player.getX(), player.getY(), 
 						closestEnemy.getX(), closestEnemy.getY());

@@ -25,7 +25,7 @@ public class Loader {
 	}
 
 	public void loadAll() {
-		handler.addPlayer(new MainPlayer(180, 300, ID.Player, handler)); // TODO: remove?
+		handler.addPlayer(new MainPlayer(180, 300, handler)); // TODO: remove?
 		this.loadTextures();
 		this.loadGuns();
 		loadLevel(Texture.SMALL_MAP.getTexture());
@@ -57,10 +57,10 @@ public class Loader {
 	 * Loads game Weapons/Guns
 	 */
 	private void loadGuns() {
-//		 handler.addObject(new SatelliteGun(this.handler));
 		handler.addObject(new AutoGun(this.handler));
-//		 handler.addObject(new ExplosionGun(this.handler));
-//		 handler.addObject(new LaserGun(this.handler));
+		handler.addObject(new SatelliteGun(this.handler));
+		handler.addObject(new ExplosionGun(this.handler));
+		handler.addObject(new LaserGun(this.handler));
 	}
 
 	/**
