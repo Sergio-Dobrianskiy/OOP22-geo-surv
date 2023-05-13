@@ -1,8 +1,7 @@
 package it.unibo.geosurv.model.weapons.autogun;
 
 import java.awt.geom.Point2D;
-import java.util.LinkedList;
-
+import java.util.ArrayList;
 import it.unibo.geosurv.model.Game;
 import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.Handler;
@@ -75,7 +74,7 @@ public class AutoGun extends Weapon {
 	public void findClosestEnemy() {
 		float closestDistance = Float.MAX_VALUE;
 		float distance;
-		LinkedList<GameObject> tmpObjects = handler.getObjects();
+		ArrayList<GameObject> tmpObjects = handler.getObjects();
 		GameObject tmpObject;
 		float px, py;
 		px = this.player.getX();

@@ -1,19 +1,18 @@
 package it.unibo.geosurv.model;
 
 import java.awt.Graphics;
-import java.util.LinkedList;
-
+import java.util.ArrayList;
 import it.unibo.geosurv.model.player.MainPlayer;
-import it.unibo.geosurv.model.weapons.laserGun.Laser;
+
 
 public class Handler {
 
 	// TODO: provare Set?
-	private LinkedList<GameObject> gameObjects = new LinkedList<GameObject>();
+	private ArrayList<GameObject> gameObjects = new ArrayList<GameObject>();
 	private MainPlayer player;
 	private boolean up = false, down = false, left = false, right = false;
 
-	public LinkedList<GameObject> getObjects() {
+	public ArrayList<GameObject> getObjects() {
 		return this.gameObjects;
 	}
 

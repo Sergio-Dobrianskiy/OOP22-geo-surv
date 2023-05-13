@@ -13,20 +13,20 @@ public class BulletImpl extends Bullet {
 	
 	public BulletImpl(float x, float y, Handler handler) {
 		super(x, y, handler);
-		this.bulletHeight = BULLET_HEIGHT;
-		this.bulletWidth = BULLET_WIDTH;
+		this.height = BULLET_HEIGHT;
+		this.width = BULLET_WIDTH;
 	}
 	
 	
 	@Override
 	public void render(Graphics g) {
 		g.setColor(Color.green);
-		g.fillRect((int) x, (int) y, bulletWidth, bulletHeight);
+		g.fillRect((int) x, (int) y, width, height);
 	}
 
 	@Override
 	public Rectangle getShape() {
-		return new Rectangle((int)x, (int)y, bulletWidth, bulletHeight);
+		return new Rectangle((int)x, (int)y, width, height);
 	}
 
 }

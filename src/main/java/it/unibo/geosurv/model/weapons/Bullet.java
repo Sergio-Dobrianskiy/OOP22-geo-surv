@@ -1,7 +1,6 @@
 package it.unibo.geosurv.model.weapons;
 
-import java.util.LinkedList;
-
+import java.util.ArrayList;
 import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.Handler;
 import it.unibo.geosurv.model.ID;
@@ -11,8 +10,8 @@ import it.unibo.geosurv.model.weapons.autogun.BulletImpl;
 public abstract class Bullet extends GameObject {
 
 	protected int damage = 1;
-	protected int bulletHeight;
-	protected int bulletWidth;
+	protected int height;
+	protected int width;
 	protected long lifeSpan = 5000L; // max milliseconds of life
 
 	protected long creationTime;
@@ -26,8 +25,8 @@ public abstract class Bullet extends GameObject {
 
 	@Override
 	public void tick() {
-		updatePosition(this.velX, this.velY);
 		if (this.stillAlive()) {
+			updatePosition(this.velX, this.velY);
 			this.checkCollisions();
 		} else {
 			handler.removeObject(this);
@@ -49,28 +48,33 @@ public abstract class Bullet extends GameObject {
 	}
 
 	private void checkCollisions() {
-		LinkedList<GameObject> tmpObjects = handler.getObjects();
+		ArrayList<GameObject> tmpObjects = handler.getObjects();
 		for (int i = 0; i < tmpObjects.size(); i++) {
 			GameObject tempObject = tmpObjects.get(i);
 
-			if (tempObject.getId() == ID.Block) { // if bullet touches wall => removed
-				if (this.getShape().getBounds2D().intersects(tempObject.getShape().getBounds2D())) {
-					if (this instanceof BulletImpl) {
-						handler.removeObject(this);
-					}
-				}
-			}
-
-			if (tempObject.getId() == ID.Monster) { // if bullet touches wall => removed
-				if (this.getShape().getBounds2D().intersects(tempObject.getShape().getBounds2D())) {
-					if (this instanceof BulletImpl) {
-						handler.removeObject(this);
-					}
-					((Monster) tempObject).hit(this.damage); // TODO: verify the cast
-					((Monster) tempObject).bounce(); // TODO: verify the cast
-
+			if (this instanceof BulletImpl && isColliding(tempObject, ID.Block)) {
+				handler.removeObject(this);
+				
+			} else if (isColliding(tempObject, ID.Monster)) {
+				((Monster) tempObject).hit(this.damage); // TODO: verify the cast
+				((Monster) tempObject).bounce(); // TODO: verify the cast
+				if (this instanceof BulletImpl) {
+					handler.removeObject(this);
 				}
 			}
 		}
 	}
+	
+	/**
+     * Check if a bullet is colliding with a GameObject
+     * 
+     * @param GameOnject to check
+     * @param ID that the touched object should have
+     */
+	private boolean isColliding(final GameObject obj, final ID id) {
+		return obj.getId() == id && this.getShape().getBounds2D().intersects(obj.getShape().getBounds2D());
+	}
+	
+	
+	
 }

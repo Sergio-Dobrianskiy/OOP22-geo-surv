@@ -3,9 +3,7 @@ package it.unibo.geosurv.model.player;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
-
 import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.Handler;
 import it.unibo.geosurv.model.ID;
@@ -74,7 +72,7 @@ public class MainPlayer extends GameObject {
     }
 
     private void collision() {
-        LinkedList<GameObject> tmpObjects = handler.getObjects();
+    		ArrayList<GameObject> tmpObjects = handler.getObjects();
         for (int i = 0; i < tmpObjects.size(); i++) {
             GameObject tempObject = tmpObjects.get(i);
             if (tempObject.getId() == ID.Block) { // if player touches wall => stop
