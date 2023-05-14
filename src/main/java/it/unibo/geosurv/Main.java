@@ -7,10 +7,10 @@ import it.unibo.geosurv.model.Game;
 public class Main {
 	public static void main(String args[]) {
 
-		menuView menuView = new menuView();
+		//menuView menuView = new menuView();
 		//MainMenuController mainMenuController = new MainMenuController(menuView);
 
 		//mainMenuController.startMenu();
-		//new Game();
+		new Game();
 	}
 }
