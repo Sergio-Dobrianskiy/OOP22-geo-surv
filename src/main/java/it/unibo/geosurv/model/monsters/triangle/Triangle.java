@@ -66,12 +66,11 @@ public class Triangle extends Monster {
      * @param g
      */
     @Override
-    public void render(Graphics g) {
-        this.drawRect(g,  Color.DARK_GRAY);
+    public void render(final Graphics g) {
+        this.drawRect(g, Color.DARK_GRAY);
         g.setColor(Color.white);
-        g.drawString("" + this.health, (int) x + 3, (int) y + 8);
+        g.drawString(String.valueOf(this.health), (int) x - 4, (int) y);
     }
-
 
     /**
      * @return whether a triangle is big or not.
