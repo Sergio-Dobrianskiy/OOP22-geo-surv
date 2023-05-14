@@ -1,12 +1,18 @@
 package it.unibo.geosurv.view.graphics;
-
-import java.awt.Dimension;
-
-import javax.swing.JFrame;
-
 import it.unibo.geosurv.model.Game;
 
+
+import java.awt.Dimension;
+import javax.swing.JFrame;
+
+
+
+
+
 public class Window {
+
+	//private static final int WINDOW_WIDTH = 1000;
+	//private static final int WINDOW_HEIGHT = 600;
 	
 	public Window(int width, int height, String title, Game game) {
 		 JFrame frame = new JFrame(title);
