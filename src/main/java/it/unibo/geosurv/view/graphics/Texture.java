@@ -19,6 +19,14 @@ public enum Texture {
 	 */
 	BIG_MAP_2("/maps/mapGame_copia2.png"),
 	/**
+	 * Represents the horizontal laser.
+	 */
+	LASER_H("/sprite/laser/laser_H.png"),
+	/**
+	 * Represents the vertical laser.
+	 */
+	LASER_V("/sprite/laser/laser_V.png"),
+	/**
 	 * Represents the small map.
 	 */
 	SMALL_MAP("/maps/map_small.png"),
