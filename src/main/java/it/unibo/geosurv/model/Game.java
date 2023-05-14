@@ -5,6 +5,8 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferStrategy;
+
+import it.unibo.geosurv.control.GameState;
 import it.unibo.geosurv.control.KeyInput;
 import it.unibo.geosurv.model.drops.Experience;
 import it.unibo.geosurv.model.monsters.Monster;
@@ -24,12 +26,12 @@ public class Game extends Canvas implements Runnable {
 	private static final int FRAMES_IN_BUFFER = 3;
 
 	private boolean isRunning = false;
-	private boolean pause = false;
 	private Thread thread;
 	private static Handler handler;
 	private final Camera camera;
 	private final Loader loader;
 	private static long startTime;
+	private GameState state;
 
 	//// debug
 	private int fps;
@@ -37,6 +39,7 @@ public class Game extends Canvas implements Runnable {
 	private int objectsCounter;
 
 	public Game() {
+		this.state = GameState.LOADING;
 		new Window(WINDOW_WIDTH, WINDOW_HEIGHT, "Geo Survival", this);
 
 		handler = new Handler();
@@ -61,6 +64,7 @@ public class Game extends Canvas implements Runnable {
 	};
 
 	private synchronized void start() {
+		this.state = GameState.RUNNING;
 		isRunning = true;
 		thread = new Thread(this);
 		thread.start();
@@ -104,7 +108,7 @@ public class Game extends Canvas implements Runnable {
 	}
 
 	public void tick() {
-		if (pause == false) {
+		if (state == GameState.RUNNING) {
 			handler.tick();
 		}
 		camera.tick();
@@ -143,12 +147,13 @@ public class Game extends Canvas implements Runnable {
 		bs.show();
 	}
 
-	public boolean getPause() {
-		return pause;
-	}
-
-	public void setPause(boolean pause) {
-		this.pause = pause;
+	
+	public void pause() {
+		if (this.state == GameState.RUNNING) {
+            this.state = GameState.PAUSE;
+        } else if (this.state == GameState.PAUSE) {
+            this.state = GameState.RUNNING;
+        }
 	}
 
 }
