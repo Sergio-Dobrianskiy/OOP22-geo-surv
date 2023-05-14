@@ -21,7 +21,7 @@ public class KeyInput extends KeyAdapter {
         if (key == KeyEvent.VK_S) handler.setDown(true);					// DOWN
         if (key == KeyEvent.VK_A) handler.setLeft(true);					// LEFT
         if (key == KeyEvent.VK_D) handler.setRight(true);					// RIGHT
-        if (key == KeyEvent.VK_P) game.setPause(!game.getPause());		// PAUSE-UNPAUSE
+        if (key == KeyEvent.VK_P) game.pause();// PAUSE-UNPAUSE
     }
 
     public void keyReleased(KeyEvent e) {

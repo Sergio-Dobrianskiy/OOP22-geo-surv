@@ -1,10 +1,10 @@
-package it.unibo.geosurv.model.weapons.satelliteGun;
+package it.unibo.geosurv.control.weapons;
 
 import java.util.ArrayList;
 import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.Handler;
+import it.unibo.geosurv.model.bullets.Satellite;
 import it.unibo.geosurv.model.player.MainPlayer;
-import it.unibo.geosurv.model.weapons.Weapon;
 
 public class SatelliteGun extends Weapon {
 	
@@ -14,7 +14,6 @@ public class SatelliteGun extends Weapon {
 	
 	private  double angleDifference;
 	private Handler handler;
-//	private Camera cam;
 //	private SpriteSheet ss;
 	private GameObject tempPlayer;
 	private double angle = 0d;
@@ -24,11 +23,9 @@ public class SatelliteGun extends Weapon {
 	private int counter;
 	
 
-//	public SatelliteGun(int x, int y, Handler handler, SpriteSheet ss, Game game, Camera cam) {
 	public SatelliteGun(Handler handler) {
 		super();
 		this.handler = handler;
-//		this.cam = cam;
 //		this.ss = ss;
 		this.levelUp();
 		tempPlayer = handler.getPlayer();
@@ -51,7 +48,7 @@ public class SatelliteGun extends Weapon {
 	 * Adds a rotating satellite
 	 */	
 	public void addSatellite() {
-		this.bullet = handler.addObject(new Satellite(this.getXPos(angle) + MainPlayer.HALF_PLAYER_WIDTH, this.getYPos(angle) + MainPlayer.HALF_PLAYER_HEIGHT, handler));
+		this.bullet = handler.addObject(new Satellite(this.getXPos(angle), this.getYPos(angle), handler));
 		this.bullets.add(this.bullet);
 		this.numberOfBullets++;
 	}
@@ -63,9 +60,9 @@ public class SatelliteGun extends Weapon {
 		this.counter = 0; 							// TODO: find a better method
 		
 		this.bullets.forEach( b -> {
-			double angle2 = this.angle + (angleDifference * this.counter);
-			b.setX(this.getXPos(angle2));
-			b.setY(this.getYPos(angle2));
+			double actualAngle = this.angle + (angleDifference * this.counter);
+			b.setX(this.getXPos(actualAngle));
+			b.setY(this.getYPos(actualAngle));
 			this.counter++;
 		});	
 	}
@@ -76,7 +73,7 @@ public class SatelliteGun extends Weapon {
 	 * @return float y coordinate of the satellite
 	 */	
 	public float getXPos(double angle) {
-		return (float) (13d + this.tempPlayer.getX() + (Math.cos(angle) * this.ORBIT_RADIUS)); // TODO: magic number
+		return (float) (this.tempPlayer.getX() + (Math.cos(angle) * this.ORBIT_RADIUS));
 	}
 	
 	/**
@@ -85,6 +82,10 @@ public class SatelliteGun extends Weapon {
 	 * @return float y coordinate of the satellite
 	 */	
 	public float getYPos(double angle) {
-		return (float) (20d + this.tempPlayer.getY() + (Math.sin(angle) * this.ORBIT_RADIUS)); // TODO: magic number
+		return (float) (this.tempPlayer.getY() + (Math.sin(angle) * this.ORBIT_RADIUS));
+	}
+
+	@Override
+	protected void shoot() {
 	}
 }

@@ -1,4 +1,4 @@
-package it.unibo.geosurv.model.weapons.laserGun;
+package it.unibo.geosurv.model.bullets;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -7,14 +7,11 @@ import java.awt.Rectangle;
 import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.Handler;
 import it.unibo.geosurv.model.ID;
-import it.unibo.geosurv.model.weapons.Bullet;
 
 public class Laser extends Bullet {
 	
 	protected final long LIFE_SPAN = 2000L;
 	
-	private int height;
-	private int width;
 	private GameObject player;
 	private int initialX;
 	private int initialY;
@@ -56,12 +53,13 @@ public class Laser extends Bullet {
 	@Override
 	public void render(Graphics g) {
 		g.setColor(Color.green);
-		g.fillRect(this.currentX(x), this.currentY(y), this.width, this.height);
+		g.fillRect(this.currentX(x) - (this.width / 2), this.currentY(y) - (this.height / 2), this.width, this.height);
 	}
+	
 
 	@Override
 	public Rectangle getShape() {
-		return new Rectangle(this.currentX(x), this.currentY(y), this.width, this.height);
+		return new Rectangle(this.currentX(x) - (this.width / 2), this.currentY(y) - (this.height / 2), this.width, this.height);
 	}
 
 }

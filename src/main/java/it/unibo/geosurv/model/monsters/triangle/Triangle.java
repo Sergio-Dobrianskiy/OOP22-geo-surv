@@ -40,11 +40,16 @@ public class Triangle extends Monster {
             this.dimension = DEFAULT_DIMENSION;
             this.speed = DEFAULT_SPEED;
             this.power = 1;
+            this.height = DEFAULT_DIMENSION;
+            this.width = DEFAULT_DIMENSION;
         } else {
             this.health = MAX_HEALTH;
             this.dimension = MAX_DIMENSION;
             this.speed = MAX_SPEED;
             this.power = POWER;
+            this.power = 5;
+            this.height = MAX_DIMENSION;
+            this.width = MAX_DIMENSION;
         }
 
     }
@@ -61,12 +66,12 @@ public class Triangle extends Monster {
      * @param g
      */
     @Override
-    public void render(final Graphics g) {
-        g.setColor(Color.DARK_GRAY);
-        g.fillRect((int) x, (int) y, this.dimension, this.dimension);
+    public void render(Graphics g) {
+        this.drawRect(g,  Color.DARK_GRAY);
         g.setColor(Color.white);
-        g.drawString(String.valueOf(this.health), (int) x + 3, (int) y + 8);
+        g.drawString("" + this.health, (int) x + 3, (int) y + 8);
     }
+
 
     /**
      * @return whether a triangle is big or not.

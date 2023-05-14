@@ -1,10 +1,10 @@
-package it.unibo.geosurv.model.weapons.explosionGun;
+package it.unibo.geosurv.control.weapons;
 
 import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.Handler;
+import it.unibo.geosurv.model.bullets.Explosion;
 import it.unibo.geosurv.model.utility.Func;
 import it.unibo.geosurv.model.utility.Pair;
-import it.unibo.geosurv.model.weapons.Weapon;
 
 public class ExplosionGun extends Weapon {
 	
@@ -18,7 +18,7 @@ public class ExplosionGun extends Weapon {
 	public ExplosionGun(Handler handler) {
 		super();
 		this.handler = handler; 
-		this.cicle = EXPLOSION_CYCLE;
+		this.cycle = EXPLOSION_CYCLE;
 	}
 	
 	@Override

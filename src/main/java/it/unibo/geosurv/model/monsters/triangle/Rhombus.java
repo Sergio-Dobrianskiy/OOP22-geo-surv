@@ -3,7 +3,6 @@ package it.unibo.geosurv.model.monsters.triangle;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
-
 import it.unibo.geosurv.model.Game;
 import it.unibo.geosurv.model.Handler;
 import it.unibo.geosurv.model.monsters.Monster;
@@ -31,6 +30,8 @@ public class Rhombus extends Monster {
         this.dimension = DEFAULT_DIMENSION;
         this.power = 2;
         this.speed = 0;
+        this.height = DEFAULT_DIMENSION;
+        this.width = DEFAULT_DIMENSION;
     };
 
     @Override
@@ -44,10 +45,10 @@ public class Rhombus extends Monster {
         g.fillOval((int) x, (int) y, this.dimension, this.dimension);
     }
 
-    @Override
-    public Rectangle getShape() {
-        return new Rectangle((int) x, (int) y, this.dimension, this.dimension);
-    }
+//    @Override
+//    public Rectangle getShape() {
+//        return new Rectangle((int) x, (int) y, this.dimension, this.dimension);
+//    }
 
     public boolean isBig() {
         return isBig;
