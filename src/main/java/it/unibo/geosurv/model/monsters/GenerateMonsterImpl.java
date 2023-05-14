@@ -11,27 +11,34 @@ import it.unibo.geosurv.model.utility.Pair;
 
 public class GenerateMonsterImpl implements GenerateMonster {
 
-    private static final float MIN_DISTANCE = 500.0f;
-    private static final float MAX_DISTANCE = 600.0f;
-
+    private static final float minDistance = 500.0f;
+    private static final float maxDistance = 600.0f;
     private Handler handler;
     private Game game;
+    private float x;
+    private float y;
 
     GameObject tempPlayer = Game.returnHandler().getPlayer();
 
     @Override
     public Monster generateMonster(final String monsterName, final boolean isBig) {
-        final Pair<Float, Float> randomPosition = Func.randomPoint(MIN_DISTANCE, MAX_DISTANCE);
-        final float x = tempPlayer.getX() + randomPosition.getX();
-        final float y = tempPlayer.getY() + randomPosition.getY();
 
         if ("Triangle".equals(monsterName)) {
-            return new Triangle(x, y, handler, game, isBig);
+            final Pair<Float, Float> randomPosition = Func.randomPoint(minDistance, maxDistance);
+            x = tempPlayer.getX() + randomPosition.getX();
+            y = tempPlayer.getY() + randomPosition.getY();
+            return new Triangle(x, y, isBig);
 
         } else if ("Rect".equals(monsterName)) {
+            final Pair<Float, Float> randomPosition = Func.randomPoint(minDistance, maxDistance);
+            x = tempPlayer.getX() + randomPosition.getX();
+            y = tempPlayer.getY() + randomPosition.getY();
             return new Rect(x, y, handler, game, isBig);
 
         } else if ("Rhombus".equals(monsterName)) {
+            final Pair<Float, Float> randomPosition = Func.randomPoint(100, 200);
+            x = tempPlayer.getX() + randomPosition.getX();
+            y = tempPlayer.getY() + randomPosition.getY();
             return new Rhombus(x, y, handler, game, isBig);
 
         } else {
