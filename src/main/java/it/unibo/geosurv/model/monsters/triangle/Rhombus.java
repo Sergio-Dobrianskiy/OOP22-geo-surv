@@ -2,28 +2,21 @@ package it.unibo.geosurv.model.monsters.triangle;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Rectangle;
-import it.unibo.geosurv.model.Game;
-import it.unibo.geosurv.model.Handler;
+
 import it.unibo.geosurv.model.monsters.Monster;
 
 public class Rhombus extends Monster {
 
-    private int DEFAULT_HEALTH = 2;
-    private int DEFAULT_DIMENSION = 24;
-    private static int counter = 0;
+    private final static int DEFAULT_HEALTH = 2;
+    private final static int DEFAULT_DIMENSION = 24;
+    private static int counter;
     private String name = "Rhombus-";
-    private boolean isBig = false;
 
     /**
      * Rhombus constructor
      */
-    public Rhombus(float x, float y, Handler handler, Game game, boolean isBig) { // TODO: handler & gamo not used! to
-                                                                                  // delete
+    public Rhombus(final float x, final float y) { // TODO: handler & gamo
         super(x, y);
-        // this.speed = speed;
-        // this.handler = handler;
-        // this.game = game;
         Rhombus.counter++;
         this.name = name + Rhombus.counter;
         this.health = DEFAULT_HEALTH;
@@ -32,26 +25,20 @@ public class Rhombus extends Monster {
         this.speed = 0;
         this.height = DEFAULT_DIMENSION;
         this.width = DEFAULT_DIMENSION;
-    };
+    }
 
+    /**
+     * do nothing on tick()
+     */
     @Override
     public void tick() {
-
+        /* do nothing on tick() */
     }
 
     @Override
-    public void render(Graphics g) {
+    public void render(final Graphics g) {
         g.setColor(Color.orange);
         g.fillOval((int) x, (int) y, this.dimension, this.dimension);
-    }
-
-//    @Override
-//    public Rectangle getShape() {
-//        return new Rectangle((int) x, (int) y, this.dimension, this.dimension);
-//    }
-
-    public boolean isBig() {
-        return isBig;
     }
 
 }

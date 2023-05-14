@@ -33,13 +33,13 @@ public class GenerateMonsterImpl implements GenerateMonster {
             final Pair<Float, Float> randomPosition = Func.randomPoint(minDistance, maxDistance);
             x = tempPlayer.getX() + randomPosition.getX();
             y = tempPlayer.getY() + randomPosition.getY();
-            return new Rect(x, y, handler, game, isBig);
+            return new Rect(x, y, isBig);
 
         } else if ("Rhombus".equals(monsterName)) {
             final Pair<Float, Float> randomPosition = Func.randomPoint(100, 200);
             x = tempPlayer.getX() + randomPosition.getX();
             y = tempPlayer.getY() + randomPosition.getY();
-            return new Rhombus(x, y, handler, game, isBig);
+            return new Rhombus(x, y);
 
         } else {
             throw new UnsupportedOperationException("Unimplemented Monster: " + monsterName);
