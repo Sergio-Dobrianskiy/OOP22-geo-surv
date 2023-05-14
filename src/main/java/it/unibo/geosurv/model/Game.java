@@ -125,7 +125,7 @@ public class Game extends Canvas implements Runnable, TickingObject {
 		Graphics2D g2d = (Graphics2D) g;
 
 		///////////////////////////////////// below here we draw to the game
-		g.setColor(Color.white);
+		g.setColor(Color.black);
 		g.fillRect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
 
 		if (this.showDebug == true) {
