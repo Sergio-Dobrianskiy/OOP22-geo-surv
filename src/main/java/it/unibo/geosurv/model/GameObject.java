@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.RectangularShape;
+import java.awt.image.BufferedImage;
 
 import it.unibo.geosurv.control.TickingObject;
 
@@ -87,6 +88,13 @@ public abstract class GameObject implements TickingObject {
         g.fillRect((int) (x - (this.width / 2)), (int) (y - (this.height / 2)), width, height);
 
 	}
+	
+	protected void renderImage(Graphics g, BufferedImage sprite) {
+        g.drawImage(sprite, (int) (x - (this.width / 2)), (int) (y - (this.height / 2)), null);
+
+	}
+	
+	
 	
 	protected void drawOval(Graphics g, Color color) {
 		g.setColor(color);

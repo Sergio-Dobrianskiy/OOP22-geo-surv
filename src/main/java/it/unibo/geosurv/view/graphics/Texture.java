@@ -10,6 +10,7 @@ import javax.imageio.ImageIO;
  * Enum that contains all maps.
  */
 public enum Texture {
+	BLOCK("/sprite/block/block.png"),
 	/**
 	 * Represents the big map.
 	 */
