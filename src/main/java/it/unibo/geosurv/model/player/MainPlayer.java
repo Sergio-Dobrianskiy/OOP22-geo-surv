@@ -131,7 +131,7 @@ public class MainPlayer extends GameObject {
 
     public void removeObserver(MonstersObserver observer) {
         observers.remove(observer);
-        System.out.println("Removed Observer: " + observer.toString());
+        // System.out.println("Removed Observer: " + observer.toString());
     }
 
     private void notifyObservers() {

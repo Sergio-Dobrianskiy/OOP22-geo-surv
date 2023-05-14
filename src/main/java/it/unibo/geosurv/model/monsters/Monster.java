@@ -29,7 +29,7 @@ public abstract class Monster extends GameObject implements MonstersObserver {
         monstersCounter++;
         p = Game.returnHandler().getPlayer();
         p.addObserver(this);
-        System.out.println("Added Observer: " + this.toString());
+        // System.out.println("Added Observer: " + this.toString());
     }
 
     /**

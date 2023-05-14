@@ -71,7 +71,7 @@ public class MonsterSpawner extends GameObject {
         }
         if (currentSecond - begin / 1000 > 40) {
             SPAWN_RATE = 3;
-            if (elapsedTime >= 500 / SPAWN_RATE) {
+            if (elapsedTime >= 1000 / SPAWN_RATE) {
                 flood();
             }
         }
@@ -96,10 +96,10 @@ public class MonsterSpawner extends GameObject {
         throw new UnsupportedOperationException("Unimplemented method 'getBounds'");
     }
 
-    private Monster generateMonsterT(boolean big) {
+    private Monster generateMonsterT(boolean isBig) {
         // System.out.println("--> generateMonsterT()");
         return new Triangle(tempPlayer.getX() + Func.randomPoint(420.0f, 500.0f).getX(),
-                tempPlayer.getY() + Func.randomPoint(420.0f, 500.0f).getY(), this.handler, game, big);
+                tempPlayer.getY() + Func.randomPoint(420.0f, 500.0f).getY(), isBig);
     }
 
     private Monster generateMonsterR(boolean big) {

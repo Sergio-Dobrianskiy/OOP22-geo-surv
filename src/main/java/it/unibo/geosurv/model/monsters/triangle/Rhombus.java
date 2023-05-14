@@ -3,22 +3,17 @@ package it.unibo.geosurv.model.monsters.triangle;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
-import java.util.LinkedList;
 
 import it.unibo.geosurv.model.Game;
-import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.Handler;
-import it.unibo.geosurv.model.ID;
 import it.unibo.geosurv.model.monsters.Monster;
-import it.unibo.geosurv.model.utility.Func;
-import it.unibo.geosurv.model.utility.Pair;
 
 public class Rhombus extends Monster {
 
+    private int DEFAULT_HEALTH = 2;
+    private int DEFAULT_DIMENSION = 24;
     private static int counter = 0;
-    private int DEFAULT_HEALTH = 2; // default health of Rect
     private String name = "Rhombus-";
-    private int DEFAULT_DIMENSION = 16; // default size of Rect
     private boolean isBig = false;
 
     /**
