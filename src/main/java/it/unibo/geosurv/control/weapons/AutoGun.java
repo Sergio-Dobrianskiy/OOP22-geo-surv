@@ -1,4 +1,4 @@
-package it.unibo.geosurv.model.weapons.autogun;
+package it.unibo.geosurv.control.weapons;
 
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
@@ -6,10 +6,10 @@ import it.unibo.geosurv.model.Game;
 import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.Handler;
 import it.unibo.geosurv.model.ID;
+import it.unibo.geosurv.model.bullets.BulletImpl;
 import it.unibo.geosurv.model.player.MainPlayer;
 import it.unibo.geosurv.model.utility.Func;
 import it.unibo.geosurv.model.utility.Pair;
-import it.unibo.geosurv.model.weapons.Weapon;
 
 public class AutoGun extends Weapon {
 	

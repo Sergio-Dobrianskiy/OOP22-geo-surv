@@ -127,5 +127,6 @@ public class Func {
 		return new Pair<Float, Float>((float) Math.cos(angle), (float) Math.sin(angle));
 	}
 	
+
 	
 }

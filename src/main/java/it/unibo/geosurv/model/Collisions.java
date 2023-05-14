@@ -1,10 +1,11 @@
 package it.unibo.geosurv.model;
 
 import java.util.ArrayList;
+
+import it.unibo.geosurv.model.bullets.Bullet;
+import it.unibo.geosurv.model.bullets.BulletImpl;
 import it.unibo.geosurv.model.monsters.Monster;
 import it.unibo.geosurv.model.player.MainPlayer;
-import it.unibo.geosurv.model.weapons.Bullet;
-import it.unibo.geosurv.model.weapons.autogun.BulletImpl;
 
 public class Collisions {
 	

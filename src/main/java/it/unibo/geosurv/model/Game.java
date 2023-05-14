@@ -8,13 +8,14 @@ import java.awt.image.BufferStrategy;
 
 import it.unibo.geosurv.control.GameState;
 import it.unibo.geosurv.control.KeyInput;
+import it.unibo.geosurv.control.TickingObject;
 import it.unibo.geosurv.model.drops.Experience;
 import it.unibo.geosurv.model.monsters.Monster;
 import it.unibo.geosurv.model.monsters.MonsterSpawner;
 import it.unibo.geosurv.view.graphics.Camera;
 import it.unibo.geosurv.view.graphics.Window;
 
-public class Game extends Canvas implements Runnable {
+public class Game extends Canvas implements Runnable, TickingObject {
 
 	private static final long serialVersionUID = 1L;
 	private static final int WINDOW_WIDTH = 1000;

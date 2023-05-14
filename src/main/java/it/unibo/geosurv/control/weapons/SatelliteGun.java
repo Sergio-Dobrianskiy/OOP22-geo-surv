@@ -1,10 +1,10 @@
-package it.unibo.geosurv.model.weapons.satelliteGun;
+package it.unibo.geosurv.control.weapons;
 
 import java.util.ArrayList;
 import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.Handler;
+import it.unibo.geosurv.model.bullets.Satellite;
 import it.unibo.geosurv.model.player.MainPlayer;
-import it.unibo.geosurv.model.weapons.Weapon;
 
 public class SatelliteGun extends Weapon {
 	
@@ -83,5 +83,9 @@ public class SatelliteGun extends Weapon {
 	 */	
 	public float getYPos(double angle) {
 		return (float) (this.tempPlayer.getY() + (Math.sin(angle) * this.ORBIT_RADIUS));
+	}
+
+	@Override
+	protected void shoot() {
 	}
 }

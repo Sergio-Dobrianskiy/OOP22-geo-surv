@@ -1,11 +1,11 @@
-package it.unibo.geosurv.model.weapons.laserGun;
+package it.unibo.geosurv.control.weapons;
 
 import java.util.jar.Manifest;
 
 import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.Handler;
+import it.unibo.geosurv.model.bullets.Laser;
 import it.unibo.geosurv.model.player.MainPlayer;
-import it.unibo.geosurv.model.weapons.Weapon;
 
 
 public class LaserGun extends Weapon {
@@ -21,7 +21,7 @@ public class LaserGun extends Weapon {
 	public LaserGun(Handler handler) {
 		super();
 		this.handler = handler; 
-		this.cicle = LASER_CYCLE;
+		this.cycle = LASER_CYCLE;
 		player = handler.getPlayer();
 	}
 	

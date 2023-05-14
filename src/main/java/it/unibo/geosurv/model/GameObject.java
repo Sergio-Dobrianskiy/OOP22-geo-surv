@@ -4,10 +4,11 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.geom.Ellipse2D;
-import java.awt.geom.Ellipse2D.Float;
 import java.awt.geom.RectangularShape;
 
-public abstract class GameObject {
+import it.unibo.geosurv.control.TickingObject;
+
+public abstract class GameObject implements TickingObject {
 	protected float x, y;					// position
 	protected float velX, velY;				// velocity
 	protected int height = 0, width = 0;	// dimensions

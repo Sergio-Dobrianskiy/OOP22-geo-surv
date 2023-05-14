@@ -3,13 +3,13 @@ package it.unibo.geosurv.model;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
+import it.unibo.geosurv.control.weapons.AutoGun;
+import it.unibo.geosurv.control.weapons.ExplosionGun;
+import it.unibo.geosurv.control.weapons.LaserGun;
+import it.unibo.geosurv.control.weapons.SatelliteGun;
 import it.unibo.geosurv.model.monsters.MonsterSpawner;
 import it.unibo.geosurv.model.player.MainPlayer;
 import it.unibo.geosurv.model.walls.blocks.Block;
-import it.unibo.geosurv.model.weapons.autogun.AutoGun;
-import it.unibo.geosurv.model.weapons.explosionGun.ExplosionGun;
-import it.unibo.geosurv.model.weapons.laserGun.LaserGun;
-import it.unibo.geosurv.model.weapons.satelliteGun.SatelliteGun;
 import it.unibo.geosurv.view.graphics.Camera;
 import it.unibo.geosurv.view.graphics.Texture;
 
@@ -17,7 +17,6 @@ public class Loader {
 
 	protected final static int GAME_GRID_HEIGHT = 32;
 	protected final static int GAME_GRID_WIDTH = 32;
-
 	private Handler handler;
 
 	public Loader(Handler handler) {
@@ -57,10 +56,10 @@ public class Loader {
 	 * Loads game Weapons/Guns
 	 */
 	private void loadGuns() {
-		handler.addObject(new AutoGun(this.handler));
-		handler.addObject(new SatelliteGun(this.handler));
-		handler.addObject(new ExplosionGun(this.handler));
-		handler.addObject(new LaserGun(this.handler));
+		handler.addTickingObject(new AutoGun(this.handler));
+		handler.addTickingObject(new SatelliteGun(this.handler));
+		handler.addTickingObject(new ExplosionGun(this.handler));
+		handler.addTickingObject(new LaserGun(this.handler));
 	}
 
 	/**

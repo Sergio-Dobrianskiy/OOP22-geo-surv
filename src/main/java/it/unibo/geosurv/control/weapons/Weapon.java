@@ -1,11 +1,8 @@
-package it.unibo.geosurv.model.weapons;
+package it.unibo.geosurv.control.weapons;
 
-import java.awt.Graphics;
-import java.awt.geom.RectangularShape;
-import it.unibo.geosurv.model.GameObject;
-import it.unibo.geosurv.model.ID;
+import it.unibo.geosurv.control.TickingObject;
 
-public abstract class Weapon extends GameObject {
+public abstract class Weapon implements TickingObject {
 	
 	/**
      * maximum level of a weapon
@@ -13,48 +10,30 @@ public abstract class Weapon extends GameObject {
 	protected static final int MAX_LVL = 4;
 	
 	/**
+     * time in milliseconds of the last shot
+     */
+	protected long lastShoot = 0;
+	
+	/**
      * time in milliseconds between shots
      */
-	protected long cicle = 2000L;
+	protected long cycle = 2000L;
 	
 	/**
      * current level of a weapon
      */
 	protected int currentLevel = 0;
 	
-	/**
-     * time weapon has shoot
-     */
-	protected long lastShoot = 0;
-
-	public Weapon() {
-		super(0, 0, ID.Weapon);
-		this.lastShoot = 0;
-	}
 	
-	@Override
+	/**
+     * shoots every cycle
+     */
 	public void tick() {
 		if (this.checkTime()) {
 			this.shoot();
 		}
 	}
 
-	/**
-     * a weapon is not rendered
-     */
-	@Override
-	public void render(Graphics g) {
-	}
-
-	/**
-     * a weapon doesn't have a shape / collision box
-     */
-	@Override
-	public RectangularShape getShape() {
-		return null;
-	}
-	
-	
 	/**
      * raises weapon level by one 
      * 
@@ -68,17 +47,25 @@ public abstract class Weapon extends GameObject {
 		return false;
 	}
 	
+	/**
+     * resets the weapon level
+     */
+	protected void resetLevel() {
+		currentLevel = 0;
+	}
+	
+	/**
+     * check if an amount of time has passed
+     */
 	private boolean checkTime() {
 		long currentTime = System.currentTimeMillis();
-		if ((currentTime - this.lastShoot) > this.cicle) {
+		if ((currentTime - this.lastShoot) > this.cycle) {
 			this.lastShoot = currentTime;
 			return true;
 		}
 		return false;
 	}
 	
-	protected void shoot() {
-		
-	}
+	protected abstract void shoot();
 
 }

@@ -1,10 +1,9 @@
-package it.unibo.geosurv.model.weapons.satelliteGun;
+package it.unibo.geosurv.model.bullets;
 
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import it.unibo.geosurv.model.Handler;
-import it.unibo.geosurv.model.weapons.Bullet;
 
 public class Satellite extends Bullet {	
 	
