@@ -10,7 +10,6 @@ import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.Handler;
 import it.unibo.geosurv.model.ID;
 import it.unibo.geosurv.model.MonstersObserver;
-import it.unibo.geosurv.model.monsters.Monster;
 
 import java.awt.Color;
 
@@ -29,10 +28,8 @@ public class MainPlayer extends GameObject {
     private int experience;
     private int health;
     private Collisions collisions;
-	
-    
 
-	private List<MonstersObserver> observers;
+    private List<MonstersObserver> observers;
 
     public MainPlayer(float x, float y, Handler handler) {
         super(x, y, ID.Player);
@@ -54,7 +51,7 @@ public class MainPlayer extends GameObject {
     }
 
     public void render(Graphics g) {
-    		this.drawRect(g,  Color.blue);
+        this.drawRect(g, Color.blue);
         g.setColor(Color.blue);
         g.drawString("Life: " + this.getLife() + " Exp: " + this.getExperience(), (int) x, (int) y - 5);
     }
@@ -77,10 +74,10 @@ public class MainPlayer extends GameObject {
     public int getLife() {
         return health;
     }
-    
+
     public void setLife(int life) {
-		this.health = life;
-	}
+        this.health = life;
+    }
 
     public void addObserver(MonstersObserver observer) {
         observers.add(observer);
@@ -88,7 +85,7 @@ public class MainPlayer extends GameObject {
 
     public void removeObserver(MonstersObserver observer) {
         observers.remove(observer);
-        System.out.println("Removed Observer: " + observer.toString());
+        // System.out.println("Removed Observer: " + observer.toString());
     }
 
     private void notifyObservers() {
@@ -96,22 +93,22 @@ public class MainPlayer extends GameObject {
             observer.update(this);
         }
     }
-    
+
     public void hit(final int damage) {
-    		long currentTime = System.currentTimeMillis();
-    		if (currentTime - lastHitTime >= HIT_COOLDOWN) {
-    			this.health += damage;
-    			lastHitTime = currentTime;
-    		}
+        long currentTime = System.currentTimeMillis();
+        if (currentTime - lastHitTime >= HIT_COOLDOWN) {
+            this.health -= damage;
+            lastHitTime = currentTime;
+        }
     }
-    
+
     public void stopMovements() {
-    		x += velX * -1;
+        x += velX * -1;
         y += velY * -1;
     }
-    
+
     public void movePlayer() {
-    		if (handler.isUp()) {
+        if (handler.isUp()) {
             velY = -PLAYER_SPEED;
         } else if (!handler.isDown()) {
             velY = 0;
