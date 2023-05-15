@@ -84,18 +84,6 @@ public abstract class GameObject implements TickingObject {
 		this.width = width;
 	}
 	
-	protected void drawRect(Graphics g, Color color) {
-		g.setColor(color);
-        g.fillRect((int) (x - (this.width / 2)), (int) (y - (this.height / 2)), width, height);
-
-	}
-	
-	protected void renderImage(Graphics g, BufferedImage sprite) {
-        g.drawImage(sprite, (int) (x - (this.width / 2)), (int) (y - (this.height / 2)), null);
-
-	}
-	
-	
 	public int getRenderX() {
 		return (int) (x - (this.width / 2));
 	}
@@ -103,15 +91,7 @@ public abstract class GameObject implements TickingObject {
 	public int getRenderY() {
 		return (int) (y - (this.height / 2));
 	}
-	
-	
-	
-	
-	protected void drawOval(Graphics g, Color color) {
-		g.setColor(color);
-        g.fillOval(getRenderX(), getRenderY(), width, height);
-	}
-	
+
 	protected Rectangle setRectangleShape() {
 		return new Rectangle(this.getRenderX(), getRenderY(), width, height);
 	}

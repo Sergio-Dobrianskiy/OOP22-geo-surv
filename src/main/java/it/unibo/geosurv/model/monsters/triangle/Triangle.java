@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 import it.unibo.geosurv.model.monsters.Monster;
+import it.unibo.geosurv.view.graphics.Texture;
 
 /**
  * Class for triangle type of Monsters.
@@ -42,6 +43,7 @@ public class Triangle extends Monster {
             this.power = 1;
             this.height = DEFAULT_DIMENSION;
             this.width = DEFAULT_DIMENSION;
+            this.texture = Texture.TRIANGLE;
         } else {
             this.health = MAX_HEALTH;
             this.dimension = MAX_DIMENSION;
@@ -50,7 +52,9 @@ public class Triangle extends Monster {
             this.power = 5;
             this.height = MAX_DIMENSION;
             this.width = MAX_DIMENSION;
+            this.texture = Texture.TRIANGLE_BIG;
         }
+        
 
     }
 

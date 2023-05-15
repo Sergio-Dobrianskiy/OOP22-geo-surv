@@ -50,11 +50,11 @@ public class MainPlayer extends GameObject {
         notifyObservers(); // notify player position
     }
 
-    public void render(Graphics g) {
-        this.drawRect(g, Color.blue);
-        g.setColor(Color.blue);
-        g.drawString("Life: " + this.getLife() + " Exp: " + this.getExperience(), (int) x, (int) y - 5);
-    }
+//    public void render(Graphics g) {
+//        this.drawRect(g, Color.blue);
+//        g.setColor(Color.blue);
+//        g.drawString("Life: " + this.getLife() + " Exp: " + this.getExperience(), (int) x, (int) y - 5);
+//    }
 
     public Rectangle getShape() {
         return this.setRectangleShape();

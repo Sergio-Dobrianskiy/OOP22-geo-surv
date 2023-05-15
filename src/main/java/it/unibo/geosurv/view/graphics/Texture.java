@@ -38,7 +38,15 @@ public enum Texture {
 	/**
 	 * Represents the test map.
 	 */
-	TEST_MAP("/maps/map_test.png");
+	TEST_MAP("/maps/map_test.png"),
+	/**
+	 * Represents the triangle.
+	 */
+	TRIANGLE("/sprite/triangle/triangle.png"),
+	/**
+	 * Represents the triangle.
+	 */
+	TRIANGLE_BIG("/sprite/triangle/triangle_big.png");;
 
 	//////////////////////////////////
 	private final String filePath;
