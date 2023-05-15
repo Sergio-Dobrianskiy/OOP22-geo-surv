@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.Handler;
 import it.unibo.geosurv.model.bullets.Satellite;
-import it.unibo.geosurv.model.player.MainPlayer;
 
 public class SatelliteGun extends Weapon {
 	
@@ -14,7 +13,6 @@ public class SatelliteGun extends Weapon {
 	
 	private  double angleDifference;
 	private Handler handler;
-//	private SpriteSheet ss;
 	private GameObject tempPlayer;
 	private double angle = 0d;
 	private GameObject bullet;
@@ -26,9 +24,8 @@ public class SatelliteGun extends Weapon {
 	public SatelliteGun(Handler handler) {
 		super();
 		this.handler = handler;
-//		this.ss = ss;
 		this.levelUp();
-		tempPlayer = handler.getPlayer();
+		this.tempPlayer = handler.getPlayer();
 		this.bullets = new ArrayList<>();
 		this.addSatellite();
 		this.addSatellite();							// test
@@ -74,7 +71,6 @@ public class SatelliteGun extends Weapon {
 	 */	
 	public float getXPos(double angle) {
 		return (float) (this.tempPlayer.getX() + (Math.cos(angle) * this.ORBIT_RADIUS));
-//		return (float) (this.tempPlayer.getRenderX() + (Math.cos(angle) * this.ORBIT_RADIUS));
 	}
 	
 	/**

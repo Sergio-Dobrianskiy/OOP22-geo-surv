@@ -1,10 +1,7 @@
 package it.unibo.geosurv.model.bullets;
 
-import java.awt.Color;
-import java.awt.Graphics;
 import java.awt.geom.Ellipse2D;
 import it.unibo.geosurv.model.Handler;
-import it.unibo.geosurv.model.ID;
 
 public class Explosion extends Bullet {
 	

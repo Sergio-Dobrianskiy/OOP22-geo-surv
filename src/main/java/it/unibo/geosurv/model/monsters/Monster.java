@@ -1,8 +1,6 @@
 package it.unibo.geosurv.model.monsters;
 
 import java.awt.geom.RectangularShape;
-import java.awt.Rectangle;
-
 import it.unibo.geosurv.model.Game;
 import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.Handler;

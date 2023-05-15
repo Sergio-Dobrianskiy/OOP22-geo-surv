@@ -1,12 +1,7 @@
 package it.unibo.geosurv.model.drops;
 
-import java.awt.Color;
-import java.awt.Graphics;
 import java.awt.Rectangle;
-
-import it.unibo.geosurv.model.Game;
 import it.unibo.geosurv.model.GameObject;
-import it.unibo.geosurv.model.Handler;
 import it.unibo.geosurv.model.ID;
 
 public class Experience extends GameObject {
@@ -14,25 +9,17 @@ public class Experience extends GameObject {
     /** more experience make player go to new levels */
     private int experience;
     private static int experienceCounter = 0;
-    private GameObject tempPlayer = Game.returnHandler().getPlayer();
-    private Handler handler;
 
     public Experience(float x, float y, int exp) {
         super(x, y, ID.Experience);
         this.experience = exp;
         experienceCounter++; // TODO: decrease the counter as Player gather experiences pills
-        handler = Game.returnHandler();
+
     }
 
     @Override
     public void tick() {
     }
-
-//    @Override
-//    public void render(Graphics g) {
-//        g.setColor(Color.PINK);
-//        g.fillOval((int) x, (int) y, 8, 8);
-//    }
 
     @Override
     public Rectangle getShape() {
