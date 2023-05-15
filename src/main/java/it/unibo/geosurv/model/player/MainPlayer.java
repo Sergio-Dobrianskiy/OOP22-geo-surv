@@ -54,7 +54,27 @@ public class MainPlayer extends GameObject {
         this.drawRect(g, Color.blue);
         g.setColor(Color.blue);
         g.drawString("Life: " + this.getLife() + " Exp: " + this.getExperience(), (int) x, (int) y - 5);
+        
+        //Draw bar progres for player's life
+        int barWidth = 100;
+        int barHeight = 10;
+        int barX = (int) (x - barWidth / 2);
+        int barY = (int) y - barHeight -30;
+        
+        g.setColor(Color.BLACK);
+        g.fillRect(barX, barY, barWidth, barHeight);
+        
+        float percentage = (float) health / MAX_LIFE;
+        int filledWidth = (int) (barWidth * percentage);
+        
+        g.setColor(Color.GREEN);
+        g.fillRect(barX, barY, filledWidth, barHeight);
+        
+        g.setColor(Color.WHITE);
+        g.drawRect(barX, barY, barWidth, barHeight);
+        
     }
+        
 
     public Rectangle getShape() {
         return this.setRectangleShape();
