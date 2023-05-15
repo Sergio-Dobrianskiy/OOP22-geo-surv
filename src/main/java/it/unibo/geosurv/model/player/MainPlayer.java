@@ -13,7 +13,7 @@ import it.unibo.geosurv.model.MonstersObserver;
 
 import java.awt.Color;
 
-public class MainPlayer extends GameObject {
+public class MainPlayer extends GameObject implements MainPlayerInterf {
 
     public final static int PLAYER_HEIGHT = 48;
     public final static int PLAYER_WIDTH = 32;
