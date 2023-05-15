@@ -1,12 +1,8 @@
 package it.unibo.geosurv.model.bullets;
 
-import java.awt.Graphics;
 import java.awt.Rectangle;
-import java.awt.image.BufferedImage;
 import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.Handler;
-import it.unibo.geosurv.model.ID;
-import it.unibo.geosurv.view.graphics.Sprite;
 import it.unibo.geosurv.view.graphics.Texture;
 
 public class Laser extends Bullet {
@@ -14,9 +10,10 @@ public class Laser extends Bullet {
 	protected final long LIFE_SPAN = 2000L;
 	
 	private GameObject player;
-	private int initialX;
-	private int initialY;
-	private BufferedImage sprite;
+	private int initialPlayerX;
+	private int initialPlayerY;
+	private int initialLaserX;
+	private int initialLaserY;
 
 	public Laser(float x, float y, Handler handler, final int width, final int height, Texture texture) {
 		super(x, y, handler);
@@ -24,48 +21,46 @@ public class Laser extends Bullet {
 		this.width = width;
 		this.height = height;
 		this.player = handler.getPlayer();
-		this.initialX = (int) player.getX();
-		this.initialY = (int) player.getY();
+		this.initialPlayerX = (int) player.getX();
+		this.initialPlayerY = (int) player.getY();
+		this.initialLaserX = (int) x;
+		this.initialLaserY = (int) y;
 		this.texture = texture;
 	}
+	
+	
+	/**
+     * laser follows the player
+     */
+	@Override
+	public void tick() {
+		super.tick();
+		this.x = currentX();
+		this.y = currentY();
+	}
+
 	
 	/**
      * calculate x coordinate of the laser taking into account the player movements
      * 
-     * @param float x coordinate at the time of the laser creation
-     * 
      * @return int x coordinate at the time of render/collision
      */
-	private int currentX(float n) {
-		int px = (int) player.getX();
-		return (int) n - initialX + px;
+	private int currentX() {
+		return (int) player.getX() - initialPlayerX + initialLaserX;
 	}
 	
 	/**
      * calculate y coordinate of the laser taking into account the player movements
      * 
-     * @param float y coordinate at the time of the laser creation
-     * 
      * @return int y coordinate at the time of render/collision
      */
-	private int currentY(float n) {
-		int py = (int) player.getY();
-		return (int) n - initialY + py;
+	private int currentY() {
+		return (int) player.getY() - initialPlayerY + initialLaserY;
 	}
-	
-	
-	public void render(Graphics g) {
-//		g.setColor(Color.green);
-//		g.fillRect(this.currentX(x) - (this.width / 2), this.currentY(y) - (this.height / 2), this.width, this.height);
-		int xx = this.currentX(x) - (this.width / 2);
-		int yy = this.currentY(y) - (this.height / 2);
-		g.drawImage(sprite, xx, yy, null);
-	}
-	
 
 	@Override
 	public Rectangle getShape() {
-		return new Rectangle(this.currentX(x) - (this.width / 2), this.currentY(y) - (this.height / 2), this.width, this.height);
+		return new Rectangle((int) x - (this.width / 2), (int) y - (this.height / 2), this.width, this.height);
 	}
 
 }

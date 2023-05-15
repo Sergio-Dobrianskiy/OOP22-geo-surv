@@ -11,17 +11,16 @@ import it.unibo.geosurv.control.TickingObject;
 import it.unibo.geosurv.view.graphics.Texture;
 
 public abstract class GameObject implements TickingObject {
-	protected float x, y;					// position
-	protected float velX, velY;				// velocity
-	protected int height = 0, width = 0;	// dimensions
-	protected Texture texture;				// texture
+	protected float x, y;									// position
+	protected float velX, velY;								// velocity
+	protected int height = 0, width = 0;					// dimensions
+	protected Texture texture = Texture.MISSING_TEXTURE;	// texture
 	protected ID id;
 	
 	public GameObject(float x, float y, ID id) {
 		this.x = x;
 		this.y = y;
 		this.id = id;
-		this.texture = Texture.MISSING_TEXTURE;
 	}
 	
 	public ID getId() {
