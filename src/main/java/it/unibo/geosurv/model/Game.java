@@ -13,6 +13,7 @@ import it.unibo.geosurv.model.drops.Experience;
 import it.unibo.geosurv.model.monsters.Monster;
 import it.unibo.geosurv.model.monsters.MonsterSpawner;
 import it.unibo.geosurv.view.graphics.Camera;
+import it.unibo.geosurv.view.graphics.TextureRender;
 import it.unibo.geosurv.view.graphics.Window;
 
 public class Game extends Canvas implements Runnable, TickingObject {
@@ -29,6 +30,7 @@ public class Game extends Canvas implements Runnable, TickingObject {
 	private boolean isRunning = false;
 	private Thread thread;
 	private static Handler handler;
+	private TextureRender textureRender;
 	private final Camera camera;
 	private final Loader loader;
 	private static long startTime;
@@ -45,6 +47,7 @@ public class Game extends Canvas implements Runnable, TickingObject {
 
 		handler = new Handler();
 		loader = new Loader(handler);
+		textureRender = new TextureRender(handler);
 
 		this.addKeyListener(new KeyInput(this, handler));
 		this.loader.loadAll(); // loads Player, textures, weapons, level
@@ -141,7 +144,7 @@ public class Game extends Canvas implements Runnable, TickingObject {
 
 		g2d.translate(-camera.getX(), -camera.getY());
 
-		handler.render(g);
+		textureRender.render(g);
 		////////////////////////////////////// above here we draw to the game
 
 		g.dispose();

@@ -8,18 +8,20 @@ import java.awt.geom.RectangularShape;
 import java.awt.image.BufferedImage;
 
 import it.unibo.geosurv.control.TickingObject;
+import it.unibo.geosurv.view.graphics.Texture;
 
 public abstract class GameObject implements TickingObject {
 	protected float x, y;					// position
 	protected float velX, velY;				// velocity
 	protected int height = 0, width = 0;	// dimensions
-	
+	protected Texture texture;				// texture
 	protected ID id;
 	
 	public GameObject(float x, float y, ID id) {
 		this.x = x;
 		this.y = y;
 		this.id = id;
+		this.texture = Texture.MISSING_TEXTURE;
 	}
 	
 	public ID getId() {
@@ -95,19 +97,32 @@ public abstract class GameObject implements TickingObject {
 	}
 	
 	
+	public int getRenderX() {
+		return (int) (x - (this.width / 2));
+	}
+	
+	public int getRenderY() {
+		return (int) (y - (this.height / 2));
+	}
+	
+	
+	
 	
 	protected void drawOval(Graphics g, Color color) {
 		g.setColor(color);
-        g.fillOval((int) (x - (this.width / 2)), (int) (y - (this.height / 2)), width, height);
+        g.fillOval(getRenderX(), getRenderY(), width, height);
 	}
 	
 	protected Rectangle setRectangleShape() {
-		return new Rectangle((int) (x - (this.width / 2)), (int) (y - (this.height / 2)), width, height);
+		return new Rectangle(this.getRenderX(), getRenderY(), width, height);
 	}
 	
 	protected Ellipse2D setOvalShape() {
-		return new Ellipse2D.Float((int) (x - (this.width / 2)), (int) (y - (this.height / 2)), width, height);
+		return new Ellipse2D.Float(getRenderX(), getRenderY(), width, height);
 	}
-
+	
+	public Texture getTexture() {
+		return this.texture;
+	}
 	
 }

@@ -1,10 +1,8 @@
 package it.unibo.geosurv.model.bullets;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
-
 import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.Handler;
 import it.unibo.geosurv.model.ID;
@@ -20,7 +18,7 @@ public class Laser extends Bullet {
 	private int initialY;
 	private BufferedImage sprite;
 
-	public Laser(float x, float y, Handler handler, final int width, final int height, BufferedImage bi) {
+	public Laser(float x, float y, Handler handler, final int width, final int height, Texture texture) {
 		super(x, y, handler);
 		this.lifeSpan = LIFE_SPAN;
 		this.width = width;
@@ -28,8 +26,7 @@ public class Laser extends Bullet {
 		this.player = handler.getPlayer();
 		this.initialX = (int) player.getX();
 		this.initialY = (int) player.getY();
-//		this.sprite = sprite.grabImage(5, 2, 32, 32);
-		this.sprite = bi;
+		this.texture = texture;
 	}
 	
 	/**

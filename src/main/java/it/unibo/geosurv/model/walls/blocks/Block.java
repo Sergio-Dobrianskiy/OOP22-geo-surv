@@ -19,14 +19,14 @@ public class Block extends GameObject {
         super(x, y, ID.Block);
         this.height = BLOCK_HEIGHT;
         this.width = (int) BLOCK_WIDTH;
-        this.sprite = Texture.BLOCK.getTexture();
+        this.texture = Texture.BLOCK;
     }
 
     public void tick() {
     }
 
     public void render(Graphics g) {
-        this.drawRect(g,  Color.black);
+//        this.drawRect(g,  Color.black);
         this.renderImage(g, sprite);
     }
 

@@ -27,7 +27,7 @@ public class Loader {
 		handler.addPlayer(new MainPlayer(180, 300, handler)); // TODO: remove?
 		this.loadTextures();
 		this.loadGuns();
-		loadLevel(Texture.SMALL_MAP.getTexture());
+		loadLevel(Texture.SMALL_MAP.extractTexture());
 		// loadLevel(Texture.TEST_MAP.getTexture());
 		// loadLevel(Texture.BIG_MAP_2.getTexture());
 

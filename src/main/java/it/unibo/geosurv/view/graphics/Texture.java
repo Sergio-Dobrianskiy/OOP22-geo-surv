@@ -32,6 +32,10 @@ public enum Texture {
 	 */
 	SMALL_MAP("/maps/map_small.png"),
 	/**
+	 * Represents the GameObject default texture.
+	 */
+	MISSING_TEXTURE("/sprite/error/missing_texture.png"),
+	/**
 	 * Represents the test map.
 	 */
 	TEST_MAP("/maps/map_test.png");
@@ -74,7 +78,7 @@ public enum Texture {
 	 *
 	 * @return texture
 	 */
-	public BufferedImage getTexture() {
+	public BufferedImage extractTexture() {
 		return this.texture;
 	}
 }

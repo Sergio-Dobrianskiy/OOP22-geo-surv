@@ -1,6 +1,6 @@
 package it.unibo.geosurv.model;
 
-import java.awt.Graphics;
+
 import java.util.ArrayList;
 
 import it.unibo.geosurv.control.TickingObject;
@@ -25,12 +25,6 @@ public class Handler implements TickingObject {
 		}
 	}
 
-	public void render(Graphics g) {
-		for (int i = 0; i < gameObjects.size(); i++) {
-			GameObject tempObject = gameObjects.get(i);
-			tempObject.render(g);
-		}
-	}
 
 	public GameObject addObject(GameObject tempObject) {
 		gameObjects.add(tempObject);

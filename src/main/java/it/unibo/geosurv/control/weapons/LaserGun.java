@@ -26,8 +26,8 @@ public class LaserGun extends Weapon {
 		this.handler = handler; 
 		this.cycle = LASER_CYCLE;
 		player = handler.getPlayer();
-		laserH = Texture.LASER_H.getTexture();
-		laserV = Texture.LASER_V.getTexture();
+		laserH = Texture.LASER_H.extractTexture();
+		laserV = Texture.LASER_V.extractTexture();
 	}
 	
 	protected void shoot() {
@@ -36,9 +36,9 @@ public class LaserGun extends Weapon {
 		float xCorrection = LongSide / 2 + MainPlayer.HALF_PLAYER_WIDTH;
 		float yCorrection = LongSide / 2 + MainPlayer.HALF_PLAYER_HEIGHT;;
 		
-		this.handler.addObject(new Laser(px + xCorrection, py, this.handler, LongSide, ShortSide, laserH)); // right
-		this.handler.addObject(new Laser(px - xCorrection, py, this.handler, LongSide, ShortSide, laserH)); // left
-		this.handler.addObject(new Laser(px, py - yCorrection, this.handler, ShortSide, LongSide, laserV)); // up
-		this.handler.addObject(new Laser(px, py + yCorrection, this.handler, ShortSide, LongSide, laserV)); // down
+		this.handler.addObject(new Laser(px + xCorrection, py, this.handler, LongSide, ShortSide, Texture.LASER_H)); // right
+		this.handler.addObject(new Laser(px - xCorrection, py, this.handler, LongSide, ShortSide, Texture.LASER_H)); // left
+		this.handler.addObject(new Laser(px, py - yCorrection, this.handler, ShortSide, LongSide, Texture.LASER_V)); // up
+		this.handler.addObject(new Laser(px, py + yCorrection, this.handler, ShortSide, LongSide, Texture.LASER_V)); // down
 	}
 }
