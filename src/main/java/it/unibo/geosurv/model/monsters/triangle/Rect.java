@@ -7,6 +7,7 @@ import it.unibo.geosurv.model.Game;
 import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.Handler;
 import it.unibo.geosurv.model.monsters.Monster;
+import it.unibo.geosurv.view.graphics.Texture;
 
 public class Rect extends Monster {
 
@@ -40,6 +41,7 @@ public class Rect extends Monster {
             this.power = 2;
             this.height = DEFAULT_DIMENSION;
             this.width = DEFAULT_DIMENSION;
+            texture = Texture.SQUARE;
         } else {
             this.health = MAX_HEALTH;
             this.dimension = MAX_DIMENSION;
@@ -47,6 +49,7 @@ public class Rect extends Monster {
             this.power = 8;
             this.height = MAX_DIMENSION;
             this.width = MAX_DIMENSION;
+            this.texture = Texture.SQUARE_BIG;
         }
     };
 

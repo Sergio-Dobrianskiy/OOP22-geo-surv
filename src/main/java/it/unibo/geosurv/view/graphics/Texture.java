@@ -36,6 +36,14 @@ public enum Texture {
 	 */
 	MISSING_TEXTURE("/sprite/error/missing_texture.png"),
 	/**
+	 * Represents the square.
+	 */
+	SQUARE("/sprite/square/square.png"),
+	/**
+	 * Represents the big square.
+	 */
+	SQUARE_BIG("/sprite/square/square_big.png"),
+	/**
 	 * Represents the test map.
 	 */
 	TEST_MAP("/maps/map_test.png"),
