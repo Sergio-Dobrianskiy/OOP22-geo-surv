@@ -65,12 +65,12 @@ public class Triangle extends Monster {
     /**
      * @param g
      */
-    @Override
-    public void render(Graphics g) {
-        this.drawRect(g,  Color.DARK_GRAY);
-        g.setColor(Color.white);
-        g.drawString("" + this.health, (int) x + 3, (int) y + 8);
-    }
+//    @Override
+//    public void render(Graphics g) {
+//        this.drawRect(g,  Color.DARK_GRAY);
+//        g.setColor(Color.white);
+//        g.drawString("" + this.health, (int) x + 3, (int) y + 8);
+//    }
 
 
     /**

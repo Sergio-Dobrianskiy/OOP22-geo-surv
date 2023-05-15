@@ -25,9 +25,7 @@ public class LaserGun extends Weapon {
 		super();
 		this.handler = handler; 
 		this.cycle = LASER_CYCLE;
-		player = handler.getPlayer();
-		laserH = Texture.LASER_H.extractTexture();
-		laserV = Texture.LASER_V.extractTexture();
+		this.player = handler.getPlayer();
 	}
 	
 	protected void shoot() {

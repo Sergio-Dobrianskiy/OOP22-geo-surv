@@ -86,10 +86,10 @@ public class MonsterSpawner extends GameObject {
         spawnMonsters();
     }
 
-    @Override
-    public void render(Graphics g) {
-        // throw new UnsupportedOperationException("Unimplemented method 'render'");
-    }
+//    @Override
+//    public void render(Graphics g) {
+//        // throw new UnsupportedOperationException("Unimplemented method 'render'");
+//    }
 
     @Override
     public Rectangle getShape() {

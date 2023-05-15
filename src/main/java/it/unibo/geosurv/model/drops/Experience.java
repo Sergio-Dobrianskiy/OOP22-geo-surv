@@ -35,11 +35,11 @@ public class Experience extends GameObject {
         }
     }
 
-    @Override
-    public void render(Graphics g) {
-        g.setColor(Color.PINK);
-        g.fillOval((int) x, (int) y, 8, 8);
-    }
+//    @Override
+//    public void render(Graphics g) {
+//        g.setColor(Color.PINK);
+//        g.fillOval((int) x, (int) y, 8, 8);
+//    }
 
     @Override
     public Rectangle getShape() {

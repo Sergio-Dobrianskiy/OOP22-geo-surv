@@ -54,11 +54,11 @@ public class Rect extends Monster {
     public void tick() {
         reachTarget();
     }
-
-    @Override
-    public void render(Graphics g) {
-        this.drawRect(g,  Color.green);
-    }
+//
+//    @Override
+//    public void render(Graphics g) {
+//        this.drawRect(g,  Color.green);
+//    }
 
     public boolean isBig() {
         return isBig;

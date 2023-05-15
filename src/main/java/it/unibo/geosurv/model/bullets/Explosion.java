@@ -19,11 +19,6 @@ public class Explosion extends Bullet {
 		this.width = BULLET_WIDTH;
 	}
 	
-	@Override
-	public void render(Graphics g) {
-		drawOval(g, Color.red);
-	}
-
 	public Ellipse2D getShape() {
 		return setOvalShape();
 	}

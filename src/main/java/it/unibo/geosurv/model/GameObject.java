@@ -33,7 +33,6 @@ public abstract class GameObject implements TickingObject {
 	}
 
 	public abstract void tick();
-	public abstract void render(Graphics g); 
 	public abstract RectangularShape getShape();
 	
 

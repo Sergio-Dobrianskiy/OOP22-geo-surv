@@ -74,6 +74,7 @@ public class SatelliteGun extends Weapon {
 	 */	
 	public float getXPos(double angle) {
 		return (float) (this.tempPlayer.getX() + (Math.cos(angle) * this.ORBIT_RADIUS));
+//		return (float) (this.tempPlayer.getRenderX() + (Math.cos(angle) * this.ORBIT_RADIUS));
 	}
 	
 	/**

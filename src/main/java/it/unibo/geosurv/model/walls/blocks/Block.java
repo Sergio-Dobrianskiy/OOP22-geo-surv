@@ -13,7 +13,6 @@ public class Block extends GameObject {
 	
 	protected final static int BLOCK_HEIGHT = 32;
 	protected final static int BLOCK_WIDTH = 32;
-	private BufferedImage sprite;
 
     public Block(float x, float y) {
         super(x, y, ID.Block);
@@ -23,11 +22,6 @@ public class Block extends GameObject {
     }
 
     public void tick() {
-    }
-
-    public void render(Graphics g) {
-//        this.drawRect(g,  Color.black);
-        this.renderImage(g, sprite);
     }
 
     public Rectangle getShape() {

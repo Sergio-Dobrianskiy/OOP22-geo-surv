@@ -54,7 +54,6 @@ public class Laser extends Bullet {
 	}
 	
 	
-	@Override
 	public void render(Graphics g) {
 //		g.setColor(Color.green);
 //		g.fillRect(this.currentX(x) - (this.width / 2), this.currentY(y) - (this.height / 2), this.width, this.height);

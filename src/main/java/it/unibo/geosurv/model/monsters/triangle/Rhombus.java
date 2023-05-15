@@ -39,11 +39,11 @@ public class Rhombus extends Monster {
 
     }
 
-    @Override
-    public void render(Graphics g) {
-        g.setColor(Color.orange);
-        g.fillOval((int) x, (int) y, this.dimension, this.dimension);
-    }
+//    @Override
+//    public void render(Graphics g) {
+//        g.setColor(Color.orange);
+//        g.fillOval((int) x, (int) y, this.dimension, this.dimension);
+//    }
 
 //    @Override
 //    public Rectangle getShape() {

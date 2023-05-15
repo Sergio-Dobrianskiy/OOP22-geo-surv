@@ -15,11 +15,6 @@ public class Satellite extends Bullet {
 		this.height = BULLET_HEIGHT;
 		this.width = BULLET_WIDTH;
 	}
-
-	@Override
-	public void render(Graphics g) {
-		this.drawRect(g,  Color.cyan);
-	}
 	
 	/**
 	 * Satellite has infinite life span
