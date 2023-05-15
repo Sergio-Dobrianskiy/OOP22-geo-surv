@@ -37,19 +37,18 @@ public class Triangle extends Monster {
         this.isBig = isBig;
         if (!isBig) {
             this.health = DEFAULT_HEALTH;
-            this.dimension = DEFAULT_DIMENSION;
+            this.dimension = DEFAULT_DIMENSION; // TODO:fix with height and width!!
             this.speed = DEFAULT_SPEED;
             this.power = 1;
-            this.height = DEFAULT_DIMENSION;
-            this.width = DEFAULT_DIMENSION;
+            this.height = DEFAULT_DIMENSION; // TODO:fix with height and width!!
+            this.width = DEFAULT_DIMENSION; // TODO:fix with height and width!!
         } else {
             this.health = MAX_HEALTH;
-            this.dimension = MAX_DIMENSION;
+            this.dimension = MAX_DIMENSION; // TODO:fix with height and width!!
             this.speed = MAX_SPEED;
             this.power = POWER;
-            this.power = 5;
-            this.height = MAX_DIMENSION;
-            this.width = MAX_DIMENSION;
+            this.height = MAX_DIMENSION; // TODO:fix with height and width!!
+            this.width = MAX_DIMENSION; // TODO:fix with height and width!!
         }
 
     }
