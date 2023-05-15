@@ -6,11 +6,12 @@ import java.awt.Rectangle;
 import it.unibo.geosurv.model.Game;
 import it.unibo.geosurv.model.Handler;
 import it.unibo.geosurv.model.monsters.Monster;
+import it.unibo.geosurv.view.graphics.Texture;
 
 public class Rhombus extends Monster {
 
     private int DEFAULT_HEALTH = 2;
-    private int DEFAULT_DIMENSION = 24;
+    private int DEFAULT_DIMENSION = 32;
     private static int counter = 0;
     private String name = "Rhombus-";
     private boolean isBig = false;
@@ -32,6 +33,7 @@ public class Rhombus extends Monster {
         this.speed = 0;
         this.height = DEFAULT_DIMENSION;
         this.width = DEFAULT_DIMENSION;
+        this.texture = Texture.RHOMBUS;
     };
 
     @Override

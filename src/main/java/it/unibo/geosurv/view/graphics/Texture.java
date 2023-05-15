@@ -20,13 +20,41 @@ public enum Texture {
 	 */
 	BIG_MAP_2("/maps/mapGame_copia2.png"),
 	/**
-	 * Represents the horizontal laser.
+	 * Represents the bullet.
+	 */
+	BULLET("/sprite/bullet/bullet.png"),
+	/**
+	 * Represents the big map.
+	 */
+	EXPERIENCE("/sprite/experience/experience.png"),
+	/**
+	 * Represents the explosion.
+	 */
+	EXPLOSION("/sprite/explosion/explosion.png"),
+	/**
+	 * Represents the vertical laser.
 	 */
 	LASER_H("/sprite/laser/laser_H.png"),
 	/**
 	 * Represents the vertical laser.
 	 */
 	LASER_V("/sprite/laser/laser_V.png"),
+	/**
+	 * Represents the player as a duck.
+	 */
+	PLAYER_DUCK("/sprite/player/player_duck.png"),
+	/**
+	 * Represents the player as a mouse.
+	 */
+	PLAYER_MOUSE("/sprite/player/player_mouse.png"),
+	/**
+	 * Represents the rhombus.
+	 */
+	RHOMBUS("/sprite/rhombus/rhombus.png"),
+	/**
+	 * Represents the satellite.
+	 */
+	SATELLITE("/sprite/satellite/satellite.png"),
 	/**
 	 * Represents the small map.
 	 */

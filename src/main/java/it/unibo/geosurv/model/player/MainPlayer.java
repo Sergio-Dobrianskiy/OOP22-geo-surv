@@ -12,13 +12,14 @@ import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.Handler;
 import it.unibo.geosurv.model.ID;
 import it.unibo.geosurv.model.MonstersObserver;
+import it.unibo.geosurv.view.graphics.Texture;
 
 import java.awt.Color;
 
 public class MainPlayer extends GameObject {
 
-    public final static int PLAYER_HEIGHT = 48;
-    public final static int PLAYER_WIDTH = 32;
+    public final static int PLAYER_HEIGHT = 59;
+    public final static int PLAYER_WIDTH = 59;
     public final static int HALF_PLAYER_HEIGHT = PLAYER_HEIGHT / 2;
     public final static int HALF_PLAYER_WIDTH = PLAYER_WIDTH / 2;
     public final static int PLAYER_SPEED = 5;
@@ -44,6 +45,8 @@ public class MainPlayer extends GameObject {
         this.width = PLAYER_WIDTH;
         this.collisions = new Collisions(handler);
         this.playerMovement = new PlayerMovementImpl(handler);
+//        this.texture = Texture.PLAYER_DUCK;
+        this.texture = Texture.PLAYER_MOUSE;
     }
 
     public void tick() {
