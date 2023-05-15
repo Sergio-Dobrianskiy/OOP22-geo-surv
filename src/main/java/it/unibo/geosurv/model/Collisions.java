@@ -2,6 +2,7 @@ package it.unibo.geosurv.model;
 
 import java.util.ArrayList;
 
+import it.unibo.geosurv.control.PlayerMovement;
 import it.unibo.geosurv.model.bullets.Bullet;
 import it.unibo.geosurv.model.bullets.BulletImpl;
 import it.unibo.geosurv.model.monsters.Monster;
@@ -10,10 +11,12 @@ import it.unibo.geosurv.model.player.MainPlayer;
 public class Collisions {
 	
 	private Handler handler;
+	private PlayerMovement playerMovement;
 	
-	public Collisions(Handler handler) {
+	public Collisions(final Handler handler) {
 		this.handler = handler;
 	}
+		
 	
 	public void checkPlayerCollisions() {
 		ArrayList<GameObject> tmpObjects = handler.getObjects();
@@ -21,7 +24,7 @@ public class Collisions {
 		for (int i = 0; i < tmpObjects.size(); i++) {
 	    		GameObject tempObject = tmpObjects.get(i);
 			if (Collisions.isColliding(player, tempObject, ID.Block)) { // if player touches wall => stop
-				player.stopMovements();
+				this.stopMovements();
 			}
 			if (Collisions.isColliding(player, tempObject, ID.Monster)) { // if player touches Monsters
 				player.hit(((Monster) tempObject).getPower()); // TODO: verify the cast => maybe if we call a
@@ -64,4 +67,10 @@ public class Collisions {
 	public static boolean isColliding(final GameObject obj1, final GameObject obj2) {
 		return obj1.getShape().getBounds2D().intersects(obj2.getShape().getBounds2D());
 	 }
+	
+	public void stopMovements() {
+		MainPlayer player = handler.getPlayer();
+		player.setX(player.getX() + player.getVelX() * -1);
+        player.setY(player.getY() + player.getVelY() * -1);
+    }
 }

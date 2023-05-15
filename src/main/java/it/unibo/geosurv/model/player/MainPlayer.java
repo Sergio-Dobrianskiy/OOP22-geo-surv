@@ -5,6 +5,8 @@ import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.List;
 
+import it.unibo.geosurv.control.PlayerMovement;
+import it.unibo.geosurv.control.PlayerMovementImpl;
 import it.unibo.geosurv.model.Collisions;
 import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.Handler;
@@ -28,6 +30,7 @@ public class MainPlayer extends GameObject {
     private int experience;
     private int health;
     private Collisions collisions;
+    private PlayerMovement playerMovement;
 
     private List<MonstersObserver> observers;
 
@@ -40,13 +43,14 @@ public class MainPlayer extends GameObject {
         this.height = PLAYER_HEIGHT;
         this.width = PLAYER_WIDTH;
         this.collisions = new Collisions(handler);
+        this.playerMovement = new PlayerMovementImpl(handler);
     }
 
     public void tick() {
         x += velX;
         y += velY;
         collisions.checkPlayerCollisions();
-        movePlayer();
+        this.playerMovement.movePlayer();
         notifyObservers(); // notify player position
     }
 
@@ -102,34 +106,5 @@ public class MainPlayer extends GameObject {
         }
     }
 
-    public void stopMovements() {
-        x += velX * -1;
-        y += velY * -1;
-    }
-
-    public void movePlayer() {
-        if (handler.isUp()) {
-            velY = -PLAYER_SPEED;
-        } else if (!handler.isDown()) {
-            velY = 0;
-        }
-
-        if (handler.isDown()) {
-            velY = PLAYER_SPEED;
-        } else if (!handler.isUp()) {
-            velY = 0;
-        }
-
-        if (handler.isRight()) {
-            velX = PLAYER_SPEED;
-        } else if (!handler.isLeft()) {
-            velX = 0;
-        }
-
-        if (handler.isLeft()) {
-            velX = -PLAYER_SPEED;
-        } else if (!handler.isRight()) {
-            velX = 0;
-        }
-    }
+    
 }

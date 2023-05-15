@@ -1,8 +1,6 @@
 package it.unibo.geosurv.model;
 
-
 import java.util.ArrayList;
-
 import it.unibo.geosurv.control.TickingObject;
 import it.unibo.geosurv.model.player.MainPlayer;
 
@@ -10,6 +8,7 @@ public class Handler implements TickingObject {
 
 	private ArrayList<GameObject> gameObjects = new ArrayList<>();
 	private ArrayList<TickingObject> tickObjects = new ArrayList<>();
+	
 
 	private MainPlayer player;
 	private boolean up = false, down = false, left = false, right = false;

@@ -17,18 +17,50 @@ public class KeyInput extends KeyAdapter {
 
     public void keyPressed(KeyEvent e) {
         int key = e.getKeyCode();
-        if (key == KeyEvent.VK_W) handler.setUp(true);					// UP
-        if (key == KeyEvent.VK_S) handler.setDown(true);					// DOWN
-        if (key == KeyEvent.VK_A) handler.setLeft(true);					// LEFT
-        if (key == KeyEvent.VK_D) handler.setRight(true);					// RIGHT
-        if (key == KeyEvent.VK_P) game.pause();// PAUSE-UNPAUSE
+        switch (key) {
+		    case KeyEvent.VK_LEFT:
+		    case KeyEvent.VK_A:
+		    	handler.setLeft(true);
+		    	break;
+		    case KeyEvent.VK_RIGHT:
+            case KeyEvent.VK_D:
+            	handler.setRight(true);
+                break;
+            case KeyEvent.VK_UP:
+            case KeyEvent.VK_W:
+            	handler.setUp(true);
+                break;
+            case KeyEvent.VK_DOWN:
+            case KeyEvent.VK_S:
+            	handler.setDown(true);
+                break;
+            case KeyEvent.VK_P:
+            	game.pause();
+                break;
+            default:
+                break;
+        }
     }
 
     public void keyReleased(KeyEvent e) {
         int key = e.getKeyCode();
-	    if (key == KeyEvent.VK_W) handler.setUp(false);
-	    if (key == KeyEvent.VK_S) handler.setDown(false);
-	    if (key == KeyEvent.VK_A) handler.setLeft(false);
-	    if (key == KeyEvent.VK_D) handler.setRight(false);
+        switch (key) {
+	    case KeyEvent.VK_LEFT:
+	    case KeyEvent.VK_A:
+	    	handler.setLeft(false);
+	    	break;
+	    case KeyEvent.VK_RIGHT:
+        case KeyEvent.VK_D:
+        	handler.setRight(false);
+            break;
+        case KeyEvent.VK_UP:
+        case KeyEvent.VK_W:
+        	handler.setUp(false);
+            break;
+        case KeyEvent.VK_DOWN:
+        case KeyEvent.VK_S:
+        	handler.setDown(false);
+            break;
+        }
     }
 }

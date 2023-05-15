@@ -49,8 +49,8 @@ public class Game extends Canvas implements Runnable, TickingObject {
 		loader = new Loader(handler);
 		textureRender = new TextureRender(handler);
 
-		this.addKeyListener(new KeyInput(this, handler));
 		this.loader.loadAll(); // loads Player, textures, weapons, level
+		this.addKeyListener(new KeyInput(this, handler));
 
 		camera = loader.loadCamera(); // loads camera
 		startTime = System.currentTimeMillis();

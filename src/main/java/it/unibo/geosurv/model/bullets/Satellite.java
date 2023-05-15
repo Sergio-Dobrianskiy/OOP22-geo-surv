@@ -1,8 +1,5 @@
 package it.unibo.geosurv.model.bullets;
 
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Rectangle;
 import it.unibo.geosurv.model.Handler;
 
 public class Satellite extends Bullet {	

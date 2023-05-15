@@ -1,12 +1,8 @@
 package it.unibo.geosurv.model;
 
-import java.awt.Color;
-import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.RectangularShape;
-import java.awt.image.BufferedImage;
-
 import it.unibo.geosurv.control.TickingObject;
 import it.unibo.geosurv.view.graphics.Texture;
 

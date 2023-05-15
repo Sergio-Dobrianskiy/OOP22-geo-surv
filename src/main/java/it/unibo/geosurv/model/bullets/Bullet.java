@@ -1,13 +1,10 @@
 package it.unibo.geosurv.model.bullets;
 
 import java.awt.geom.RectangularShape;
-import java.util.ArrayList;
-
 import it.unibo.geosurv.model.Collisions;
 import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.Handler;
 import it.unibo.geosurv.model.ID;
-import it.unibo.geosurv.model.monsters.Monster;
 
 public abstract class Bullet extends GameObject {
 
