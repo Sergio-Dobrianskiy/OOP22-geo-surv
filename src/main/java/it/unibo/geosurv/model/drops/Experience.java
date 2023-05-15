@@ -26,13 +26,6 @@ public class Experience extends GameObject {
 
     @Override
     public void tick() {
-        if (this.getShape().getBounds2D().intersects(tempPlayer.getShape().getBounds2D())) {
-//            System.out.println("pick up experience");
-            // TODO: player should increase experience
-            handler.getPlayer().setExperience(this.getExperience());
-            // maybe these few line have to go in a method of player class
-            handler.removeObject(this);
-        }
     }
 
 //    @Override

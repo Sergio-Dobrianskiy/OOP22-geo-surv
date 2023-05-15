@@ -1,17 +1,15 @@
 package it.unibo.geosurv.model;
 
 import java.util.ArrayList;
-
-import it.unibo.geosurv.control.PlayerMovement;
 import it.unibo.geosurv.model.bullets.Bullet;
 import it.unibo.geosurv.model.bullets.BulletImpl;
+import it.unibo.geosurv.model.drops.Experience;
 import it.unibo.geosurv.model.monsters.Monster;
 import it.unibo.geosurv.model.player.MainPlayer;
 
 public class Collisions {
 	
 	private Handler handler;
-	private PlayerMovement playerMovement;
 	
 	public Collisions(final Handler handler) {
 		this.handler = handler;
@@ -32,6 +30,10 @@ public class Collisions {
 					                // need the cast
 					                // (Monster.over(handler.player)->decrease life)
 	        }
+			if (Collisions.isColliding(player,  tempObject, ID.Experience)) {
+				handler.getPlayer().setExperience(((Experience) tempObject).getExperience());
+	            handler.removeObject(tempObject);
+			}
 	    }
 	}
 	
