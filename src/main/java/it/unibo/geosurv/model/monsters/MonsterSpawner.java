@@ -102,12 +102,12 @@ public class MonsterSpawner extends GameObject {
                 tempPlayer.getY() + Func.randomPoint(420.0f, 500.0f).getY(), isBig);
     }
 
-    private Monster generateMonsterR(boolean big) {
+    private Monster generateMonsterR(boolean isBig) {
         // System.out.println("--> generateMonsterR()");
         Pair<Float, Float> randomPosition = Func.randomPoint(500.0f, 600.0f);
         x = tempPlayer.getX() + randomPosition.getX();
         y = tempPlayer.getY() + randomPosition.getY();
-        return new Rect(x, y, this.handler, game, big);
+        return new Rect(x, y, isBig);
     }
 
     private Monster generateMonsters() {
@@ -140,7 +140,7 @@ public class MonsterSpawner extends GameObject {
 
     private void flood() {
         Stream.generate(() -> new Rect(tempPlayer.getX() + Func.randomPoint(500.0f, 600.0f).getX(),
-                tempPlayer.getY() + Func.randomPoint(500.0f, 600.0f).getY(), this.handler, game, true))
+                tempPlayer.getY() + Func.randomPoint(500.0f, 600.0f).getY(), true))
                 .limit(1)
                 .forEach(m -> handler.addObject(m));
 

@@ -2,10 +2,7 @@ package it.unibo.geosurv.model.monsters.triangle;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Rectangle;
-import it.unibo.geosurv.model.Game;
-import it.unibo.geosurv.model.GameObject;
-import it.unibo.geosurv.model.Handler;
+
 import it.unibo.geosurv.model.monsters.Monster;
 import it.unibo.geosurv.view.graphics.Texture;
 
@@ -13,25 +10,22 @@ public class Rect extends Monster {
 
     // private Handler handler;
     // private Game game;
-    private float DEFAULT_SPEED = 2f; // default speed of Rect
-    private float MAX_SPEED = 4f; // max speed of BIG Rect
-    private static int counter = 0;
-    private int DEFAULT_HEALTH = 4; // default health of Rect
-    private int MAX_HEALTH = 15; // default health of BIG Rect
+    private static final float DEFAULT_SPEED = 2f; // default speed of Rect
+    private static final float MAX_SPEED = 4f; // max speed of BIG Rect
+    private static final int DEFAULT_HEALTH = 4; // default health of Rect
+    private static final int MAX_HEALTH = 15; // default health of BIG Rect
+    private static final int DEFAULT_DIMENSION = 15; // default size of Rect
+    private static final int MAX_DIMENSION = 35; // max size of (big) Rect
+    private static int counter;
     private String name = "Rect-";
-    private int DEFAULT_DIMENSION = 15; // default size of Rect
-    private int MAX_DIMENSION = 35; // max size of (big) Rect
-    private boolean isBig = false;
+    // private static final boolean isBig = false;
 
     /**
      * Rect constructor
      */
-    public Rect(float x, float y, Handler handler, Game game, boolean isBig) { // TODO: handler & gamo not used! to
-                                                                               // delete
+    public Rect(final float x, final float y, final boolean isBig) {
+
         super(x, y);
-        // this.speed = speed;
-        // this.handler = handler;
-        // this.game = game;
         Rect.counter++;
         this.name = name + Rect.counter;
         if (!isBig) {
@@ -51,7 +45,7 @@ public class Rect extends Monster {
             this.width = MAX_DIMENSION;
             this.texture = Texture.SQUARE_BIG;
         }
-    };
+    }
 
     @Override
     public void tick() {
@@ -63,8 +57,8 @@ public class Rect extends Monster {
 //        this.drawRect(g,  Color.green);
 //    }
 
-    public boolean isBig() {
-        return isBig;
-    }
+    // public boolean isBig() {
+    // return isBig;
+    // }
 
 }
