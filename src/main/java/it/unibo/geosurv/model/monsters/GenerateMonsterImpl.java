@@ -3,9 +3,9 @@ package it.unibo.geosurv.model.monsters;
 import it.unibo.geosurv.model.Game;
 import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.Handler;
-import it.unibo.geosurv.model.monsters.triangle.Rect;
-import it.unibo.geosurv.model.monsters.triangle.Rhombus;
-import it.unibo.geosurv.model.monsters.triangle.Triangle;
+import it.unibo.geosurv.model.monsters.types.Rect;
+import it.unibo.geosurv.model.monsters.types.Rhombus;
+import it.unibo.geosurv.model.monsters.types.Triangle;
 import it.unibo.geosurv.model.utility.Func;
 import it.unibo.geosurv.model.utility.Pair;
 
