@@ -12,11 +12,14 @@ public class Triangle extends Monster {
     // private Game game;
     private static final float DEFAULT_SPEED = 1.2f; // default speed of triangle
     private static final float MAX_SPEED = 3f; // max speed of BIG triangle
-    private static final int DEFAULT_DIMENSION = 20; // default size of triangle
-    private static final int MAX_DIMENSION = 50; // max size of (big) triangle
+    private static final int DEFAULT_H_DIMENSION = 20; // default height of triangle
+    private static final int MAX_H_DIMENSION = 50; // max height of (big) triangle
+    private static final int DEFAULT_W_DIMENSION = 20; // default width of triangle
+    private static final int MAX_W_DIMENSION = 50; // max width of (big) triangle
     private static final int DEFAULT_HEALTH = 2; // default health of triangle
     private static final int MAX_HEALTH = 10; // default health of BIG triangle
-    private static final int POWER = 5; // default speed of triangle
+    private static final int DEFAULT_POWER = 5; // default power of triangle
+    private static final int MAX_POWER = 5; // default power of BIG triangle
     private static int counter;
     private final boolean isBig;
     private String name = "Triangle-";
@@ -35,19 +38,17 @@ public class Triangle extends Monster {
         this.isBig = isBig;
         if (!isBig) {
             this.health = DEFAULT_HEALTH;
-            this.dimension = DEFAULT_DIMENSION; // TODO:fix with height and width!!
             this.speed = DEFAULT_SPEED;
-            this.power = 1;
-            this.height = DEFAULT_DIMENSION; // TODO:fix with height and width!!
-            this.width = DEFAULT_DIMENSION; // TODO:fix with height and width!!
+            this.power = DEFAULT_POWER;
+            this.height = DEFAULT_H_DIMENSION;
+            this.width = DEFAULT_W_DIMENSION;
             this.texture = Texture.TRIANGLE;
         } else {
             this.health = MAX_HEALTH;
-            this.dimension = MAX_DIMENSION; // TODO:fix with height and width!!
             this.speed = MAX_SPEED;
-            this.power = POWER;
-            this.height = MAX_DIMENSION; // TODO:fix with height and width!!
-            this.width = MAX_DIMENSION; // TODO:fix with height and width!!
+            this.power = MAX_POWER;
+            this.height = MAX_H_DIMENSION;
+            this.width = MAX_W_DIMENSION;
             this.texture = Texture.TRIANGLE_BIG;
         }
     }

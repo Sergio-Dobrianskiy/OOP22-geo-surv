@@ -9,7 +9,8 @@ import it.unibo.geosurv.view.graphics.Texture;
 public class Rhombus extends Monster {
 
     private int DEFAULT_HEALTH = 2;
-    private int DEFAULT_DIMENSION = 32;
+    private int DEFAULT_H_DIMENSION = 64;
+    private int DEFAULT_W_DIMENSION = 32;
     private static int counter = 0;
     private String name = "Rhombus-";
 
@@ -24,11 +25,10 @@ public class Rhombus extends Monster {
         Rhombus.counter++;
         this.name = name + Rhombus.counter;
         this.health = DEFAULT_HEALTH;
-        this.dimension = DEFAULT_DIMENSION;
         this.power = 2;
         this.speed = 0;
-        this.height = DEFAULT_DIMENSION;
-        this.width = DEFAULT_DIMENSION;
+        this.height = DEFAULT_H_DIMENSION;
+        this.width = DEFAULT_W_DIMENSION;
         this.texture = Texture.RHOMBUS;
     }
 
@@ -37,6 +37,6 @@ public class Rhombus extends Monster {
      */
     @Override
     public void tick() {
-        /* do nothing on tick() */
+        /* do nothing on tick() because object remains where it's created */
     }
 }

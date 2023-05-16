@@ -57,9 +57,9 @@ public class Loader {
 	 */
 	private void loadGuns() {
 		handler.addTickingObject(new AutoGun(this.handler));
-		handler.addTickingObject(new SatelliteGun(this.handler));
-		handler.addTickingObject(new ExplosionGun(this.handler));
-		handler.addTickingObject(new LaserGun(this.handler));
+		// handler.addTickingObject(new SatelliteGun(this.handler));
+		// handler.addTickingObject(new ExplosionGun(this.handler));
+		// handler.addTickingObject(new LaserGun(this.handler));
 	}
 
 	/**
@@ -74,7 +74,7 @@ public class Loader {
 		for (int xx = 0; xx < w; xx++) {
 			for (int yy = 0; yy < h; yy++) {
 				int pixel = image.getRGB(xx, yy);
-				int red = (pixel >> 16) & 0xff;
+				// int red = (pixel >> 16) & 0xff;
 				// green not used at the moment
 				// int green = (pixel >> 8) & 0xff;
 				int blue = (pixel) & 0xff;
@@ -83,10 +83,11 @@ public class Loader {
 					handler.addObject(new Block(xx * GAME_GRID_WIDTH, yy * GAME_GRID_HEIGHT));
 				}
 
-				if (red == 255) {
-					// handler.addPlayer(new MainPlayer(xx * GAME_GRID_WIDTH, yy * GAME_GRID_HEIGHT,
-					// ID.Player, handler));
-				}
+				// if (red == 255) {
+				// // handler.addPlayer(new MainPlayer(xx * GAME_GRID_WIDTH, yy *
+				// GAME_GRID_HEIGHT,
+				// // ID.Player, handler));
+				// }
 			}
 		}
 	}

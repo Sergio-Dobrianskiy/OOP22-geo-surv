@@ -20,8 +20,7 @@ public class MonsterSpawner extends GameObject {
     private final static int SPAWN_INTERVAL = 500; // specifies the time interval (in milliseconds) between monster
                                                    // spawns (500 = 2 monster each sec)
     private final static int MAX_T_MONSTERS = 5; // 50 // specifies the maximum number of monsters that can be spawned
-                                                 // at any
-                                                 // given time
+                                                 // at any given time
     private final static int MAX_R_MONSTERS = 100;
     private static int numMonsters = 0;
     // private static long lastSpawnTime = 0L;
@@ -29,7 +28,8 @@ public class MonsterSpawner extends GameObject {
     private Handler handler;
     private static GameObject tempPlayer;
     static Game game;
-    float x, y;
+    // private float x;
+    // private float y;
 
     private static int SPAWN_RATE = 1; // in monsters per second
     private long lastSpawnTime = 0;
@@ -86,10 +86,10 @@ public class MonsterSpawner extends GameObject {
         spawnMonsters();
     }
 
-//    @Override
-//    public void render(Graphics g) {
-//        // throw new UnsupportedOperationException("Unimplemented method 'render'");
-//    }
+    // @Override
+    // public void render(Graphics g) {
+    // // throw new UnsupportedOperationException("Unimplemented method 'render'");
+    // }
 
     @Override
     public Rectangle getShape() {
