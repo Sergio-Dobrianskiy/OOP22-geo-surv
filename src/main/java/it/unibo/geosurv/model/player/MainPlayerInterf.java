@@ -1,6 +1,5 @@
 package it.unibo.geosurv.model.player;
 
-import java.awt.Graphics;
 import java.awt.Rectangle;
 
 import it.unibo.geosurv.model.MonstersObserver;
@@ -8,8 +7,6 @@ import it.unibo.geosurv.model.MonstersObserver;
 public interface MainPlayerInterf {
     
     void tick();
-    
-    void render(Graphics g);
     
     Rectangle getShape();
     
@@ -26,6 +23,4 @@ public interface MainPlayerInterf {
     void removeObserver(MonstersObserver observer);
     
     void hit(int damage);
-    
-    void stopMovements();
 }

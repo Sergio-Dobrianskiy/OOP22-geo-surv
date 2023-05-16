@@ -59,7 +59,7 @@ public class MainPlayer extends GameObject implements MainPlayerInterf {
     }
 
     public int getExperience() {
-        return experience;
+        return this.experience;
     }
 
     public void setExperience(int experience) {
@@ -70,7 +70,7 @@ public class MainPlayer extends GameObject implements MainPlayerInterf {
      * @return how much health the Player has left
      */
     public int getLife() {
-        return health;
+        return this.health;
     }
 
     public void setLife(int life) {
@@ -78,11 +78,11 @@ public class MainPlayer extends GameObject implements MainPlayerInterf {
     }
 
     public void addObserver(MonstersObserver observer) {
-        observers.add(observer);
+    	this.observers.add(observer);
     }
 
     public void removeObserver(MonstersObserver observer) {
-        observers.remove(observer);
+    	this.observers.remove(observer);
         // System.out.println("Removed Observer: " + observer.toString());
     }
 
@@ -99,12 +99,4 @@ public class MainPlayer extends GameObject implements MainPlayerInterf {
             lastHitTime = currentTime;
         }
     }
-
-	@Override
-	public void render(Graphics g) {
-	}
-
-	@Override
-	public void stopMovements() {
-	}
 }
