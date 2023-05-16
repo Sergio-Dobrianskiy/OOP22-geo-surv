@@ -32,8 +32,12 @@ public class TextureRender{
 	public void renderUI(final Graphics g, final MainPlayer player) {
 		int x = (int) player.getX();
 		int y = (int) player.getY();
-        g.setColor(Color.blue);
-        g.drawString("Life: " + player.getLife() + " Exp: " + player.getExperience(), (int) x, (int) y - 5);
+        g.setColor(Color.white);
+        g.drawString("Life: " + player.getLife(), (int) x + player.getWidth(), (int) y);
+        g.drawString("Exp: " + (int) player.getExpPercentage() + "%", (int) x + player.getWidth(), (int) y + 20);
+        g.drawString("Curr: " + player.getExperience(), (int) x + player.getWidth(), (int) y + 40);
+        g.drawString("Max: " + player.getMaxExperience(), (int) x + player.getWidth(), (int) y + 60);
+        g.drawString("Lvl: " + player.getLevel(), (int) x + player.getWidth(), (int) y + 80);
         
         //Draw bar progres for player's life
         int barWidth = 100;

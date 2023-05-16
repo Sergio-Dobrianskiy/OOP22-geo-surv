@@ -1,6 +1,5 @@
 package it.unibo.geosurv.model.player;
 
-import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +28,7 @@ public class MainPlayer extends GameObject implements MainPlayerInterf {
     private int health;
     private Collisions collisions;
     private PlayerMovement playerMovement;
-
+    private Levels levels;
     private List<MonstersObserver> observers;
 
     public MainPlayer(float x, float y, Handler handler) {
@@ -44,6 +43,7 @@ public class MainPlayer extends GameObject implements MainPlayerInterf {
         this.playerMovement = new PlayerMovementImpl(handler);
 //        this.texture = Texture.PLAYER_DUCK;  // alternative texture
         this.texture = Texture.PLAYER_MOUSE;
+        this.levels = new Levels();
     }
 
     public void tick() {
@@ -59,11 +59,27 @@ public class MainPlayer extends GameObject implements MainPlayerInterf {
     }
 
     public int getExperience() {
-        return this.experience;
+        return this.levels.getCurrentExp();
+    }
+    
+    public int getMaxExperience() {
+    	return this.levels.getExpToLevel();
+    }
+    
+    public int getLevel() {
+    	return this.levels.getCurrentLevel();
+    }
+    
+    public float getExpPercentage() {
+    	if (this.getExperience() == 0) {
+    		return 0;
+    	}
+    	return ((float) this.getExperience() / this.getMaxExperience()) * 100;
     }
 
-    public void setExperience(int experience) {
-        this.experience += experience;
+    public void setExperience(final int experience) {
+    	this.levels.expUp(experience);
+
     }
 
     /**
