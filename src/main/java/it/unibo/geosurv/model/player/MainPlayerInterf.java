@@ -28,6 +28,4 @@ public interface MainPlayerInterf {
     void hit(int damage);
     
     void stopMovements();
-    
-    void movePlayer();
 }
