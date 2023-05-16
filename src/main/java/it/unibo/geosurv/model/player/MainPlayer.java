@@ -12,7 +12,7 @@ import it.unibo.geosurv.model.ID;
 import it.unibo.geosurv.model.MonstersObserver;
 import it.unibo.geosurv.view.graphics.Texture;
 
-public class MainPlayer extends GameObject {
+public class MainPlayer extends GameObject implements MainPlayerInterf {
 
     public final static int PLAYER_HEIGHT = 59;
     public final static int PLAYER_WIDTH = 59;
@@ -52,6 +52,32 @@ public class MainPlayer extends GameObject {
         this.playerMovement.movePlayer();
         notifyObservers(); // notify player position
     }
+
+    public void render(Graphics g) {
+        this.drawRect(g, Color.blue);
+        g.setColor(Color.blue);
+        g.drawString("Life: " + this.getLife() + " Exp: " + this.getExperience(), (int) x, (int) y - 5);
+        
+        //Draw bar progres for player's life
+        int barWidth = 100;
+        int barHeight = 10;
+        int barX = (int) (x - barWidth / 2);
+        int barY = (int) y - barHeight -30;
+        
+        g.setColor(Color.BLACK);
+        g.fillRect(barX, barY, barWidth, barHeight);
+        
+        float percentage = (float) health / MAX_LIFE;
+        int filledWidth = (int) (barWidth * percentage);
+        
+        g.setColor(Color.GREEN);
+        g.fillRect(barX, barY, filledWidth, barHeight);
+        
+        g.setColor(Color.WHITE);
+        g.drawRect(barX, barY, barWidth, barHeight);
+        
+    }
+        
 
     public Rectangle getShape() {
         return this.setRectangleShape();
