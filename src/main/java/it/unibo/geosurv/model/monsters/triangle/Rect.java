@@ -1,8 +1,5 @@
 package it.unibo.geosurv.model.monsters.triangle;
 
-import java.awt.Color;
-import java.awt.Graphics;
-
 import it.unibo.geosurv.model.monsters.Monster;
 import it.unibo.geosurv.view.graphics.Texture;
 
@@ -51,14 +48,4 @@ public class Rect extends Monster {
     public void tick() {
         reachTarget();
     }
-//
-//    @Override
-//    public void render(Graphics g) {
-//        this.drawRect(g,  Color.green);
-//    }
-
-    // public boolean isBig() {
-    // return isBig;
-    // }
-
 }

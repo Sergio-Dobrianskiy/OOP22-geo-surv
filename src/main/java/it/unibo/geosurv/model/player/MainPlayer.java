@@ -1,10 +1,8 @@
 package it.unibo.geosurv.model.player;
 
-import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.List;
-
 import it.unibo.geosurv.control.PlayerMovement;
 import it.unibo.geosurv.control.PlayerMovementImpl;
 import it.unibo.geosurv.model.Collisions;
@@ -13,8 +11,6 @@ import it.unibo.geosurv.model.Handler;
 import it.unibo.geosurv.model.ID;
 import it.unibo.geosurv.model.MonstersObserver;
 import it.unibo.geosurv.view.graphics.Texture;
-
-import java.awt.Color;
 
 public class MainPlayer extends GameObject {
 
@@ -45,7 +41,7 @@ public class MainPlayer extends GameObject {
         this.width = PLAYER_WIDTH;
         this.collisions = new Collisions(handler);
         this.playerMovement = new PlayerMovementImpl(handler);
-//        this.texture = Texture.PLAYER_DUCK;
+//        this.texture = Texture.PLAYER_DUCK;  // alternative texture
         this.texture = Texture.PLAYER_MOUSE;
     }
 
@@ -56,12 +52,6 @@ public class MainPlayer extends GameObject {
         this.playerMovement.movePlayer();
         notifyObservers(); // notify player position
     }
-
-//    public void render(Graphics g) {
-//        this.drawRect(g, Color.blue);
-//        g.setColor(Color.blue);
-//        g.drawString("Life: " + this.getLife() + " Exp: " + this.getExperience(), (int) x, (int) y - 5);
-//    }
 
     public Rectangle getShape() {
         return this.setRectangleShape();
@@ -108,6 +98,4 @@ public class MainPlayer extends GameObject {
             lastHitTime = currentTime;
         }
     }
-
-    
 }

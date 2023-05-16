@@ -1,8 +1,5 @@
 package it.unibo.geosurv.model.monsters.triangle;
 
-import java.awt.Color;
-import java.awt.Graphics;
-
 import it.unibo.geosurv.model.monsters.Monster;
 import it.unibo.geosurv.view.graphics.Texture;
 
@@ -53,8 +50,6 @@ public class Triangle extends Monster {
             this.width = MAX_DIMENSION; // TODO:fix with height and width!!
             this.texture = Texture.TRIANGLE_BIG;
         }
-        
-
     }
 
     /**
@@ -64,16 +59,6 @@ public class Triangle extends Monster {
     public void tick() {
         reachTarget();
     }
-
-    /**
-     * @param g
-     */
-//    @Override
-//    public void render(Graphics g) {
-//        this.drawRect(g,  Color.DARK_GRAY);
-//        g.setColor(Color.white);
-//        g.drawString("" + this.health, (int) x + 3, (int) y + 8);
-//    }
 
     /**
      * @return whether a triangle is big or not.

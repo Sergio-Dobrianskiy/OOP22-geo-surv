@@ -1,8 +1,5 @@
 package it.unibo.geosurv.model.monsters.triangle;
 
-import java.awt.Color;
-import java.awt.Graphics;
-
 import it.unibo.geosurv.model.monsters.Monster;
 import it.unibo.geosurv.view.graphics.Texture;
 
@@ -32,6 +29,7 @@ public class Rhombus extends Monster {
         this.speed = 0;
         this.height = DEFAULT_DIMENSION;
         this.width = DEFAULT_DIMENSION;
+        this.texture = Texture.RHOMBUS;
     }
 
     /**
@@ -41,5 +39,4 @@ public class Rhombus extends Monster {
     public void tick() {
         /* do nothing on tick() */
     }
-
 }

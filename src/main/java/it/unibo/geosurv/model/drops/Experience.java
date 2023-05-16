@@ -20,7 +20,6 @@ public class Experience extends GameObject {
         this.height = EXPERIENCE_HEIGHT;
         this.width = EXPERIENCE_WIDTH;
         this.texture = Texture.EXPERIENCE;
-
     }
 
     @Override
