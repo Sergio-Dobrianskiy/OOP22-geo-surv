@@ -20,32 +20,35 @@ public class Rect extends Monster {
     /**
      * Rect constructor
      */
-    public Rect(final float x, final float y, final boolean isBig) {
+    public Rect() {
 
-        super(x, y);
+        super(0, 0);
+
         Rect.counter++;
         this.name = name + Rect.counter;
-        if (!isBig) {
-            this.health = DEFAULT_HEALTH;
-            this.dimension = DEFAULT_DIMENSION;
-            this.speed = DEFAULT_SPEED;
-            this.power = 2;
-            this.height = DEFAULT_DIMENSION;
-            this.width = DEFAULT_DIMENSION;
-            texture = Texture.SQUARE;
-        } else {
-            this.health = MAX_HEALTH;
-            this.dimension = MAX_DIMENSION;
-            this.speed = MAX_SPEED;
-            this.power = 8;
-            this.height = MAX_DIMENSION;
-            this.width = MAX_DIMENSION;
-            this.texture = Texture.SQUARE_BIG;
-        }
+        this.health = DEFAULT_HEALTH;
+        this.dimension = DEFAULT_DIMENSION;
+        this.speed = DEFAULT_SPEED;
+        this.power = 2;
+        this.height = DEFAULT_DIMENSION;
+        this.width = DEFAULT_DIMENSION;
+        texture = Texture.SQUARE;
     }
 
     @Override
     public void tick() {
         reachTarget();
     }
+
+    public void setBig(boolean isBig) {
+        this.isBig = isBig;
+        this.health = MAX_HEALTH;
+        this.dimension = MAX_DIMENSION;
+        this.speed = MAX_SPEED;
+        this.power = 8;
+        this.height = MAX_DIMENSION;
+        this.width = MAX_DIMENSION;
+        this.texture = Texture.SQUARE_BIG;
+    }
+
 }
