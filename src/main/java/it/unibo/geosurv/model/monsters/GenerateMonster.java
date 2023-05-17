@@ -6,6 +6,6 @@ package it.unibo.geosurv.model.monsters;
  */
 public interface GenerateMonster {
 
-    public Monster generateMonster(String monsterName, boolean isBig);
+    Monster createMonster();
 
 }

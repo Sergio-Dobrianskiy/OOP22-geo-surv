@@ -1,4 +1,4 @@
-package it.unibo.geosurv.model.monsters.triangle;
+package it.unibo.geosurv.model.monsters.types;
 
 import it.unibo.geosurv.model.monsters.Monster;
 import it.unibo.geosurv.view.graphics.Texture;
@@ -21,36 +21,23 @@ public class Triangle extends Monster {
     private static final int DEFAULT_POWER = 5; // default power of triangle
     private static final int MAX_POWER = 5; // default power of BIG triangle
     private static int counter;
-    private final boolean isBig;
+
     private String name = "Triangle-";
 
     /**
      * Triangle constructor.
-     * 
-     * @param x     x position
-     * @param y     y position
-     * @param isBig
      */
-    public Triangle(final float x, final float y, final boolean isBig) {
-        super(x, y);
+    public Triangle() {
+        super(0, 0);
         Triangle.counter++;
         this.name = name + Triangle.counter;
-        this.isBig = isBig;
-        if (!isBig) {
-            this.health = DEFAULT_HEALTH;
-            this.speed = DEFAULT_SPEED;
-            this.power = DEFAULT_POWER;
-            this.height = DEFAULT_H_DIMENSION;
-            this.width = DEFAULT_W_DIMENSION;
-            this.texture = Texture.TRIANGLE;
-        } else {
-            this.health = MAX_HEALTH;
-            this.speed = MAX_SPEED;
-            this.power = MAX_POWER;
-            this.height = MAX_H_DIMENSION;
-            this.width = MAX_W_DIMENSION;
-            this.texture = Texture.TRIANGLE_BIG;
-        }
+        this.health = DEFAULT_HEALTH;
+        this.speed = DEFAULT_SPEED;
+        this.power = DEFAULT_POWER;
+        this.height = DEFAULT_H_DIMENSION;
+        this.width = DEFAULT_W_DIMENSION;
+        this.texture = Texture.TRIANGLE;
+
     }
 
     /**
@@ -59,6 +46,7 @@ public class Triangle extends Monster {
     @Override
     public void tick() {
         reachTarget();
+
     }
 
     /**
@@ -66,6 +54,16 @@ public class Triangle extends Monster {
      */
     public boolean isBig() {
         return isBig;
+    }
+
+    public void setBig(boolean isBig) {
+        this.isBig = isBig;
+        this.health = MAX_HEALTH;
+        this.speed = MAX_SPEED;
+        this.power = MAX_POWER;
+        this.height = MAX_H_DIMENSION;
+        this.width = MAX_W_DIMENSION;
+        this.texture = Texture.TRIANGLE_BIG;
     }
 
 }

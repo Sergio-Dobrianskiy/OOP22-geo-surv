@@ -21,12 +21,14 @@ public class Func {
 	 */
 	public static Pair<Float, Float> randomPoint(float min, float max) {
 		if (max <= 0) {
-			max = 500;
+			max = 500.0f;
 		}
 		// Correct exception if min > = max,
 		if (min >= max) {
+			System.out.println(
+					"randomPoint(): min: " + min + " max: " + max
+							+ "Warning: min should be minor to max => automatic reset applied");
 			min = max - 10;
-			System.out.println("Warning: min should be minor to max => automatic reset applied");
 		}
 		Random random = new Random();
 		double angle = 2 * Math.PI * Math.random();
@@ -37,12 +39,12 @@ public class Func {
 
 		return new Pair<>(x * max, y * max);
 	}
-	
+
 	/**
 	 * Return closest enemy to the player.
 	 *
 	 * @param Handler game handler
-
+	 * 
 	 * @return GameObject player
 	 */
 	public static GameObject findClosestEnemy(final Handler handler) {
@@ -55,16 +57,15 @@ public class Func {
 		float px, py;
 		px = player.getX();
 		py = player.getY();
-		
-		
+
 		for (int i = 0; i < tmpObjects.size(); i++) {
 			tmpObject = tmpObjects.get(i);
 			if (tmpObject.getId() == ID.Monster) {
 				float ex, ey;
-				
+
 				ex = tmpObject.getX();
 				ey = tmpObject.getY();
-				
+
 				distance = (float) Point2D.distance(px, py, ex, ey);
 				if (distance < closestDistance) {
 					closestDistance = distance;
@@ -74,7 +75,7 @@ public class Func {
 		}
 		return closestEnemy;
 	}
-	
+
 	/**
 	 * Return angle of from point A to B.
 	 *
@@ -82,19 +83,21 @@ public class Func {
 	 * @param flaot A'y x coordinate
 	 * @param flaot B's x coordinate
 	 * @param flaot B'y x coordinate
-	 * @return Pair angle 
+	 * @return Pair angle
 	 */
-//	public static Pair<Float, Float> findAngle(final float ax, final float ay, final float bx, final float by) {
-//		float angle = (float) Math.atan2(by - ay, bx - ax);
-//		return new Pair<Float, Float>((float) Math.cos(angle), (float) Math.sin(angle));
-//	}
-	
+	// public static Pair<Float, Float> findAngle(final float ax, final float ay,
+	// final float bx, final float by) {
+	// float angle = (float) Math.atan2(by - ay, bx - ax);
+	// return new Pair<Float, Float>((float) Math.cos(angle), (float)
+	// Math.sin(angle));
+	// }
+
 	/**
 	 * Return angle of from point A to B.
 	 *
 	 * @param origin GameObject A
-	 * @param aimed GameObject B
-	 * @return Pair angle 
+	 * @param aimed  GameObject B
+	 * @return Pair angle
 	 */
 	public static Pair<Float, Float> findAngle2(final GameObject a, final GameObject b) {
 		float ax = a.getX();
@@ -104,7 +107,5 @@ public class Func {
 		float angle = (float) Math.atan2(by - ay, bx - ax);
 		return new Pair<Float, Float>((float) Math.cos(angle), (float) Math.sin(angle));
 	}
-	
 
-	
 }

@@ -57,7 +57,7 @@ public class Loader {
 	 */
 	private void loadGuns() {
 		handler.addTickingObject(new AutoGun(this.handler));
-		// handler.addTickingObject(new SatelliteGun(this.handler));
+		handler.addTickingObject(new SatelliteGun(this.handler));
 		// handler.addTickingObject(new ExplosionGun(this.handler));
 		// handler.addTickingObject(new LaserGun(this.handler));
 	}
