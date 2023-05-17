@@ -29,15 +29,15 @@ public class TextureRender {
 			int yy = getRenderY(to);
 			// Enable debug mode and set the debug code
 			debugManager.setDebugFunction(() -> {
-				if (to.getId() != ID.Block) {
+				if (to.getId() != ID.Block && to.getId() != ID.Bullet) {
 					g.drawString(to.toString(), xx + 10, yy + 10);
-					this.renderHitBoxes(g, Color.white, to);
+					this.renderHitBoxes(g, Color.red, to);
 				}
 			});
 			// debugManager.executeDebugCode();
 			if (HIT_BOXES == true)
 				this.renderHitBoxes(g, Color.white, to);
-			g.drawImage(to.getTexture().extractTexture(), xx, yy, null);
+			g.drawImage(to.getTexture().extractTexture(), xx, yy, to.getWidth(), to.getHeight(), null);
 		}
 		renderUI(g, player);
 	}
