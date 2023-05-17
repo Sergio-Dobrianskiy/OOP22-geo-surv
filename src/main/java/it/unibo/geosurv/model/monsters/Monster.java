@@ -1,6 +1,7 @@
 package it.unibo.geosurv.model.monsters;
 
 import java.awt.geom.RectangularShape;
+
 import it.unibo.geosurv.model.Game;
 import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.Handler;
@@ -8,6 +9,8 @@ import it.unibo.geosurv.model.ID;
 import it.unibo.geosurv.model.MonstersObserver;
 import it.unibo.geosurv.model.drops.Experience;
 import it.unibo.geosurv.model.player.MainPlayer;
+import it.unibo.geosurv.model.utility.Func;
+import it.unibo.geosurv.model.utility.Pair;
 
 /** Abstract Class for generic evil */
 public abstract class Monster extends GameObject implements MonstersObserver {
@@ -21,19 +24,23 @@ public abstract class Monster extends GameObject implements MonstersObserver {
     protected int health; // need to be shared with monters subclasses @Sergio-Dobrianskiy
     protected int power; // power which the plyer is hit by when in contact with a monster
     protected static int monstersCounter;
-    protected float mx, my; // Player Position throu observer
-    protected MainPlayer p;
+    protected float mx; // Player Position throu observer
+    protected float my; // Player Position throu observer
+    protected MainPlayer player;
     protected int dimension;
     protected double speed;
+    protected boolean isBig;
+
+    static long counterxx = 0;
 
     protected Monster(float x, float y) {
         super(x, y, ID.Monster);
-        monstersCounter++;
-        p = Game.returnHandler().getPlayer();
-        p.addObserver(this);
+        Monster.monstersCounter++;
+        player = Game.returnHandler().getPlayer();
+        player.addObserver(this);
         this.lastHitTime = 0;
-//        System.out.println("Added Observer: " + this.toString());
-        
+        // System.out.println("Added Observer: " + this.toString());
+
     }
 
     /**
@@ -41,7 +48,7 @@ public abstract class Monster extends GameObject implements MonstersObserver {
      */
     public int getHealth() {
         return this.health;
-    };
+    }
 
     /**
      * @return an integer showing how much power entity has tohit the player
@@ -57,7 +64,7 @@ public abstract class Monster extends GameObject implements MonstersObserver {
      */
     public boolean isDead() {
         return this.getHealth() <= 0;
-    };
+    }
 
     /**
      * At death, Entity drop experience pill
@@ -66,7 +73,7 @@ public abstract class Monster extends GameObject implements MonstersObserver {
      */
     public Experience dropExperience() {
         return new Experience(this.x, this.y, DEFAULT_EXPERIENCE);
-    };
+    }
 
     /**
      * Entity's been hit by player weapon
@@ -74,18 +81,18 @@ public abstract class Monster extends GameObject implements MonstersObserver {
      * @param weapon whih hits the entity
      */
     public void hit(int weaponDamage) {
-    		long currentTime = System.currentTimeMillis();
-		if (currentTime - lastHitTime >= HIT_COOLDOWN) {
-			this.health -= weaponDamage;
-			lastHitTime = currentTime;
-			this.bounce();
-		}
-    		
-        if (this.isDead()) {
-            p.removeObserver(this);
-            this.die();        		
+        long currentTime = System.currentTimeMillis();
+        if (currentTime - lastHitTime >= HIT_COOLDOWN) {
+            this.health -= weaponDamage;
+            lastHitTime = currentTime;
+            this.bounce();
         }
-    };
+
+        if (this.isDead()) {
+            player.removeObserver(this);
+            this.die();
+        }
+    }
 
     /**
      * Entity bounce if hit by weapon
@@ -107,8 +114,7 @@ public abstract class Monster extends GameObject implements MonstersObserver {
             // System.out.println(this.toString() + " inverting direction..");
         }
         isBouncing = false;
-
-    };
+    }
 
     /**
      * Entity dies, drop experience and it is removed
@@ -119,8 +125,7 @@ public abstract class Monster extends GameObject implements MonstersObserver {
         h.addObject(this.dropExperience());
         monstersCounter--;
         h.removeObject(this); // monster is removed from Monsters set/list
-
-    };
+    }
 
     public static int getMonstersCounter() {
         return monstersCounter;
@@ -130,9 +135,8 @@ public abstract class Monster extends GameObject implements MonstersObserver {
     public void update(MainPlayer mp) {
         mx = mp.getX();
         my = mp.getY();
-
     }
-    
+
     @Override
     public RectangularShape getShape() {
         return this.setRectangleShape();
@@ -147,11 +151,24 @@ public abstract class Monster extends GameObject implements MonstersObserver {
         // int mx = (int) this.tempPlayer.getX();
         // int my = (int) this.tempPlayer.getY();
         //
+
         float angle = (float) Math.atan2(my - this.getY() + 8, mx - this.getX() + 4);
 
         this.velX = (float) ((this.speed) * Math.cos(angle));
         this.velY = (float) ((this.speed) * Math.sin(angle));
         // System.out.println("T trying to reach the target");
+    }
+
+    public void setBig(boolean b) {
+        this.isBig = b;
+    }
+
+    public void setStartingPosition(float minDistance, float maxDistance) {
+        Pair<Float, Float> randomPosition = Func.randomPoint(minDistance, maxDistance);
+        update(player); // to get player position
+        x = mx + randomPosition.getX();
+        y = my + randomPosition.getY();
+        // System.out.println("[" + mx + "," + my + "]");
     }
 
 }
