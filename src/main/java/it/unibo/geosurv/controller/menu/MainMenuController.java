@@ -2,40 +2,44 @@ package it.unibo.geosurv.controller.menu;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import  it.unibo.geosurv.view.graphics.menuView;
+
+import it.unibo.geosurv.model.Game;
+import it.unibo.geosurv.view.graphics.MenuView;
 
 public class MainMenuController {
+    private MenuView menuView;
+    private Game game;
 
-    public menuView menuView;
-
-    public MainMenuController(menuView menuView) {
+    public MainMenuController(MenuView menuView) {
         this.menuView = menuView;
-    
-        //collego gli actionListener
+        // this.game = game; //TODO: add in contructor
+        // collego gli actionListener
         menuView.getStartButton().addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 startGame();
-        }
-    });
+            }
+        });
 
-    menuView.getCloseButton().addActionListener(new ActionListener() {
-        public void actionPerformed(ActionEvent e) {
-            closeApplication();
-        }
-    });
-}
-
-public void startGame() {
-    // Logica per avviare il gioco
+        menuView.getCloseButton().addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                closeApplication();
+            }
+        });
     }
 
-public void closeApplication() {
-    System.exit(0);
-}
+    public void startGame() {
+        // Logica per avviare il gioco
 
-/*
-public void startMenu() {
-    mainMenuView.setVisible(true);
-}
-*/
+        Game n = new Game(); // game.start(); //TODO: change once in constructor
+        n.start();
+    }
+
+    public void closeApplication() {
+        System.exit(0);
+    }
+
+    public void startMenu() {
+        menuView.setVisible(true);
+    }
+
 }

@@ -1,16 +1,22 @@
 package it.unibo.geosurv;
 
 import it.unibo.geosurv.controller.menu.MainMenuController;
-import it.unibo.geosurv.view.graphics.menuView;
 import it.unibo.geosurv.model.Game;
+import it.unibo.geosurv.view.graphics.MenuView;
 
-public class Main {
+public final class Main {
+
+	// prevent instance creation
+	private Main() {
+	}
+
 	public static void main(String args[]) {
 
-		//menuView menuView = new menuView();
-		//MainMenuController mainMenuController = new MainMenuController(menuView);
+		MenuView menuView = new MenuView(); // view
+		// Game game = new Game(); // model
+		MainMenuController mainMenuController = new MainMenuController(menuView); // controller
 
-		//mainMenuController.startMenu();
-		new Game();
+		// new Game();
+		mainMenuController.startMenu(); // game menu
 	}
 }

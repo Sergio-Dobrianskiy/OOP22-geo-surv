@@ -24,7 +24,7 @@ public class Loader {
 	}
 
 	public void loadAll() {
-		handler.addPlayer(new MainPlayer(180, 300, handler)); // TODO: remove?
+		handler.addPlayer(new MainPlayer(150, 300, handler)); // TODO: remove?
 		this.loadTextures();
 		this.loadGuns();
 		loadLevel(Texture.SMALL_MAP.extractTexture());
