@@ -2,12 +2,17 @@ package it.unibo.geosurv.model;
 
 import java.awt.Canvas;
 import java.awt.Color;
+import java.awt.Frame;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferStrategy;
+
+import javax.swing.JFrame;
+
 import it.unibo.geosurv.control.GameState;
 import it.unibo.geosurv.control.KeyInput;
 import it.unibo.geosurv.control.TickingObject;
+import it.unibo.geosurv.controller.menu.MainMenuController;
 import it.unibo.geosurv.model.drops.Experience;
 import it.unibo.geosurv.model.monsters.Monster;
 import it.unibo.geosurv.model.monsters.MonsterSpawner;
@@ -37,12 +42,13 @@ public class Game extends Canvas implements Runnable, TickingObject {
 
 	//// debug
 	private int fps;
-	private boolean showDebug = true;
+	private boolean debugMode = false;
 	private int objectsCounter;
 
 	public Game() {
 		this.state = GameState.LOADING;
-		new Window(WINDOW_WIDTH, WINDOW_HEIGHT, "Geo Survival", this);
+
+		new Window(WINDOW_WIDTH, WINDOW_HEIGHT, "Geo Survival xxx", this);
 
 		handler = new Handler();
 		loader = new Loader(handler);
@@ -55,7 +61,7 @@ public class Game extends Canvas implements Runnable, TickingObject {
 		startTime = System.currentTimeMillis();
 		handler.addObject(new MonsterSpawner(0, 0, handler, this)); // TODO: move to Loader?
 
-		start(); // starts threads
+		// start(); // starts threads //TODO: comment once changed in Main.java
 	}
 
 	public static long getStartTime() {
@@ -64,11 +70,11 @@ public class Game extends Canvas implements Runnable, TickingObject {
 
 	public static Handler returnHandler() {
 		return handler;
-	};
+	}
 
-	private synchronized void start() {
+	public synchronized void start() {
 		this.state = GameState.RUNNING;
-		isRunning = true;
+		this.isRunning = true;
 		thread = new Thread(this);
 		thread.start();
 	}
@@ -94,8 +100,8 @@ public class Game extends Canvas implements Runnable, TickingObject {
 			delta += (now - lastTime) / NANO_PER_TICK;
 			lastTime = now;
 			while (delta > 1) {
-				tick();
-				render();
+				this.tick();
+				this.render();
 				delta--;
 				frames++;
 			}
@@ -130,33 +136,33 @@ public class Game extends Canvas implements Runnable, TickingObject {
 		g.setColor(Color.black);
 		g.fillRect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
 
-		if (this.showDebug == true) {
-			g.setColor(Color.RED);
-			g.drawString("FPS: " + this.fps, 850, 50);
-			g.drawString("Objects: " + this.objectsCounter, 850, 65);
-			g.drawString("Experience: " + Experience.getExperienceCounter(), 850, 80);
-			g.drawString("Monsters: " + Monster.getMonstersCounter(), 850, 95);
-			g.drawString("Player Exp: " + handler.getPlayer().getExperience(), 850, 110);
-			g.drawString("Player Life: " + handler.getPlayer().getLife(), 850, 125);
-			g.drawString("Time: " + (((int) ((System.currentTimeMillis() / 1000))) - startTime / 1000), 850, 140);
-		}
-
 		g2d.translate(-camera.getX(), -camera.getY());
 
-		textureRender.render(g);
+		if (debugMode) {
+			textureRender.showDebug(g);
+		}
+		textureRender.renderView(g);
+
 		////////////////////////////////////// above here we draw to the game
 
 		g.dispose();
 		bs.show();
 	}
 
-	
 	public void pause() {
 		if (this.state == GameState.RUNNING) {
-            this.state = GameState.PAUSE;
-        } else if (this.state == GameState.PAUSE) {
-            this.state = GameState.RUNNING;
-        }
+			this.state = GameState.PAUSE;
+		} else if (this.state == GameState.PAUSE) {
+			this.state = GameState.RUNNING;
+		}
+	}
+
+	public void switchDebug() {
+		this.debugMode = !this.debugMode;
+	}
+
+	public boolean isDebugMode() {
+		return debugMode;
 	}
 
 }
