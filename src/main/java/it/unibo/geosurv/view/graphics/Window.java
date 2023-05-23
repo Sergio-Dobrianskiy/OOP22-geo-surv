@@ -1,9 +1,6 @@
 package it.unibo.geosurv.view.graphics;
 
-import it.unibo.geosurv.controller.menu.MainMenuController;
 import it.unibo.geosurv.model.Game;
-
-import java.awt.Canvas;
 import java.awt.Dimension;
 import javax.swing.JFrame;
 

@@ -9,7 +9,8 @@ import java.awt.Dimension;
 
 public class MenuView extends JFrame {
 
-    private JFrame frame;
+    private static final long serialVersionUID = 1L;
+	private JFrame frame;
     private JButton startButton;
     private JButton closeButton;
 

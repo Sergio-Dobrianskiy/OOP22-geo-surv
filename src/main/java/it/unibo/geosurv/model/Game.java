@@ -2,19 +2,12 @@ package it.unibo.geosurv.model;
 
 import java.awt.Canvas;
 import java.awt.Color;
-import java.awt.Frame;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferStrategy;
-
-import javax.swing.JFrame;
-
 import it.unibo.geosurv.control.GameState;
 import it.unibo.geosurv.control.KeyInput;
 import it.unibo.geosurv.control.TickingObject;
-import it.unibo.geosurv.controller.menu.MainMenuController;
-import it.unibo.geosurv.model.drops.Experience;
-import it.unibo.geosurv.model.monsters.Monster;
 import it.unibo.geosurv.model.monsters.MonsterSpawner;
 import it.unibo.geosurv.view.graphics.Camera;
 import it.unibo.geosurv.view.graphics.TextureRender;
