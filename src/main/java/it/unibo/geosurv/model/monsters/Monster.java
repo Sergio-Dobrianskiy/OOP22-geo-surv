@@ -8,6 +8,7 @@ import it.unibo.geosurv.model.Handler;
 import it.unibo.geosurv.model.ID;
 import it.unibo.geosurv.model.MonstersObserver;
 import it.unibo.geosurv.model.drops.Experience;
+import it.unibo.geosurv.model.drops.Life;
 import it.unibo.geosurv.model.player.MainPlayer;
 import it.unibo.geosurv.model.utility.Func;
 import it.unibo.geosurv.model.utility.Pair;
@@ -76,6 +77,15 @@ public abstract class Monster extends GameObject implements MonstersObserver {
     }
 
     /**
+     * At death, Entity drop experience pill
+     * 
+     * @return Experience pill
+     */
+    public Life dropLife() {
+        return new Life(this.x, this.y);
+    }
+
+    /**
      * Entity's been hit by player weapon
      * 
      * @param weapon whih hits the entity
@@ -116,13 +126,24 @@ public abstract class Monster extends GameObject implements MonstersObserver {
         isBouncing = false;
     }
 
+    private boolean shouldDropLife() {
+        // Generate a random number between 0 and 49
+        int randomNumber = (int) (Math.random() * 5);
+        // Return true if the random number is 0 (probability of 1/50)
+        return randomNumber == 0;
+    }
+
     /**
      * Entity dies, drop experience and it is removed
      */
     public void die() {
 
         Handler h = Game.returnHandler();
-        h.addObject(this.dropExperience());
+        if (shouldDropLife()) {
+            h.addObject(this.dropLife());
+        } else {
+            h.addObject(this.dropExperience());
+        }
         monstersCounter--;
         h.removeObject(this); // monster is removed from Monsters set/list
     }

@@ -1,38 +1,39 @@
 package it.unibo.geosurv.model;
 
 public enum ID {
-	/**
-	 * Represents the block/wall.
-	 */
+    /**
+     * Represents the block/wall.
+     */
     Block,
     /**
-	 * Represents the bullet.
-	 */
+     * Represents the bullet.
+     */
     Bullet,
     /**
-	 * Represents the experience gem.
-	 */
+     * Represents the experience gem.
+     */
     Experience,
     /**
-	 * Represents the monster.
-	 */
+     * Represents the monster.
+     */
     Monster,
     /**
-	 * Represents the player.
-	 */
+     * Represents the player.
+     */
     Player,
     /**
-	 * Represents the satellite.
-	 */
+     * Represents the satellite.
+     */
     Satellite,
     /**
-	 * Represents the spawner.
-	 */
+     * Represents the spawner.
+     */
     Spawner, // TODO: remove
     /**
-	 * Represents weapon.
-	 */
-    Weapon,	// TODO: remove
+     * Represents weapon.
+     */
+    Weapon,
+    Life,
     // Death,
     // SuperMonster,
 }

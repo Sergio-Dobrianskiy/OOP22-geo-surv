@@ -25,25 +25,25 @@ public class MainPlayer extends GameObject implements MainPlayerInterf {
     private static final int MAX_HITS_PER_SECOND = 2;
     private static final long HIT_COOLDOWN = 1000 / MAX_HITS_PER_SECOND;
     private Handler handler;
-    private int health;
+    private int life;
     private Collisions collisions;
     private PlayerMovement playerMovement;
     private PlayerLevels playerLevels;
     private List<MonstersObserver> observers;
     private ArrayList<Weapon> weapons;
-	private WeaponLevels weaponLevels;
+    private WeaponLevels weaponLevels;
 
     public MainPlayer(float x, float y, Handler handler) {
         super(x, y, ID.Player);
         this.handler = handler;
-        this.health = MAX_LIFE;
+        this.life = MAX_LIFE;
         this.lastHitTime = 0;
         this.observers = new ArrayList<>();
         this.height = PLAYER_HEIGHT;
         this.width = PLAYER_WIDTH;
         this.collisions = new Collisions(handler);
         this.playerMovement = new PlayerMovementImpl(handler);
-//        this.texture = Texture.PLAYER_DUCK;  // alternative texture
+        // this.texture = Texture.PLAYER_DUCK; // alternative texture
         this.texture = Texture.PLAYER_MOUSE;
         this.playerLevels = new PlayerLevels(this);
         this.weapons = new ArrayList<>();
@@ -55,30 +55,29 @@ public class MainPlayer extends GameObject implements MainPlayerInterf {
         collisions.checkPlayerCollisions();
         this.playerMovement.movePlayer();
         notifyObservers(); // notify player position
-    }     
+    }
 
     public int getExperience() {
         return this.playerLevels.getCurrentExp();
     }
-    
+
     public int getMaxExperience() {
-    	return this.playerLevels.getExpToLevel();
+        return this.playerLevels.getExpToLevel();
     }
-    
-    
+
     public int getLevel() {
-    	return this.playerLevels.getCurrentLevel();
+        return this.playerLevels.getCurrentLevel();
     }
-    
+
     public float getExpPercentage() {
-    	if (this.getExperience() == 0) {
-    		return 0;
-    	}
-    	return ((float) this.getExperience() / this.getMaxExperience()) * 100;
+        if (this.getExperience() == 0) {
+            return 0;
+        }
+        return ((float) this.getExperience() / this.getMaxExperience()) * 100;
     }
 
     public void setExperience(final int experience) {
-    	this.playerLevels.expUp(experience);
+        this.playerLevels.expUp(experience);
 
     }
 
@@ -86,19 +85,19 @@ public class MainPlayer extends GameObject implements MainPlayerInterf {
      * @return how much health the Player has left
      */
     public int getLife() {
-        return this.health;
+        return this.life;
     }
 
     public void setLife(int life) {
-        this.health = life;
+        this.life += life;
     }
 
     public void addObserver(MonstersObserver observer) {
-    	this.observers.add(observer);
+        this.observers.add(observer);
     }
 
     public void removeObserver(MonstersObserver observer) {
-    	this.observers.remove(observer);
+        this.observers.remove(observer);
     }
 
     private void notifyObservers() {
@@ -110,18 +109,18 @@ public class MainPlayer extends GameObject implements MainPlayerInterf {
     public void hit(final int damage) {
         long currentTime = System.currentTimeMillis();
         if (currentTime - lastHitTime >= HIT_COOLDOWN) {
-            this.health -= damage;
+            this.life -= damage;
             lastHitTime = currentTime;
         }
     }
 
-	public void setWeapons(ArrayList<Weapon> weapons) {
-		this.weapons = weapons;
-		this.weaponLevels = new WeaponLevels(weapons);
-		this.weaponLevels.levelUpWeapon();		// start game with 1 lvl 1 weapon
-	}
+    public void setWeapons(ArrayList<Weapon> weapons) {
+        this.weapons = weapons;
+        this.weaponLevels = new WeaponLevels(weapons);
+        this.weaponLevels.levelUpWeapon(); // start game with 1 lvl 1 weapon
+    }
 
-	public void notifyLvlUp() {
-		this.weaponLevels.levelUpWeapon();
-	}
+    public void notifyLvlUp() {
+        this.weaponLevels.levelUpWeapon();
+    }
 }

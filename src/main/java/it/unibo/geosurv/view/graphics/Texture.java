@@ -40,6 +40,10 @@ public enum Texture {
 	 */
 	LASER_V("/sprite/laser/laser_V.png"),
 	/**
+	 * Represents life pills the player can pickup.
+	 */
+	LIFE("/sprite/experience/life.png"),
+	/**
 	 * Represents the player as a duck.
 	 */
 	PLAYER_DUCK("/sprite/player/player_duck.png"),
@@ -82,7 +86,7 @@ public enum Texture {
 	/**
 	 * Represents the triangle.
 	 */
-	TRIANGLE_BIG("/sprite/triangle/triangle_big.png");;
+	TRIANGLE_BIG("/sprite/triangle/triangle_big.png");
 
 	//////////////////////////////////
 	private final String filePath;
