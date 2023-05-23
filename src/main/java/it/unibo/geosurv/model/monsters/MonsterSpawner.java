@@ -5,6 +5,7 @@ import java.awt.Rectangle;
 import java.util.Random;
 import java.util.stream.Stream;
 
+import it.unibo.geosurv.control.TickingObject;
 import it.unibo.geosurv.model.Game;
 import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.Handler;
@@ -15,7 +16,7 @@ import it.unibo.geosurv.model.monsters.types.Triangle;
 import it.unibo.geosurv.model.utility.Func;
 import it.unibo.geosurv.model.utility.Pair;
 
-public class MonsterSpawner extends GameObject {
+public class MonsterSpawner implements TickingObject {
 
     private final static int SPAWN_INTERVAL = 500; // specifies the time interval (in milliseconds) between monster
                                                    // spawns (500 = 2 monster each sec)
@@ -31,10 +32,11 @@ public class MonsterSpawner extends GameObject {
     private int currentSecond;
     private long currentTime;
     private long elapsedTime;
+    GenerateMonsterT tm = new GenerateMonsterT();
+    GenerateMonsterR rm = new GenerateMonsterR();
     private long begin = Game.getStartTime();
 
-    public MonsterSpawner(float x, float y, Handler h, Game game) {
-        super(x, y, ID.Spawner);
+    public MonsterSpawner(float x, float y, Handler h) {
         this.handler = h;
         tempPlayer = handler.getPlayer();
 
@@ -79,27 +81,24 @@ public class MonsterSpawner extends GameObject {
         spawnMonsters();
     }
 
-    @Override
-    public Rectangle getShape() {
-        throw new UnsupportedOperationException("Unimplemented method 'getBounds'");
-    }
-
     private Monster generateMonsters() {
-        GenerateMonsterT tm = new GenerateMonsterT();
-        GenerateMonsterR rm = new GenerateMonsterR();
 
         Monster m = null;
 
         if ((currentSecond - begin / 1000) < 15) {
             m = tm.createMonster();
+            // System.out.println("T");
         } else if (currentSecond - begin / 1000 == 15) {
             m = tm.createMonster();
             m.setBig(true);
+            // System.out.println("T: big");
         } else if (currentSecond - begin / 1000 < 25) {
             m = rm.createMonster();
+            // System.out.println("R");
         } else if (currentSecond - begin / 1000 == 25) {
             m = rm.createMonster();
             m.setBig(true);
+            // System.out.println("R: big");
         } else {
             m = rm.createMonster();
         }
@@ -115,13 +114,20 @@ public class MonsterSpawner extends GameObject {
 
     private void flood() {
 
-        Stream.generate(() -> new Rect())
+        Stream.generate(() -> rm.createMonster())
                 .limit(1)
                 .forEach(m -> {
-                    m.setStartingPosition(x, y);
                     m.setBig(true);
                     handler.addObject(m);
                 });
+
+        // Stream.generate(() -> new Rect())
+        // .limit(1)
+        // .forEach(m -> {
+        // // m.setStartingPosition(x, y);
+        // m.setBig(true);
+        // handler.addObject(m);
+        // });
 
         // Stream.generate(() -> new Rhombus(tempPlayer.getX() +
         // Func.randomPoint(280.0f, 300.0f).getX(),

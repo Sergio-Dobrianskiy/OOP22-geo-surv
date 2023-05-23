@@ -59,7 +59,7 @@ public class Game extends Canvas implements Runnable, TickingObject {
 
 		camera = loader.loadCamera(); // loads camera
 		startTime = System.currentTimeMillis();
-		handler.addObject(new MonsterSpawner(0, 0, handler, this)); // TODO: move to Loader?
+		handler.addTickingObject(new MonsterSpawner(0, 0, handler)); // TODO: move to Loader?
 
 		// start(); // starts threads //TODO: comment once changed in Main.java
 	}
