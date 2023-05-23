@@ -3,6 +3,7 @@ package it.unibo.geosurv.control.weapons;
 import java.util.ArrayList;
 import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.Handler;
+import it.unibo.geosurv.model.bullets.Bullet;
 import it.unibo.geosurv.model.bullets.Satellite;
 
 public class SatelliteGun extends Weapon {
@@ -10,12 +11,16 @@ public class SatelliteGun extends Weapon {
 	private final float ORBIT_SPEED = 0.05f;
 	private final float ORBIT_RADIUS = 150f;
 	private final double RADIANS_IN_CIRCLE = 6.28319d; // 360° = radians 6.28319
+//	private final int DAMAGE_LVL_1 = 1;
+//	private final int DAMAGE_LVL_2 = 2;
+//	private final int DAMAGE_LVL_3 = 3;
+	private final int DAMAGE = 3;
+	private final int SATELITES_PER_LEVEL= 3;
 	
 	private  double angleDifference;
 	private Handler handler;
 	private GameObject tempPlayer;
 	private double angle = 0d;
-	private GameObject bullet;
 	ArrayList<GameObject> bullets;
 	private int numberOfBullets = 0;
 	private int counter;
@@ -24,29 +29,16 @@ public class SatelliteGun extends Weapon {
 	public SatelliteGun(Handler handler) {
 		super();
 		this.handler = handler;
-		this.levelUp();
 		this.tempPlayer = handler.getPlayer();
 		this.bullets = new ArrayList<>();
-		this.addSatellite();
-		this.addSatellite();							// test
-		this.addSatellite();
-		this.addSatellite();
-		this.addSatellite();
-		this.addSatellite();
-		this.addSatellite();
-		this.addSatellite();
-		this.addSatellite();
-		this.addSatellite();
-		this.addSatellite();
-		this.addSatellite();
 	}
 	
 	/**
 	 * Adds a rotating satellite
 	 */	
 	public void addSatellite() {
-		this.bullet = handler.addObject(new Satellite(this.getXPos(angle), this.getYPos(angle), handler));
-		this.bullets.add(this.bullet);
+		GameObject bullet = handler.addObject(new Satellite(this.getXPos(angle), this.getYPos(angle), handler, DAMAGE));
+		this.bullets.add(bullet);
 		this.numberOfBullets++;
 	}
 	
@@ -84,5 +76,22 @@ public class SatelliteGun extends Weapon {
 
 	@Override
 	protected void shoot() {
+	}
+	
+	/**
+     * raises weapon level by one and creates satellites
+     * 
+     * @return boolean true if level was raised, false if it was already at maximum level
+     */
+	@Override
+	protected boolean levelUp() {
+		if (currentLevel < MAX_LVL) {
+			currentLevel += 1;
+			while (numberOfBullets < (currentLevel * SATELITES_PER_LEVEL)) {
+				this.addSatellite();
+			}
+			return true;
+		}
+		return false;
 	}
 }

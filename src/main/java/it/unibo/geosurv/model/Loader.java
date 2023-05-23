@@ -7,7 +7,6 @@ import it.unibo.geosurv.control.weapons.AutoGun;
 import it.unibo.geosurv.control.weapons.ExplosionGun;
 import it.unibo.geosurv.control.weapons.LaserGun;
 import it.unibo.geosurv.control.weapons.SatelliteGun;
-import it.unibo.geosurv.model.monsters.MonsterSpawner;
 import it.unibo.geosurv.model.player.MainPlayer;
 import it.unibo.geosurv.model.walls.blocks.Block;
 import it.unibo.geosurv.view.graphics.Camera;
@@ -58,8 +57,8 @@ public class Loader {
 	private void loadGuns() {
 		handler.addTickingObject(new AutoGun(this.handler));
 		handler.addTickingObject(new SatelliteGun(this.handler));
-		// handler.addTickingObject(new ExplosionGun(this.handler));
-		// handler.addTickingObject(new LaserGun(this.handler));
+		handler.addTickingObject(new ExplosionGun(this.handler));
+		handler.addTickingObject(new LaserGun(this.handler));
 	}
 
 	/**

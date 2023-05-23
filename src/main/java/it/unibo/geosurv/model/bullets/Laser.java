@@ -15,8 +15,8 @@ public class Laser extends Bullet {
 	private int initialLaserX;
 	private int initialLaserY;
 
-	public Laser(float x, float y, Handler handler, final int width, final int height, Texture texture) {
-		super(x, y, handler);
+	public Laser(float x, float y, Handler handler, final int damage, final int width, final int height, Texture texture) {
+		super(x, y, handler, damage);
 		this.lifeSpan = LIFE_SPAN;
 		this.width = width;
 		this.height = height;

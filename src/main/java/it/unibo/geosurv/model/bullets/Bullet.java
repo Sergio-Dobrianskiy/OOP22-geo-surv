@@ -15,11 +15,12 @@ public abstract class Bullet extends GameObject {
 	protected final Handler handler;
 	private Collisions collisions;
 
-	public Bullet(float x, float y, Handler handler) {
+	public Bullet(float x, float y, final Handler handler, final int damage) {
 		super(x, y, ID.Bullet);
 		this.handler = handler;
 		this.creationTime = System.currentTimeMillis();
 		this.collisions = new Collisions(handler);
+		this.damage = damage;
 	}
 
 	@Override

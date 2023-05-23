@@ -12,6 +12,9 @@ public class AutoGun extends Weapon {
 	
 	private final int BULLET_VELOCITY = 10;
 	private final int MAX_RANGE = 400;
+	private final int DAMAGE_LVL_1 = 1;
+	private final int DAMAGE_LVL_2 = 2;
+	private final int DAMAGE_LVL_3 = 3;
 	
 	private Handler handler;
 	private GameObject player;
@@ -27,16 +30,13 @@ public class AutoGun extends Weapon {
 		this.handler = handler;
 		this.lastTime = System.nanoTime();
 		this.player = handler.getPlayer();
-		this.levelUp();
-		this.levelUp();
-		this.levelUp(); // testing
 	}
 	
 	@Override
 	public void tick() {
 		double second = Game.SECOND_IN_NANO;
 
-		if (currentLevel >= 0) { 							// TODO: sistemare
+		if (currentLevel > 0) { 							// TODO: sistemare
 			long now = System.nanoTime();
 			this.delta = (now - this.lastTime) / second;
 			
@@ -77,9 +77,8 @@ public class AutoGun extends Weapon {
 	
 	protected void shoot() {
 		Pair<Float, Float> angle = Func.findAngle2(this.player, this.closestEnemy);
-		GameObject tempBullet = handler.addObject(new BulletImpl(player.getX(), player.getY(), handler));
+		GameObject tempBullet = handler.addObject(new BulletImpl(player.getX(), player.getY(), handler, getDamage()));
 		tempBullet.setVelX((float) ((BULLET_VELOCITY) * angle.getX()));
 		tempBullet.setVelY((float) ((BULLET_VELOCITY) * angle.getY()));
 	}
-	
 }
