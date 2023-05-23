@@ -4,9 +4,9 @@ import it.unibo.geosurv.control.TickingObject;
 
 public abstract class Weapon implements TickingObject {
 	
-	private final int DAMAGE_LVL_1 = 1;
-	private final int DAMAGE_LVL_2 = 2;
-	private final int DAMAGE_LVL_3 = 3;
+	protected int damageLvl1 = 1;
+	protected int damageLvl2 = 2;
+	protected int damageLvl3 = 3;
 	
 	/**
      * maximum level of a weapon
@@ -30,7 +30,7 @@ public abstract class Weapon implements TickingObject {
 	
 	
 	/**
-     * shoots every cycle
+     * shoot every cycle
      */
 	public void tick() {
 		if (this.currentLevel > 0 && this.checkTime()) {
@@ -39,11 +39,17 @@ public abstract class Weapon implements TickingObject {
 	}
 
 	/**
+     * shoot weapon's bullet
+     */
+	protected abstract void shoot();
+	
+	
+	/**
      * raises weapon level by one 
      * 
      * @return boolean true if level was raised, false if it was already at maximum level
      */
-	protected boolean levelUp() {
+	public boolean levelUp() {
 		if (currentLevel < MAX_LVL) {
 			currentLevel += 1;
 			return true;
@@ -70,16 +76,20 @@ public abstract class Weapon implements TickingObject {
 		return false;
 	}
 	
-	protected abstract void shoot();
 	
+	/**
+     * returns weapon damage based on it's level
+     * 
+     * @return int damage
+     */
 	protected int getDamage() {
 		switch (this.currentLevel) {
 			case 1:
-				return DAMAGE_LVL_1;
+				return this.damageLvl1;
 			case 2:
-				return DAMAGE_LVL_2;
+				return this.damageLvl2;
 			case 3:
-				return DAMAGE_LVL_3;
+				return this.damageLvl3;
 			default:
 				return 0;
 		}

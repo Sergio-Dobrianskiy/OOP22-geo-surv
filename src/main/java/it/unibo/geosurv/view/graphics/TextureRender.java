@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.Handler;
 import it.unibo.geosurv.model.ID;
+import it.unibo.geosurv.model.IGameObject;
 import it.unibo.geosurv.model.player.MainPlayer;
 import it.unibo.geosurv.model.drops.Experience;
 import it.unibo.geosurv.model.monsters.Monster;
@@ -27,7 +28,7 @@ public class TextureRender {
 		ArrayList<GameObject> gameObjects = handler.getGameObjects();
 		MainPlayer player = handler.getPlayer();
 		for (int i = 0; i < gameObjects.size(); i++) {
-			GameObject to = gameObjects.get(i);
+			IGameObject to = gameObjects.get(i);
 			int xx = getRenderX(to);
 			int yy = getRenderY(to);
 			g.drawImage(to.getTexture().extractTexture(), xx, yy, to.getWidth(), to.getHeight(), null);
@@ -65,18 +66,18 @@ public class TextureRender {
 		g.drawRect(barX, barY, barWidth, barHeight);
 	}
 
-	public void renderHitBoxes(Graphics g, Color color, GameObject obj) {
+	public void renderHitBoxes(Graphics g, Color color, IGameObject obj) {
 		int xx = getRenderX(obj);
 		int yy = getRenderY(obj);
 		g.setColor(color);
 		g.fillRect(xx, yy, obj.getWidth(), obj.getHeight());
 	}
 
-	public int getRenderX(GameObject obj) {
+	public int getRenderX(IGameObject obj) {
 		return (int) (obj.getX() - (obj.getWidth() / 2));
 	}
 
-	public int getRenderY(GameObject obj) {
+	public int getRenderY(IGameObject obj) {
 		return (int) (obj.getY() - (obj.getHeight() / 2));
 	}
 
@@ -94,7 +95,7 @@ public class TextureRender {
 		// startTime / 1000), 850, 140);
 
 		for (int i = 0; i < gameObjects.size(); i++) {
-			GameObject to = gameObjects.get(i);
+			IGameObject to = gameObjects.get(i);
 			int xx = getRenderX(to);
 			int yy = getRenderY(to);
 

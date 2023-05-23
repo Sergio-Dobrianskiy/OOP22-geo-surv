@@ -2,8 +2,8 @@ package it.unibo.geosurv.control.weapons;
 
 import java.awt.geom.Point2D;
 import it.unibo.geosurv.model.Game;
-import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.Handler;
+import it.unibo.geosurv.model.IGameObject;
 import it.unibo.geosurv.model.bullets.BulletImpl;
 import it.unibo.geosurv.model.utility.Func;
 import it.unibo.geosurv.model.utility.Pair;
@@ -12,13 +12,13 @@ public class AutoGun extends Weapon {
 	
 	private final int BULLET_VELOCITY = 10;
 	private final int MAX_RANGE = 400;
-	private final int DAMAGE_LVL_1 = 1;
-	private final int DAMAGE_LVL_2 = 2;
-	private final int DAMAGE_LVL_3 = 3;
+	private final int DAMAGE_LVL_1 = 3;
+	private final int DAMAGE_LVL_2 = 4;
+	private final int DAMAGE_LVL_3 = 5;
 	
 	private Handler handler;
-	private GameObject player;
-	private GameObject closestEnemy;
+	private IGameObject player;
+	private IGameObject closestEnemy;
 	private long lastTime;
 	private float closestEnemyDistance;
 	private double delta = 0;
@@ -30,8 +30,14 @@ public class AutoGun extends Weapon {
 		this.handler = handler;
 		this.lastTime = System.nanoTime();
 		this.player = handler.getPlayer();
+		this.damageLvl1 = DAMAGE_LVL_1;
+		this.damageLvl1 = DAMAGE_LVL_2;
+		this.damageLvl1 = DAMAGE_LVL_3;
 	}
 	
+	/**
+	 * shoots 1/2/3 bullets at the nearest enemy
+	 */
 	@Override
 	public void tick() {
 		double second = Game.SECOND_IN_NANO;
@@ -75,9 +81,12 @@ public class AutoGun extends Weapon {
 	}
 	
 	
+	/**
+	 * shoots a bullet at the nearest enemy
+	 */
 	protected void shoot() {
 		Pair<Float, Float> angle = Func.findAngle2(this.player, this.closestEnemy);
-		GameObject tempBullet = handler.addObject(new BulletImpl(player.getX(), player.getY(), handler, getDamage()));
+		IGameObject tempBullet = handler.addObject(new BulletImpl(player.getX(), player.getY(), handler, this.getDamage()));
 		tempBullet.setVelX((float) ((BULLET_VELOCITY) * angle.getX()));
 		tempBullet.setVelY((float) ((BULLET_VELOCITY) * angle.getY()));
 	}

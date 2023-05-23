@@ -15,7 +15,7 @@ public class Experience extends GameObject {
     public Experience(float x, float y, int exp) {
         super(x, y, ID.Experience);
         this.experience = exp;
-        experienceCounter++; // TODO: decrease the counter as Player gather experiences pills
+        experienceCounter++;
         this.height = EXPERIENCE_HEIGHT;
         this.width = EXPERIENCE_WIDTH;
         this.texture = Texture.EXPERIENCE;

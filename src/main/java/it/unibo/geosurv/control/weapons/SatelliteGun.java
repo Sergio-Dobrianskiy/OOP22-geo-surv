@@ -3,6 +3,7 @@ package it.unibo.geosurv.control.weapons;
 import java.util.ArrayList;
 import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.Handler;
+import it.unibo.geosurv.model.IGameObject;
 import it.unibo.geosurv.model.bullets.Satellite;
 
 public class SatelliteGun extends Weapon {
@@ -10,18 +11,15 @@ public class SatelliteGun extends Weapon {
 	private final float ORBIT_SPEED = 0.05f;
 	private final float ORBIT_RADIUS = 150f;
 	private final double RADIANS_IN_CIRCLE = 6.28319d; // 360° = radians 6.28319
-//	private final int DAMAGE_LVL_1 = 1;
-//	private final int DAMAGE_LVL_2 = 2;
-//	private final int DAMAGE_LVL_3 = 3;
 	private final int DAMAGE = 3;
 	private final int SATELITES_PER_LEVEL= 3;
 	
 	private  double angleDifference;
 	private Handler handler;
-	private GameObject tempPlayer;
+	private IGameObject tempPlayer;
 	private double angle = 0d;
 	ArrayList<GameObject> satellites;
-	private int counter;
+	private int index;
 	
 
 	public SatelliteGun(Handler handler) {
@@ -39,18 +37,12 @@ public class SatelliteGun extends Weapon {
 		this.satellites.add(satellite);
 	}
 	
+	/**
+	 * a SatelliteGun doen't shoot but controls it's satellites
+	 */
 	@Override
 	public void tick() {
-		this.angle += this.ORBIT_SPEED;		
-		this.angleDifference = RADIANS_IN_CIRCLE / satellites.size();
-		this.counter = 0; 							// TODO: find a better method
-		
-		this.satellites.forEach( b -> {
-			double actualAngle = this.angle + (angleDifference * this.counter);
-			b.setX(this.getXPos(actualAngle));
-			b.setY(this.getYPos(actualAngle));
-			this.counter++;
-		});	
+		shoot();
 	}
 	
 	/**
@@ -71,8 +63,21 @@ public class SatelliteGun extends Weapon {
 		return (float) (this.tempPlayer.getY() + (Math.sin(angle) * this.ORBIT_RADIUS));
 	}
 
+	/**
+	 * manages each satellite rotation
+	 */
 	@Override
 	protected void shoot() {
+		this.angle += this.ORBIT_SPEED;		
+		this.angleDifference = RADIANS_IN_CIRCLE / satellites.size();
+		this.index = 0;
+		
+		this.satellites.forEach( b -> {
+			double actualAngle = this.angle + (angleDifference * this.index);
+			b.setX(this.getXPos(actualAngle));
+			b.setY(this.getYPos(actualAngle));
+			this.index++;
+		});	
 	}
 	
 	/**
@@ -81,7 +86,7 @@ public class SatelliteGun extends Weapon {
      * @return boolean true if level was raised, false if it was already at maximum level
      */
 	@Override
-	protected boolean levelUp() {
+	public boolean levelUp() {
 		if (currentLevel < MAX_LVL) {
 			currentLevel += 1;
 			while (satellites.size() < (currentLevel * SATELITES_PER_LEVEL)) {

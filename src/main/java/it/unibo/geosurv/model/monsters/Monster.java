@@ -1,7 +1,5 @@
 package it.unibo.geosurv.model.monsters;
 
-import java.awt.geom.RectangularShape;
-
 import it.unibo.geosurv.model.Game;
 import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.Handler;
@@ -159,11 +157,6 @@ public abstract class Monster extends GameObject implements MonstersObserver {
     public void update(MainPlayer mp) {
         mx = mp.getX();
         my = mp.getY();
-    }
-
-    @Override
-    public RectangularShape getShape() {
-        return this.setRectangleShape();
     }
 
     public void reachTarget() {

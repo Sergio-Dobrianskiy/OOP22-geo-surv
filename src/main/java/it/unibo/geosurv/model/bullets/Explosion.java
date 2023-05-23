@@ -18,8 +18,14 @@ public class Explosion extends Bullet {
 		this.texture = Texture.EXPLOSION;
 	}
 	
+	/**
+	 * an explosion has a circular shape
+	 * 
+	 * @return Ellipse2D centered on the GameObject
+	 */
+	@Override
 	public Ellipse2D getShape() {
-		return setOvalShape();
+		return new Ellipse2D.Float(getRenderX(), getRenderY(), this.width, this.height);
 	}
 }
 

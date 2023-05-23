@@ -30,7 +30,7 @@ public class PlayerLevels {
 			this.currentLevel += 1;
 			this.currentExp = 0;
 			this.expToLevel *= LEVEL_MULTIPLIER;
-			this.player.notifyLvlUp();
+			this.player.levelUpWeapon();
 		}
 	}
 

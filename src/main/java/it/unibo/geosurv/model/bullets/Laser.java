@@ -1,15 +1,16 @@
 package it.unibo.geosurv.model.bullets;
 
 import java.awt.Rectangle;
-import it.unibo.geosurv.model.GameObject;
+
 import it.unibo.geosurv.model.Handler;
+import it.unibo.geosurv.model.IGameObject;
 import it.unibo.geosurv.view.graphics.Texture;
 
 public class Laser extends Bullet {
 	
 	protected final long LIFE_SPAN = 2000L;
 	
-	private GameObject player;
+	private IGameObject player;
 	private int initialPlayerX;
 	private int initialPlayerY;
 	private int initialLaserX;

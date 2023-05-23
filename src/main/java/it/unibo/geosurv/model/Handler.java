@@ -8,8 +8,6 @@ public class Handler implements TickingObject {
 
 	private ArrayList<GameObject> gameObjects = new ArrayList<>();
 	private ArrayList<TickingObject> tickingObjects = new ArrayList<>();
-	
-
 	private MainPlayer player;
 	private boolean up = false, down = false, left = false, right = false;
 
@@ -30,7 +28,7 @@ public class Handler implements TickingObject {
 		return tempObject;
 	}
 
-	public void removeObject(GameObject tempObject) {
+	public void removeObject(IGameObject tempObject) {
 		gameObjects.remove(tempObject);
 	}
 
@@ -43,7 +41,7 @@ public class Handler implements TickingObject {
 		tickingObjects.remove(tempObject);
 	}
 
-	public GameObject addPlayer(MainPlayer player) {
+	public IGameObject addPlayer(MainPlayer player) {
 		this.player = player;
 		this.gameObjects.add(player);
 		return player;

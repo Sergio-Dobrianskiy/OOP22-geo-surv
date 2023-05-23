@@ -76,9 +76,13 @@ public class MainPlayer extends GameObject implements MainPlayerInterf {
         return ((float) this.getExperience() / this.getMaxExperience()) * 100;
     }
 
+    /**
+     * increases player experience
+     * 
+     * @param int experience
+     */
     public void setExperience(final int experience) {
         this.playerLevels.expUp(experience);
-
     }
 
     /**
@@ -88,39 +92,59 @@ public class MainPlayer extends GameObject implements MainPlayerInterf {
         return this.life;
     }
 
+    /**
+	 * heals/damages the player
+	 */
     public void setLife(int life) {
         this.life += life;
     }
 
+    /**
+	 * adds an observer to the player
+	 */
     public void addObserver(MonstersObserver observer) {
         this.observers.add(observer);
     }
 
+    /**
+	 * removes an observer from the player
+	 */
     public void removeObserver(MonstersObserver observer) {
         this.observers.remove(observer);
     }
 
+    /**
+	 * notifies each observer
+	 */
     private void notifyObservers() {
         for (MonstersObserver observer : observers) {
             observer.update(this);
         }
     }
 
+    /**
+	 * manages hit cooldown and damage
+	 */
     public void hit(final int damage) {
         long currentTime = System.currentTimeMillis();
         if (currentTime - lastHitTime >= HIT_COOLDOWN) {
-            this.life -= damage;
+            this.setLife(-damage);
             lastHitTime = currentTime;
         }
     }
 
+    /**
+	 * passes all weapons to the player class instance
+	 */
     public void setWeapons(ArrayList<Weapon> weapons) {
         this.weapons = weapons;
         this.weaponLevels = new WeaponLevels(weapons);
-        this.weaponLevels.levelUpWeapon(); // start game with 1 lvl 1 weapon
     }
 
-    public void notifyLvlUp() {
+    /**
+	 * levels up a random weapon
+	 */
+    public void levelUpWeapon() {
         this.weaponLevels.levelUpWeapon();
     }
 }
