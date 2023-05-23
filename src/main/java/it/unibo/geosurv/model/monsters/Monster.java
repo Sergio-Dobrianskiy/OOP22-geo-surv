@@ -16,8 +16,9 @@ import it.unibo.geosurv.model.utility.Pair;
 /** Abstract Class for generic evil */
 public abstract class Monster extends GameObject implements MonstersObserver {
 
-    private int DEFAULT_EXPERIENCE = 1;
-    private int BOUNCING_SPEED_MULTIPLYER = 10;
+    private final int DEFAULT_EXPERIENCE = 1;
+    private final int BOUNCING_SPEED_MULTIPLYER = 10;
+    private final int LIFE_PILLS_PROB = 50; // probability to get a life pill: 1/50 at monster death
     private long lastHitTime; // last time monster is touched/hit by player
     private static final int MAX_HITS_PER_SECOND = 5;
     private static final long HIT_COOLDOWN = 1000 / MAX_HITS_PER_SECOND;
@@ -128,8 +129,10 @@ public abstract class Monster extends GameObject implements MonstersObserver {
 
     private boolean shouldDropLife() {
         // Generate a random number between 0 and 49
-        int randomNumber = (int) (Math.random() * 5);
+        double num = Math.random();
+        int randomNumber = (int) (num * LIFE_PILLS_PROB);
         // Return true if the random number is 0 (probability of 1/50)
+        // System.out.println("Math.random() + " + num + " random: " + randomNumber);
         return randomNumber == 0;
     }
 
