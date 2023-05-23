@@ -1,20 +1,14 @@
 package it.unibo.geosurv.view.graphics;
 
-import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.image.BufferStrategy;
 import java.util.ArrayList;
-
 import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.Handler;
 import it.unibo.geosurv.model.ID;
 import it.unibo.geosurv.model.player.MainPlayer;
-
 import it.unibo.geosurv.model.drops.Experience;
 import it.unibo.geosurv.model.monsters.Monster;
-import it.unibo.geosurv.view.graphics.Camera;
 
 public class TextureRender {
 
@@ -30,7 +24,7 @@ public class TextureRender {
 	}
 
 	public void renderView(Graphics g) {
-		ArrayList<GameObject> gameObjects = handler.getObjects();
+		ArrayList<GameObject> gameObjects = handler.getGameObjects();
 		MainPlayer player = handler.getPlayer();
 		for (int i = 0; i < gameObjects.size(); i++) {
 			GameObject to = gameObjects.get(i);
@@ -87,7 +81,7 @@ public class TextureRender {
 	}
 
 	public void showDebug(Graphics g) {
-		ArrayList<GameObject> gameObjects = handler.getObjects();
+		ArrayList<GameObject> gameObjects = handler.getGameObjects();
 
 		g.setColor(Color.RED);
 		// g.drawString("FPS: " + this.fps, 850, 50);

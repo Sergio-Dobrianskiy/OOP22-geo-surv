@@ -21,8 +21,7 @@ public class SatelliteGun extends Weapon {
 	private Handler handler;
 	private GameObject tempPlayer;
 	private double angle = 0d;
-	ArrayList<GameObject> bullets;
-	private int numberOfBullets = 0;
+	ArrayList<GameObject> satellites;
 	private int counter;
 	
 
@@ -30,7 +29,8 @@ public class SatelliteGun extends Weapon {
 		super();
 		this.handler = handler;
 		this.tempPlayer = handler.getPlayer();
-		this.bullets = new ArrayList<>();
+		this.satellites = new ArrayList<>();
+		this.addSatellite();
 	}
 	
 	/**
@@ -38,17 +38,16 @@ public class SatelliteGun extends Weapon {
 	 */	
 	public void addSatellite() {
 		GameObject bullet = handler.addObject(new Satellite(this.getXPos(angle), this.getYPos(angle), handler, DAMAGE));
-		this.bullets.add(bullet);
-		this.numberOfBullets++;
+		this.satellites.add(bullet);
 	}
 	
 	@Override
 	public void tick() {
 		this.angle += this.ORBIT_SPEED;		
-		this.angleDifference = RADIANS_IN_CIRCLE / this.numberOfBullets;
+		this.angleDifference = RADIANS_IN_CIRCLE / satellites.size();
 		this.counter = 0; 							// TODO: find a better method
 		
-		this.bullets.forEach( b -> {
+		this.satellites.forEach( b -> {
 			double actualAngle = this.angle + (angleDifference * this.counter);
 			b.setX(this.getXPos(actualAngle));
 			b.setY(this.getYPos(actualAngle));
@@ -87,7 +86,8 @@ public class SatelliteGun extends Weapon {
 	protected boolean levelUp() {
 		if (currentLevel < MAX_LVL) {
 			currentLevel += 1;
-			while (numberOfBullets < (currentLevel * SATELITES_PER_LEVEL)) {
+			while (satellites.size() <= (currentLevel * SATELITES_PER_LEVEL)) {
+				System.out.println("size " + satellites.size());
 				this.addSatellite();
 			}
 			return true;

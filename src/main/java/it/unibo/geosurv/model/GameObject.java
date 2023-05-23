@@ -28,7 +28,10 @@ public abstract class GameObject implements TickingObject {
 	}
 
 	public abstract void tick();
-	public abstract RectangularShape getShape();
+	
+	public RectangularShape getShape() {
+        return this.setRectangleShape();
+    }
 	
 
 	public float getX() {

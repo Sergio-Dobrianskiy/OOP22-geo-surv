@@ -48,10 +48,6 @@ public abstract class Bullet extends GameObject {
 	}
 
 	
-	public RectangularShape getShape() {
-        return this.setRectangleShape();
-    }
-	
 	public int getDamage() {
 		return damage;
 	}

@@ -52,7 +52,7 @@ public class Func {
 		GameObject closestEnemy = null;
 		float closestDistance = Float.MAX_VALUE;
 		float distance;
-		ArrayList<GameObject> tmpObjects = handler.getObjects();
+		ArrayList<GameObject> tmpObjects = handler.getGameObjects();
 		GameObject tmpObject;
 		float px, py;
 		px = player.getX();
