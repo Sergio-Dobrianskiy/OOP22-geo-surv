@@ -1,10 +1,11 @@
 package it.unibo.geosurv.model.player;
 
-import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.List;
 import it.unibo.geosurv.control.PlayerMovement;
 import it.unibo.geosurv.control.PlayerMovementImpl;
+import it.unibo.geosurv.control.weapons.Weapon;
+import it.unibo.geosurv.control.weapons.WeaponLevels;
 import it.unibo.geosurv.model.Collisions;
 import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.Handler;
@@ -24,12 +25,13 @@ public class MainPlayer extends GameObject implements MainPlayerInterf {
     private static final int MAX_HITS_PER_SECOND = 2;
     private static final long HIT_COOLDOWN = 1000 / MAX_HITS_PER_SECOND;
     private Handler handler;
-    private int experience;
     private int health;
     private Collisions collisions;
     private PlayerMovement playerMovement;
-    private Levels levels;
+    private PlayerLevels playerLevels;
     private List<MonstersObserver> observers;
+    private ArrayList<Weapon> weapons;
+	private WeaponLevels weaponLevels;
 
     public MainPlayer(float x, float y, Handler handler) {
         super(x, y, ID.Player);
@@ -43,7 +45,8 @@ public class MainPlayer extends GameObject implements MainPlayerInterf {
         this.playerMovement = new PlayerMovementImpl(handler);
 //        this.texture = Texture.PLAYER_DUCK;  // alternative texture
         this.texture = Texture.PLAYER_MOUSE;
-        this.levels = new Levels();
+        this.playerLevels = new PlayerLevels(this);
+        this.weapons = new ArrayList<>();
     }
 
     public void tick() {
@@ -54,20 +57,17 @@ public class MainPlayer extends GameObject implements MainPlayerInterf {
         notifyObservers(); // notify player position
     }     
 
-    public Rectangle getShape() {
-        return this.setRectangleShape();
-    }
-
     public int getExperience() {
-        return this.levels.getCurrentExp();
+        return this.playerLevels.getCurrentExp();
     }
     
     public int getMaxExperience() {
-    	return this.levels.getExpToLevel();
+    	return this.playerLevels.getExpToLevel();
     }
     
+    
     public int getLevel() {
-    	return this.levels.getCurrentLevel();
+    	return this.playerLevels.getCurrentLevel();
     }
     
     public float getExpPercentage() {
@@ -78,7 +78,7 @@ public class MainPlayer extends GameObject implements MainPlayerInterf {
     }
 
     public void setExperience(final int experience) {
-    	this.levels.expUp(experience);
+    	this.playerLevels.expUp(experience);
 
     }
 
@@ -99,7 +99,6 @@ public class MainPlayer extends GameObject implements MainPlayerInterf {
 
     public void removeObserver(MonstersObserver observer) {
     	this.observers.remove(observer);
-        // System.out.println("Removed Observer: " + observer.toString());
     }
 
     private void notifyObservers() {
@@ -115,4 +114,14 @@ public class MainPlayer extends GameObject implements MainPlayerInterf {
             lastHitTime = currentTime;
         }
     }
+
+	public void setWeapons(ArrayList<Weapon> weapons) {
+		this.weapons = weapons;
+		this.weaponLevels = new WeaponLevels(weapons);
+		this.weaponLevels.levelUpWeapon();		// start game with 1 lvl 1 weapon
+	}
+
+	public void notifyLvlUp() {
+		this.weaponLevels.levelUpWeapon();
+	}
 }

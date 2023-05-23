@@ -9,7 +9,8 @@ import java.awt.Dimension;
 
 public class MenuView extends JFrame {
 
-    private JFrame frame;
+    private static final long serialVersionUID = 1L;
+	private JFrame frame;
     private JButton startButton;
     private JButton closeButton;
 
@@ -33,6 +34,7 @@ public class MenuView extends JFrame {
         frame.pack();
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
+        frame.setAlwaysOnTop(true);
 
     }
 

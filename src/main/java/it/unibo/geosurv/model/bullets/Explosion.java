@@ -10,8 +10,8 @@ public class Explosion extends Bullet {
 	protected final int BULLET_WIDTH = 64;
 	protected final long EXPLOSION_LIFE_SPAN = 2000L;
 
-	public Explosion(float x, float y, Handler handler) {
-		super(x, y, handler);
+	public Explosion(float x, float y, final Handler handler, final int damage) {
+		super(x, y, handler, damage);
 		super.lifeSpan = EXPLOSION_LIFE_SPAN;
 		this.height = BULLET_HEIGHT;
 		this.width = BULLET_WIDTH;

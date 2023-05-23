@@ -11,9 +11,12 @@ public class ExplosionGun extends Weapon {
 	private final float MIN_RANGE = 10f;
 	private final float MAX_RANGE = 200f;
 	protected final long EXPLOSION_CYCLE = 4000L;
+	private final int DAMAGE_LVL_1 = 3;
+	private final int DAMAGE_LVL_2 = 6;
+	private final int DAMAGE_LVL_3 = 9;
 			
 	private Handler handler;
-	private int numberOfExplosions = 5;  // test
+	private int numberOfExplosions = 2;  // test
 
 	public ExplosionGun(Handler handler) {
 		super();
@@ -27,9 +30,10 @@ public class ExplosionGun extends Weapon {
 		float x = player.getX();
 		float y = player.getY();
 		Pair<Float, Float> pair;
-		for (int i = 0; i <= numberOfExplosions; i++) {
+			
+		for (int i = 0; i <= currentLevel * numberOfExplosions; i++) {
 			pair = Func.randomPoint(MIN_RANGE, MAX_RANGE);
-			handler.addObject(new Explosion(pair.getX() + x, pair.getY() + y, handler));
+			handler.addObject(new Explosion(pair.getX() + x, pair.getY() + y, handler, getDamage()));
 		}
 	}
 }

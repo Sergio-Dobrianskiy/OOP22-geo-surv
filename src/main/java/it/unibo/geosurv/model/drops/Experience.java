@@ -1,6 +1,5 @@
 package it.unibo.geosurv.model.drops;
 
-import java.awt.Rectangle;
 import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.ID;
 import it.unibo.geosurv.view.graphics.Texture;
@@ -24,11 +23,6 @@ public class Experience extends GameObject {
 
     @Override
     public void tick() {
-    }
-
-    @Override
-    public Rectangle getShape() {
-        return new Rectangle((int) x, (int) y, 27, 33);
     }
 
     /**

@@ -17,7 +17,7 @@ public class Collisions {
 		
 	
 	public void checkPlayerCollisions() {
-		ArrayList<GameObject> tmpObjects = handler.getObjects();
+		ArrayList<GameObject> tmpObjects = handler.getGameObjects();
 		MainPlayer player = handler.getPlayer();
 		for (int i = 0; i < tmpObjects.size(); i++) {
 	    		GameObject tempObject = tmpObjects.get(i);
@@ -38,7 +38,7 @@ public class Collisions {
 	}
 	
 	public void checkBulletCollisionss(final Bullet bullet) {
-		ArrayList<GameObject> tmpObjects = handler.getObjects();
+		ArrayList<GameObject> tmpObjects = handler.getGameObjects();
 		for (int i = 0; i < tmpObjects.size(); i++) {
 			GameObject tempObject = tmpObjects.get(i);
 

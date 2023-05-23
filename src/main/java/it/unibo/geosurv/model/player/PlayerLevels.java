@@ -1,33 +1,36 @@
 package it.unibo.geosurv.model.player;
 
-public class Levels {
+public class PlayerLevels {
 	
 	private final static int STARTING_LEVEL = 1;
-	private final static int MAX_LEVEL = 16;
-	private final static int EXP_FIRST_LEVEL = 30;
+	private final static int MAX_LEVEL = 12;	// 4 weapons * 3 levels each
+	private final static int EXP_FIRST_LEVEL = 2;
 	private final static float LEVEL_MULTIPLIER = 1.1f;
 	private int currentLevel;
 	private int currentExp;
 	private int expToLevel;
+	private MainPlayer player;
 	
-	public Levels() {
-		this.currentLevel = Levels.STARTING_LEVEL;
+	public PlayerLevels(MainPlayer player) {
+		this.currentLevel = PlayerLevels.STARTING_LEVEL;
 		this.currentExp = 0;
-		this.expToLevel = Levels.EXP_FIRST_LEVEL;
+		this.expToLevel = PlayerLevels.EXP_FIRST_LEVEL;
+		this.player = player;
 	}
 	
 	public void expUp (final int exp) {
 		this.currentExp += exp;
-		if (this.currentExp > this.expToLevel && this.currentLevel < Levels.MAX_LEVEL) {
+		if (this.currentExp > this.expToLevel && this.currentLevel < PlayerLevels.MAX_LEVEL) {
 			this.levelUp();
 		}
 	}
 	
 	public void levelUp () {
-		if (this.currentLevel < Levels.MAX_LEVEL) {
+		if (this.currentLevel < PlayerLevels.MAX_LEVEL) {
 			this.currentLevel += 1;
 			this.currentExp = 0;
 			this.expToLevel *= LEVEL_MULTIPLIER;
+			this.player.notifyLvlUp();
 		}
 	}
 

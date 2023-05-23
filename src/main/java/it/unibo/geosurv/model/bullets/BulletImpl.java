@@ -8,8 +8,8 @@ public class BulletImpl extends Bullet {
 	protected final static int BULLET_HEIGHT = 15;
 	protected final static int BULLET_WIDTH = 15;
 	
-	public BulletImpl(float x, float y, Handler handler) {
-		super(x, y, handler);
+	public BulletImpl(float x, float y, final Handler handler, final int damage) {
+		super(x, y, handler, damage);
 		this.height = BULLET_HEIGHT;
 		this.width = BULLET_WIDTH;
 		this.texture = Texture.BULLET;

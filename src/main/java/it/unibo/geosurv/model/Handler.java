@@ -7,7 +7,7 @@ import it.unibo.geosurv.model.player.MainPlayer;
 public class Handler implements TickingObject {
 
 	private ArrayList<GameObject> gameObjects = new ArrayList<>();
-	private ArrayList<TickingObject> tickObjects = new ArrayList<>();
+	private ArrayList<TickingObject> tickingObjects = new ArrayList<>();
 	
 
 	private MainPlayer player;
@@ -18,8 +18,8 @@ public class Handler implements TickingObject {
 			GameObject tempObject = gameObjects.get(i);
 			tempObject.tick();
 		}
-		for (int i = 0; i < tickObjects.size(); i++) {
-			TickingObject tempObject = tickObjects.get(i);
+		for (int i = 0; i < tickingObjects.size(); i++) {
+			TickingObject tempObject = tickingObjects.get(i);
 			tempObject.tick();
 		}
 	}
@@ -35,12 +35,12 @@ public class Handler implements TickingObject {
 	}
 
 	public TickingObject addTickingObject(TickingObject tempObject) {
-		tickObjects.add(tempObject);
+		tickingObjects.add(tempObject);
 		return tempObject;
 	}
 
 	public void removeTickingObject(TickingObject tempObject) {
-		tickObjects.remove(tempObject);
+		tickingObjects.remove(tempObject);
 	}
 
 	public GameObject addPlayer(MainPlayer player) {
@@ -57,8 +57,12 @@ public class Handler implements TickingObject {
 		return this.gameObjects.size();
 	}
 
-	public ArrayList<GameObject> getObjects() {
+	public ArrayList<GameObject> getGameObjects() {
 		return this.gameObjects;
+	}
+	
+	public ArrayList<TickingObject> getTickingbjects() {
+		return this.tickingObjects;
 	}
 
 	public boolean isUp() {

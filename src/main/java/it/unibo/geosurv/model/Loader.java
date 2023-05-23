@@ -2,12 +2,14 @@ package it.unibo.geosurv.model;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.ArrayList;
 
+import it.unibo.geosurv.control.TickingObject;
 import it.unibo.geosurv.control.weapons.AutoGun;
 import it.unibo.geosurv.control.weapons.ExplosionGun;
 import it.unibo.geosurv.control.weapons.LaserGun;
 import it.unibo.geosurv.control.weapons.SatelliteGun;
-import it.unibo.geosurv.model.monsters.MonsterSpawner;
+import it.unibo.geosurv.control.weapons.Weapon;
 import it.unibo.geosurv.model.player.MainPlayer;
 import it.unibo.geosurv.model.walls.blocks.Block;
 import it.unibo.geosurv.view.graphics.Camera;
@@ -56,10 +58,16 @@ public class Loader {
 	 * Loads game Weapons/Guns
 	 */
 	private void loadGuns() {
-		handler.addTickingObject(new AutoGun(this.handler));
-		handler.addTickingObject(new SatelliteGun(this.handler));
-		// handler.addTickingObject(new ExplosionGun(this.handler));
-		// handler.addTickingObject(new LaserGun(this.handler));
+		ArrayList<Weapon> weapons = new ArrayList<>();
+		Weapon autogun = (Weapon) handler.addTickingObject(new AutoGun(this.handler));
+		Weapon satelliteGun = (Weapon) handler.addTickingObject(new SatelliteGun(this.handler));
+		Weapon explosionGun = (Weapon) handler.addTickingObject(new ExplosionGun(this.handler));
+		Weapon laserGun = (Weapon) handler.addTickingObject(new LaserGun(this.handler));
+		weapons.add(autogun);
+		weapons.add(satelliteGun);
+		weapons.add(explosionGun);
+		weapons.add(laserGun);
+		handler.getPlayer().setWeapons(weapons);
 	}
 
 	/**

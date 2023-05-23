@@ -1,14 +1,10 @@
 package it.unibo.geosurv.model.player;
 
-import java.awt.Rectangle;
-
 import it.unibo.geosurv.model.MonstersObserver;
 
 public interface MainPlayerInterf {
     
     void tick();
-    
-    Rectangle getShape();
     
     int getExperience();
     
