@@ -10,6 +10,7 @@ public class Satellite extends Bullet {
 
 	public Satellite(float x, float y, final Handler handler, final int damage) {
 		super(x, y, handler, damage);
+		this.height = BULLET_HEIGHT;
 		this.width = BULLET_WIDTH;
 		this.texture = Texture.SATELLITE;
 	}

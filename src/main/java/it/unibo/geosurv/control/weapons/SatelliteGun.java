@@ -3,7 +3,6 @@ package it.unibo.geosurv.control.weapons;
 import java.util.ArrayList;
 import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.Handler;
-import it.unibo.geosurv.model.bullets.Bullet;
 import it.unibo.geosurv.model.bullets.Satellite;
 
 public class SatelliteGun extends Weapon {
@@ -30,15 +29,14 @@ public class SatelliteGun extends Weapon {
 		this.handler = handler;
 		this.tempPlayer = handler.getPlayer();
 		this.satellites = new ArrayList<>();
-		this.addSatellite();
 	}
 	
 	/**
 	 * Adds a rotating satellite
 	 */	
 	public void addSatellite() {
-		GameObject bullet = handler.addObject(new Satellite(this.getXPos(angle), this.getYPos(angle), handler, DAMAGE));
-		this.satellites.add(bullet);
+		GameObject satellite = handler.addObject(new Satellite(this.getXPos(angle), this.getYPos(angle), handler, DAMAGE));
+		this.satellites.add(satellite);
 	}
 	
 	@Override
@@ -86,7 +84,7 @@ public class SatelliteGun extends Weapon {
 	protected boolean levelUp() {
 		if (currentLevel < MAX_LVL) {
 			currentLevel += 1;
-			while (satellites.size() <= (currentLevel * SATELITES_PER_LEVEL)) {
+			while (satellites.size() < (currentLevel * SATELITES_PER_LEVEL)) {
 				System.out.println("size " + satellites.size());
 				this.addSatellite();
 			}
