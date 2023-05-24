@@ -109,7 +109,13 @@ public class MainPlayer extends GameObject implements MainPlayerInterf {
     public void hit(final int damage) {
         long currentTime = System.currentTimeMillis();
         if (currentTime - lastHitTime >= HIT_COOLDOWN) {
-            this.life -= damage;
+            /* if damage is >=  of the current player's life, life will be zero */
+            if (damage >= this.life) {
+                this.life = 0;
+            }
+            else {
+                this.life -= damage;
+            }
             lastHitTime = currentTime;
         }
     }
