@@ -75,7 +75,7 @@ public abstract class Monster extends GameObject implements ObserverEntity {
      * @return Experience pill
      */
     public Experience dropExperience() {
-        return new Experience(this.x, this.y, DEFAULT_EXPERIENCE);
+        return new Experience(this.x, this.y, DEFAULT_EXPERIENCE, this.handler);
     }
 
     /**
