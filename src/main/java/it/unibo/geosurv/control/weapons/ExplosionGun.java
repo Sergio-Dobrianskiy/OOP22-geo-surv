@@ -1,7 +1,7 @@
 package it.unibo.geosurv.control.weapons;
 
 import it.unibo.geosurv.model.Handler;
-import it.unibo.geosurv.model.IGameObject;
+import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.bullets.Explosion;
 import it.unibo.geosurv.model.utility.Func;
 import it.unibo.geosurv.model.utility.Pair;
@@ -32,7 +32,7 @@ public class ExplosionGun extends Weapon {
 	 */
 	@Override
 	protected void shoot() {
-		IGameObject player = handler.getPlayer();
+		GameObject player = handler.getPlayer();
 		float x = player.getX();
 		float y = player.getY();
 		Pair<Float, Float> pair;

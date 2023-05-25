@@ -3,7 +3,7 @@ package it.unibo.geosurv.control.weapons;
 import java.awt.image.BufferedImage;
 
 import it.unibo.geosurv.model.Handler;
-import it.unibo.geosurv.model.IGameObject;
+import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.bullets.Laser;
 import it.unibo.geosurv.model.player.MainPlayer;
 import it.unibo.geosurv.view.graphics.Texture;
@@ -19,7 +19,7 @@ public class LaserGun extends Weapon {
 	private final int DAMAGE_LVL_3 = 6;
 	
 	private Handler handler;
-	private IGameObject player;
+	private GameObject player;
 	BufferedImage laserH, laserV;
 	
 	public LaserGun(Handler handler) {

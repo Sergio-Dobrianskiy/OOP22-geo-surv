@@ -28,7 +28,7 @@ public class Handler implements TickingObject {
 		return tempObject;
 	}
 
-	public void removeObject(IGameObject tempObject) {
+	public void removeObject(GameObject tempObject) {
 		gameObjects.remove(tempObject);
 	}
 
@@ -41,7 +41,7 @@ public class Handler implements TickingObject {
 		tickingObjects.remove(tempObject);
 	}
 
-	public IGameObject addPlayer(MainPlayer player) {
+	public MainPlayer addPlayer(MainPlayer player) {
 		this.player = player;
 		this.gameObjects.add(player);
 		return player;

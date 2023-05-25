@@ -20,7 +20,7 @@ public class Collisions {
 		ArrayList<GameObject> tmpObjects = handler.getGameObjects();
 		MainPlayer player = handler.getPlayer();
 		for (int i = 0; i < tmpObjects.size(); i++) {
-			IGameObject tempObject = tmpObjects.get(i);
+			GameObject tempObject = tmpObjects.get(i);
 			if (Collisions.isColliding(player, tempObject, ID.Block)) { // if player touches wall => stop
 				this.stopMovements();
 			}
@@ -44,7 +44,7 @@ public class Collisions {
 	public void checkBulletCollisionss(final Bullet bullet) {
 		ArrayList<GameObject> tmpObjects = handler.getGameObjects();
 		for (int i = 0; i < tmpObjects.size(); i++) {
-			IGameObject tempObject = tmpObjects.get(i);
+			GameObject tempObject = tmpObjects.get(i);
 
 			if (bullet instanceof BulletImpl && Collisions.isColliding(bullet, tempObject, ID.Block)) {
 				handler.removeObject(bullet);
@@ -66,11 +66,11 @@ public class Collisions {
 	 * @param 2nd GameOnject to check
 	 * @param ID  that the touched object should have
 	 */
-	public static boolean isColliding(final IGameObject obj1, final IGameObject obj2, final ID id) {
+	public static boolean isColliding(final GameObject obj1, final GameObject obj2, final ID id) {
 		return obj2.getId() == id && obj1.getShape().getBounds2D().intersects(obj2.getShape().getBounds2D());
 	}
 
-	public static boolean isColliding(final IGameObject obj1, final IGameObject obj2) {
+	public static boolean isColliding(final GameObject obj1, final GameObject obj2) {
 		return obj1.getShape().getBounds2D().intersects(obj2.getShape().getBounds2D());
 	}
 

@@ -3,7 +3,7 @@ package it.unibo.geosurv.control.weapons;
 import java.util.ArrayList;
 import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.Handler;
-import it.unibo.geosurv.model.IGameObject;
+import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.bullets.Satellite;
 
 public class SatelliteGun extends Weapon {
@@ -16,7 +16,7 @@ public class SatelliteGun extends Weapon {
 	
 	private  double angleDifference;
 	private Handler handler;
-	private IGameObject tempPlayer;
+	private GameObject tempPlayer;
 	private double angle = 0d;
 	ArrayList<GameObject> satellites;
 	private int index;

@@ -7,7 +7,7 @@ import java.util.Random;
 import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.Handler;
 import it.unibo.geosurv.model.ID;
-import it.unibo.geosurv.model.IGameObject;
+import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.player.MainPlayer;
 
 public class Func {
@@ -48,13 +48,13 @@ public class Func {
 	 * 
 	 * @return GameObject player
 	 */
-	public static IGameObject findClosestEnemy(final Handler handler) {
-		IGameObject player = handler.getPlayer();
-		IGameObject closestEnemy = null;
+	public static GameObject findClosestEnemy(final Handler handler) {
+		GameObject player = handler.getPlayer();
+		GameObject closestEnemy = null;
 		float closestDistance = Float.MAX_VALUE;
 		float distance;
 		ArrayList<GameObject> tmpObjects = handler.getGameObjects();
-		IGameObject tmpObject;
+		GameObject tmpObject;
 		float px, py;
 		px = player.getX();
 		py = player.getY();
@@ -100,7 +100,7 @@ public class Func {
 	 * @param aimed  GameObject B
 	 * @return Pair angle
 	 */
-	public static Pair<Float, Float> findAngle2(final IGameObject a, final IGameObject b) {
+	public static Pair<Float, Float> findAngle2(final GameObject a, final GameObject b) {
 		float ax = a.getX();
 		float ay = a.getY();
 		float bx = b.getX();
