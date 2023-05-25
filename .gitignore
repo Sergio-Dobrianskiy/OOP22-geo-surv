@@ -20,3 +20,11 @@ build
 .idea
 .vscode
 .settings
+
+# Ignore texedit files
+report/*.aux
+report/*.log
+report/*.out
+report/*.gz
+report/*.toc
+report/*.pdf
