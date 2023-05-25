@@ -68,21 +68,21 @@ public class MonsterSpawner implements TickingObject {
         Monster m = null;
 
         if ((currentSecond - begin / 1000) < 15) {
-            m = tm.createMonster();
+            m = tm.createMonster(this.handler);
             // System.out.println("T");
         } else if (currentSecond - begin / 1000 == 15) {
-            m = tm.createMonster();
+            m = tm.createMonster(this.handler);
             m.setBig(true);
             // System.out.println("T: big");
         } else if (currentSecond - begin / 1000 < 25) {
-            m = rm.createMonster();
+            m = rm.createMonster(this.handler);
             // System.out.println("R");
         } else if (currentSecond - begin / 1000 == 25) {
-            m = rm.createMonster();
+            m = rm.createMonster(this.handler);
             m.setBig(true);
             // System.out.println("R: big");
         } else {
-            m = rm.createMonster();
+            m = rm.createMonster(this.handler);
         }
         return m;
     }
@@ -90,13 +90,13 @@ public class MonsterSpawner implements TickingObject {
     /** monsters created all through the game */
     private void generateFixedPositionMonsters() {
         GenerateMonsterRh rhm = new GenerateMonsterRh();
-        Monster rh = rhm.createMonster();
+        Monster rh = rhm.createMonster(this.handler);
         handler.addObject(rh);
     }
 
     private void flood() {
 
-        Stream.generate(() -> rm.createMonster())
+        Stream.generate(() -> rm.createMonster(this.handler))
                 .limit(1)
                 .forEach(m -> {
                     m.setBig(true);

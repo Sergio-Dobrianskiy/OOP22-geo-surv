@@ -1,5 +1,6 @@
 package it.unibo.geosurv.model.monsters.types;
 
+import it.unibo.geosurv.model.Handler;
 import it.unibo.geosurv.model.monsters.Monster;
 import it.unibo.geosurv.view.graphics.Texture;
 
@@ -27,8 +28,8 @@ public class Triangle extends Monster {
     /**
      * Triangle constructor.
      */
-    public Triangle() {
-        super(0, 0);
+    public Triangle(Handler h) {
+        super(0, 0, h);
         Triangle.counter++;
         this.name = name + Triangle.counter;
         this.health = DEFAULT_HEALTH;

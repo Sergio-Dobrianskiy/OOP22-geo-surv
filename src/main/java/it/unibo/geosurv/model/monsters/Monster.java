@@ -6,7 +6,7 @@ import it.unibo.geosurv.model.Game;
 import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.Handler;
 import it.unibo.geosurv.model.ID;
-import it.unibo.geosurv.model.MonstersObserver;
+import it.unibo.geosurv.model.ObserverEntity;
 import it.unibo.geosurv.model.drops.Experience;
 import it.unibo.geosurv.model.drops.Life;
 import it.unibo.geosurv.model.player.MainPlayer;
@@ -14,7 +14,7 @@ import it.unibo.geosurv.model.utility.Func;
 import it.unibo.geosurv.model.utility.Pair;
 
 /** Abstract Class for generic evil */
-public abstract class Monster extends GameObject implements MonstersObserver {
+public abstract class Monster extends GameObject implements ObserverEntity {
 
     private final int DEFAULT_EXPERIENCE = 1;
     private final int BOUNCING_SPEED_MULTIPLYER = 10;
@@ -32,15 +32,16 @@ public abstract class Monster extends GameObject implements MonstersObserver {
     protected int dimension;
     protected double speed;
     protected boolean isBig;
-
+    protected final Handler handler;
     static long counterxx = 0;
 
-    protected Monster(float x, float y) {
+    protected Monster(final float x, final float y, final Handler h) {
         super(x, y, ID.Monster);
         Monster.monstersCounter++;
-        player = Game.returnHandler().getPlayer();
-        player.addObserver(this);
+        this.player = h.getPlayer();
+        this.player.addObserver(this);
         this.lastHitTime = 0;
+        this.handler = h;
         // System.out.println("Added Observer: " + this.toString());
 
     }
@@ -167,8 +168,8 @@ public abstract class Monster extends GameObject implements MonstersObserver {
     }
 
     public void reachTarget() {
-        x += velX;
-        y += velY;
+        this.x += this.velX;
+        this.y += this.velY;
         // evaluated only once at creation istead of each tick()
         // tempPlayer = Func.findPlayer(handler);
 

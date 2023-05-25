@@ -1,5 +1,6 @@
 package it.unibo.geosurv.model.monsters.types;
 
+import it.unibo.geosurv.model.Handler;
 import it.unibo.geosurv.model.monsters.Monster;
 import it.unibo.geosurv.view.graphics.Texture;
 
@@ -20,9 +21,9 @@ public class Rect extends Monster {
     /**
      * Rect constructor
      */
-    public Rect() {
+    public Rect(Handler h) {
 
-        super(0, 0);
+        super(0, 0, h);
 
         Rect.counter++;
         this.name = name + Rect.counter;

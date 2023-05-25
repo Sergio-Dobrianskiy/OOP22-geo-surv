@@ -1,5 +1,6 @@
 package it.unibo.geosurv.model.monsters.types;
 
+import it.unibo.geosurv.model.Handler;
 import it.unibo.geosurv.model.monsters.Monster;
 import it.unibo.geosurv.view.graphics.Texture;
 
@@ -17,8 +18,8 @@ public class Rhombus extends Monster {
     /**
      * Rhombus constructor.
      */
-    public Rhombus() {
-        super(0, 0);
+    public Rhombus(Handler h) {
+        super(0, 0, h);
         Rhombus.counter++;
         this.name = name + Rhombus.counter;
         this.health = DEFAULT_HEALTH;
