@@ -10,7 +10,7 @@ import it.unibo.geosurv.model.Collisions;
 import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.Handler;
 import it.unibo.geosurv.model.ID;
-import it.unibo.geosurv.model.MonstersObserver;
+import it.unibo.geosurv.model.ObserverEntity;
 import it.unibo.geosurv.view.graphics.Texture;
 
 public class MainPlayer extends GameObject implements MainPlayerInterf {
@@ -29,7 +29,7 @@ public class MainPlayer extends GameObject implements MainPlayerInterf {
     private Collisions collisions;
     private PlayerMovement playerMovement;
     private PlayerLevels playerLevels;
-    private List<MonstersObserver> observers;
+    private List<ObserverEntity> observers;
     private ArrayList<Weapon> weapons;
     private WeaponLevels weaponLevels;
 
@@ -92,16 +92,16 @@ public class MainPlayer extends GameObject implements MainPlayerInterf {
         this.life += life;
     }
 
-    public void addObserver(MonstersObserver observer) {
+    public void addObserver(ObserverEntity observer) {
         this.observers.add(observer);
     }
 
-    public void removeObserver(MonstersObserver observer) {
+    public void removeObserver(ObserverEntity observer) {
         this.observers.remove(observer);
     }
 
     private void notifyObservers() {
-        for (MonstersObserver observer : observers) {
+        for (ObserverEntity observer : observers) {
             observer.update(this);
         }
     }
