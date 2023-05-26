@@ -33,7 +33,7 @@ public class MainPlayer extends GameObject implements MainPlayerInterf {
     private ArrayList<Weapon> weapons;
     private WeaponLevels weaponLevels;
 
-    public MainPlayer(float x, float y, Handler handler) {
+    public MainPlayer(final float x, final float y, final Handler handler) {
         super(x, y, ID.Player);
         this.handler = handler;
         this.life = MAX_LIFE;
@@ -95,21 +95,21 @@ public class MainPlayer extends GameObject implements MainPlayerInterf {
     /**
 	 * heals/damages the player.
 	 */
-    public void setLife(int life) {
+    public void setLife(final int life) {
         this.life += life;
     }
 
     /**
 	 * adds an observer to the player.
 	 */
-    public void addObserver(ObserverEntity observer) {
+    public void addObserver(final ObserverEntity observer) {
         this.observers.add(observer);
     }
 	
 	/**
 	 * removes an observer from the player.
 	 */
-    public void removeObserver(ObserverEntity observer) {
+    public void removeObserver(final ObserverEntity observer) {
         this.observers.remove(observer);
     }
 
