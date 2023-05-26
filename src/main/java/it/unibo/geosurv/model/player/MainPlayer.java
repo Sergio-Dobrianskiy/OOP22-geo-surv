@@ -33,7 +33,7 @@ public class MainPlayer extends GameObject implements MainPlayerInterf {
     private ArrayList<Weapon> weapons;
     private WeaponLevels weaponLevels;
 
-    public MainPlayer(float x, float y, Handler handler) {
+    public MainPlayer(final float x, final float y, final Handler handler) {
         super(x, y, ID.Player);
         this.handler = handler;
         this.life = MAX_LIFE;
@@ -49,6 +49,7 @@ public class MainPlayer extends GameObject implements MainPlayerInterf {
         this.weapons = new ArrayList<>();
     }
 
+    @Override
     public void tick() {
         x += velX;
         y += velY;
@@ -57,6 +58,7 @@ public class MainPlayer extends GameObject implements MainPlayerInterf {
         notifyObservers(); // notify player position
     }
 
+    @Override
     public int getExperience() {
         return this.playerLevels.getCurrentExp();
     }
@@ -76,55 +78,47 @@ public class MainPlayer extends GameObject implements MainPlayerInterf {
         return ((float) this.getExperience() / this.getMaxExperience()) * 100;
     }
 
-    /**
-     * increases player experience
-     * 
-     * @param int experience
-     */
+    @Override
     public void setExperience(final int experience) {
         this.playerLevels.expUp(experience);
     }
 
-    /**
-     * @return how much health the Player has left
-     */
+    @Override
     public int getLife() {
         return this.life;
     }
 
-    /**
-	 * heals/damages the player
-	 */
-    public void setLife(int life) {
+    @Override
+    public void setLife(final int life) {
         this.life += life;
     }
 
-    /**
-	 * adds an observer to the player
-	 */
-    public void addObserver(ObserverEntity observer) {
+    @Override
+    public void addObserver(final ObserverEntity observer) {
         this.observers.add(observer);
     }
-	
-	/**
-	 * removes an observer from the player
-	 */
-    public void removeObserver(ObserverEntity observer) {
+
+    /**
+     * removes an observer from the player
+     */
+    @Override
+    public void removeObserver(final ObserverEntity observer) {
         this.observers.remove(observer);
     }
 
     /**
-	 * notifies each observer
-	 */
+     * notifies each observer
+     */
     private void notifyObservers() {
-        for (ObserverEntity observer : observers) {
+        for (final ObserverEntity observer : observers) {
             observer.update(this);
         }
     }
 
     /**
-	 * manages hit cooldown and damage
-	 */
+     * manages hit cooldown and damage
+     */
+    @Override
     public void hit(final int damage) {
         long currentTime = System.currentTimeMillis();
         if (currentTime - lastHitTime >= HIT_COOLDOWN) {
@@ -134,16 +128,16 @@ public class MainPlayer extends GameObject implements MainPlayerInterf {
     }
 
     /**
-	 * passes all weapons to the player class instance
-	 */
+     * passes all weapons to the player class instance
+     */
     public void setWeapons(ArrayList<Weapon> weapons) {
         this.weapons = weapons;
         this.weaponLevels = new WeaponLevels(weapons);
     }
 
     /**
-	 * levels up a random weapon
-	 */
+     * levels up a random weapon
+     */
     public void levelUpWeapon() {
         this.weaponLevels.levelUpWeapon();
     }

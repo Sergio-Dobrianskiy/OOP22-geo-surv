@@ -24,7 +24,7 @@ public class Rect extends Monster {
     /**
      * Rect constructor
      */
-    public Rect(Handler h) {
+    public Rect(final Handler h) {
 
         super(0, 0, h);
 
