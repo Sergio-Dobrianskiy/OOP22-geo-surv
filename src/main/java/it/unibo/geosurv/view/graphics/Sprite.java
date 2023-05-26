@@ -9,7 +9,7 @@ public class Sprite {
 		this.image = image;
 	}
 
-	public BufferedImage grabImage(final int col, final int row, final int width, final int height) {
+	public final BufferedImage grabImage(final int col, final int row, final int width, final int height) {
 		return image.getSubimage(col * 32 - 32, row * 32 - 32, width, height);
 	}
 }

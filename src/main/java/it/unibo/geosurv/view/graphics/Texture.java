@@ -95,10 +95,10 @@ public enum Texture {
 	/**
 	 * Constructor for this Class.
 	 *
-	 * @param filePath path to the texture
+	 * @param fPath filePath to the texture
 	 */
-	Texture(final String filePath) {
-		this.filePath = filePath;
+	Texture(final String fPath) {
+		this.filePath = fPath;
 	}
 
 	/**

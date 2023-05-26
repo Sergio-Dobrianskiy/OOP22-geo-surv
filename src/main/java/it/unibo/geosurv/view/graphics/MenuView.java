@@ -7,7 +7,9 @@ import javax.swing.JButton;
 
 import java.awt.Dimension;
 
-/** TODO: javadoc */
+/**
+ * TODO: javadoc.
+ */
 public class MenuView extends JFrame {
 
     private static final long serialVersionUID = 1L;
@@ -15,7 +17,9 @@ public class MenuView extends JFrame {
     private final JButton startButton;
     private final JButton closeButton;
 
-    /** User menù */
+    /**
+     * User menù.
+     */
     public MenuView() {
 
         frame = new JFrame("Geo-Survivors");

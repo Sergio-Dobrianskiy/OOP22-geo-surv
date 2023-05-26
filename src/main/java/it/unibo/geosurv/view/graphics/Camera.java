@@ -5,7 +5,8 @@ import it.unibo.geosurv.model.player.MainPlayer;
 
 public class Camera {
 
-    private float x, y;
+    private float x;
+    private float y;
     private final MainPlayer tempPlayer;
     // private Handler handler;
 
@@ -49,10 +50,10 @@ public class Camera {
     /**
      * Set camera y coord.
      * 
-     * @param x
+     * @param xPos
      */
-    public void setX(final float x) {
-        this.x = x;
+    public void setX(final float xPos) {
+        this.x = xPos;
     }
 
     /**
@@ -65,10 +66,10 @@ public class Camera {
     /**
      * Set camera y coord.
      * 
-     * @param y
+     * @param yPos
      */
-    public void setY(final float y) {
-        this.y = y;
+    public void setY(final float yPos) {
+        this.y = yPos;
     }
 
 }

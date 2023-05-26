@@ -4,7 +4,7 @@ import it.unibo.geosurv.model.Game;
 import java.awt.Dimension;
 import javax.swing.JFrame;
 
-/** TODO: class def */
+/** TODO: class def. */
 public class Window {
 
 	// private static final int WINDOW_WIDTH = 1000;
