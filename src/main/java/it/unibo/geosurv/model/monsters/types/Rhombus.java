@@ -17,6 +17,8 @@ public class Rhombus extends Monster {
 
     /**
      * Rhombus constructor.
+     * 
+     * @param h handler
      */
     public Rhombus(final Handler h) {
         super(0, 0, h);

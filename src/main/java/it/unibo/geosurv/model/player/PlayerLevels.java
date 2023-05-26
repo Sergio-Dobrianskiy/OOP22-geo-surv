@@ -2,10 +2,10 @@ package it.unibo.geosurv.model.player;
 
 public class PlayerLevels {
 
-	private final static int STARTING_LEVEL = 1;
-	private final static int MAX_LEVEL = 12; // 4 weapons * 3 levels each
-	private final static int EXP_FIRST_LEVEL = 2;
-	private final static float LEVEL_MULTIPLIER = 1.1f;
+	private static final int STARTING_LEVEL = 1;
+	private static final int MAX_LEVEL = 12; // 4 weapons * 3 levels each
+	private static final int EXP_FIRST_LEVEL = 2;
+	private static final float LEVEL_MULTIPLIER = 1.1f;
 	private final MainPlayer player;
 	private int currentLevel;
 	private int currentExp;

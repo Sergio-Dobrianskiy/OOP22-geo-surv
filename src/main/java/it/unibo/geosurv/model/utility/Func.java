@@ -11,7 +11,7 @@ import it.unibo.geosurv.model.ID;
 public final class Func {
 
 	/**
-	 * to prevent instances' creation
+	 * To prevent creation of instances.
 	 */
 	private Func() {
 	}
@@ -48,7 +48,7 @@ public final class Func {
 	/**
 	 * Return closest enemy to the player.
 	 *
-	 * @param Handler game handler
+	 * @param handler game handler
 	 * 
 	 * @return GameObject player
 	 */
@@ -100,8 +100,8 @@ public final class Func {
 	/**
 	 * Return angle of from point A to B.
 	 *
-	 * @param origin GameObject A
-	 * @param aimed  GameObject B
+	 * @param a GameObject origin
+	 * @param b GameObject aimed
 	 * @return Pair angle
 	 */
 	public static Pair<Float, Float> findAngle2(final GameObject a, final GameObject b) {

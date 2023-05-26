@@ -15,15 +15,15 @@ import it.unibo.geosurv.view.graphics.Texture;
 
 public class MainPlayer extends GameObject implements MainPlayerInterf {
 
-    public final static int PLAYER_HEIGHT = 59;
-    public final static int PLAYER_WIDTH = 59;
-    public final static int HALF_PLAYER_HEIGHT = PLAYER_HEIGHT / 2;
-    public final static int HALF_PLAYER_WIDTH = PLAYER_WIDTH / 2;
-    public final static int PLAYER_SPEED = 5;
-    public final static int MAX_LIFE = 100;
-    private long lastHitTime; // last time Player is touched/hit by a monster
+    public static final int PLAYER_HEIGHT = 59;
+    public static final int PLAYER_WIDTH = 59;
+    public static final int HALF_PLAYER_HEIGHT = PLAYER_HEIGHT / 2;
+    public static final int HALF_PLAYER_WIDTH = PLAYER_WIDTH / 2;
+    public static final int PLAYER_SPEED = 5;
+    public static final int MAX_LIFE = 100;
     private static final int MAX_HITS_PER_SECOND = 2;
     private static final long HIT_COOLDOWN = 1000 / MAX_HITS_PER_SECOND;
+    private long lastHitTime; // last time Player is touched/hit by a monster
     private Handler handler;
     private int life;
     private Collisions collisions;
@@ -33,6 +33,13 @@ public class MainPlayer extends GameObject implements MainPlayerInterf {
     private ArrayList<Weapon> weapons;
     private WeaponLevels weaponLevels;
 
+    /**
+     * MainPlayer Constructor
+     * 
+     * @param x
+     * @param y
+     * @param handler
+     */
     public MainPlayer(final float x, final float y, final Handler handler) {
         super(x, y, ID.Player);
         this.handler = handler;
@@ -50,7 +57,7 @@ public class MainPlayer extends GameObject implements MainPlayerInterf {
     }
 
     @Override
-    public void tick() {
+    public final void tick() {
         x += velX;
         y += velY;
         collisions.checkPlayerCollisions();
@@ -59,18 +66,33 @@ public class MainPlayer extends GameObject implements MainPlayerInterf {
     }
 
     @Override
-    public int getExperience() {
+    public final int getExperience() {
         return this.playerLevels.getCurrentExp();
     }
 
+    /**
+     * TODO: javadoc
+     * 
+     * @return
+     */
     public int getMaxExperience() {
         return this.playerLevels.getExpToLevel();
     }
 
+    /**
+     * TODO: javadoc
+     * 
+     * @return
+     */
     public int getLevel() {
         return this.playerLevels.getCurrentLevel();
     }
 
+    /**
+     * TODO: javadoc
+     * 
+     * @return
+     */
     public float getExpPercentage() {
         if (this.getExperience() == 0) {
             return 0;
@@ -79,27 +101,27 @@ public class MainPlayer extends GameObject implements MainPlayerInterf {
     }
 
     @Override
-    public void setExperience(final int experience) {
+    public final void setExperience(final int experience) {
         this.playerLevels.expUp(experience);
     }
 
     @Override
-    public int getLife() {
+    public final int getLife() {
         return this.life;
     }
 
     @Override
-    public void setLife(final int life) {
-        this.life += life;
+    public final void setLife(final int plusLife) {
+        this.life += plusLife;
     }
 
     @Override
-    public void addObserver(final ObserverEntity observer) {
+    public final void addObserver(final ObserverEntity observer) {
         this.observers.add(observer);
     }
 
     @Override
-    public void removeObserver(final ObserverEntity observer) {
+    public final void removeObserver(final ObserverEntity observer) {
         this.observers.remove(observer);
     }
 
@@ -114,6 +136,8 @@ public class MainPlayer extends GameObject implements MainPlayerInterf {
 
     /**
      * manages hit cooldown and damage.
+     * 
+     * @param damage
      */
     public void hit(final int damage) {
         long currentTime = System.currentTimeMillis();

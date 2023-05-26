@@ -27,6 +27,8 @@ public class Triangle extends Monster {
 
     /**
      * Triangle constructor.
+     * 
+     * @param h handler
      */
     public Triangle(final Handler h) {
         super(0, 0, h);
@@ -58,7 +60,7 @@ public class Triangle extends Monster {
     }
 
     @Override
-    public void setBig(final boolean isBig) {
+    public final void setBig(final boolean isBig) {
         this.isBig = isBig;
         this.health = MAX_HEALTH;
         this.speed = MAX_SPEED;

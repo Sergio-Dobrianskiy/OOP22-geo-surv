@@ -16,9 +16,9 @@ import it.unibo.geosurv.model.utility.Pair;
  */
 public abstract class Monster extends GameObject implements ObserverEntity {
 
-    private final static int DEFAULT_EXPERIENCE = 1;
-    private final static int BOUNCING_SPEED_MULTIPLYER = 10;
-    private final static int LIFE_PILLS_PROB = 50; // probability to get a life pill: 1/50 at monster death
+    private static final int DEFAULT_EXPERIENCE = 1;
+    private static final int BOUNCING_SPEED_MULTIPLYER = 10;
+    private static final int LIFE_PILLS_PROB = 50; // probability to get a life pill: 1/50 at monster death
     private static final int MAX_HITS_PER_SECOND = 5;
     private static final long HIT_COOLDOWN = 1000 / MAX_HITS_PER_SECOND;
 
@@ -33,6 +33,14 @@ public abstract class Monster extends GameObject implements ObserverEntity {
     protected MainPlayer player;
     protected double speed;
     protected boolean isBig;
+
+    /**
+     * Monster constructor.
+     * 
+     * @param x
+     * @param y
+     * @param h
+     */
 
     protected Monster(final float x, final float y, final Handler h) {
         super(x, y, ID.Monster);
@@ -90,7 +98,7 @@ public abstract class Monster extends GameObject implements ObserverEntity {
      * 
      * @param weaponDamage whih hits the entity
      */
-    public void hit(int weaponDamage) {
+    public void hit(final int weaponDamage) {
         long currentTime = System.currentTimeMillis();
         if (currentTime - lastHitTime >= HIT_COOLDOWN) {
             this.health -= weaponDamage;
@@ -106,8 +114,6 @@ public abstract class Monster extends GameObject implements ObserverEntity {
 
     /**
      * Entity bounce if hit by weapon
-     * 
-     * @param weapon whih hits the entity
      */
     public void bounce() {
 
@@ -150,6 +156,9 @@ public abstract class Monster extends GameObject implements ObserverEntity {
         h.removeObject(this); // monster is removed from Monsters set/list
     }
 
+    /**
+     * @return number of total monster.
+     */
     public static int getMonstersCounter() {
         return monstersCounter;
     }
@@ -188,7 +197,7 @@ public abstract class Monster extends GameObject implements ObserverEntity {
     /**
      * Define if a monster is a big one.
      * 
-     * @param boolean b
+     * @param b
      */
     public void setBig(final boolean b) {
         this.isBig = b;
@@ -202,7 +211,7 @@ public abstract class Monster extends GameObject implements ObserverEntity {
      * @param minDistance from player
      * @param maxDistance from player
      */
-    public void setStartingPosition(float minDistance, float maxDistance) {
+    public void setStartingPosition(final float minDistance, final float maxDistance) {
         Pair<Float, Float> randomPosition = Func.randomPoint(minDistance, maxDistance);
         update(player); // to get player position
         x = mx + randomPosition.getX();
