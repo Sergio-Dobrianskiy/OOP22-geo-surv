@@ -4,10 +4,14 @@ import it.unibo.geosurv.model.ObserverEntity;
 
 public interface MainPlayerInterf {
 
-    // *TODO:javadoc */
+    /**
+     * Actions player does each tick.
+     */
     void tick();
 
-    // *TODO:javadoc */
+    /**
+     * @return the experience of ther player.
+     */
     int getExperience();
 
     /**
@@ -23,18 +27,24 @@ public interface MainPlayerInterf {
     int getLife();
 
     /**
-     * heals/damages the player
+     * heals/damages the player.
      */
     void setLife(int life);
 
     /**
-     * adds an observer to the player
+     * adds an observer to the player.
      */
     void addObserver(ObserverEntity observer);
 
-    // *TODO:javadoc */
+    /**
+     * removes an observer from the player.
+     */
     void removeObserver(ObserverEntity observer);
 
-    // *TODO:javadoc */
+    /**
+     * Player life is diminished by damage
+     * 
+     * @param damage
+     */
     void hit(int damage);
 }

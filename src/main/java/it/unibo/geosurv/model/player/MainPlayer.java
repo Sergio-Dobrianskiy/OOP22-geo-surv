@@ -98,17 +98,14 @@ public class MainPlayer extends GameObject implements MainPlayerInterf {
         this.observers.add(observer);
     }
 
-    /**
-     * removes an observer from the player
-     */
     @Override
     public void removeObserver(final ObserverEntity observer) {
         this.observers.remove(observer);
     }
 
     /**
-	 * notifies each observer.
-	 */
+     * notifies each observer.
+     */
     private void notifyObservers() {
         for (final ObserverEntity observer : observers) {
             observer.update(this);
@@ -116,8 +113,8 @@ public class MainPlayer extends GameObject implements MainPlayerInterf {
     }
 
     /**
-	 * manages hit cooldown and damage.
-	 */
+     * manages hit cooldown and damage.
+     */
     public void hit(final int damage) {
         long currentTime = System.currentTimeMillis();
         if (currentTime - lastHitTime >= HIT_COOLDOWN) {
@@ -127,16 +124,16 @@ public class MainPlayer extends GameObject implements MainPlayerInterf {
     }
 
     /**
-	 * passes all weapons to the player class instance.
-	 */
+     * passes all weapons to the player class instance.
+     */
     public void setWeapons(final ArrayList<Weapon> weapons) {
         this.weapons = weapons;
         this.weaponLevels = new WeaponLevels(weapons);
     }
 
     /**
-	 * levels up a random weapon.
-	 */
+     * levels up a random weapon.
+     */
     public void levelUpWeapon() {
         this.weaponLevels.levelUpWeapon();
     }
