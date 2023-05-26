@@ -4,7 +4,6 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import it.unibo.geosurv.model.Game;
 import it.unibo.geosurv.model.Handler;
-import it.unibo.geosurv.view.graphics.TextureRender;
 
 public class KeyInput extends KeyAdapter {
 

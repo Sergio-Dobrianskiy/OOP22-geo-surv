@@ -26,7 +26,7 @@ public class Loader {
 	}
 	
 	/**
-	 * loads main game elements
+	 * loads main game elements.
 	 *  
 	 */
 	public void loadAll() {
@@ -49,7 +49,7 @@ public class Loader {
 	}
 
 	/**
-	 * Loads game textures
+	 * Loads game textures.
 	 */
 	private void loadTextures() {
 		for (final Texture texture : Texture.values()) {
@@ -64,7 +64,7 @@ public class Loader {
 	}
 
 	/**
-	 * Loads game Weapons/Guns
+	 * Loads game Weapons/Guns.
 	 */
 	private void loadGuns() {
 		ArrayList<Weapon> weapons = new ArrayList<>();
@@ -85,7 +85,7 @@ public class Loader {
 	 *
 	 * @param image that models the game world
 	 */
-	private void loadLevel(BufferedImage image) {
+	private void loadLevel(final BufferedImage image) {
 		int w = image.getWidth();
 		int h = image.getHeight();
 

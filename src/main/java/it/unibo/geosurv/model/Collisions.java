@@ -60,7 +60,7 @@ public class Collisions {
 
 	/**
 	 * Check if the first GameObject is colliding with another GameObject
-	 * with a specific ID
+	 * with a specific ID.
 	 * 
 	 * @param 1st GameOnject to check
 	 * @param 2nd GameOnject to check
@@ -74,6 +74,9 @@ public class Collisions {
 		return obj1.getShape().getBounds2D().intersects(obj2.getShape().getBounds2D());
 	}
 
+	/**
+	 * Stops player movements.
+	 */
 	public void stopMovements() {
 		MainPlayer player = handler.getPlayer();
 		player.setX(player.getX() + player.getVelX() * -1);

@@ -33,7 +33,7 @@ public class MainPlayer extends GameObject implements MainPlayerInterf {
     private ArrayList<Weapon> weapons;
     private WeaponLevels weaponLevels;
 
-    public MainPlayer(float x, float y, Handler handler) {
+    public MainPlayer(final float x, final float y, final Handler handler) {
         super(x, y, ID.Player);
         this.handler = handler;
         this.life = MAX_LIFE;
@@ -77,7 +77,7 @@ public class MainPlayer extends GameObject implements MainPlayerInterf {
     }
 
     /**
-     * increases player experience
+     * increases player experience.
      * 
      * @param int experience
      */
@@ -93,28 +93,28 @@ public class MainPlayer extends GameObject implements MainPlayerInterf {
     }
 
     /**
-	 * heals/damages the player
+	 * heals/damages the player.
 	 */
-    public void setLife(int life) {
+    public void setLife(final int life) {
         this.life += life;
     }
 
     /**
-	 * adds an observer to the player
+	 * adds an observer to the player.
 	 */
-    public void addObserver(ObserverEntity observer) {
+    public void addObserver(final ObserverEntity observer) {
         this.observers.add(observer);
     }
 	
 	/**
-	 * removes an observer from the player
+	 * removes an observer from the player.
 	 */
-    public void removeObserver(ObserverEntity observer) {
+    public void removeObserver(final ObserverEntity observer) {
         this.observers.remove(observer);
     }
 
     /**
-	 * notifies each observer
+	 * notifies each observer.
 	 */
     private void notifyObservers() {
         for (ObserverEntity observer : observers) {
@@ -123,7 +123,7 @@ public class MainPlayer extends GameObject implements MainPlayerInterf {
     }
 
     /**
-	 * manages hit cooldown and damage
+	 * manages hit cooldown and damage.
 	 */
     public void hit(final int damage) {
         long currentTime = System.currentTimeMillis();
@@ -134,15 +134,15 @@ public class MainPlayer extends GameObject implements MainPlayerInterf {
     }
 
     /**
-	 * passes all weapons to the player class instance
+	 * passes all weapons to the player class instance.
 	 */
-    public void setWeapons(ArrayList<Weapon> weapons) {
+    public void setWeapons(final ArrayList<Weapon> weapons) {
         this.weapons = weapons;
         this.weaponLevels = new WeaponLevels(weapons);
     }
 
     /**
-	 * levels up a random weapon
+	 * levels up a random weapon.
 	 */
     public void levelUpWeapon() {
         this.weaponLevels.levelUpWeapon();

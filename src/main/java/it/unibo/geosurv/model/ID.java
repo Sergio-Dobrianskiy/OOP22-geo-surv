@@ -26,14 +26,11 @@ public enum ID {
      */
     Satellite,
     /**
-     * Represents the spawner.
-     */
-    Spawner, // TODO: remove
-    /**
      * Represents weapon.
      */
     Weapon,
+    /**
+     * Represents life gem.
+     */
     Life,
-    // Death,
-    // SuperMonster,
 }
