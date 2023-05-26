@@ -18,7 +18,6 @@ public class WeaponLevels {
 			int index = random.nextInt(this.weapons.size());
 			Weapon tmpWeapon = weapons.get(index);
 			upgraded = tmpWeapon.levelUp();
-			System.out.println("upgrading " + tmpWeapon);
 		}
 	}
 }

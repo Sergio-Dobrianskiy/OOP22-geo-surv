@@ -2,8 +2,8 @@ package it.unibo.geosurv.control.weapons;
 
 import java.awt.image.BufferedImage;
 
-import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.Handler;
+import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.bullets.Laser;
 import it.unibo.geosurv.model.player.MainPlayer;
 import it.unibo.geosurv.view.graphics.Texture;
@@ -27,8 +27,14 @@ public class LaserGun extends Weapon {
 		this.handler = handler; 
 		this.cycle = LASER_CYCLE;
 		this.player = handler.getPlayer();
+		this.damageLvl1 = DAMAGE_LVL_1;
+		this.damageLvl1 = DAMAGE_LVL_2;
+		this.damageLvl1 = DAMAGE_LVL_3;
 	}
 	
+	/**
+	 * creates 1/2/4 lasers the player
+	 */
 	protected void shoot() {
 		float px = this.player.getX();
 		float py = this.player.getY();

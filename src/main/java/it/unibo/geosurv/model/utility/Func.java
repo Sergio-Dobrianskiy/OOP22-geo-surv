@@ -7,6 +7,7 @@ import java.util.Random;
 import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.Handler;
 import it.unibo.geosurv.model.ID;
+import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.player.MainPlayer;
 
 public class Func {

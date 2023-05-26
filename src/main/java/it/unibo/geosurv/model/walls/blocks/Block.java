@@ -1,6 +1,5 @@
 package it.unibo.geosurv.model.walls.blocks;
 
-import java.awt.Rectangle;
 import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.ID;
 import it.unibo.geosurv.view.graphics.Texture;
@@ -17,11 +16,10 @@ public class Block extends GameObject {
         this.texture = Texture.BLOCK;
     }
 
+    /**
+	 * a wall doesn't tick
+	 */
+    @Override
     public void tick() {
     }
-
-    public Rectangle getShape() {
-        return this.setRectangleShape();
-    }
-    
 }

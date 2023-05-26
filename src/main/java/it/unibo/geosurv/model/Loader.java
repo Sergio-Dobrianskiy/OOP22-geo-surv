@@ -24,7 +24,11 @@ public class Loader {
 	public Loader(Handler handler) {
 		this.handler = handler;
 	}
-
+	
+	/**
+	 * loads main game elements
+	 *  
+	 */
 	public void loadAll() {
 		handler.addPlayer(new MainPlayer(150, 300, handler)); // TODO: remove?
 		this.loadTextures();
@@ -35,6 +39,11 @@ public class Loader {
 
 	}
 
+	/**
+	 * loads the game camera
+	 * 
+	 * @return Camera 
+	 */
 	public Camera loadCamera() {
 		return new Camera(handler.getPlayer().getX(), handler.getPlayer().getY(), handler);
 	}
@@ -63,6 +72,7 @@ public class Loader {
 		Weapon satelliteGun = (Weapon) handler.addTickingObject(new SatelliteGun(this.handler));
 		Weapon explosionGun = (Weapon) handler.addTickingObject(new ExplosionGun(this.handler));
 		Weapon laserGun = (Weapon) handler.addTickingObject(new LaserGun(this.handler));
+		autogun.levelUp();  			// each game starts with lvl 1 AutoGun
 		weapons.add(autogun);
 		weapons.add(satelliteGun);
 		weapons.add(explosionGun);
