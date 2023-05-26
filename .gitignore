@@ -30,4 +30,4 @@ build
 # report/*.pdf
 report/
 !report/*.tex
-!img/
+!report/img/
