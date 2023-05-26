@@ -1,11 +1,11 @@
 package it.unibo.geosurv.model.utility;
 
-public class Pair<X,Y> {
-	
+public class Pair<X, Y> {
+
 	private final X x;
 	private final Y y;
-	
-	public Pair(X x, Y y) {
+
+	public Pair(final X x, final Y y) {
 		super();
 		this.x = x;
 		this.y = y;
@@ -30,24 +30,33 @@ public class Pair<X,Y> {
 
 	@SuppressWarnings("rawtypes")
 	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
+	public boolean equals(final Object obj) {
+		if (this == obj) {
 			return true;
-		if (obj == null)
+		}
+		if (obj == null) {
 			return false;
-		if (getClass() != obj.getClass())
+		}
+		if (getClass() != obj.getClass()) {
+
 			return false;
-		Pair other = (Pair) obj;
+		}
+
+		final Pair other = (Pair) obj;
 		if (x == null) {
-			if (other.x != null)
+			if (other.x != null) {
 				return false;
-		} else if (!x.equals(other.x))
+			}
+		} else if (!x.equals(other.x)) {
 			return false;
+		}
 		if (y == null) {
-			if (other.y != null)
+			if (other.y != null) {
 				return false;
-		} else if (!y.equals(other.y))
+			}
+		} else if (!y.equals(other.y)) {
 			return false;
+		}
 		return true;
 	}
 

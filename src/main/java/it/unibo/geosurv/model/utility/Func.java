@@ -7,8 +7,6 @@ import java.util.Random;
 import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.Handler;
 import it.unibo.geosurv.model.ID;
-import it.unibo.geosurv.model.GameObject;
-import it.unibo.geosurv.model.player.MainPlayer;
 
 public class Func {
 
@@ -54,15 +52,15 @@ public class Func {
 		float closestDistance = Float.MAX_VALUE;
 		float distance;
 		ArrayList<GameObject> tmpObjects = handler.getGameObjects();
-		GameObject tmpObject;
-		float px, py;
+		float px;
+		float py;
 		px = player.getX();
 		py = player.getY();
 
-		for (int i = 0; i < tmpObjects.size(); i++) {
-			tmpObject = tmpObjects.get(i);
+		for (GameObject tmpObject : tmpObjects) {
 			if (tmpObject.getId() == ID.Monster) {
-				float ex, ey;
+				float ex;
+				float ey;
 
 				ex = tmpObject.getX();
 				ey = tmpObject.getY();
@@ -101,11 +99,11 @@ public class Func {
 	 * @return Pair angle
 	 */
 	public static Pair<Float, Float> findAngle2(final GameObject a, final GameObject b) {
-		float ax = a.getX();
-		float ay = a.getY();
-		float bx = b.getX();
-		float by = b.getY();
-		float angle = (float) Math.atan2(by - ay, bx - ax);
+		final float ax = a.getX();
+		final float ay = a.getY();
+		final float bx = b.getX();
+		final float by = b.getY();
+		final float angle = (float) Math.atan2(by - ay, bx - ax);
 		return new Pair<Float, Float>((float) Math.cos(angle), (float) Math.sin(angle));
 	}
 

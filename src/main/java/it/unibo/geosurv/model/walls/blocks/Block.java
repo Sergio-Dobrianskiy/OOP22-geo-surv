@@ -5,11 +5,11 @@ import it.unibo.geosurv.model.ID;
 import it.unibo.geosurv.view.graphics.Texture;
 
 public class Block extends GameObject {
-	
-	protected final static int BLOCK_HEIGHT = 32;
-	protected final static int BLOCK_WIDTH = 32;
 
-    public Block(float x, float y) {
+    protected final static int BLOCK_HEIGHT = 32;
+    protected final static int BLOCK_WIDTH = 32;
+
+    public Block(final float x, final float y) {
         super(x, y, ID.Block);
         this.height = BLOCK_HEIGHT;
         this.width = (int) BLOCK_WIDTH;
@@ -17,8 +17,8 @@ public class Block extends GameObject {
     }
 
     /**
-	 * a wall doesn't tick
-	 */
+     * a wall doesn't tick
+     */
     @Override
     public void tick() {
     }
