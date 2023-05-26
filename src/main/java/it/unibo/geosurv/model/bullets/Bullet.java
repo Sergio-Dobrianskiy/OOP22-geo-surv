@@ -13,7 +13,7 @@ public abstract class Bullet extends GameObject {
 	protected final Handler handler;
 	private Collisions collisions;
 
-	public Bullet(float x, float y, final Handler handler, final int damage) {
+	public Bullet(final float x, final float y, final Handler handler, final int damage) {
 		super(x, y, ID.Bullet);
 		this.handler = handler;
 		this.creationTime = System.currentTimeMillis();
@@ -22,7 +22,7 @@ public abstract class Bullet extends GameObject {
 	}
 
 	/**
-	 * checks if the bullet is still alive, otherwise it removes it from the game
+	 * checks if the bullet is still alive, otherwise it removes it from the game.
 	 */
 	@Override
 	public void tick() {
@@ -35,7 +35,7 @@ public abstract class Bullet extends GameObject {
 	}
 
 	/**
-	 * updates bullet position on the field
+	 * updates bullet position on the field.
 	 */
 	private void updatePosition(final float velX, final float velY) {
 		x += velX;
@@ -43,7 +43,7 @@ public abstract class Bullet extends GameObject {
 	}
 
 	/**
-	 * checks if the bullet has expired it's life span
+	 * checks if the bullet has expired it's life span.
 	 */
 	protected boolean stillAlive() {
 		long currentTime = System.currentTimeMillis();
@@ -59,7 +59,7 @@ public abstract class Bullet extends GameObject {
 		return damage;
 	}
 
-	public void setDamage(int damage) {
+	public void setDamage(final int damage) {
 		this.damage = damage;
 	}
 }

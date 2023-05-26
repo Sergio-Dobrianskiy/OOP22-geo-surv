@@ -19,7 +19,7 @@ public class Rect extends Monster {
     // private static final boolean isBig = false;
 
     /**
-     * Rect constructor
+     * Rect constructor.
      */
     public Rect(Handler h) {
 
