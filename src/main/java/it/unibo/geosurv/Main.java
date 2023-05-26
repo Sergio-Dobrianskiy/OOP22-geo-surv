@@ -10,11 +10,11 @@ public final class Main {
 	private Main() {
 	}
 
-	public static void main(String args[]) {
+	public static void main(final String args[]) {
 
-		MenuView menuView = new MenuView(); // view
+		final MenuView menuView = new MenuView(); // view
 		// Game game = new Game(); // model
-		MainMenuController mainMenuController = new MainMenuController(menuView); // controller
+		final MainMenuController mainMenuController = new MainMenuController(menuView); // controller
 
 		// new Game();
 		mainMenuController.startMenu(); // game menu

@@ -11,27 +11,29 @@ import it.unibo.geosurv.model.player.MainPlayer;
 import it.unibo.geosurv.model.utility.Func;
 import it.unibo.geosurv.model.utility.Pair;
 
-/** Abstract Class for generic evil */
+/**
+ * Abstract Class for generic evil.
+ */
 public abstract class Monster extends GameObject implements ObserverEntity {
 
-    private final int DEFAULT_EXPERIENCE = 1;
-    private final int BOUNCING_SPEED_MULTIPLYER = 10;
-    private final int LIFE_PILLS_PROB = 50; // probability to get a life pill: 1/50 at monster death
-    private long lastHitTime; // last time monster is touched/hit by player
+    private final static int DEFAULT_EXPERIENCE = 1;
+    private final static int BOUNCING_SPEED_MULTIPLYER = 10;
+    private final static int LIFE_PILLS_PROB = 50; // probability to get a life pill: 1/50 at monster death
     private static final int MAX_HITS_PER_SECOND = 5;
     private static final long HIT_COOLDOWN = 1000 / MAX_HITS_PER_SECOND;
 
+    private long lastHitTime; // last time monster is touched/hit by player
+
+    protected static int monstersCounter;
+    protected final Handler handler;
     protected int health; // need to be shared with monters subclasses @Sergio-Dobrianskiy
     protected int power; // power which the plyer is hit by when in contact with a monster
-    protected static int monstersCounter;
     protected float mx; // Player Position throu observer
     protected float my; // Player Position throu observer
     protected MainPlayer player;
     protected int dimension;
     protected double speed;
     protected boolean isBig;
-    protected final Handler handler;
-    static long counterxx = 0;
 
     protected Monster(final float x, final float y, final Handler h) {
         super(x, y, ID.Monster);
@@ -41,25 +43,24 @@ public abstract class Monster extends GameObject implements ObserverEntity {
         this.lastHitTime = 0;
         this.handler = h;
         // System.out.println("Added Observer: " + this.toString());
-
     }
 
     /**
-     * @return an integer showing how much health entity has left
+     * @return an integer showing how much health entity has left.
      */
     public int getHealth() {
         return this.health;
     }
 
     /**
-     * @return an integer showing how much power entity has tohit the player
+     * @return an integer showing how much power entity has hit the player.
      */
     public int getPower() {
         return power;
     }
 
     /**
-     * Check if Entity is alive
+     * Check if Entity is alive.
      * 
      * @return boolen value
      */
@@ -68,7 +69,7 @@ public abstract class Monster extends GameObject implements ObserverEntity {
     }
 
     /**
-     * At death, Entity drop experience pill
+     * At death, Entity drop experience pill.
      * 
      * @return Experience pill
      */
@@ -77,7 +78,7 @@ public abstract class Monster extends GameObject implements ObserverEntity {
     }
 
     /**
-     * At death, Entity drop experience pill
+     * At death, Entity drop experience pill.
      * 
      * @return Experience pill
      */
@@ -86,9 +87,9 @@ public abstract class Monster extends GameObject implements ObserverEntity {
     }
 
     /**
-     * Entity's been hit by player weapon
+     * Entity's been hit by player weapon.
      * 
-     * @param weapon whih hits the entity
+     * @param weaponDamage whih hits the entity
      */
     public void hit(int weaponDamage) {
         long currentTime = System.currentTimeMillis();
@@ -154,12 +155,20 @@ public abstract class Monster extends GameObject implements ObserverEntity {
         return monstersCounter;
     }
 
-    /** Monster is update about player posistion throu notify - Observer method */
-    public void update(MainPlayer mp) {
+    /**
+     * Monster is update about player posistion throu notify
+     * 
+     * @param mp (player)
+     * 
+     */
+    public void update(final MainPlayer mp) {
         mx = mp.getX();
         my = mp.getY();
     }
 
+    /**
+     * Allow the monster to try to reach the player.
+     */
     public void reachTarget() {
         this.x += this.velX;
         this.y += this.velY;
@@ -177,10 +186,23 @@ public abstract class Monster extends GameObject implements ObserverEntity {
         // System.out.println("T trying to reach the target");
     }
 
-    public void setBig(boolean b) {
+    /**
+     * Define if a monster is a big one.
+     * 
+     * @param boolean b
+     */
+    public void setBig(final boolean b) {
         this.isBig = b;
     }
 
+    /**
+     * Set the starting position of a monster after it's born.
+     * Position is a random point between two circle (the first of radius
+     * minDistance and the second with a radius of maxDistance).
+     * 
+     * @param minDistance from player
+     * @param maxDistance from player
+     */
     public void setStartingPosition(float minDistance, float maxDistance) {
         Pair<Float, Float> randomPosition = Func.randomPoint(minDistance, maxDistance);
         update(player); // to get player position

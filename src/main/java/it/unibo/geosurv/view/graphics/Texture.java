@@ -95,12 +95,15 @@ public enum Texture {
 	/**
 	 * Constructor for this Class.
 	 *
-	 * @param fileName path to the texture
+	 * @param filePath path to the texture
 	 */
-	Texture(String filePath) {
+	Texture(final String filePath) {
 		this.filePath = filePath;
 	}
 
+	/**
+	 * @return texture filePath
+	 */
 	public String getPath() {
 		return this.filePath;
 	}
@@ -115,7 +118,7 @@ public enum Texture {
 	public void load() throws IOException {
 		final InputStream inputStream = getClass().getResourceAsStream(this.filePath);
 		if (inputStream == null) {
-			throw new NullPointerException("" + this.filePath + " is a wrong path");
+			throw new IllegalArgumentException(this.filePath + " is a wrong path");
 		}
 		this.texture = ImageIO.read(inputStream);
 		inputStream.close();

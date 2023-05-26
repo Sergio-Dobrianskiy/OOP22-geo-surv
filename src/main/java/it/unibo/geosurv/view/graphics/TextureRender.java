@@ -12,32 +12,32 @@ import it.unibo.geosurv.model.monsters.Monster;
 
 public class TextureRender {
 
-	private static final boolean HIT_BOXES = false;
-	private Handler handler;
-	private static final int FRAMES_IN_BUFFER = 3;
-	private static final int WINDOW_WIDTH = 1000;
-	private static final int WINDOW_HEIGHT = 600;
+	private final Handler handler;
+	// private static final boolean HIT_BOXES = false;
+	// private static final int FRAMES_IN_BUFFER = 3;
+	// private static final int WINDOW_WIDTH = 1000;
+	// private static final int WINDOW_HEIGHT = 600;
 
-	public TextureRender(Handler handler) {
+	public TextureRender(final Handler handler) {
 		this.handler = handler;
 
 	}
 
-	public void renderView(Graphics g) {
-		ArrayList<GameObject> gameObjects = handler.getGameObjects();
-		MainPlayer player = handler.getPlayer();
-		for (int i = 0; i < gameObjects.size(); i++) {
-			GameObject to = gameObjects.get(i);
-			int xx = getRenderX(to);
-			int yy = getRenderY(to);
+	public void renderView(final Graphics g) {
+		final ArrayList<GameObject> gameObjects = handler.getGameObjects();
+		final MainPlayer player = handler.getPlayer();
+		for (final GameObject to : gameObjects) {
+			final int xx = getRenderX(to);
+			final int yy = getRenderY(to);
 			g.drawImage(to.getTexture().extractTexture(), xx, yy, to.getWidth(), to.getHeight(), null);
 		}
 		renderUI(g, player);
 	}
 
 	public void renderUI(final Graphics g, final MainPlayer player) {
-		int x = (int) player.getX();
-		int y = (int) player.getY();
+
+		final int x = (int) player.getX();
+		final int y = (int) player.getY();
 		g.setColor(Color.white);
 		g.drawString("Life: " + player.getLife(), (int) x + player.getWidth(), (int) y);
 		g.drawString("Exp: " + (int) player.getExpPercentage() + "%", (int) x + player.getWidth(), (int) y + 20);
@@ -46,17 +46,17 @@ public class TextureRender {
 		g.drawString("Lvl: " + player.getLevel(), (int) x + player.getWidth(), (int) y + 80);
 
 		// Draw bar progres for player's life
-		int barWidth = 100;
-		int barHeight = 10;
-		int barX = (int) (x - barWidth / 2); // bar x coordinate
-		int barY = (int) y - barHeight - 30;
+		final int barWidth = 100;
+		final int barHeight = 10;
+		final int barX = (int) (x - barWidth / 2); // bar x coordinate
+		final int barY = (int) y - barHeight - 30;
 
 		g.setColor(Color.RED);
 		g.fillRect(barX, barY, barWidth, barHeight);
 
 		float percentage = (float) player.getLife() / MainPlayer.MAX_LIFE;
 		percentage = percentage > 0 ? percentage : 0; // prevents bar from overflowing
-		int filledWidth = (int) (barWidth * percentage);
+		final int filledWidth = (int) (barWidth * percentage);
 
 		g.setColor(Color.GREEN);
 		g.fillRect(barX, barY, filledWidth, barHeight);
@@ -65,38 +65,40 @@ public class TextureRender {
 		g.drawRect(barX, barY, barWidth, barHeight);
 	}
 
-	public void renderHitBoxes(Graphics g, Color color, GameObject obj) {
-		int xx = getRenderX(obj);
-		int yy = getRenderY(obj);
+	public void renderHitBoxes(final Graphics g, final Color color, final GameObject obj) {
+		final int xx = getRenderX(obj);
+		final int yy = getRenderY(obj);
 		g.setColor(color);
 		g.fillRect(xx, yy, obj.getWidth(), obj.getHeight());
 	}
 
-	public int getRenderX(GameObject obj) {
+	public int getRenderX(final GameObject obj) {
 		return (int) (obj.getX() - (obj.getWidth() / 2));
 	}
 
-	public int getRenderY(GameObject obj) {
+	public int getRenderY(final GameObject obj) {
 		return (int) (obj.getY() - (obj.getHeight() / 2));
 	}
 
-	public void showDebug(Graphics g) {
-		ArrayList<GameObject> gameObjects = handler.getGameObjects();
+	/** Show debug info */
+	public void showDebug(final Graphics g) {
+		final int xPos = 850;
+		final int yPos = 80;
+		final ArrayList<GameObject> gameObjects = handler.getGameObjects();
 
 		g.setColor(Color.RED);
 		// g.drawString("FPS: " + this.fps, 850, 50);
 		// g.drawString("Objects: " + this.objectsCounter, 850, 65);
-		g.drawString("Experience: " + Experience.getExperienceCounter(), 850, 80);
-		g.drawString("Monsters: " + Monster.getMonstersCounter(), 850, 95);
-		g.drawString("Player Exp: " + handler.getPlayer().getExperience(), 850, 110);
-		g.drawString("Player Life: " + handler.getPlayer().getLife(), 850, 125);
+		g.drawString("Experience: " + Experience.getExperienceCounter(), xPos, yPos);
+		g.drawString("Monsters: " + Monster.getMonstersCounter(), xPos, yPos + 15);
+		g.drawString("Player Exp: " + handler.getPlayer().getExperience(), xPos, yPos + 30);
+		g.drawString("Player Life: " + handler.getPlayer().getLife(), xPos, yPos + 45);
 		// g.drawString("Time: " + (((int) ((System.currentTimeMillis() / 1000))) -
 		// startTime / 1000), 850, 140);
 
-		for (int i = 0; i < gameObjects.size(); i++) {
-			GameObject to = gameObjects.get(i);
-			int xx = getRenderX(to);
-			int yy = getRenderY(to);
+		for (final GameObject to : gameObjects) {
+			final int xx = getRenderX(to);
+			final int yy = getRenderY(to);
 
 			if (to.getId() != ID.Block && to.getId() != ID.Bullet) {
 				g.drawString(to.toString(), xx + 10, yy + 10);
@@ -104,6 +106,7 @@ public class TextureRender {
 			}
 
 		}
+
 	}
 
 	// protected void drawRect(final Graphics g, final Color color, final GameObject
