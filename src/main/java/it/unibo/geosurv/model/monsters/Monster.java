@@ -24,14 +24,13 @@ public abstract class Monster extends GameObject implements ObserverEntity {
 
     private long lastHitTime; // last time monster is touched/hit by player
 
-    protected static int monstersCounter;
+    private static int monstersCounter;
     protected final Handler handler;
     protected int health; // need to be shared with monters subclasses @Sergio-Dobrianskiy
     protected int power; // power which the plyer is hit by when in contact with a monster
     protected float mx; // Player Position throu observer
     protected float my; // Player Position throu observer
     protected MainPlayer player;
-    protected int dimension;
     protected double speed;
     protected boolean isBig;
 
