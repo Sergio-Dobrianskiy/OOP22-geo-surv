@@ -9,16 +9,16 @@ import it.unibo.geosurv.view.graphics.Texture;
  */
 public class Rhombus extends Monster {
 
-    private int DEFAULT_HEALTH = 2;
-    private int DEFAULT_H_DIMENSION = 32;
-    private int DEFAULT_W_DIMENSION = 32;
+    private static final int DEFAULT_HEALTH = 2;
+    private static final int DEFAULT_H_DIMENSION = 32;
+    private static final int DEFAULT_W_DIMENSION = 32;
     private static int counter = 0;
     private String name = "Rhombus-";
 
     /**
      * Rhombus constructor.
      */
-    public Rhombus(Handler h) {
+    public Rhombus(final Handler h) {
         super(0, 0, h);
         Rhombus.counter++;
         this.name = name + Rhombus.counter;

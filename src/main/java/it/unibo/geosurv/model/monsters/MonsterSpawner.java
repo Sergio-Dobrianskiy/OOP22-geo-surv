@@ -15,19 +15,19 @@ public class MonsterSpawner implements TickingObject {
     // number of monsters that can be spawned
     // // at any given time
     // private final static int MAX_R_MONSTERS = 100;
-    private static int numMonsters = 0;
-    private Handler handler;
+    private final Handler handler;
+    private static int numMonsters;
     // private static GameObject tempPlayer;
     // static Game game;
     private static int SPAWN_RATE = 1; // in monsters per second
-    private long lastSpawnTime = 0;
+    private long lastSpawnTime;
     private int currentSecond;
     private long currentTime;
     GenerateMonsterT tm = new GenerateMonsterT();
     GenerateMonsterR rm = new GenerateMonsterR();
-    private long begin = Game.getStartTime();
+    private final long begin = Game.getStartTime();
 
-    public MonsterSpawner(Handler h) {
+    public MonsterSpawner(final Handler h) {
         this.handler = h;
     }
 
@@ -40,7 +40,7 @@ public class MonsterSpawner implements TickingObject {
             SPAWN_RATE = 2;
         }
         if (elapsedTime >= 1000 / SPAWN_RATE) {
-            Monster x = generateMonsters();
+            final Monster x = generateMonsters();
             handler.addObject(x);
             lastSpawnTime = currentTime;
 
@@ -65,7 +65,7 @@ public class MonsterSpawner implements TickingObject {
 
     private Monster generateMonsters() {
 
-        Monster m = null;
+        Monster m;
 
         if ((currentSecond - begin / 1000) < 15) {
             m = tm.createMonster(this.handler);
@@ -89,8 +89,8 @@ public class MonsterSpawner implements TickingObject {
 
     /** monsters created all through the game */
     private void generateFixedPositionMonsters() {
-        GenerateMonsterRh rhm = new GenerateMonsterRh();
-        Monster rh = rhm.createMonster(this.handler);
+        final GenerateMonsterRh rhm = new GenerateMonsterRh();
+        final Monster rh = rhm.createMonster(this.handler);
         handler.addObject(rh);
     }
 

@@ -49,6 +49,7 @@ public class MainPlayer extends GameObject implements MainPlayerInterf {
         this.weapons = new ArrayList<>();
     }
 
+    @Override
     public void tick() {
         x += velX;
         y += velY;
@@ -57,6 +58,7 @@ public class MainPlayer extends GameObject implements MainPlayerInterf {
         notifyObservers(); // notify player position
     }
 
+    @Override
     public int getExperience() {
         return this.playerLevels.getCurrentExp();
     }
@@ -76,39 +78,30 @@ public class MainPlayer extends GameObject implements MainPlayerInterf {
         return ((float) this.getExperience() / this.getMaxExperience()) * 100;
     }
 
-    /**
-     * increases player experience.
-     * 
-     * @param int experience
-     */
+    @Override
     public void setExperience(final int experience) {
         this.playerLevels.expUp(experience);
     }
 
-    /**
-     * @return how much health the Player has left
-     */
+    @Override
     public int getLife() {
         return this.life;
     }
 
-    /**
-	 * heals/damages the player.
-	 */
+    @Override
     public void setLife(final int life) {
         this.life += life;
     }
 
-    /**
-	 * adds an observer to the player.
-	 */
+    @Override
     public void addObserver(final ObserverEntity observer) {
         this.observers.add(observer);
     }
-	
-	/**
-	 * removes an observer from the player.
-	 */
+
+    /**
+     * removes an observer from the player
+     */
+    @Override
     public void removeObserver(final ObserverEntity observer) {
         this.observers.remove(observer);
     }
@@ -117,7 +110,7 @@ public class MainPlayer extends GameObject implements MainPlayerInterf {
 	 * notifies each observer.
 	 */
     private void notifyObservers() {
-        for (ObserverEntity observer : observers) {
+        for (final ObserverEntity observer : observers) {
             observer.update(this);
         }
     }

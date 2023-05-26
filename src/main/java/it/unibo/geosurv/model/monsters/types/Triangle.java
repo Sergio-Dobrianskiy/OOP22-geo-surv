@@ -28,7 +28,7 @@ public class Triangle extends Monster {
     /**
      * Triangle constructor.
      */
-    public Triangle(Handler h) {
+    public Triangle(final Handler h) {
         super(0, 0, h);
         Triangle.counter++;
         this.name = name + Triangle.counter;
@@ -57,7 +57,8 @@ public class Triangle extends Monster {
         return isBig;
     }
 
-    public void setBig(boolean isBig) {
+    @Override
+    public void setBig(final boolean isBig) {
         this.isBig = isBig;
         this.health = MAX_HEALTH;
         this.speed = MAX_SPEED;
