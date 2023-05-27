@@ -13,14 +13,28 @@ import it.unibo.geosurv.model.ID;
 import it.unibo.geosurv.model.ObserverEntity;
 import it.unibo.geosurv.view.graphics.Texture;
 
+/**
+ * Represents a SatelliteGun weapon.
+ */
 public class MainPlayer extends GameObject implements MainPlayerInterf {
 
+    /**
+     * Player's height.
+     */
     public static final int PLAYER_HEIGHT = 59;
+    /**
+     * Player's width.
+     */
     public static final int PLAYER_WIDTH = 59;
-    public static final int HALF_PLAYER_HEIGHT = PLAYER_HEIGHT / 2;
-    public static final int HALF_PLAYER_WIDTH = PLAYER_WIDTH / 2;
-    public static final int PLAYER_SPEED = 5;
-    public static final int MAX_LIFE = 100;
+    /**
+     * Player's speed.
+     */
+    private final int playerSpeed = 5;
+    /**
+     * Player's maximum live.
+     */
+    private final int maxLife = 100;
+
     private static final int MAX_HITS_PER_SECOND = 2;
     private static final long HIT_COOLDOWN = 1000 / MAX_HITS_PER_SECOND;
     private long lastHitTime; // last time Player is touched/hit by a monster
@@ -34,16 +48,16 @@ public class MainPlayer extends GameObject implements MainPlayerInterf {
     private WeaponLevels weaponLevels;
 
     /**
-     * MainPlayer Constructor
-     * 
-     * @param x
-     * @param y
-     * @param handler
+     * Constructor for this class.
+     *
+     * @param x explosion coordinate
+     * @param y explosion coordinate
+     * @param handler game's Handler
      */
     public MainPlayer(final float x, final float y, final Handler handler) {
         super(x, y, ID.Player);
         this.handler = handler;
-        this.life = MAX_LIFE;
+        this.life = maxLife;
         this.lastHitTime = 0;
         this.observers = new ArrayList<>();
         this.height = PLAYER_HEIGHT;
@@ -104,10 +118,33 @@ public class MainPlayer extends GameObject implements MainPlayerInterf {
     public final void setExperience(final int experience) {
         this.playerLevels.expUp(experience);
     }
-
+    
+    /**
+     * returns player current life.
+     * 
+     * @return player's current life
+     */
     @Override
     public final int getLife() {
         return this.life;
+    }
+    
+    /**
+     * returns player maximum life.
+     * 
+     * @return player's maximum life
+     */
+    public final int getMaxLife() {
+        return this.life;
+    }
+    
+    /**
+     * returns player speed.
+     * 
+     * @return player's speed
+     */
+    public final int getSpeed() {
+        return this.playerSpeed;
     }
 
     @Override
@@ -149,6 +186,8 @@ public class MainPlayer extends GameObject implements MainPlayerInterf {
 
     /**
      * passes all weapons to the player class instance.
+     * 
+     * @param weapons player's weapons
      */
     public void setWeapons(final ArrayList<Weapon> weapons) {
         this.weapons = weapons;
