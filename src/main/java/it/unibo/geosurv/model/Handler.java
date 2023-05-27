@@ -14,6 +14,10 @@ public class Handler implements TickingObject {
     private MainPlayer player;
     private boolean up = false, down = false, left = false, right = false;
 
+
+    /**
+     * calls tick() for every gameObject and tickingObject.
+     */
     public void tick() {
         for (int i = 0; i < gameObjects.size(); i++) {
             GameObject tempObject = gameObjects.get(i);
@@ -26,21 +30,21 @@ public class Handler implements TickingObject {
     }
 
 
-    public GameObject addObject(GameObject tempObject) {
+    public GameObject addObject(final GameObject tempObject) {
         gameObjects.add(tempObject);
         return tempObject;
     }
 
-    public void removeObject(GameObject tempObject) {
+    public void removeObject(final GameObject tempObject) {
         gameObjects.remove(tempObject);
     }
 
-    public TickingObject addTickingObject(TickingObject tempObject) {
+    public TickingObject addTickingObject(final TickingObject tempObject) {
         tickingObjects.add(tempObject);
         return tempObject;
     }
 
-    public void removeTickingObject(TickingObject tempObject) {
+    public void removeTickingObject(final TickingObject tempObject) {
         tickingObjects.remove(tempObject);
     }
 
@@ -61,7 +65,7 @@ public class Handler implements TickingObject {
     public ArrayList<GameObject> getGameObjects() {
         return this.gameObjects;
     }
-    
+
     public ArrayList<TickingObject> getTickingbjects() {
         return this.tickingObjects;
     }

@@ -5,6 +5,9 @@ import java.awt.geom.RectangularShape;
 import it.unibo.geosurv.control.TickingObject;
 import it.unibo.geosurv.view.graphics.Texture;
 
+/**
+ * Abstract class for every game object in the game.
+ */
 public abstract class GameObject implements TickingObject, IGameObject {
 	protected float x, y;									// position
 	protected float velX = 0, velY = 0;						// velocity
@@ -18,6 +21,11 @@ public abstract class GameObject implements TickingObject, IGameObject {
 		this.id = id;
 	}
 	
+	/**
+	 * returns GameObjects' ID.
+	 * 
+	 * @return GameObjects' ID
+	 */
 	@Override
 	public ID getId() {
 		return id;
@@ -107,7 +115,7 @@ public abstract class GameObject implements TickingObject, IGameObject {
 		return this.texture;
 	}
 	
-	/**
+    /**
 	 * return GameObject's hitbox (that is a Rectabgle by default)
 	 * 
 	 * @return RectangularShape centered on the GameObject

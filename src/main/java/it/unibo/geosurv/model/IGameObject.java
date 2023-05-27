@@ -4,6 +4,10 @@ import java.awt.geom.RectangularShape;
 
 import it.unibo.geosurv.view.graphics.Texture;
 
+
+/**
+ * interface for GameObjects.
+ */
 public interface IGameObject {
 
 	ID getId();
