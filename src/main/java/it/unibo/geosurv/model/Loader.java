@@ -21,11 +21,11 @@ public class Loader {
     /**
      * default game window height.
      */
-    protected final static int GAME_GRID_HEIGHT = 32;
+    public static final int GAME_GRID_HEIGHT = 32;
     /**
      * default game window width.
      */
-    protected final static int GAME_GRID_WIDTH = 32;
+    public static final int GAME_GRID_WIDTH = 32;
     /**
      * x coordinate for player starting position.
      */

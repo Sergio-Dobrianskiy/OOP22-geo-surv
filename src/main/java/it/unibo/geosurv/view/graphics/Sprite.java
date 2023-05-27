@@ -20,7 +20,12 @@ public class Sprite {
     /**
      * Picks one sprite from a larger image.
      *
-     * @param image
+     * @param col column
+     * @param row row
+     * @param width image width
+     * @param height image height
+     * 
+     * @return returns sprite from larger image
      */
     public final BufferedImage grabImage(final int col, final int row, final int width, final int height) {
         return image.getSubimage(col * 32 - 32, row * 32 - 32, width, height);

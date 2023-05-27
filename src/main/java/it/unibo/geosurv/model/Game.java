@@ -22,11 +22,11 @@ public class Game extends Canvas implements Runnable, TickingObject {
     /**
      * Game's window width.
      */
-    private static final int WINDOW_WIDTH = 1000;
+    public static final int WINDOW_WIDTH = 1000;
     /**
      * Game's window height.
      */
-    private static final int WINDOW_HEIGHT = 600;
+    public static final int WINDOW_HEIGHT = 600;
     /**
      * milliseconds in a second.
      */
@@ -130,8 +130,6 @@ public class Game extends Canvas implements Runnable, TickingObject {
             }
 
             if (System.currentTimeMillis() - timer > SECOND_IN_MILLI) {
-                this.fps = frames;
-                this.objectsCounter = handler.getObjectsSize();
                 timer += SECOND_IN_MILLI;
                 frames = 0;
             }

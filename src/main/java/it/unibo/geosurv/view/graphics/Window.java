@@ -7,12 +7,8 @@ import javax.swing.JFrame;
 /** TODO: class def. */
 public class Window {
 
-	// private static final int WINDOW_WIDTH = 1000;
-	// private static final int WINDOW_HEIGHT = 600;
-
 	/** TODO: javadoc */
 	public Window(final int width, final int height, final String title, final Game game) {
-		// System.out.println("Window: " + width + "," + height + " title: " + title);
 		final JFrame frame = new JFrame(title);
 		frame.setPreferredSize(new Dimension(width, height));
 		frame.setMaximumSize(new Dimension(width, height));
