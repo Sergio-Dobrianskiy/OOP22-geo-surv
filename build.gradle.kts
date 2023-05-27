@@ -11,12 +11,12 @@ plugins {
     * In order to create it, launch the "shadowJar" task.
     * The runnable jar will be found in build/libs/projectname-all.jar
     */
-    id("com.github.johnrengelman.shadow") version "8.1.0"
-    id("org.danilopianini.gradle-java-qa") version "1.0.0"
-    }
-    
+    id("com.github.johnrengelman.shadow") version "8.1.1"
+    id("org.danilopianini.gradle-java-qa") version "1.9.0"
+   	}
+        
 repositories { // Where to search for dependencies, example JUnit
-		mavenCentral()
+	mavenCentral()
 }
 
 dependencies {
@@ -24,18 +24,18 @@ dependencies {
 	compileOnly("com.github.spotbugs:spotbugs-annotations:4.7.3")
 	// Maven dependencies are composed by a group name, a name and a version, separated by colons
 	implementation("com.omertron:API-OMDB:1.5")
-	implementation("org.jooq:jool:0.9.14")
+	implementation("org.jooq:jool:0.9.15")
 
 	/*
 	* Simple Logging Facade for Java (SLF4J) with Apache Log4j
 	* See: http://www.slf4j.org/
 	*/
-	val slf4jVersion = "2.0.6"
+	val slf4jVersion = "2.0.7"
 	implementation("org.slf4j:slf4j-api:$slf4jVersion")
 	// Logback backend for SLF4J
-	runtimeOnly("ch.qos.logback:logback-classic:1.4.5")
+	runtimeOnly("ch.qos.logback:logback-classic:1.4.7")
 	// JUnit API and testing engine
-	val jUnitVersion = "5.9.2"
+	val jUnitVersion = "5.9.3"
 	// when dependencies share the same version, grouping in a val helps to keep them in sync
 	testImplementation("org.junit.jupiter:junit-jupiter-api:$jUnitVersion")
 	// from slides 07-junit-jar-javadoc-gradle_slides.pdf => gives error
