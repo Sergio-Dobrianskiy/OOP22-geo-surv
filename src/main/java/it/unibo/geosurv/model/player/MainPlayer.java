@@ -67,7 +67,7 @@ public class MainPlayer extends GameObject implements MainPlayerInterf {
 
     @Override
     public final int getExperience() {
-        return this.playerLevels.getCurrentExp();
+        return this.playerLevels.currentExperience();
     }
 
     /**
@@ -76,7 +76,7 @@ public class MainPlayer extends GameObject implements MainPlayerInterf {
      * @return
      */
     public int getMaxExperience() {
-        return this.playerLevels.getExpToLevel();
+        return this.playerLevels.getExpToLevelUp();
     }
 
     /**

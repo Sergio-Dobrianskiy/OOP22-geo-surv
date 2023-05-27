@@ -1,49 +1,102 @@
 package it.unibo.geosurv.model.player;
 
+/**
+ * Manages payer levels.
+ */
 public class PlayerLevels {
 
-	private static final int STARTING_LEVEL = 1;
-	private static final int MAX_LEVEL = 12; // 4 weapons * 3 levels each
-	private static final int EXP_FIRST_LEVEL = 2;
-	private static final float LEVEL_MULTIPLIER = 1.1f;
-	private final MainPlayer player;
-	private int currentLevel;
-	private int currentExp;
-	private int expToLevel;
+    /**
+     * player starts at level 1.
+     */
+    private final int startingLevel = 1;
+    /**
+     * player's maximum level (currently: 4 weapons * 3 levels each).
+     */
+    private final int maxLevel = 12;
+    /**
+     * experience needed to level up from level 1 to 2.
+     */
+    private final int baseExp = 2;
+    /**
+     * experience multiplier for each level up.
+     */
+    private final float levelMultiplier = 1.1f;
+    /**
+     * player's current level.
+     */
+    private int currentLevel;
+    /**
+     * player's experience.
+     */
+    private int currentExperience;
+    /**
+     * total experience needed to level up.
+     */
+    private int expToLevelUp;
+    private final MainPlayer player;
 
-	public PlayerLevels(final MainPlayer player) {
-		this.currentLevel = PlayerLevels.STARTING_LEVEL;
-		this.currentExp = 0;
-		this.expToLevel = PlayerLevels.EXP_FIRST_LEVEL;
-		this.player = player;
-	}
+    /**
+     * Constructor for this class.
+     *
+     * @param player game's player
+     */
+    public PlayerLevels(final MainPlayer player) {
+        this.currentLevel = this.startingLevel;
+        this.currentExperience = 0;
+        this.expToLevelUp = this.baseExp;
+        this.player = player;
+    }
 
-	public void expUp(final int exp) {
-		this.currentExp += exp;
-		if (this.currentExp > this.expToLevel && this.currentLevel < PlayerLevels.MAX_LEVEL) {
-			this.levelUp();
-		}
-	}
+    /**
+     * Constructor for this class.
+     *
+     * @param exp experience gained
+     */
+    public void expUp(final int exp) {
+        this.currentExperience += exp;
+        if (this.currentExperience > this.expToLevelUp && this.currentLevel < this.maxLevel) {
+            this.levelUp();
+        }
+    }
 
-	public void levelUp() {
-		if (this.currentLevel < PlayerLevels.MAX_LEVEL) {
-			this.currentLevel += 1;
-			this.currentExp = 0;
-			this.expToLevel *= LEVEL_MULTIPLIER;
-			this.player.levelUpWeapon();
-		}
-	}
+    /**
+     * Levels up the player.
+     * 
+     */
+    public void levelUp() {
+        if (this.currentLevel < this.maxLevel) {
+            this.currentLevel += 1;
+            this.currentExperience = 0;
+            this.expToLevelUp *= this.levelMultiplier;
+            this.player.levelUpWeapon();
+        }
+    }
 
-	public int getCurrentLevel() {
-		return this.currentLevel;
-	}
+    /**
+     * Returns player level.
+     * 
+     * @return int player level
+     */
+    public int getCurrentLevel() {
+        return this.currentLevel;
+    }
 
-	public int getCurrentExp() {
-		return this.currentExp;
-	}
+    /**
+     * Returns player experience.
+     * 
+     * @return int player's experience
+     */
+    public int currentExperience() {
+        return this.currentExperience;
+    }
 
-	public int getExpToLevel() {
-		return this.expToLevel;
-	}
+    /**
+     * return total experience needed to reach the next level.
+     * 
+     * @return int experience needed to reach the next level
+     */
+    public int getExpToLevelUp() {
+        return this.expToLevelUp;
+    }
 
 }
