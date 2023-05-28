@@ -63,6 +63,26 @@ public class TextureRender {
 
 		g.setColor(Color.WHITE);
 		g.drawRect(barX, barY, barWidth, barHeight);
+
+		/* Draw bar progress fro player's experience */
+		int barWidthExp = 100;
+		int barHeightExp = 10;
+		int barXExp = (int) (x - barWidthExp / 2); // bar x coordinate
+		int barYExp = (int) y - barHeightExp - 60;
+
+
+		g.setColor(Color.RED);
+		g.fillRect(barXExp, barYExp, barWidthExp, barHeightExp);
+
+		float percentageExp = (float) player.getExperience() / MainPlayer.EXPERIENCE;
+		percentageExp = percentageExp > 0 ? percentageExp : 0; // prevents bar from overflowing
+		int filledWidthExp = (int) (barWidthExp * percentageExp);
+
+		g.setColor(Color.GREEN);
+		g.fillRect(barXExp, barYExp, filledWidthExp, barHeightExp);
+
+		g.setColor(Color.ORANGE);
+		g.drawRect(barXExp, barYExp, barWidthExp, barHeightExp);
 	}
 
 	public void renderHitBoxes(Graphics g, Color color, GameObject obj) {

@@ -21,6 +21,8 @@ public class MainPlayer extends GameObject implements MainPlayerInterf {
     public final static int HALF_PLAYER_WIDTH = PLAYER_WIDTH / 2;
     public final static int PLAYER_SPEED = 5;
     public final static int MAX_LIFE = 100;
+    public final static int EXPERIENCE = 500;
+
     private long lastHitTime; // last time Player is touched/hit by a monster
     private static final int MAX_HITS_PER_SECOND = 2;
     private static final long HIT_COOLDOWN = 1000 / MAX_HITS_PER_SECOND;
