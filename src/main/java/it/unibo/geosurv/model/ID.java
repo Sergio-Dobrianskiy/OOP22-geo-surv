@@ -1,5 +1,8 @@
 package it.unibo.geosurv.model;
 
+/**
+ * Represents the states of the game.
+ */
 public enum ID {
     /**
      * Represents the block/wall.

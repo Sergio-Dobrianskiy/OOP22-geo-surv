@@ -1,6 +1,12 @@
 package it.unibo.geosurv.control;
 
+/**
+ * Interface for Objects that need a tick method.
+ */
 public interface TickingObject {
-	
-	public void tick();
+
+    /**
+     * Executes object's behavior.
+     */
+    void tick();
 }

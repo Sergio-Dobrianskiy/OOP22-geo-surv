@@ -6,40 +6,67 @@ import it.unibo.geosurv.model.bullets.Explosion;
 import it.unibo.geosurv.model.utility.Func;
 import it.unibo.geosurv.model.utility.Pair;
 
+/**
+ * Represents an ExplosionGun Weapon.
+ */
 public class ExplosionGun extends Weapon {
-	
-	private final float MIN_RANGE = 10f;
-	private final float MAX_RANGE = 200f;
-	protected final long EXPLOSION_CYCLE = 4000L;
-	private final int DAMAGE_LVL_1 = 3;
-	private final int DAMAGE_LVL_2 = 6;
-	private final int DAMAGE_LVL_3 = 9;
-			
-	private Handler handler;
-	private int numberOfExplosions = 2;  // test
+    /**
+     * minimum range at witch explosion can appear.
+     */
+    private final float minRange = 10f;
+    /**
+     * maximum range at witch explosion can appear.
+     */
+    private final float maxRange = 200f;
+    /**
+     * explosion cycle in ms.
+     */
+    private final long explosionCycle = 4000L;
+    /**
+     * explosion damage at level 1.
+     */
+    private final int damageLevel1 = 3;
+    /**
+     * explosion damage at level 2.
+     */
+    private final int damageLevel2 = 6;
+    /**
+     * explosion damage at level 3.
+     */
+    private final int damageLevel3 = 9;
+    /**
+     * explosion damage at level 3.
+     */
+    private final int explosionsPerLevel = 2;
 
-	public ExplosionGun(Handler handler) {
-		super();
-		this.handler = handler; 
-		this.cycle = EXPLOSION_CYCLE;
-		this.damageLvl1 = DAMAGE_LVL_1;
-		this.damageLvl1 = DAMAGE_LVL_2;
-		this.damageLvl1 = DAMAGE_LVL_3;
-	}
-	
-	/**
-	 * creates explosions around the player
-	 */
-	@Override
-	protected void shoot() {
-		GameObject player = handler.getPlayer();
-		float x = player.getX();
-		float y = player.getY();
-		Pair<Float, Float> pair;
-			
-		for (int i = 0; i <= currentLevel * numberOfExplosions; i++) {
-			pair = Func.randomPoint(MIN_RANGE, MAX_RANGE);
-			handler.addObject(new Explosion(pair.getX() + x, pair.getY() + y, handler, getDamage()));
-		}
-	}
+    private Handler handler;
+    /**
+     * Constructor for this class.
+     *
+     * @param handler game's Handler
+     */
+    public ExplosionGun(final Handler handler) {
+        super();
+        this.handler = handler; 
+        this.cycle = explosionCycle;
+        this.damageLvl1 = damageLevel1;
+        this.damageLvl1 = damageLevel2;
+        this.damageLvl1 = damageLevel3;
+    }
+
+    /**
+     * creates explosions around the player.
+     */
+    @Override
+    protected void shoot() {
+        GameObject player = handler.getPlayer();
+        float x = player.getX();
+        float y = player.getY();
+        Pair<Float, Float> pair;
+
+        for (int i = 0; i <= currentLevel * explosionsPerLevel; i++) {
+            pair = Func.randomPoint(minRange, maxRange);
+            handler.addObject(new Explosion(pair.getX() + x, pair.getY() + y, handler, getDamage()));
+        }
+    }
 }

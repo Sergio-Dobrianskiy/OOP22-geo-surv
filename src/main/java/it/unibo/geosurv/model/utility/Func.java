@@ -8,6 +8,10 @@ import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.Handler;
 import it.unibo.geosurv.model.ID;
 
+/**
+ * contains utility functions.
+ */
+
 public final class Func {
 
 	/**

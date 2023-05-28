@@ -4,95 +4,102 @@ import java.util.ArrayList;
 import it.unibo.geosurv.control.TickingObject;
 import it.unibo.geosurv.model.player.MainPlayer;
 
+/**
+ * Represents the Handler.
+ */
 public class Handler implements TickingObject {
 
-	private ArrayList<GameObject> gameObjects = new ArrayList<>();
-	private ArrayList<TickingObject> tickingObjects = new ArrayList<>();
-	private MainPlayer player;
-	private boolean up = false, down = false, left = false, right = false;
-
-	public void tick() {
-		for (int i = 0; i < gameObjects.size(); i++) {
-			GameObject tempObject = gameObjects.get(i);
-			tempObject.tick();
-		}
-		for (int i = 0; i < tickingObjects.size(); i++) {
-			TickingObject tempObject = tickingObjects.get(i);
-			tempObject.tick();
-		}
-	}
+    private ArrayList<GameObject> gameObjects = new ArrayList<>();
+    private ArrayList<TickingObject> tickingObjects = new ArrayList<>();
+    private MainPlayer player;
+    private boolean up = false, down = false, left = false, right = false;
 
 
-	public GameObject addObject(GameObject tempObject) {
-		gameObjects.add(tempObject);
-		return tempObject;
-	}
+    /**
+     * calls tick() for every gameObject and tickingObject.
+     */
+    public void tick() {
+        for (int i = 0; i < gameObjects.size(); i++) {
+            GameObject tempObject = gameObjects.get(i);
+            tempObject.tick();
+        }
+        for (int i = 0; i < tickingObjects.size(); i++) {
+            TickingObject tempObject = tickingObjects.get(i);
+            tempObject.tick();
+        }
+    }
 
-	public void removeObject(GameObject tempObject) {
-		gameObjects.remove(tempObject);
-	}
 
-	public TickingObject addTickingObject(TickingObject tempObject) {
-		tickingObjects.add(tempObject);
-		return tempObject;
-	}
+    public GameObject addObject(final GameObject tempObject) {
+        gameObjects.add(tempObject);
+        return tempObject;
+    }
 
-	public void removeTickingObject(TickingObject tempObject) {
-		tickingObjects.remove(tempObject);
-	}
+    public void removeObject(final GameObject tempObject) {
+        gameObjects.remove(tempObject);
+    }
 
-	public MainPlayer addPlayer(MainPlayer player) {
-		this.player = player;
-		this.gameObjects.add(player);
-		return player;
-	}
+    public TickingObject addTickingObject(final TickingObject tempObject) {
+        tickingObjects.add(tempObject);
+        return tempObject;
+    }
 
-	public MainPlayer getPlayer() {
-		return this.player;
-	}
+    public void removeTickingObject(final TickingObject tempObject) {
+        tickingObjects.remove(tempObject);
+    }
 
-	public int getObjectsSize() {
-		return this.gameObjects.size();
-	}
+    public MainPlayer addPlayer(MainPlayer player) {
+        this.player = player;
+        this.gameObjects.add(player);
+        return player;
+    }
 
-	public ArrayList<GameObject> getGameObjects() {
-		return this.gameObjects;
-	}
-	
-	public ArrayList<TickingObject> getTickingbjects() {
-		return this.tickingObjects;
-	}
+    public MainPlayer getPlayer() {
+        return this.player;
+    }
 
-	public boolean isUp() {
-		return up;
-	}
+    public int getObjectsSize() {
+        return this.gameObjects.size();
+    }
 
-	public void setUp(boolean up) {
-		this.up = up;
-	}
+    public ArrayList<GameObject> getGameObjects() {
+        return this.gameObjects;
+    }
 
-	public boolean isDown() {
-		return down;
-	}
+    public ArrayList<TickingObject> getTickingbjects() {
+        return this.tickingObjects;
+    }
 
-	public void setDown(boolean down) {
-		this.down = down;
-	}
+    public boolean isUp() {
+        return up;
+    }
 
-	public boolean isLeft() {
-		return left;
-	}
+    public void setUp(boolean up) {
+        this.up = up;
+    }
 
-	public void setLeft(boolean left) {
-		this.left = left;
-	}
+    public boolean isDown() {
+        return down;
+    }
 
-	public boolean isRight() {
-		return right;
-	}
+    public void setDown(boolean down) {
+        this.down = down;
+    }
 
-	public void setRight(boolean right) {
-		this.right = right;
-	}
+    public boolean isLeft() {
+        return left;
+    }
+
+    public void setLeft(boolean left) {
+        this.left = left;
+    }
+
+    public boolean isRight() {
+        return right;
+    }
+
+    public void setRight(boolean right) {
+        this.right = right;
+    }
 
 }
