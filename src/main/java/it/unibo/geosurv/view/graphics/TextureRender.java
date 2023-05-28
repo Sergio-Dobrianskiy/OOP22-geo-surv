@@ -64,11 +64,14 @@ public class TextureRender {
 		g.setColor(Color.WHITE);
 		g.drawRect(barX, barY, barWidth, barHeight);
 
-		/* Draw bar progress fro player's experience */
+		/* Draw bar progress for player's experience */
 		int barWidthExp = 100;
 		int barHeightExp = 10;
 		int barXExp = (int) (x - barWidthExp / 2); // bar x coordinate
 		int barYExp = (int) y - barHeightExp - 60;
+		String title  = "Experience:";
+
+		g.drawString(title, barXExp, barYExp - 10);
 
 
 		g.setColor(Color.RED);
