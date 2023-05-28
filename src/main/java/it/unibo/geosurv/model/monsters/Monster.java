@@ -152,8 +152,9 @@ public abstract class Monster extends GameObject implements ObserverEntity {
         } else {
             h.addObject(this.dropExperience());
         }
-        monstersCounter--;
-        h.removeObject(this); // monster is removed from Monsters set/list
+
+        h.removeObject(this); // monster is removed from Monsters list
+        this.removeMonster(this);
     }
 
     /**
@@ -217,6 +218,16 @@ public abstract class Monster extends GameObject implements ObserverEntity {
         x = mx + randomPosition.getX();
         y = my + randomPosition.getY();
         // System.out.println("[" + mx + "," + my + "]");
+    }
+
+    /**
+     * Remove the monster and decrease monsters counter.
+     * 
+     * @param monster
+     */
+    public void removeMonster(Monster monster) {
+        monster = null;
+        monstersCounter--;
     }
 
 }
