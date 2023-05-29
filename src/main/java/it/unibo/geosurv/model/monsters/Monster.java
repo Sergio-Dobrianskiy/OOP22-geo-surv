@@ -146,14 +146,14 @@ public abstract class Monster extends GameObject implements ObserverEntity {
      */
     public void die() {
 
-        Handler h = Game.returnHandler();
-        if (shouldDropLife()) {
-            h.addObject(this.dropLife());
+        // Handler h = Game.returnHandler();
+        if (this.shouldDropLife()) {
+            this.handler.addObject(this.dropLife());
         } else {
-            h.addObject(this.dropExperience());
+            this.handler.addObject(this.dropExperience());
         }
 
-        h.removeObject(this); // monster is removed from Monsters list
+        this.handler.removeObject(this); // monster is removed from Monsters list
         this.removeMonster(this);
     }
 
