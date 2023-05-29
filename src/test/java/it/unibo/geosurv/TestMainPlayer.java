@@ -25,5 +25,15 @@ public class TestMainPlayer {
         int actualExperience = player.getExperience();
         assertEquals(expectedExperience, actualExperience);
     }
+
+    @Test
+    public void testGetLevel() {
+        int expectedLevel = 1;
+        int actualLevel = player.getLevel();
+        assertEquals(expectedLevel, actualLevel);
+    }
+
+
+
     
 }
