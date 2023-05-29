@@ -104,4 +104,14 @@ public abstract class Weapon implements TickingObject {
                 return 0;
         }
     }
+    
+    /**
+     * returns weapon level.
+     * @return 
+     * 
+     * @return int level
+     */
+    public int getLevel() {
+        return this.currentLevel;
+    }
 }
