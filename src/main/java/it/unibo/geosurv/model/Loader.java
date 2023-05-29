@@ -3,13 +3,16 @@ package it.unibo.geosurv.model;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Optional;
 import it.unibo.geosurv.control.weapons.AutoGun;
 import it.unibo.geosurv.control.weapons.ExplosionGun;
 import it.unibo.geosurv.control.weapons.LaserGun;
 import it.unibo.geosurv.control.weapons.SatelliteGun;
 import it.unibo.geosurv.control.weapons.Weapon;
+import it.unibo.geosurv.model.block.Block;
+import it.unibo.geosurv.model.block.BlockFactory;
+import it.unibo.geosurv.model.block.BlockType;
 import it.unibo.geosurv.model.player.MainPlayer;
-import it.unibo.geosurv.model.walls.blocks.Block;
 import it.unibo.geosurv.view.graphics.Camera;
 import it.unibo.geosurv.view.graphics.Texture;
 
@@ -113,6 +116,7 @@ public class Loader {
     private void loadLevel(final BufferedImage image) {
         int w = image.getWidth();
         int h = image.getHeight();
+        BlockFactory blockFactory = new BlockFactory();
 
         for (int xx = 0; xx < w; xx++) {
             for (int yy = 0; yy < h; yy++) {
@@ -123,7 +127,11 @@ public class Loader {
                 int blue = (pixel) & 0xff;
 
                 if (blue == maxRGB) {
-                    handler.addObject(new Block(xx * GAME_GRID_WIDTH, yy * GAME_GRID_HEIGHT));
+                    final Optional<Block> block = blockFactory.createBlock(BlockType.Wall, xx * GAME_GRID_WIDTH, yy * GAME_GRID_HEIGHT);
+                    if (block.isEmpty()) {
+                        System.out.println("Error creating Wall!");
+                    }
+                    handler.addObject(block.get());
                 }
 
                 // if (red == 255) {
