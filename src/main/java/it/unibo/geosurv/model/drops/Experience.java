@@ -7,22 +7,34 @@ import it.unibo.geosurv.model.ObserverEntity;
 import it.unibo.geosurv.model.player.MainPlayer;
 import it.unibo.geosurv.view.graphics.Texture;
 
+/**
+ * Class for experience pills, created at monsters death.
+ * More experience make player go to new levels.
+ */
 public class Experience extends GameObject implements ObserverEntity {
 
-    /** more experience make player go to new levels */
     private static int experienceCounter = 0;
-    protected final static int EXPERIENCE_HEIGHT = 25;
-    protected final static int EXPERIENCE_WIDTH = 20;
+    protected static final int EXPERIENCE_HEIGHT = 25;
+    protected static final int EXPERIENCE_WIDTH = 20;
     private int experience;
     private float mx; // Player Position throu observer
     private float my; // Player Position throu observer
     private final MainPlayer player;
     private float pickUpSpeed = 10;
 
-    public Experience(float x, float y, int exp, Handler handler) {
+    /**
+     * The experience pill is created at monster's death, at the posistion where
+     * moster dies.
+     * 
+     * @param x       position
+     * @param y       position
+     * @param exp     experience quantity
+     * @param handler
+     */
+    public Experience(final float x, final float y, final int exp, final Handler handler) {
         super(x, y, ID.Experience);
         this.experience = exp;
-        Experience.experienceCounter++; // TODO: decrease the counter as Player gather experiences pills
+        Experience.experienceCounter++;
         this.height = EXPERIENCE_HEIGHT;
         this.width = EXPERIENCE_WIDTH;
         this.texture = Texture.EXPERIENCE;
@@ -38,24 +50,30 @@ public class Experience extends GameObject implements ObserverEntity {
     }
 
     /**
+     * Pill experience.
+     * 
      * @return int amount of experience in the pill
      */
     public int getExperience() {
         return experience;
     }
 
+    /**
+     * @return how many pills have been created.
+     */
     public static int getExperienceCounter() {
         return experienceCounter;
     }
 
     @Override
-    public void update(MainPlayer mainPlayer) {
+    public final void update(final MainPlayer mainPlayer) {
         mx = mainPlayer.getX();
         my = mainPlayer.getY();
     }
 
     /**
-     * if player is near and has gained some experience pills are attracted
+     * If player is near and has gained some experience(levelsup) pills are
+     * attracted.
      */
     public void reachTarget() {
         // distance from the player and experience pill
@@ -78,11 +96,14 @@ public class Experience extends GameObject implements ObserverEntity {
     /**
      * calculate distance beetwen two point (x1,y1) and (x2,y2) in a 2d space
      * 
-     * @param x1,x2,y1,y2
+     * @param x1 first point x
+     * @param y1 first point y
+     * @param x2 second point x
+     * @param y2 second point y
      * 
      * @return float distance
      */
-    private float calculateDistance(float x1, float y1, float x2, float y2) {
+    private float calculateDistance(final float x1, final float y1, final float x2, final float y2) {
         float dx = x2 - x1;
         float dy = y2 - y1;
         return (float) Math.sqrt(dx * dx + dy * dy);

@@ -8,13 +8,13 @@ import it.unibo.geosurv.model.monsters.types.Triangle;
  */
 public class GenerateMonsterT implements GenerateMonster {
 
-    private float minDistance = 300.0f; // default monster creation min radius (distance from player)
-    private float maxDistance = 400.0f; // default monster creation min radius (distance from player)
+    private static final float MIN_DISTANCE = 300.0f; // default monster creation min radius (distance from player)
+    private static final float MAX_DISTANCE = 400.0f; // default monster creation min radius (distance from player)
 
     @Override
     public final Monster createMonster(final Handler h) {
         Monster m = new Triangle(h);
-        m.setStartingPosition(minDistance, maxDistance);
+        m.setStartingPosition(MIN_DISTANCE, MAX_DISTANCE);
         return m;
     }
 

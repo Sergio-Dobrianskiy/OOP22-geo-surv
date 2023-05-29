@@ -7,7 +7,14 @@ import javax.swing.JFrame;
 /** TODO: class def. */
 public class Window {
 
-	/** TODO: javadoc */
+	/**
+	 * TODO: javadoc.
+	 * 
+	 * @param width  of the window
+	 * @param height of the window
+	 * @param title  of the window
+	 * @param game
+	 */
 	public Window(final int width, final int height, final String title, final Game game) {
 		final JFrame frame = new JFrame(title);
 		frame.setPreferredSize(new Dimension(width, height));

@@ -50,8 +50,8 @@ public class MainPlayer extends GameObject implements MainPlayerInterf {
     /**
      * Constructor for this class.
      *
-     * @param x explosion coordinate
-     * @param y explosion coordinate
+     * @param x       explosion coordinate
+     * @param y       explosion coordinate
      * @param handler game's Handler
      */
     public MainPlayer(final float x, final float y, final Handler handler) {
@@ -94,9 +94,9 @@ public class MainPlayer extends GameObject implements MainPlayerInterf {
     }
 
     /**
-     * TODO: javadoc
+     * Returns the level the player is in.
      * 
-     * @return
+     * @return the level the player is in
      */
     public int getLevel() {
         return this.playerLevels.getCurrentLevel();
@@ -118,7 +118,7 @@ public class MainPlayer extends GameObject implements MainPlayerInterf {
     public final void setExperience(final int experience) {
         this.playerLevels.expUp(experience);
     }
-    
+
     /**
      * returns player current life.
      * 
@@ -128,7 +128,7 @@ public class MainPlayer extends GameObject implements MainPlayerInterf {
     public final int getLife() {
         return this.life;
     }
-    
+
     /**
      * returns player maximum life.
      * 
@@ -137,7 +137,7 @@ public class MainPlayer extends GameObject implements MainPlayerInterf {
     public final int getMaxLife() {
         return this.life;
     }
-    
+
     /**
      * returns player speed.
      * 
