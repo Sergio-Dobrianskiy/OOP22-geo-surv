@@ -39,6 +39,16 @@ public class TestMainPlayer {
         assertEquals(expectedLife, actualLife);
     }
 
+    @Test
+    public void testHit() {
+        int damage = 50;
+        player.hit(damage);
+        int expectedLife = 50;
+        int actualLife = player.getLife();
+        assertEquals(expectedLife, actualLife);
+    }
+
+
 
 
     
