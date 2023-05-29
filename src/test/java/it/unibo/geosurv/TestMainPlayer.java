@@ -32,6 +32,12 @@ public class TestMainPlayer {
         int actualLevel = player.getLevel();
         assertEquals(expectedLevel, actualLevel);
     }
+    @Test
+    public void testGetLife() {
+        int expectedLife = 100;
+        int actualLife = player.getLife();
+        assertEquals(expectedLife, actualLife);
+    }
 
 
 
