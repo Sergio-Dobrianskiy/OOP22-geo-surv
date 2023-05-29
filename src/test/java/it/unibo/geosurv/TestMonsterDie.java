@@ -11,24 +11,24 @@ import it.unibo.geosurv.model.Handler;
 import it.unibo.geosurv.model.drops.Experience;
 import it.unibo.geosurv.model.drops.Life;
 import it.unibo.geosurv.model.monsters.GenerateMonsterT;
-import it.unibo.geosurv.model.monsters.Monster;
+import it.unibo.geosurv.model.monsters.MonsterImpl;
 
 import it.unibo.geosurv.model.player.MainPlayer;
 
 /**
- * Test for {@link Monster} creation.
+ * Test for {@link MonsterImpl} creation.
  */
-public class TestMonsterDie {
+class TestMonsterDie {
 
     @Test
     void testMonstersDie() {
 
         Handler h = new Handler();
         h.addPlayer(new MainPlayer(0, 0, h));
-        ArrayList<Monster> list = new ArrayList<>();
+        ArrayList<MonsterImpl> list = new ArrayList<>();
         GenerateMonsterT tFact = new GenerateMonsterT();
         for (int j = 0; j < 100; j++) {
-            Monster m = tFact.createMonster(h);
+            MonsterImpl m = tFact.createMonster(h);
             h.addObject(m);
             list.add(m);
         }
@@ -48,19 +48,20 @@ public class TestMonsterDie {
                 .forEach((i) -> {
                     assertTrue(isInPlayerAndExperienceOrLife(i));
                 });
-        list.forEach((i) -> i.removeMonster(i));
-        list.removeAll(list);
+
+        // list.forEach((i) -> i.removeMonster(i));
+
         // m.removeMonster(m);
     }
 
-    private boolean isInPlayerAndExperienceOrLife(GameObject i) {
-        return i.getClass() == Experience.class
-                || i.getClass() == Life.class
-                || i.getClass() == MainPlayer.class;
+    boolean isInPlayerAndExperienceOrLife(final GameObject go) {
+        return go.getClass() == Experience.class
+                || go.getClass() == Life.class
+                || go.getClass() == MainPlayer.class;
     }
 
-    private boolean isInPlayerAndMonster(GameObject i) {
-        return i.getClass().getSuperclass() == Monster.class || i.getClass() == MainPlayer.class;
+    boolean isInPlayerAndMonster(final GameObject go) {
+        return go.getClass().getSuperclass() == MonsterImpl.class || go.getClass() == MainPlayer.class;
     }
 
 }
