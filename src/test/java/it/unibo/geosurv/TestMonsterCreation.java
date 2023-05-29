@@ -8,16 +8,16 @@ import it.unibo.geosurv.model.Handler;
 import it.unibo.geosurv.model.monsters.GenerateMonsterR;
 import it.unibo.geosurv.model.monsters.GenerateMonsterRh;
 import it.unibo.geosurv.model.monsters.GenerateMonsterT;
-import it.unibo.geosurv.model.monsters.Monster;
+import it.unibo.geosurv.model.monsters.MonsterImpl;
 import it.unibo.geosurv.model.monsters.types.Rect;
 import it.unibo.geosurv.model.monsters.types.Rhombus;
 import it.unibo.geosurv.model.monsters.types.Triangle;
 import it.unibo.geosurv.model.player.MainPlayer;
 
 /**
- * Test for {@link Monster} creation.
+ * Test for {@link MonsterImpl} creation.
  */
-public class TestMonsterCreation {
+class TestMonsterCreation {
 
     @Test
     void createTMonsters() {
@@ -26,10 +26,10 @@ public class TestMonsterCreation {
         h.addPlayer(new MainPlayer(0, 0, h));
 
         GenerateMonsterT tFact = new GenerateMonsterT();
-        Monster t = tFact.createMonster(h);
+        MonsterImpl t = tFact.createMonster(h);
 
         assertEquals(Triangle.class, t.getClass());
-        t.removeMonster(t);
+        t.die();
     }
 
     @Test
@@ -39,10 +39,10 @@ public class TestMonsterCreation {
         h.addPlayer(new MainPlayer(0, 0, h));
 
         GenerateMonsterR rFact = new GenerateMonsterR();
-        Monster r = rFact.createMonster(h);
+        MonsterImpl r = rFact.createMonster(h);
 
         assertEquals(Rect.class, r.getClass());
-        r.removeMonster(r);
+        r.die();
     }
 
     @Test
@@ -52,10 +52,10 @@ public class TestMonsterCreation {
         h.addPlayer(new MainPlayer(0, 0, h));
 
         GenerateMonsterRh rhFact = new GenerateMonsterRh();
-        Monster rh = rhFact.createMonster(h);
+        MonsterImpl rh = rhFact.createMonster(h);
 
         assertEquals(Rhombus.class, rh.getClass());
-        rh.removeMonster(rh);
+        rh.die();
     }
 
     @Test
@@ -67,21 +67,21 @@ public class TestMonsterCreation {
         GenerateMonsterT tFact = new GenerateMonsterT();
         GenerateMonsterR rFact = new GenerateMonsterR();
         GenerateMonsterRh rhFact = new GenerateMonsterRh();
-        Monster t1 = tFact.createMonster(h); // Nr. 1
+        MonsterImpl t1 = tFact.createMonster(h); // Nr. 1
         counter++;
-        Monster t2 = tFact.createMonster(h); // Nr. 2
+        MonsterImpl t2 = tFact.createMonster(h); // Nr. 2
         counter++;
-        Monster r1 = rFact.createMonster(h); // Nr. 3
+        MonsterImpl r1 = rFact.createMonster(h); // Nr. 3
         counter++;
-        Monster rh1 = rhFact.createMonster(h); // Nr. 4
+        MonsterImpl rh1 = rhFact.createMonster(h); // Nr. 4
         counter++;
 
-        assertEquals(counter, Monster.getMonstersCounter());
+        assertEquals(counter, MonsterImpl.getMonstersCounter());
 
-        t1.removeMonster(t1);
-        t2.removeMonster(t2);
-        r1.removeMonster(r1);
-        rh1.removeMonster(rh1);
+        t1.die();
+        t2.die();
+        r1.die();
+        rh1.die();
     }
 
 }
