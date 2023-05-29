@@ -144,6 +144,8 @@ public abstract class MonsterImpl extends GameObject implements Monster, Observe
      */
     public void die() {
 
+        // TODO: potrei usare una strategy per vedere cosa drop(what)? o solo drop?
+
         // Handler h = Game.returnHandler();
         if (this.shouldDropLife()) {
             this.handler.addObject(this.dropLife());
