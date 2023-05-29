@@ -12,7 +12,9 @@ public abstract class GameObject implements TickingObject, IGameObject {
     /**
      * gameObject coordinates.
      */
-    protected float x, y;
+    private float x;
+    private float y;
+
     /**
      * gameObject velocity.
      */
@@ -33,8 +35,8 @@ public abstract class GameObject implements TickingObject, IGameObject {
     /**
      * Constructor for this class.
      *
-     * @param x GameObject coordinate
-     * @param y GameObject coordinate
+     * @param x  GameObject coordinate
+     * @param y  GameObject coordinate
      * @param id GameObject id
      */
     public GameObject(final float x, final float y, final ID id) {

@@ -83,8 +83,8 @@ public class Experience extends GameObject implements ObserverEntity {
         float maxDistance = 80 + (10 * player.getLevel());
 
         if (distance <= maxDistance) {
-            x += velX;
-            y += velY;
+            this.setX(this.getX() + this.velX);
+            this.setY(this.getY() + this.velY);
 
             float angle = (float) Math.atan2(my - this.getY() + 8, mx - this.getX() + 4);
 

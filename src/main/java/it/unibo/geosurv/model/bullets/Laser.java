@@ -25,15 +25,16 @@ public class Laser extends Bullet {
     /**
      * Constructor for this class.
      *
-     * @param x laser coordinate
-     * @param y laser coordinate
+     * @param x       laser coordinate
+     * @param y       laser coordinate
      * @param handler game's Handler
-     * @param damage laser damage
-     * @param width laser width
-     * @param height laser height
+     * @param damage  laser damage
+     * @param width   laser width
+     * @param height  laser height
      * @param texture laser texture
      */
-    public Laser(final float x, final float y, final Handler handler, final int damage, final int width, final int height, final Texture texture) {
+    public Laser(final float x, final float y, final Handler handler, final int damage, final int width,
+            final int height, final Texture texture) {
         super(x, y, handler, damage);
         this.width = width;
         this.height = height;
@@ -52,8 +53,8 @@ public class Laser extends Bullet {
     @Override
     public void tick() {
         super.tick();
-        this.x = currentX();
-        this.y = currentY();
+        this.setX(currentX());
+        this.setY(currentY());
     }
 
     /**
@@ -79,7 +80,8 @@ public class Laser extends Bullet {
      */
     @Override
     public Rectangle getShape() {
-        return new Rectangle((int) x - (this.width / 2), (int) y - (this.height / 2), this.width, this.height);
+        return new Rectangle((int) this.getX() - (this.width / 2), (int) this.getY() - (this.height / 2), this.width,
+                this.height);
     }
 
 }

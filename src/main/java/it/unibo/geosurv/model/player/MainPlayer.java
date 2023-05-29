@@ -72,8 +72,8 @@ public class MainPlayer extends GameObject implements MainPlayerInterf {
 
     @Override
     public final void tick() {
-        x += velX;
-        y += velY;
+        this.setX(this.getX() + this.velX);
+        this.setY(this.getY() + this.velY);
         collisions.checkPlayerCollisions();
         this.playerMovement.movePlayer();
         notifyObservers(); // notify player position

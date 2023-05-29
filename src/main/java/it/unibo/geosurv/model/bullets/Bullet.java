@@ -12,7 +12,7 @@ public abstract class Bullet extends GameObject {
     /**
      * Bullet's default life span.
      */
-    protected long lifeSpan = 5000L;     // max milliseconds of life
+    protected long lifeSpan = 5000L; // max milliseconds of life
     private int damage;
     private long creationTime;
     private final Handler handler;
@@ -21,10 +21,10 @@ public abstract class Bullet extends GameObject {
     /**
      * Constructor for this class.
      *
-     * @param x bullet coordinate
-     * @param y bullet coordinate
+     * @param x       bullet coordinate
+     * @param y       bullet coordinate
      * @param handler game's Handler
-     * @param damage bullet damage
+     * @param damage  bullet damage
      */
     public Bullet(final float x, final float y, final Handler handler, final int damage) {
         super(x, y, ID.Bullet);
@@ -54,8 +54,8 @@ public abstract class Bullet extends GameObject {
      * @param velY y component of velocity vector
      */
     private void updatePosition(final float velX, final float velY) {
-        x += velX;
-        y += velY;
+        this.setX(this.getX() + this.velX);
+        this.setY(this.getY() + this.velY);
     }
 
     /**
