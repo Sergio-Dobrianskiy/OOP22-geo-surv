@@ -8,7 +8,7 @@ import it.unibo.geosurv.model.Handler;
 import it.unibo.geosurv.model.ID;
 import it.unibo.geosurv.model.player.MainPlayer;
 import it.unibo.geosurv.model.drops.Experience;
-import it.unibo.geosurv.model.monsters.Monster;
+import it.unibo.geosurv.model.monsters.MonsterImpl;
 
 /**
  * handles game textures.
@@ -45,7 +45,7 @@ public class TextureRender {
     /**
      * Renders game user interface.
      *
-     * @param g 
+     * @param g
      * @param player game's player
      */
     public void renderUI(final Graphics g, final MainPlayer player) {
@@ -103,7 +103,7 @@ public class TextureRender {
         // g.drawString("FPS: " + this.fps, 850, 50);
         // g.drawString("Objects: " + this.objectsCounter, 850, 65);
         g.drawString("Experience: " + Experience.getExperienceCounter(), xPos, yPos);
-        g.drawString("Monsters: " + Monster.getMonstersCounter(), xPos, yPos + 15);
+        g.drawString("Monsters: " + MonsterImpl.getMonstersCounter(), xPos, yPos + 15);
         g.drawString("Player Exp: " + handler.getPlayer().getExperience(), xPos, yPos + 30);
         g.drawString("Player Life: " + handler.getPlayer().getLife(), xPos, yPos + 45);
         // g.drawString("Time: " + (((int) ((System.currentTimeMillis() / 1000))) -

@@ -5,7 +5,7 @@ import it.unibo.geosurv.model.bullets.Bullet;
 import it.unibo.geosurv.model.bullets.BulletImpl;
 import it.unibo.geosurv.model.drops.Experience;
 import it.unibo.geosurv.model.drops.Life;
-import it.unibo.geosurv.model.monsters.Monster;
+import it.unibo.geosurv.model.monsters.MonsterImpl;
 import it.unibo.geosurv.model.player.MainPlayer;
 
 /**
@@ -36,7 +36,7 @@ public class Collisions {
                 this.stopMovements();
             }
             if (Collisions.isColliding(player, tempObject, ID.Monster)) { // if player touches Monsters
-                player.hit(((Monster) tempObject).getPower()); // TODO: verify the cast => maybe if we call a
+                player.hit(((MonsterImpl) tempObject).getPower()); // TODO: verify the cast => maybe if we call a
                 // function here that works at Monster we do not
                 // need the cast
                 // (Monster.over(handler.player)->decrease life)
@@ -66,7 +66,7 @@ public class Collisions {
                 handler.removeObject(bullet);
 
             } else if (Collisions.isColliding(bullet, tempObject, ID.Monster)) {
-                ((Monster) tempObject).hit(bullet.getDamage());
+                ((MonsterImpl) tempObject).hit(bullet.getDamage());
                 if (bullet instanceof BulletImpl) {
                     handler.removeObject(bullet);
                 }
@@ -80,7 +80,7 @@ public class Collisions {
      * 
      * @param obj1 1st GameOnject to check
      * @param obj2 2nd GameOnject to check
-     * @param id  that the touched object should have
+     * @param id   that the touched object should have
      * 
      * @return returns true if a collision occurred, false otherwise
      */

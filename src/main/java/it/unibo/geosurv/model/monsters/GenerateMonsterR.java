@@ -12,8 +12,8 @@ public class GenerateMonsterR implements GenerateMonster {
     private static final float MAX_DISTANCE = 600.0f; // default monster creation min radius (distance from player)
 
     @Override
-    public final Monster createMonster(final Handler h) {
-        Monster m = new Rect(h);
+    public final MonsterImpl createMonster(final Handler h) {
+        MonsterImpl m = new Rect(h);
         m.setStartingPosition(MIN_DISTANCE, MAX_DISTANCE);
         return m;
     }
