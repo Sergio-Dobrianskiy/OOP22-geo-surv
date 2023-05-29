@@ -146,14 +146,15 @@ public abstract class Monster extends GameObject implements ObserverEntity {
      */
     public void die() {
 
-        Handler h = Game.returnHandler();
-        if (shouldDropLife()) {
-            h.addObject(this.dropLife());
+        // Handler h = Game.returnHandler();
+        if (this.shouldDropLife()) {
+            this.handler.addObject(this.dropLife());
         } else {
-            h.addObject(this.dropExperience());
+            this.handler.addObject(this.dropExperience());
         }
-        monstersCounter--;
-        h.removeObject(this); // monster is removed from Monsters set/list
+
+        this.handler.removeObject(this); // monster is removed from Monsters list
+        this.removeMonster(this);
     }
 
     /**
@@ -217,6 +218,16 @@ public abstract class Monster extends GameObject implements ObserverEntity {
         x = mx + randomPosition.getX();
         y = my + randomPosition.getY();
         // System.out.println("[" + mx + "," + my + "]");
+    }
+
+    /**
+     * Remove the monster and decrease monsters counter.
+     * 
+     * @param monster
+     */
+    public void removeMonster(Monster monster) {
+        monster = null;
+        monstersCounter--;
     }
 
 }
