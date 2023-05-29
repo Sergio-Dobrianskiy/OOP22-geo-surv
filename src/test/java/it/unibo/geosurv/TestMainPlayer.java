@@ -48,6 +48,14 @@ public class TestMainPlayer {
         assertEquals(expectedLife, actualLife);
     }
 
+    @Test
+    public void testSetLife() {
+        int life = -50;
+        player.setLife(life);
+        int expectedLife = 50; // the initial life's player value is 100
+        int actualLife = player.getLife();
+        assertEquals(expectedLife, actualLife);
+    }
 
 
 
