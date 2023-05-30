@@ -48,6 +48,7 @@ public class SatelliteGun extends Weapon {
 		this.handler = handler;
 		this.tempPlayer = handler.getPlayer();
 		this.satellites = new ArrayList<>();
+		weaponType = WeaponType.SatelliteGun;
 	}
 	
 	/**

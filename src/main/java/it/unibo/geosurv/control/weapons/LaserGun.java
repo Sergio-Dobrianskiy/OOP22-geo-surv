@@ -52,6 +52,7 @@ public class LaserGun extends Weapon {
         this.damageLvl1 = damageLevel1;
         this.damageLvl1 = damageLevel2;
         this.damageLvl1 = damageLevel3;
+        weaponType = WeaponType.LaserGun;
     }
 
     /**

@@ -38,6 +38,11 @@ public abstract class Weapon implements TickingObject {
      * current level of a weapon.
      */
     protected int currentLevel = 0;
+    
+    /**
+     * weapon type.
+     */
+    protected WeaponType weaponType;
 
     /**
      * shoot every cycle.
@@ -107,11 +112,19 @@ public abstract class Weapon implements TickingObject {
     
     /**
      * returns weapon level.
-     * @return 
      * 
      * @return int level
      */
     public int getLevel() {
         return this.currentLevel;
+    }
+    
+    /**
+     * returns weapon type.
+     * 
+     * @return WeaponType
+     */
+    public WeaponType getWeaponType() {
+        return this.weaponType;
     }
 }

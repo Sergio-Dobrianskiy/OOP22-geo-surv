@@ -63,6 +63,7 @@ public class AutoGun extends Weapon {
         this.damageLvl1 = damageLevel1;
         this.damageLvl2 = damageLevel2;
         this.damageLvl3 = damageLevel3;
+        weaponType = WeaponType.AutoGun;
     }
 
     /**
