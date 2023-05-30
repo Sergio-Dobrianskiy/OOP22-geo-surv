@@ -52,25 +52,17 @@ public abstract class MonsterImpl extends GameObject implements Monster, Observe
         // System.out.println("Added Observer: " + this.toString());
     }
 
-    /**
-     * @return an integer showing how much health entity has left.
-     */
+    @Override
     public int getHealth() {
         return this.health;
     }
 
-    /**
-     * @return an integer showing how much power entity has hit the player.
-     */
+    @Override
     public int getPower() {
         return power;
     }
 
-    /**
-     * Check if Entity is alive.
-     * 
-     * @return boolen value
-     */
+    @Override
     public boolean isDead() {
         return this.getHealth() <= 0;
     }
@@ -94,11 +86,7 @@ public abstract class MonsterImpl extends GameObject implements Monster, Observe
     // return new Life(this.getX(), this.getY());
     // }
 
-    /**
-     * Entity's been hit by player weapon.
-     * 
-     * @param weaponDamage whih hits the entity
-     */
+    @Override
     public void hit(final int weaponDamage) {
         long currentTime = System.currentTimeMillis();
         if (currentTime - lastHitTime >= HIT_COOLDOWN) {
@@ -133,9 +121,7 @@ public abstract class MonsterImpl extends GameObject implements Monster, Observe
         isBouncing = false;
     }
 
-    /**
-     * Entity dies, drop experience or life and it is removed.
-     */
+    @Override
     public void die() {
 
         this.handler.addObject(this.dropStrategy.drop());
@@ -150,20 +136,13 @@ public abstract class MonsterImpl extends GameObject implements Monster, Observe
         return monstersCounter;
     }
 
-    /**
-     * Monster is update about player posistion throu notify.
-     * 
-     * @param mp (player)
-     * 
-     */
+    @Override
     public void update(final MainPlayer mp) {
         mx = mp.getX();
         my = mp.getY();
     }
 
-    /**
-     * Allow the monster to try to reach the player.
-     */
+    @Override
     public void reachTarget() {
         this.setX(this.getX() + this.velX);
         this.setY(this.getY() + this.velY);
@@ -181,23 +160,12 @@ public abstract class MonsterImpl extends GameObject implements Monster, Observe
         // System.out.println("T trying to reach the target");
     }
 
-    /**
-     * Define if a monster is a big one.
-     * 
-     * @param b
-     */
+    @Override
     public void setBig(final boolean b) {
         this.isBig = b;
     }
 
-    /**
-     * Set the starting position of a monster after it's born.
-     * Position is a random point between two circle (the first of radius
-     * minDistance and the second with a radius of maxDistance).
-     * 
-     * @param minDistance from player
-     * @param maxDistance from player
-     */
+    @Override
     public void setStartingPosition(final float minDistance, final float maxDistance) {
         Pair<Float, Float> randomPosition = Func.randomPoint(minDistance, maxDistance);
         update(player); // to get player position
@@ -206,11 +174,7 @@ public abstract class MonsterImpl extends GameObject implements Monster, Observe
         // System.out.println("[" + mx + "," + my + "]");
     }
 
-    /**
-     * Remove the monster and decrease monsters counter.
-     * 
-     * @param monster
-     */
+    @Override
     public void removeMonster(MonsterImpl monster) {
         monster = null;
         monstersCounter--;
