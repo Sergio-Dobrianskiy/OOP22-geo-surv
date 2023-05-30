@@ -1,5 +1,7 @@
 package it.unibo.geosurv.model.monsters;
 
+import it.unibo.geosurv.model.Game;
+import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.drops.Experience;
 import it.unibo.geosurv.model.drops.Life;
 
@@ -12,11 +14,13 @@ public interface Monster {
     boolean isDead();
 
     // unire le due in drop?? ed usare un unico method drop()
-    Experience dropExperience();
+    // Experience dropExperience();
 
-    Life dropLife();
+    // Life dropLife();
 
-    boolean shouldDropLife();
+    // boolean shouldDropLife();
+
+    // GameObject drop();
 
     void hit(int weaponDamage);
 

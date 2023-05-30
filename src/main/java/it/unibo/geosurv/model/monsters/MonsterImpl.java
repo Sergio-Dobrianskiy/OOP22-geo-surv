@@ -4,8 +4,7 @@ import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.Handler;
 import it.unibo.geosurv.model.ID;
 import it.unibo.geosurv.model.ObserverEntity;
-import it.unibo.geosurv.model.drops.Experience;
-import it.unibo.geosurv.model.drops.Life;
+import it.unibo.geosurv.model.drops.DropImpl;
 import it.unibo.geosurv.model.player.MainPlayer;
 import it.unibo.geosurv.model.utility.Func;
 import it.unibo.geosurv.model.utility.Pair;
@@ -17,7 +16,7 @@ public abstract class MonsterImpl extends GameObject implements Monster, Observe
 
     private static final int DEFAULT_EXPERIENCE = 1;
     private static final int BOUNCING_SPEED_MULTIPLYER = 10;
-    private static final int LIFE_PILLS_PROB = 50; // probability to get a life pill: 1/50 at monster death
+
     private static final int MAX_HITS_PER_SECOND = 5;
     private static final long HIT_COOLDOWN = 1000 / MAX_HITS_PER_SECOND;
 
@@ -32,6 +31,7 @@ public abstract class MonsterImpl extends GameObject implements Monster, Observe
     protected MainPlayer player;
     protected double speed;
     protected boolean isBig;
+    protected DropImpl dropStrategy; // strategy for dropping life or experience
 
     /**
      * Monster constructor.
@@ -47,6 +47,8 @@ public abstract class MonsterImpl extends GameObject implements Monster, Observe
         this.player.addObserver(this);
         this.lastHitTime = 0;
         this.handler = h;
+        this.dropStrategy = new DropImpl(this, this.handler);
+
         // System.out.println("Added Observer: " + this.toString());
     }
 
@@ -78,18 +80,19 @@ public abstract class MonsterImpl extends GameObject implements Monster, Observe
      * 
      * @return Experience pill
      */
-    public Experience dropExperience() {
-        return new Experience(this.getX(), this.getY(), DEFAULT_EXPERIENCE, this.handler);
-    }
+    // public Experience dropExperience() {
+    // return new Experience(this.getX(), this.getY(), DEFAULT_EXPERIENCE,
+    // this.handler);
+    // }
 
     /**
      * At death, Entity drop experience pill.
      * 
      * @return Experience pill
      */
-    public Life dropLife() {
-        return new Life(this.getX(), this.getY());
-    }
+    // public Life dropLife() {
+    // return new Life(this.getX(), this.getY());
+    // }
 
     /**
      * Entity's been hit by player weapon.
@@ -130,29 +133,12 @@ public abstract class MonsterImpl extends GameObject implements Monster, Observe
         isBouncing = false;
     }
 
-    public boolean shouldDropLife() {
-        // Generate a random number between 0 and 49
-        double num = Math.random();
-        int randomNumber = (int) (num * LIFE_PILLS_PROB);
-        // Return true if the random number is 0 (probability of 1/50)
-        // System.out.println("Math.random() + " + num + " random: " + randomNumber);
-        return randomNumber == 0;
-    }
-
     /**
-     * Entity dies, drop experience and it is removed.
+     * Entity dies, drop experience or life and it is removed.
      */
     public void die() {
 
-        // TODO: potrei usare una strategy per vedere cosa drop(what)? o solo drop?
-
-        // Handler h = Game.returnHandler();
-        if (this.shouldDropLife()) {
-            this.handler.addObject(this.dropLife());
-        } else {
-            this.handler.addObject(this.dropExperience());
-        }
-
+        this.handler.addObject(this.dropStrategy.drop());
         this.handler.removeObject(this); // monster is removed from Monsters list
         this.removeMonster(this);
     }
@@ -228,6 +214,10 @@ public abstract class MonsterImpl extends GameObject implements Monster, Observe
     public void removeMonster(MonsterImpl monster) {
         monster = null;
         monstersCounter--;
+    }
+
+    public int getDefaultExperience() {
+        return DEFAULT_EXPERIENCE;
     }
 
 }
