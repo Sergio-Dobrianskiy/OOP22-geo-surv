@@ -68,7 +68,8 @@ public class DropImpl implements Drop {
      */
     public Ball dropBall() {
         Ball b = new Ball(this.h);
-        b.setStartingPosition(this.m.getX(), this.m.getY());
+        b.setX(this.m.getX());
+        b.setY(this.m.getY());
         return b;
     }
 }
