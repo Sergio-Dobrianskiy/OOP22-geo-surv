@@ -1,12 +1,14 @@
-package it.unibo.geosurv.model;
+package it.unibo.geosurv.model.loader;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Optional;
+
 import it.unibo.geosurv.control.weapons.Weapon;
 import it.unibo.geosurv.control.weapons.WeaponFactory;
 import it.unibo.geosurv.control.weapons.WeaponType;
+import it.unibo.geosurv.model.Handler;
 import it.unibo.geosurv.model.block.Block;
 import it.unibo.geosurv.model.block.BlockFactory;
 import it.unibo.geosurv.model.block.BlockType;
@@ -17,7 +19,7 @@ import it.unibo.geosurv.view.graphics.Texture;
 /**
  * Represents the game assets Loader class.
  */
-public class Loader {
+public class Loader implements ILoader {
 
     /**
      * default game window height.
@@ -53,7 +55,7 @@ public class Loader {
 
     /**
      * loads main game elements.
-     * 
+     *
      */
     public void loadAll() {
         handler.addPlayer(new MainPlayer(playerStartingX, playerStartingY, handler)); // TODO: remove?
@@ -67,8 +69,8 @@ public class Loader {
 
     /**
      * loads the game camera.
-     * 
-     * @return Camera 
+     *
+     * @return Camera
      */
     public Camera loadCamera() {
         return new Camera(handler.getPlayer().getX(), handler.getPlayer().getY(), handler);
@@ -95,7 +97,7 @@ public class Loader {
     private void loadGuns() {
         WeaponFactory weaponFactory = new WeaponFactory(this.handler);
         ArrayList<Weapon> weapons = new ArrayList<>();
-        
+
         Optional<Weapon> weapon = weaponFactory.createWeapon(WeaponType.AutoGun, 1);
         if (weapon.isEmpty()) {
             System.out.println("Error creating AutoGun!");
