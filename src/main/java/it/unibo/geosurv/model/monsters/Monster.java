@@ -1,10 +1,5 @@
 package it.unibo.geosurv.model.monsters;
 
-import it.unibo.geosurv.model.Game;
-import it.unibo.geosurv.model.GameObject;
-import it.unibo.geosurv.model.drops.Experience;
-import it.unibo.geosurv.model.drops.Life;
-
 public interface Monster {
 
     int getHealth();

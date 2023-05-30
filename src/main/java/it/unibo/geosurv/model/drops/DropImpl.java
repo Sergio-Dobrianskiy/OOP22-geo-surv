@@ -3,6 +3,7 @@ package it.unibo.geosurv.model.drops;
 import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.Handler;
 import it.unibo.geosurv.model.monsters.MonsterImpl;
+import it.unibo.geosurv.model.monsters.types.Ball;
 
 /**
  * Class which manages the logics of dropping objects (life and experience).
@@ -22,6 +23,8 @@ public class DropImpl implements Drop {
     public GameObject drop() {
         if (this.shouldDropLife()) {
             return dropLife();
+        } else if (this.shouldDropMonsterBall()) {
+            return dropBall();
         } else {
             return dropExperience();
         }
@@ -51,4 +54,21 @@ public class DropImpl implements Drop {
         return new Experience(this.m.getX(), this.m.getY(), this.m.getDefaultExperience(), this.h);
     }
 
+    public boolean shouldDropMonsterBall() {
+        // Generate a random number between 0 and 49
+        double num = Math.random();
+        int randomNumber = (int) (num * 10);
+        // Return true if the random number is 0 (probability of 1/50)
+        // System.out.println("Math.random() + " + num + " random: " + randomNumber);
+        return randomNumber == 0;
+    }
+
+    /**
+     * @return a new Ball monster
+     */
+    public Ball dropBall() {
+        Ball b = new Ball(this.h);
+        b.setStartingPosition(this.m.getX(), this.m.getY());
+        return b;
+    }
 }

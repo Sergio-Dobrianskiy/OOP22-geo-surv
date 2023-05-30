@@ -89,7 +89,15 @@ public enum Texture {
     /**
      * Represents the triangle.
      */
-    TRIANGLE_BIG("/sprite/triangle/triangle_big.png");
+    TRIANGLE_BIG("/sprite/triangle/triangle_big.png"),
+    /**
+     * Represents the Ball.
+     */
+    BALL("/sprite/ball/ball.png"),
+    /**
+     * Represents the big Ball.
+     */
+    BALL_BIG("/sprite/ball/ball_big.png");
 
     //////////////////////////////////
     private final String filePath;
