@@ -5,16 +5,16 @@ import it.unibo.geosurv.model.monsters.MonsterImpl;
 import it.unibo.geosurv.view.graphics.Texture;
 
 public class Ball extends MonsterImpl {
-    private static final float DEFAULT_SPEED = 2f; // default speed of triangle
-    private static final float MAX_SPEED = 3f; // max speed of BIG triangle
-    private static final int DEFAULT_H_DIMENSION = 40; // default height of triangle
-    private static final int MAX_H_DIMENSION = 40; // max height of (big) triangle
-    private static final int DEFAULT_W_DIMENSION = 40; // default width of triangle
-    private static final int MAX_W_DIMENSION = 40; // max width of (big) triangle
-    private static final int DEFAULT_HEALTH = 5; // default health of triangle
-    private static final int MAX_HEALTH = 8; // default health of BIG triangle
-    private static final int DEFAULT_POWER = 5; // default power of triangle
-    private static final int MAX_POWER = 7; // default power of BIG triangle
+    private static final float DEFAULT_SPEED = 2f; // default speed of Ball
+    private static final float MAX_SPEED = 3f; // max speed of BIG Ball
+    private static final int DEFAULT_H_DIMENSION = 40; // default height of Ball
+    private static final int MAX_H_DIMENSION = 40; // max height of (big) Ball
+    private static final int DEFAULT_W_DIMENSION = 40; // default width of Ball
+    private static final int MAX_W_DIMENSION = 40; // max width of (big) Ball
+    private static final int DEFAULT_HEALTH = 10; // default health of Ball
+    private static final int MAX_HEALTH = 15; // default health of BIG Ball
+    private static final int DEFAULT_POWER = 10; // default power of Ball
+    private static final int MAX_POWER = 20; // default power of BIG Ball
 
     /**
      * Ball constructor.
@@ -33,15 +33,15 @@ public class Ball extends MonsterImpl {
     }
 
     /**
-     * On each tick, triangle monsters try to reach the player.
+     * On each tick, Ball monsters try to reach the player.
      */
     @Override
     public void tick() {
-        reachTarget();
+        this.reachTarget();
     }
 
     /**
-     * @return whether a triangle is big or not.
+     * @return whether a Ball is big or not.
      */
     public boolean isBig() {
         return isBig;
@@ -58,4 +58,14 @@ public class Ball extends MonsterImpl {
         this.texture = Texture.BALL_BIG;
     }
 
+    @Override
+    public void reachTarget() {
+        this.setX(this.getX() + this.velX);
+        this.setY(this.getY() + this.velY);
+
+        // added a little bit of deviation with Math.random
+        float angle = (float) (Math.atan2(my - this.getY() + 8, mx - this.getX() + 4) + Math.random());
+        this.velX = (float) ((this.speed) * Math.cos(angle));
+        this.velY = (float) ((this.speed) * Math.sin(angle));
+    }
 }
