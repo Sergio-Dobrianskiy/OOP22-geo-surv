@@ -12,7 +12,7 @@ import it.unibo.geosurv.model.drops.Experience;
 import it.unibo.geosurv.model.drops.Life;
 import it.unibo.geosurv.model.monsters.GenerateMonsterT;
 import it.unibo.geosurv.model.monsters.MonsterImpl;
-
+import it.unibo.geosurv.model.monsters.types.Ball;
 import it.unibo.geosurv.model.player.MainPlayer;
 
 /**
@@ -57,6 +57,7 @@ class TestMonsterDie {
     boolean isInPlayerAndExperienceOrLife(final GameObject go) {
         return go.getClass() == Experience.class
                 || go.getClass() == Life.class
+                || go.getClass() == Ball.class
                 || go.getClass() == MainPlayer.class;
     }
 
