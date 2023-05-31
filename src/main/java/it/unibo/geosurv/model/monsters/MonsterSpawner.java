@@ -3,7 +3,6 @@ package it.unibo.geosurv.model.monsters;
 import java.util.stream.Stream;
 
 import it.unibo.geosurv.control.TickingObject;
-import it.unibo.geosurv.model.Game;
 import it.unibo.geosurv.model.Handler;
 
 public class MonsterSpawner implements TickingObject {
@@ -19,38 +18,45 @@ public class MonsterSpawner implements TickingObject {
     private static int numMonsters;
     // private static GameObject tempPlayer;
     // static Game game;
-    private static int SPAWN_RATE = 1; // in monsters per second
+    private static int spawnRate = 1; // in monsters per second
     private long lastSpawnTime;
     private int currentSecond;
     private long currentTime;
-    GenerateMonsterT tm = new GenerateMonsterT();
-    GenerateMonsterR rm = new GenerateMonsterR();
-    private final long begin = Game.getStartTime();
+    private long begin;
+    private final GenerateMonsterT tm;
+    private final GenerateMonsterR rm;
 
     public MonsterSpawner(final Handler h) {
         this.handler = h;
+        this.tm = new GenerateMonsterT();
+        this.rm = new GenerateMonsterR();
+        this.begin = System.currentTimeMillis() / 1000;
+
     }
 
     public void spawnMonsters() {
         long elapsedTime;
-        currentSecond = (int) ((currentTime / 1000)); // update current second
+
         currentTime = System.currentTimeMillis();
+        currentSecond = (int) ((currentTime / 1000)); // update current second
+        int diff = (int) (currentSecond - this.begin);
+        System.out.println(diff + " :: " + this.begin + " :: " + (currentSecond - this.begin / 1000));
         elapsedTime = currentTime - lastSpawnTime;
-        if (currentSecond - begin / 1000 > 11) {
-            SPAWN_RATE = 2;
+        if (diff > 11) {
+            spawnRate = 2;
         }
-        if (elapsedTime >= 1000 / SPAWN_RATE) {
+        if (elapsedTime >= 1000 / spawnRate) {
             final Monster x = generateMonsters();
             handler.addObject(x);
             lastSpawnTime = currentTime;
 
             generateFixedPositionMonsters();
         }
-        if (currentSecond - begin / 1000 > 40) {
-            SPAWN_RATE = 3;
-            if (elapsedTime >= 1000 / SPAWN_RATE) {
-                flood();
-            }
+        if (diff > 40) {
+            spawnRate = 3;
+            // if (elapsedTime >= 1000 / SPAWN_RATE) {
+            flood();
+            // }
         }
     }
 
@@ -65,22 +71,21 @@ public class MonsterSpawner implements TickingObject {
 
     private Monster generateMonsters() {
 
+        currentSecond = (int) ((currentTime / 1000)); // update current second
+        int diff = (int) (currentSecond - this.begin);
         Monster m;
 
-        if ((currentSecond - begin / 1000) < 15) {
+        if ((diff) < 15) {
             m = tm.createMonster(this.handler);
-            // System.out.println("T");
-        } else if (currentSecond - begin / 1000 == 15) {
+
+        } else if (diff == 15) {
             m = tm.createMonster(this.handler);
             m.setBig(true);
-            // System.out.println("T: big");
-        } else if (currentSecond - begin / 1000 < 25) {
+        } else if (diff < 25) {
             m = rm.createMonster(this.handler);
-            // System.out.println("R");
-        } else if (currentSecond - begin / 1000 == 25) {
+        } else if (diff == 25) {
             m = rm.createMonster(this.handler);
             m.setBig(true);
-            // System.out.println("R: big");
         } else {
             m = rm.createMonster(this.handler);
         }
