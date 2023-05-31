@@ -8,6 +8,7 @@ import it.unibo.geosurv.control.weapons.ExplosionGun;
 import it.unibo.geosurv.control.weapons.LaserGun;
 import it.unibo.geosurv.control.weapons.SatelliteGun;
 import it.unibo.geosurv.control.weapons.Weapon;
+import it.unibo.geosurv.model.monsters.MonsterSpawner;
 import it.unibo.geosurv.model.player.MainPlayer;
 import it.unibo.geosurv.model.walls.blocks.Block;
 import it.unibo.geosurv.view.graphics.Camera;
@@ -61,13 +62,14 @@ public class Loader {
         loadLevel(Texture.SMALL_MAP.extractTexture());
         // loadLevel(Texture.TEST_MAP.getTexture());
         // loadLevel(Texture.BIG_MAP_2.getTexture());
+        handler.addTickingObject(new MonsterSpawner(handler));
 
     }
 
     /**
      * loads the game camera.
      * 
-     * @return Camera 
+     * @return Camera
      */
     public Camera loadCamera() {
         return new Camera(handler.getPlayer().getX(), handler.getPlayer().getY(), handler);
@@ -97,7 +99,7 @@ public class Loader {
         Weapon satelliteGun = (Weapon) handler.addTickingObject(new SatelliteGun(this.handler));
         Weapon explosionGun = (Weapon) handler.addTickingObject(new ExplosionGun(this.handler));
         Weapon laserGun = (Weapon) handler.addTickingObject(new LaserGun(this.handler));
-        autogun.levelUp();              // each game starts with level 1 AutoGun
+        autogun.levelUp(); // each game starts with level 1 AutoGun
         weapons.add(autogun);
         weapons.add(satelliteGun);
         weapons.add(explosionGun);

@@ -8,7 +8,7 @@ import java.awt.image.BufferStrategy;
 import it.unibo.geosurv.control.GameState;
 import it.unibo.geosurv.control.KeyInput;
 import it.unibo.geosurv.control.TickingObject;
-import it.unibo.geosurv.model.monsters.MonsterSpawner;
+
 import it.unibo.geosurv.view.graphics.Camera;
 import it.unibo.geosurv.view.graphics.TextureRender;
 import it.unibo.geosurv.view.graphics.Window;
@@ -47,11 +47,10 @@ public class Game extends Canvas implements Runnable, TickingObject {
 
     private boolean isRunning = false;
     private Thread thread;
-    private static Handler handler;
+    private final Handler handler;
     private TextureRender textureRender;
     private final Camera camera;
-    private final Loader loader;
-    private static long startTime;
+
     private GameState state;
 
     private boolean debugMode = false;
@@ -61,6 +60,7 @@ public class Game extends Canvas implements Runnable, TickingObject {
      */
     public Game() {
         this.state = GameState.LOADING;
+        Loader loader;
 
         new Window(WINDOW_WIDTH, WINDOW_HEIGHT, "Geo Survival xxx", this);
 
@@ -68,19 +68,12 @@ public class Game extends Canvas implements Runnable, TickingObject {
         loader = new Loader(handler);
         textureRender = new TextureRender(handler);
 
-        this.loader.loadAll(); // loads Player, textures, weapons, level
+        loader.loadAll(); // loads Player, textures, weapons, level
         this.addKeyListener(new KeyInput(this, handler));
 
         camera = loader.loadCamera(); // loads camera
-        startTime = System.currentTimeMillis();
-        handler.addTickingObject(new MonsterSpawner(handler)); // TODO: move to Loader? It make monsters creation not
-                                                                // consider time
 
         // start(); // starts threads //TODO: comment once changed in Main.java
-    }
-
-    public static long getStartTime() {
-        return startTime;
     }
 
     /**
@@ -88,7 +81,7 @@ public class Game extends Canvas implements Runnable, TickingObject {
      * 
      * @return game's Handler
      */
-    public static Handler returnHandler() {
+    public Handler returnHandler() {
         return handler;
     }
 
@@ -116,7 +109,7 @@ public class Game extends Canvas implements Runnable, TickingObject {
         long lastTime = System.nanoTime();
         long timer = System.currentTimeMillis();
         double delta = 0;
-        int frames = 0;
+        // int frames = 0;
 
         while (isRunning) {
             long now = System.nanoTime();
@@ -126,12 +119,12 @@ public class Game extends Canvas implements Runnable, TickingObject {
                 this.tick();
                 this.render();
                 delta--;
-                frames++;
+                // frames++;
             }
 
             if (System.currentTimeMillis() - timer > SECOND_IN_MILLI) {
                 timer += SECOND_IN_MILLI;
-                frames = 0;
+                // frames = 0;
             }
         }
         stop();
