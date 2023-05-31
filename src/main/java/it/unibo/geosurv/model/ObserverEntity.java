@@ -1,13 +1,11 @@
 package it.unibo.geosurv.model;
 
-import it.unibo.geosurv.model.player.MainPlayer;
-
 /** Interface for observers. */
-public interface ObserverEntity {
+public interface ObserverEntity<E> {
     /**
      * Allow to update observers/monsters to follow the player.
      * 
-     * @param mainPlayer reference.
+     * @param e the entity being observed
      */
-    void update(MainPlayer mainPlayer);
+    void update(E e);
 }
