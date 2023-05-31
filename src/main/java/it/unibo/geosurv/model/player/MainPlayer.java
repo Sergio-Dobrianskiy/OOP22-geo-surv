@@ -6,11 +6,11 @@ import it.unibo.geosurv.control.PlayerMovement;
 import it.unibo.geosurv.control.PlayerMovementImpl;
 import it.unibo.geosurv.control.weapons.Weapon;
 import it.unibo.geosurv.control.weapons.WeaponLevels;
-import it.unibo.geosurv.model.Collisions;
 import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.Handler;
 import it.unibo.geosurv.model.ID;
 import it.unibo.geosurv.model.ObserverEntity;
+import it.unibo.geosurv.model.collisions.Collisions;
 import it.unibo.geosurv.view.graphics.Texture;
 
 /**

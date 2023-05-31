@@ -8,7 +8,9 @@ import java.awt.image.BufferStrategy;
 import it.unibo.geosurv.control.GameState;
 import it.unibo.geosurv.control.KeyInput;
 import it.unibo.geosurv.control.TickingObject;
-
+import it.unibo.geosurv.model.loader.ILoader;
+import it.unibo.geosurv.model.loader.Loader;
+import it.unibo.geosurv.model.monsters.MonsterSpawner;
 import it.unibo.geosurv.view.graphics.Camera;
 import it.unibo.geosurv.view.graphics.TextureRender;
 import it.unibo.geosurv.view.graphics.Window;
@@ -50,7 +52,8 @@ public class Game extends Canvas implements Runnable, TickingObject {
     private final Handler handler;
     private TextureRender textureRender;
     private final Camera camera;
-
+    private final ILoader loader;
+    private static long startTime;
     private GameState state;
 
     private boolean debugMode = false;

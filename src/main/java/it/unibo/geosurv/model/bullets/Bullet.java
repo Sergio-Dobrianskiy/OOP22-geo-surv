@@ -1,9 +1,11 @@
 package it.unibo.geosurv.model.bullets;
 
-import it.unibo.geosurv.model.Collisions;
 import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.Handler;
 import it.unibo.geosurv.model.ID;
+import it.unibo.geosurv.model.collisions.Collisions;
+import it.unibo.geosurv.model.collisions.ICollisionBehavior;
+import it.unibo.geosurv.model.collisions.NoCollisionBehavior;
 
 /**
  * Represents the abstract class for all Bullets.
@@ -12,10 +14,11 @@ public abstract class Bullet extends GameObject {
     /**
      * Bullet's default life span.
      */
-    protected long lifeSpan = 5000L; // max milliseconds of life
+    protected long lifeSpan = 5000L;     // max milliseconds of life
+    protected ICollisionBehavior collisionBehavior;
     private int damage;
     private long creationTime;
-    private final Handler handler;
+    protected final Handler handler;
     private Collisions collisions;
 
     /**
@@ -32,6 +35,7 @@ public abstract class Bullet extends GameObject {
         this.creationTime = System.currentTimeMillis();
         this.collisions = new Collisions(handler);
         this.damage = damage;
+        this.collisionBehavior = new NoCollisionBehavior();
     }
 
     /**
@@ -88,5 +92,12 @@ public abstract class Bullet extends GameObject {
      */
     public void setDamage(final int damage) {
         this.damage = damage;
+    }
+    
+    /**
+     * starts collision behavior, no behavior by default.
+     */
+    public void collide() {
+        this.collisionBehavior.collide(this, this.handler);
     }
 }

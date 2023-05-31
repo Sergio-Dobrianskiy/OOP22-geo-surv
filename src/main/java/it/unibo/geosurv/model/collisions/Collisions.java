@@ -1,6 +1,10 @@
-package it.unibo.geosurv.model;
+package it.unibo.geosurv.model.collisions;
 
 import java.util.ArrayList;
+
+import it.unibo.geosurv.model.GameObject;
+import it.unibo.geosurv.model.Handler;
+import it.unibo.geosurv.model.ID;
 import it.unibo.geosurv.model.bullets.Bullet;
 import it.unibo.geosurv.model.bullets.BulletImpl;
 import it.unibo.geosurv.model.drops.Experience;
@@ -62,14 +66,12 @@ public class Collisions {
         for (int i = 0; i < tmpObjects.size(); i++) {
             GameObject tempObject = tmpObjects.get(i);
 
-            if (bullet instanceof BulletImpl && Collisions.isColliding(bullet, tempObject, ID.Block)) {
-                handler.removeObject(bullet);
+            if (Collisions.isColliding(bullet, tempObject, ID.Block)) {
+                bullet.collide();
 
             } else if (Collisions.isColliding(bullet, tempObject, ID.Monster)) {
                 ((Monster) tempObject).hit(bullet.getDamage());
-                if (bullet instanceof BulletImpl) {
-                    handler.removeObject(bullet);
-                }
+                bullet.collide();
             }
         }
     }

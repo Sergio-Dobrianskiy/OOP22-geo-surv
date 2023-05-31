@@ -1,23 +1,26 @@
-package it.unibo.geosurv.model;
+package it.unibo.geosurv.model.loader;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.ArrayList;
-import it.unibo.geosurv.control.weapons.AutoGun;
-import it.unibo.geosurv.control.weapons.ExplosionGun;
-import it.unibo.geosurv.control.weapons.LaserGun;
-import it.unibo.geosurv.control.weapons.SatelliteGun;
+import java.util.Optional;
+
 import it.unibo.geosurv.control.weapons.Weapon;
+import it.unibo.geosurv.control.weapons.WeaponFactory;
+import it.unibo.geosurv.control.weapons.WeaponType;
+import it.unibo.geosurv.model.Handler;
+import it.unibo.geosurv.model.block.Block;
+import it.unibo.geosurv.model.block.BlockFactory;
+import it.unibo.geosurv.model.block.BlockType;
 import it.unibo.geosurv.model.monsters.MonsterSpawner;
 import it.unibo.geosurv.model.player.MainPlayer;
-import it.unibo.geosurv.model.walls.blocks.Block;
 import it.unibo.geosurv.view.graphics.Camera;
 import it.unibo.geosurv.view.graphics.Texture;
 
 /**
  * Represents the game assets Loader class.
  */
-public class Loader {
+public class Loader implements ILoader {
 
     /**
      * default game window height.
@@ -53,7 +56,7 @@ public class Loader {
 
     /**
      * loads main game elements.
-     * 
+     *
      */
     public void loadAll() {
         handler.addPlayer(new MainPlayer(playerStartingX, playerStartingY, handler)); // TODO: remove?
@@ -68,7 +71,7 @@ public class Loader {
 
     /**
      * loads the game camera.
-     * 
+     *
      * @return Camera
      */
     public Camera loadCamera() {
@@ -94,16 +97,35 @@ public class Loader {
      * Loads game Weapons/Guns.
      */
     private void loadGuns() {
+        WeaponFactory weaponFactory = new WeaponFactory(this.handler);
         ArrayList<Weapon> weapons = new ArrayList<>();
-        Weapon autogun = (Weapon) handler.addTickingObject(new AutoGun(this.handler));
-        Weapon satelliteGun = (Weapon) handler.addTickingObject(new SatelliteGun(this.handler));
-        Weapon explosionGun = (Weapon) handler.addTickingObject(new ExplosionGun(this.handler));
-        Weapon laserGun = (Weapon) handler.addTickingObject(new LaserGun(this.handler));
-        autogun.levelUp(); // each game starts with level 1 AutoGun
-        weapons.add(autogun);
-        weapons.add(satelliteGun);
-        weapons.add(explosionGun);
-        weapons.add(laserGun);
+
+        Optional<Weapon> weapon = weaponFactory.createWeapon(WeaponType.AutoGun, 1);
+        if (weapon.isEmpty()) {
+            System.out.println("Error creating AutoGun!");
+        } else {
+            weapons.add(weapon.get());
+        }
+        weapon = weaponFactory.createWeapon(WeaponType.SatelliteGun, 0);
+        if (weapon.isEmpty()) {
+            System.out.println("Error creating SatelliteGun!");
+        } else {
+            weapons.add(weapon.get());
+        }
+        weapon = weaponFactory.createWeapon(WeaponType.ExplosionGun, 0);
+        if (weapon.isEmpty()) {
+            System.out.println("Error creating ExplosionGun!");
+        } else {
+            weapons.add(weapon.get());
+        }
+        weapon = weaponFactory.createWeapon(WeaponType.LaserGun, 0);
+        if (weapon.isEmpty()) {
+            System.out.println("Error creating LaserGun!");
+        } else {
+            weapons.add(weapon.get());
+        }
+
+        weapons.forEach(w -> handler.addTickingObject(w));
         handler.getPlayer().setWeapons(weapons);
     }
 
@@ -115,6 +137,7 @@ public class Loader {
     private void loadLevel(final BufferedImage image) {
         int w = image.getWidth();
         int h = image.getHeight();
+        BlockFactory blockFactory = new BlockFactory();
 
         for (int xx = 0; xx < w; xx++) {
             for (int yy = 0; yy < h; yy++) {
@@ -125,7 +148,12 @@ public class Loader {
                 int blue = (pixel) & 0xff;
 
                 if (blue == maxRGB) {
-                    handler.addObject(new Block(xx * GAME_GRID_WIDTH, yy * GAME_GRID_HEIGHT));
+                    final Optional<Block> block = blockFactory.createBlock(BlockType.Wall, xx * GAME_GRID_WIDTH, yy * GAME_GRID_HEIGHT);
+                    if (block.isEmpty()) {
+                        System.out.println("Error creating Wall!");
+                    } else {
+                        handler.addObject(block.get());
+                    }
                 }
 
                 // if (red == 255) {

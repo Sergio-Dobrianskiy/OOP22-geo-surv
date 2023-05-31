@@ -1,6 +1,8 @@
 package it.unibo.geosurv.model.bullets;
 
+import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.Handler;
+import it.unibo.geosurv.model.collisions.RemoveOnCollisionBehavior;
 import it.unibo.geosurv.view.graphics.Texture;
 
 /**
@@ -30,5 +32,18 @@ public class BulletImpl extends Bullet {
         this.height = bulletImpHeight;
         this.width = bulletImpWidth;
         this.texture = Texture.BULLET;
+        this.collisionBehavior = new RemoveOnCollisionBehavior();
+    }
+    
+    /**
+     * starts collision behavior, no behavior by default.
+     * 
+     * @param this the bullet iself
+     * @param null 
+     * @param handler the handler
+     */
+    @Override
+    public void collide() {
+        this.collisionBehavior.collide(this, this.handler);
     }
 }

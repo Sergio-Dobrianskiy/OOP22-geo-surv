@@ -1,13 +1,11 @@
-package it.unibo.geosurv.model.walls.blocks;
+package it.unibo.geosurv.model.block;
 
-import it.unibo.geosurv.model.GameObject;
-import it.unibo.geosurv.model.ID;
 import it.unibo.geosurv.view.graphics.Texture;
 
 /**
  * Represents a Block.
  */
-public class Block extends GameObject {
+public class Wall extends Block {
 
     /**
      * block's height.
@@ -24,8 +22,8 @@ public class Block extends GameObject {
      * @param x block coordinate
      * @param y block coordinate
      */
-    public Block(final float x, final float y) {
-        super(x, y, ID.Block);
+    public Wall(final float x, final float y) {
+        super(x, y);
         this.height = blockHeight;
         this.width = (int) blockWidth;
         this.texture = Texture.BLOCK;

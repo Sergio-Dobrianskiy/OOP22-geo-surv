@@ -3,6 +3,8 @@ package it.unibo.geosurv.model;
 import java.awt.Rectangle;
 import java.awt.geom.RectangularShape;
 import it.unibo.geosurv.control.TickingObject;
+import it.unibo.geosurv.model.collisions.ICollisionBehavior;
+import it.unibo.geosurv.model.collisions.NoCollisionBehavior;
 import it.unibo.geosurv.view.graphics.Texture;
 
 /**
@@ -31,6 +33,8 @@ public abstract class GameObject implements TickingObject, IGameObject {
      * gameObject id.
      */
     protected ID id;
+//    protected ICollisionBehavior collisionBehavior;
+    
 
     /**
      * Constructor for this class.
@@ -43,6 +47,7 @@ public abstract class GameObject implements TickingObject, IGameObject {
         this.x = x;
         this.y = y;
         this.id = id;
+//        this.collisionBehavior = new NoCollisionBehavior();
     }
 
     /**
