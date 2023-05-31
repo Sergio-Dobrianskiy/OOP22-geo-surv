@@ -14,7 +14,7 @@ import it.unibo.geosurv.model.ObserverEntity;
 import it.unibo.geosurv.view.graphics.Texture;
 
 /**
- * Represents a SatelliteGun weapon.
+ * Represents Player.
  */
 public class MainPlayer extends GameObject implements MainPlayerInterf {
 
