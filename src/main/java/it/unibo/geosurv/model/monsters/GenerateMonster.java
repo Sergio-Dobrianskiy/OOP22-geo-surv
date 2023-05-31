@@ -14,6 +14,6 @@ public interface GenerateMonster {
      * @param h handler
      * @return Monster
      */
-    MonsterImpl createMonster(Handler h);
+    Monster createMonster(Handler h);
 
 }

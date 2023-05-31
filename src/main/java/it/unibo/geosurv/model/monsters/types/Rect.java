@@ -1,13 +1,13 @@
 package it.unibo.geosurv.model.monsters.types;
 
 import it.unibo.geosurv.model.Handler;
-import it.unibo.geosurv.model.monsters.MonsterImpl;
+import it.unibo.geosurv.model.monsters.Monster;
 import it.unibo.geosurv.view.graphics.Texture;
 
 /**
  * Class managing Rectangular typoe of monsters.
  */
-public class Rect extends MonsterImpl {
+public class Rect extends Monster {
 
     // private Handler handler;
     // private Game game;

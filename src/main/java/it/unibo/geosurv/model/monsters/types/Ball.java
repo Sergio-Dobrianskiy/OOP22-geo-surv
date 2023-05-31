@@ -1,10 +1,10 @@
 package it.unibo.geosurv.model.monsters.types;
 
 import it.unibo.geosurv.model.Handler;
-import it.unibo.geosurv.model.monsters.MonsterImpl;
+import it.unibo.geosurv.model.monsters.Monster;
 import it.unibo.geosurv.view.graphics.Texture;
 
-public class Ball extends MonsterImpl {
+public class Ball extends Monster {
     private static final float DEFAULT_SPEED = 2f; // default speed of Ball
     private static final float MAX_SPEED = 3f; // max speed of BIG Ball
     private static final int DEFAULT_H_DIMENSION = 40; // default height of Ball

@@ -11,12 +11,12 @@ import it.unibo.geosurv.model.Handler;
 import it.unibo.geosurv.model.drops.Experience;
 import it.unibo.geosurv.model.drops.Life;
 import it.unibo.geosurv.model.monsters.GenerateMonsterT;
-import it.unibo.geosurv.model.monsters.MonsterImpl;
+import it.unibo.geosurv.model.monsters.Monster;
 import it.unibo.geosurv.model.monsters.types.Ball;
 import it.unibo.geosurv.model.player.MainPlayer;
 
 /**
- * Test for {@link MonsterImpl} creation.
+ * Test for {@link Monster} creation.
  */
 class TestMonsterDie {
 
@@ -25,10 +25,10 @@ class TestMonsterDie {
 
         Handler h = new Handler();
         h.addPlayer(new MainPlayer(0, 0, h));
-        ArrayList<MonsterImpl> list = new ArrayList<>();
+        ArrayList<Monster> list = new ArrayList<>();
         GenerateMonsterT tFact = new GenerateMonsterT();
         for (int j = 0; j < 100; j++) {
-            MonsterImpl m = tFact.createMonster(h);
+            Monster m = tFact.createMonster(h);
             h.addObject(m);
             list.add(m);
         }
@@ -62,7 +62,7 @@ class TestMonsterDie {
     }
 
     boolean isInPlayerAndMonster(final GameObject go) {
-        return go.getClass().getSuperclass() == MonsterImpl.class || go.getClass() == MainPlayer.class;
+        return go.getClass().getSuperclass() == Monster.class || go.getClass() == MainPlayer.class;
     }
 
 }

@@ -40,7 +40,7 @@ public class MonsterSpawner implements TickingObject {
             SPAWN_RATE = 2;
         }
         if (elapsedTime >= 1000 / SPAWN_RATE) {
-            final MonsterImpl x = generateMonsters();
+            final Monster x = generateMonsters();
             handler.addObject(x);
             lastSpawnTime = currentTime;
 
@@ -63,9 +63,9 @@ public class MonsterSpawner implements TickingObject {
         spawnMonsters();
     }
 
-    private MonsterImpl generateMonsters() {
+    private Monster generateMonsters() {
 
-        MonsterImpl m;
+        Monster m;
 
         if ((currentSecond - begin / 1000) < 15) {
             m = tm.createMonster(this.handler);
@@ -90,7 +90,7 @@ public class MonsterSpawner implements TickingObject {
     /** monsters created all through the game */
     private void generateFixedPositionMonsters() {
         final GenerateMonsterRh rhm = new GenerateMonsterRh();
-        final MonsterImpl rh = rhm.createMonster(this.handler);
+        final Monster rh = rhm.createMonster(this.handler);
         handler.addObject(rh);
     }
 

@@ -1,13 +1,13 @@
 package it.unibo.geosurv.model.monsters.types;
 
 import it.unibo.geosurv.model.Handler;
-import it.unibo.geosurv.model.monsters.MonsterImpl;
+import it.unibo.geosurv.model.monsters.Monster;
 import it.unibo.geosurv.view.graphics.Texture;
 
 /**
  * Class for triangle type of Monsters.
  */
-public class Triangle extends MonsterImpl {
+public class Triangle extends Monster {
 
     // private Handler handler;
     // private Game game;

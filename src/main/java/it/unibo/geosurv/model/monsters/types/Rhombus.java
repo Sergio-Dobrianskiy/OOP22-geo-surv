@@ -1,13 +1,13 @@
 package it.unibo.geosurv.model.monsters.types;
 
 import it.unibo.geosurv.model.Handler;
-import it.unibo.geosurv.model.monsters.MonsterImpl;
+import it.unibo.geosurv.model.monsters.Monster;
 import it.unibo.geosurv.view.graphics.Texture;
 
 /**
  * Class for enemies which do not move.
  */
-public class Rhombus extends MonsterImpl {
+public class Rhombus extends Monster {
 
     private static final int DEFAULT_HEALTH = 2;
     private static final int DEFAULT_H_DIMENSION = 32;

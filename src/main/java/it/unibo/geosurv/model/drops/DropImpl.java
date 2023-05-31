@@ -2,7 +2,7 @@ package it.unibo.geosurv.model.drops;
 
 import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.Handler;
-import it.unibo.geosurv.model.monsters.MonsterImpl;
+import it.unibo.geosurv.model.monsters.Monster;
 import it.unibo.geosurv.model.monsters.types.Ball;
 
 /**
@@ -11,10 +11,10 @@ import it.unibo.geosurv.model.monsters.types.Ball;
 public class DropImpl implements Drop {
 
     private static final int LIFE_PILLS_PROB = 50; // probability to get a life pill: 1/50 at monster death
-    private MonsterImpl m;
+    private Monster m;
     private Handler h;
 
-    public DropImpl(final MonsterImpl m, final Handler h) {
+    public DropImpl(final Monster m, final Handler h) {
         this.m = m;
         this.h = h;
     }
