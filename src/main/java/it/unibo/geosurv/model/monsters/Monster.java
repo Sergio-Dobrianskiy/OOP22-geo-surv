@@ -14,7 +14,7 @@ import it.unibo.geosurv.model.utility.Pair;
  * 
  * @param <O>
  */
-public abstract class Monster extends GameObject implements IMonster, ObserverEntity {
+public abstract class Monster extends GameObject implements IMonster, ObserverEntity<MainPlayer> {
 
     private static final int DEFAULT_EXPERIENCE = 1;
     private static final int BOUNCING_SPEED_MULTIPLYER = 10;

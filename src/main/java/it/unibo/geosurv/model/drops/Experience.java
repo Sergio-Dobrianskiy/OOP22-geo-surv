@@ -11,7 +11,7 @@ import it.unibo.geosurv.view.graphics.Texture;
  * Class for experience pills, created at monsters death.
  * More experience make player go to new levels.
  */
-public class Experience extends GameObject implements ObserverEntity {
+public class Experience extends GameObject implements ObserverEntity<MainPlayer> {
 
     private static int experienceCounter = 0;
     protected static final int EXPERIENCE_HEIGHT = 25;
