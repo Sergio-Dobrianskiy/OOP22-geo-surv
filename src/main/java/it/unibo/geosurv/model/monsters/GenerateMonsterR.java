@@ -6,7 +6,7 @@ import it.unibo.geosurv.model.monsters.types.Rect;
 /**
  * class to generate Rect monsters.
  */
-public class GenerateMonsterR implements GenerateMonster {
+public class GenerateMonsterR implements GenerateMonster<Monster, Handler> {
 
     private static final float MIN_DISTANCE = 500.0f; // default monster creation min radius (distance from player)
     private static final float MAX_DISTANCE = 600.0f; // default monster creation min radius (distance from player)

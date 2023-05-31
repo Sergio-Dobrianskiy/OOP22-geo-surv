@@ -1,19 +1,20 @@
 package it.unibo.geosurv.model.monsters;
 
-import it.unibo.geosurv.model.Handler;
-
 /**
- * interface which models the creation of different type of monsters.
+ * interface which models creation of evils entities.
+ * 
+ * @param <O> Output: returned created Object
+ * @param <I> Handler input
  * 
  */
-public interface GenerateMonster {
+public interface GenerateMonster<O, I> {
 
     /**
      * Method to create monsters.
      * 
-     * @param h handler
-     * @return Monster
+     * @param i Handler input
+     * @return Output
      */
-    Monster createMonster(Handler h);
+    O createMonster(I i);
 
 }
