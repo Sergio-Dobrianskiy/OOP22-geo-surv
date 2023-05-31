@@ -4,13 +4,15 @@ import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.Handler;
 import it.unibo.geosurv.model.ID;
 import it.unibo.geosurv.model.ObserverEntity;
-import it.unibo.geosurv.model.drops.DropImpl;
+import it.unibo.geosurv.model.drops.Drop;
 import it.unibo.geosurv.model.player.MainPlayer;
 import it.unibo.geosurv.model.utility.Func;
 import it.unibo.geosurv.model.utility.Pair;
 
 /**
  * Abstract Class for generic evil.
+ * 
+ * @param <O>
  */
 public abstract class Monster extends GameObject implements IMonster, ObserverEntity {
 
@@ -31,7 +33,7 @@ public abstract class Monster extends GameObject implements IMonster, ObserverEn
     protected MainPlayer player;
     protected double speed;
     protected boolean isBig;
-    protected DropImpl dropStrategy; // strategy for dropping life or experience
+    protected Drop dropStrategy; // strategy for dropping life or experience
 
     /**
      * Monster constructor.
@@ -47,7 +49,7 @@ public abstract class Monster extends GameObject implements IMonster, ObserverEn
         this.player.addObserver(this);
         this.lastHitTime = 0;
         this.handler = h;
-        this.dropStrategy = new DropImpl(this, this.handler);
+        this.dropStrategy = new Drop(this, this.handler);
 
         // System.out.println("Added Observer: " + this.toString());
     }

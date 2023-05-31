@@ -108,4 +108,5 @@ public class Experience extends GameObject implements ObserverEntity {
         float dy = y2 - y1;
         return (float) Math.sqrt(dx * dx + dy * dy);
     }
+
 }
