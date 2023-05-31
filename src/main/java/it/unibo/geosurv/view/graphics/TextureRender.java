@@ -106,8 +106,6 @@ public class TextureRender {
         g.drawString("Monsters: " + Monster.getMonstersCounter(), xPos, yPos + 15);
         g.drawString("Player Exp: " + handler.getPlayer().getExperience(), xPos, yPos + 30);
         g.drawString("Player Life: " + handler.getPlayer().getLife(), xPos, yPos + 45);
-        // g.drawString("Time: " + (((int) ((System.currentTimeMillis() / 1000))) -
-        // startTime / 1000), 850, 140);
 
         for (final GameObject to : gameObjects) {
             final int xx = getRenderX(to);
