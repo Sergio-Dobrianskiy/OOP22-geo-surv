@@ -57,6 +57,8 @@ public class TextureRender {
         g.drawString("Curr: " + player.getExperience(), (int) x + player.getWidth(), (int) y + 40);
         g.drawString("Max: " + player.getMaxExperience(), (int) x + player.getWidth(), (int) y + 60);
         g.drawString("Lvl: " + player.getLevel(), (int) x + player.getWidth(), (int) y + 80);
+        g.drawString("Monsters: " + Monster.getMonstersCounter() + " [" + Monster.getMonstersDeadCounter() + "]",
+                (int) x + player.getWidth(), (int) y + 80);
 
         // Draw bar progres for player's life
         final int barWidth = 100;

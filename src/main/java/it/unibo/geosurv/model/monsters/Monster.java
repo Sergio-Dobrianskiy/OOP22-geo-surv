@@ -25,6 +25,8 @@ public abstract class Monster extends GameObject implements IMonster, ObserverEn
     private long lastHitTime; // last time monster is touched/hit by player
 
     private static int monstersCounter;
+    private static int monstersDeadCounter;
+
     protected final Handler handler;
     protected int health; // need to be shared with monters subclasses @Sergio-Dobrianskiy
     protected int power; // power which the plyer is hit by when in contact with a monster
@@ -180,10 +182,14 @@ public abstract class Monster extends GameObject implements IMonster, ObserverEn
     public void removeMonster(Monster monster) {
         monster = null;
         monstersCounter--;
+        monstersDeadCounter++;
     }
 
     public int getDefaultExperience() {
         return DEFAULT_EXPERIENCE;
     }
 
+    public static int getMonstersDeadCounter() {
+        return monstersDeadCounter;
+    }
 }
