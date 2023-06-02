@@ -1,6 +1,10 @@
 package it.unibo.geosurv;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.util.ArrayList;
 
 import org.junit.jupiter.api.Test;
 
@@ -18,7 +22,7 @@ import it.unibo.geosurv.model.player.MainPlayer;
  * testing weapons.
  *
  */
-public class TestWeapons {
+public class TestWeapons<A> {
     @Test
     void createWeapons() {
 
@@ -142,6 +146,36 @@ public class TestWeapons {
         assertEquals(3, weapon.getLevel());
         weapon.levelUp();
         assertEquals(3, weapon.getLevel());
+    }
+
+    @Test
+    void createJustWeapons() {
+
+        final Handler handler = new Handler();
+        ArrayList<Weapon> weapons = new ArrayList<>();
+        Weapon weapon;
+        final WeaponFactory weaponFactory = new WeaponFactory(handler);
+        handler.addPlayer(new MainPlayer(0, 0, handler));
+
+        weapons.add(weaponFactory.createWeapon(WeaponType.AutoGun, 0).get());
+        weapons.add(weaponFactory.createWeapon(WeaponType.SatelliteGun, 0).get());
+        weapons.add(weaponFactory.createWeapon(WeaponType.ExplosionGun, 0).get());
+        weapons.add(weaponFactory.createWeapon(WeaponType.LaserGun, 0).get());
+
+        weapons.forEach(w -> assertTrue(isJustWeapons(w)));
+
+        weapons.forEach(w -> handler.addTickingObject(w));
+
+        handler.getTickingbjects().forEach(w -> assertTrue(isJustWeapons(w)));
+        handler.getGameObjects().forEach(w -> assertFalse(isJustWeapons(w)));
+    }
+
+    /**
+     * check if object's superclass is Weapon.
+     * @return true if superclass is Weapon
+     */
+    boolean isJustWeapons(final Object w) {
+        return w.getClass().getSuperclass() == Weapon.class;
     }
 
 }
