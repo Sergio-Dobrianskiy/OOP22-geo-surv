@@ -1,5 +1,6 @@
 package it.unibo.geosurv.view.graphics;
 
+import java.awt.Font;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
@@ -39,8 +40,8 @@ public class TextureRender {
 		int x = (int) player.getX();
 		int y = (int) player.getY();
 		g.setColor(Color.white);
-		g.drawString("Life: " + player.getLife(), (int) x + player.getWidth(), (int) y);
-		g.drawString("Exp: " + (int) player.getExpPercentage() + "%", (int) x + player.getWidth(), (int) y + 20);
+		//g.drawString("Life: " + player.getLife(), (int) x + player.getWidth(), (int) y);
+		//g.drawString("Exp: " + (int) player.getExpPercentage() + "%", (int) x + player.getWidth(), (int) y + 20);
 		g.drawString("Curr: " + player.getExperience(), (int) x + player.getWidth(), (int) y + 40);
 		g.drawString("Max: " + player.getMaxExperience(), (int) x + player.getWidth(), (int) y + 60);
 		g.drawString("Lvl: " + player.getLevel(), (int) x + player.getWidth(), (int) y + 80);
@@ -50,6 +51,12 @@ public class TextureRender {
 		int barHeight = 10;
 		int barX = (int) (x - barWidth / 2); // bar x coordinate
 		int barY = (int) y - barHeight - 30;
+		String title_life  = "Life:";
+
+		Font font = new Font("Courier New", Font.PLAIN, 14);
+		g.setFont(font);
+
+		g.drawString(title_life, barX, barY - 10);
 
 		g.setColor(Color.RED);
 		g.fillRect(barX, barY, barWidth, barHeight);
@@ -66,13 +73,12 @@ public class TextureRender {
 
 		/* Draw bar progress for player's experience */
 		int barWidthExp = 100;
-		int barHeightExp = 10;
+		int barHeightExp = 5;
 		int barXExp = (int) (x - barWidthExp / 2); // bar x coordinate
-		int barYExp = (int) y - barHeightExp - 60;
+		int barYExp = (int) y - barHeightExp - 70;
 		String title  = "Experience:";
 
 		g.drawString(title, barXExp, barYExp - 10);
-
 
 		g.setColor(Color.RED);
 		g.fillRect(barXExp, barYExp, barWidthExp, barHeightExp);
