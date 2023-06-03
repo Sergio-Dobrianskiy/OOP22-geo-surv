@@ -4,8 +4,11 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -36,7 +39,9 @@ public class MenuView extends JFrame {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 // Load the background image
-                Image backgroundImage = new ImageIcon("background.jpg").getImage(); //TO DO: inseire immagine
+                Image backgroundMenu = new ImageIcon("/Users/thomas/Desktop/OOP22-geo-surv/src/main/resources/BackgroundMenu.jpg").getImage();
+                // Draw the background image
+                g.drawImage(backgroundMenu, 0, 0, null);
             }
         };
 
