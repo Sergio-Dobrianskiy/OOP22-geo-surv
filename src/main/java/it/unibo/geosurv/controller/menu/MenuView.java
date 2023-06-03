@@ -10,6 +10,7 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
@@ -52,6 +53,7 @@ public class MenuView extends JFrame {
 
         /* Setting title  */
         title.setFont(new Font("Arial", Font.BOLD, 32));
+        title.setForeground(Color.WHITE);
         title.setHorizontalAlignment(JLabel.CENTER);
         title.setBorder(BorderFactory.createEmptyBorder(50, 0, 50, 0));
         panel.add(title, BorderLayout.NORTH);
