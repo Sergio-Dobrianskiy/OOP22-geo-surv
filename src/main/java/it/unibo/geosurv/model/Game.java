@@ -2,10 +2,12 @@ package it.unibo.geosurv.model;
 
 import java.awt.Canvas;
 import java.awt.Color;
+import jaav.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferStrategy;
+
 import it.unibo.geosurv.control.GameState;
 import it.unibo.geosurv.control.KeyInput;
 import it.unibo.geosurv.control.TickingObject;
@@ -57,6 +59,7 @@ public class Game extends Canvas implements Runnable, TickingObject {
     private static long startTime;
     private GameState state;
     private String pauseText = "Pause";
+    private Color backgroudPauseColor = new Color(0, 0, 0, 150);
 
     private boolean debugMode = false;
 
@@ -162,6 +165,10 @@ public class Game extends Canvas implements Runnable, TickingObject {
         textureRender.renderView(g);
 
         if( state == GameState.PAUSE) {
+
+            /* Background obscured */
+            g.setColor(backgroudPauseColor);
+            g.fillRect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
 
             g.setColor(Color.WHITE);
 
