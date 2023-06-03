@@ -42,7 +42,7 @@ public class MonsterSpawner implements TickingObject {
         int diff = (int) (currentSecond - this.begin);
         System.out.println(diff + " :: " + this.begin + " :: " + (currentSecond - this.begin / 1000));
         elapsedTime = currentTime - lastSpawnTime;
-        if (diff > 11) {
+        if (diff > 21) {
             spawnRate = 2;
         }
         if (elapsedTime >= 1000 / spawnRate) {
@@ -52,7 +52,7 @@ public class MonsterSpawner implements TickingObject {
 
             generateFixedPositionMonsters();
         }
-        if (diff > 40) {
+        if (diff > 60) {
             spawnRate = 3;
             // if (elapsedTime >= 1000 / SPAWN_RATE) {
             flood();
@@ -75,15 +75,15 @@ public class MonsterSpawner implements TickingObject {
         int diff = (int) (currentSecond - this.begin);
         Monster m;
 
-        if ((diff) < 15) {
+        if ((diff) < 20) {
             m = tm.createMonster(this.handler);
 
-        } else if (diff == 15) {
+        } else if (diff == 20) {
             m = tm.createMonster(this.handler);
             m.setBig(true);
-        } else if (diff < 25) {
+        } else if (diff < 40) {
             m = rm.createMonster(this.handler);
-        } else if (diff == 25) {
+        } else if (diff == 40) {
             m = rm.createMonster(this.handler);
             m.setBig(true);
         } else {
