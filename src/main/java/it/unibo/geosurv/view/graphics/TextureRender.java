@@ -1,5 +1,6 @@
 package it.unibo.geosurv.view.graphics;
 
+import java.awt.Font;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
@@ -48,10 +49,13 @@ public class TextureRender {
      * @param g
      * @param player game's player
      */
-    public void renderUI(final Graphics g, final MainPlayer player) {
+	public void renderUI(final Graphics g, final MainPlayer player) {
+		
         final int x = (int) player.getX();
         final int y = (int) player.getY();
+
         g.setColor(Color.white);
+
         g.drawString("Life: " + player.getLife(), (int) x + player.getWidth(), (int) y);
         g.drawString("Exp: " + (int) player.getExpPercentage() + "%", (int) x + player.getWidth(), (int) y + 20);
         g.drawString("Curr: " + player.getExperience(), (int) x + player.getWidth(), (int) y + 40);
@@ -60,11 +64,17 @@ public class TextureRender {
         g.drawString("Monsters: " + Monster.getMonstersCounter() + " [" + Monster.getMonstersDeadCounter() + "]",
                 (int) x + player.getWidth(), (int) y + 80);
 
-        // Draw bar progres for player's life
         final int barWidth = 100;
         final int barHeight = 10;
         final int barX = (int) (x - barWidth / 2); // bar x coordinate
         final int barY = (int) y - barHeight - 30;
+        
+		String title_life  = "Life:";
+		Font font = new Font("Courier New", Font.PLAIN, 14);
+		g.setFont(font);
+		g.drawString(title_life, barX, barY - 10);
+
+
 
         g.setColor(Color.RED);
         g.fillRect(barX, barY, barWidth, barHeight);
@@ -76,9 +86,30 @@ public class TextureRender {
         g.setColor(Color.GREEN);
         g.fillRect(barX, barY, filledWidth, barHeight);
 
-        g.setColor(Color.WHITE);
-        g.drawRect(barX, barY, barWidth, barHeight);
-    }
+		g.setColor(Color.WHITE);
+		g.drawRect(barX, barY, barWidth, barHeight);
+
+		/* Draw bar progress for player's experience */
+		int barWidthExp = 100;
+		int barHeightExp = 5;
+		int barXExp = (int) (x - barWidthExp / 2); // bar x coordinate
+		int barYExp = (int) y - barHeightExp - 70;
+		String title  = "Experience:";
+
+		g.drawString(title, barXExp, barYExp - 10);
+		g.setColor(Color.RED);
+		g.fillRect(barXExp, barYExp, barWidthExp, barHeightExp);
+
+		float percentageExp = (float) player.getExperience() / MainPlayer.EXPERIENCE;
+		percentageExp = percentageExp > 0 ? percentageExp : 0; // prevents bar from overflowing
+		int filledWidthExp = (int) (barWidthExp * percentageExp);
+
+		g.setColor(Color.GREEN);
+		g.fillRect(barXExp, barYExp, filledWidthExp, barHeightExp);
+
+		g.setColor(Color.ORANGE);
+		g.drawRect(barXExp, barYExp, barWidthExp, barHeightExp);
+	}
 
     public void renderHitBoxes(final Graphics g, final Color color, final GameObject obj) {
         final int xx = getRenderX(obj);

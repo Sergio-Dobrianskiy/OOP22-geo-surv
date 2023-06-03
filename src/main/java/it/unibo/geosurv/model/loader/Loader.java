@@ -97,7 +97,7 @@ public class Loader implements ILoader {
      * Loads game Weapons/Guns.
      */
     private void loadGuns() {
-        WeaponFactory weaponFactory = new WeaponFactory(this.handler);
+        final WeaponFactory weaponFactory = new WeaponFactory(this.handler);
         ArrayList<Weapon> weapons = new ArrayList<>();
 
         Optional<Weapon> weapon = weaponFactory.createWeapon(WeaponType.AutoGun, 1);
