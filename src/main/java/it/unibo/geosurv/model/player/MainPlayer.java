@@ -201,4 +201,14 @@ public class MainPlayer extends GameObject implements MainPlayerInterf {
     public void levelUpWeapon() {
         this.weaponLevels.levelUpWeapon();
     }
+
+    /**
+     * check if the player is alive
+     *  
+     * @return true if the player is alive
+     */
+    public boolean isAlive() {
+        return life > 0;
+    }
+
 }
