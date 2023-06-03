@@ -11,8 +11,8 @@ public class MainMenuController {
 
     public MainMenuController(MenuView menuView) {
         this.menuView = menuView;
-        // this.game = game; //TODO: add in contructor
-        // collego gli actionListener
+
+        // Coonect the actionListeners
         menuView.getStartButton().addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 startGame();
@@ -26,19 +26,26 @@ public class MainMenuController {
         });
     }
 
-    public void startGame() {
-        // Logica per avviare il gioco
+    /* Open Menu */
+    public void startMenu() {
+        menuView.setVisible(true);
+    }
 
-        Game n = new Game(); // game.start(); //TODO: change once in constructor
-        n.start();
+    /* Close Menu */
+    private void closeMenu() {
+        menuView.getFrame().dispose();
+        System.exit(0);
+    }
+    
+    /* Start to play */
+    private void startGame() {
+        menuView.setVisible(false);
+        game = new Game();
+        game.start();
     }
 
     public void closeApplication() {
         System.exit(0);
-    }
-
-    public void startMenu() {
-        menuView.setVisible(true);
     }
 
     public Game getGame() {
