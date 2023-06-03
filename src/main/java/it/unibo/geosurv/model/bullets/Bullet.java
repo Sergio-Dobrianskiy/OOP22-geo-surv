@@ -68,7 +68,7 @@ public abstract class Bullet extends GameObject {
      * @return boolean true if bullet is still present in game
      */
     protected boolean stillAlive() {
-        long currentTime = System.currentTimeMillis();
+        final long currentTime = System.currentTimeMillis();
         if ((currentTime - this.creationTime) > lifeSpan) {
             handler.removeObject(this);
             return false;
@@ -93,7 +93,7 @@ public abstract class Bullet extends GameObject {
     public void setDamage(final int damage) {
         this.damage = damage;
     }
-    
+
     /**
      * starts collision behavior, no behavior by default.
      */

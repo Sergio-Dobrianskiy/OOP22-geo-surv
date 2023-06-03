@@ -4,7 +4,7 @@ import java.awt.geom.Point2D;
 import it.unibo.geosurv.model.Game;
 import it.unibo.geosurv.model.Handler;
 import it.unibo.geosurv.model.GameObject;
-import it.unibo.geosurv.model.bullets.BulletImpl;
+import it.unibo.geosurv.model.bullets.AutoBullet;
 import it.unibo.geosurv.model.utility.Func;
 import it.unibo.geosurv.model.utility.Pair;
 
@@ -114,9 +114,9 @@ public class AutoGun extends Weapon {
      * shoots a bullet at the nearest enemy.
      */
     protected void shoot() {
-        Pair<Float, Float> angle = Func.findAngle2(this.player, this.closestEnemy);
+        final Pair<Float, Float> angle = Func.findAngle2(this.player, this.closestEnemy);
         GameObject tempBullet = handler
-                .addObject(new BulletImpl(player.getX(), player.getY(), handler, this.getDamage()));
+                .addObject(new AutoBullet(player.getX(), player.getY(), handler, this.getDamage()));
         tempBullet.setVelX((float) ((bulletSpeed) * angle.getX()));
         tempBullet.setVelY((float) ((bulletSpeed) * angle.getY()));
     }

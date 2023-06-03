@@ -172,10 +172,13 @@ public class TestWeapons<A> {
 
     /**
      * check if object's superclass is Weapon.
+     * 
+     * @param obj object to check
+     * 
      * @return true if superclass is Weapon
      */
-    boolean isJustWeapons(final Object w) {
-        return w.getClass().getSuperclass() == Weapon.class;
+    boolean isJustWeapons(final Object obj) {
+        return obj.getClass().getSuperclass() == Weapon.class;
     }
 
 }
