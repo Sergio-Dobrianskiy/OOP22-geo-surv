@@ -1,4 +1,4 @@
-package it.unibo.geosurv.view.graphics;
+package it.unibo.geosurv.controller.menu;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;

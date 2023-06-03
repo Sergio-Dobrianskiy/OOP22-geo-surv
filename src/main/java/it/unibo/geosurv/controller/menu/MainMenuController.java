@@ -4,7 +4,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import it.unibo.geosurv.model.Game;
-import it.unibo.geosurv.view.graphics.MenuView;
 
 public class MainMenuController {
     private MenuView menuView;

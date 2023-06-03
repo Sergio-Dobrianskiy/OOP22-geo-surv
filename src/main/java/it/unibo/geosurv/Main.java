@@ -1,7 +1,7 @@
 package it.unibo.geosurv;
 
 import it.unibo.geosurv.controller.menu.MainMenuController;
-import it.unibo.geosurv.view.graphics.MenuView;
+import it.unibo.geosurv.controller.menu.MenuView;
 
 /**
  * Main class for this game.
