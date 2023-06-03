@@ -2,6 +2,7 @@ package it.unibo.geosurv.model;
 
 import java.awt.Canvas;
 import java.awt.Color;
+import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferStrategy;
@@ -55,6 +56,7 @@ public class Game extends Canvas implements Runnable, TickingObject {
     private final ILoader loader;
     private static long startTime;
     private GameState state;
+    private String pauseText = "Pause";
 
     private boolean debugMode = false;
 
@@ -158,6 +160,24 @@ public class Game extends Canvas implements Runnable, TickingObject {
             textureRender.showDebug(g);
         }
         textureRender.renderView(g);
+
+        if( state == GameState.PAUSE) {
+
+            g.setColor(Color.WHITE);
+
+            FontMetrics fm = g.getFontMetrics();
+            int textWidth = fm.stringWidth(pauseText);
+            int textHeight = fm.getHeight();
+
+            int x_pause = (WINDOW_WIDTH - textWidth) / 2;
+            int y_pause = (WINDOW_HEIGHT - textHeight) / 2;
+
+            g.drawString(pauseText, x_pause, y_pause);
+
+
+        
+        
+        }
 
         ////////////////////////////////////// above here we draw to the game
 
