@@ -41,4 +41,8 @@ public class MainMenuController {
         menuView.setVisible(true);
     }
 
+    public Game getGame() {
+        return game;
+    }
+
 }
