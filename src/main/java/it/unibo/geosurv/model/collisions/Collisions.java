@@ -47,11 +47,12 @@ public class Collisions {
             }
             if (Collisions.isColliding(player, tempObject, ID.Experience)) {
                 handler.getPlayer().setExperience(((Experience) tempObject).getExperience());
-                handler.removeObject(tempObject);
+                ((Experience) tempObject).collide();
             }
             if (Collisions.isColliding(player, tempObject, ID.Life)) {
                 handler.getPlayer().setLife(((Life) tempObject).getLife());
-                handler.removeObject(tempObject);
+                // handler.removeObject(tempObject);
+                ((Life) tempObject).collide();
             }
         }
     }
