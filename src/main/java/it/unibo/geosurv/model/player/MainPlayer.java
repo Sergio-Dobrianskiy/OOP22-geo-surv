@@ -112,7 +112,19 @@ public class MainPlayer extends GameObject implements MainPlayerInterf {
         if (this.getExperience() == 0) {
             return 0;
         }
-        return ((float) this.getExperience() / this.getMaxExperience()) * 100;
+        return (float) this.getExperience() / this.getMaxExperience();
+    }
+    
+    /**
+     * TODO: javadoc
+     * 
+     * @return
+     */
+    public float getLifePercentage() {
+        if (this.getLife() == 0) {
+            return 0;
+        }
+        return (float) this.getLife() / this.getMaxLife();
     }
 
     @Override
@@ -136,7 +148,7 @@ public class MainPlayer extends GameObject implements MainPlayerInterf {
      * @return player's maximum life
      */
     public final int getMaxLife() {
-        return this.life;
+        return this.maxLife;
     }
 
     /**
