@@ -71,7 +71,7 @@ public class TextureRender {
         g.fillRect(barXExp, barYExp, barWidthExp, barHeightExp);
         float percentageExp = player.getExpPercentage();
         percentageExp = percentageExp > 1 ? 1 : percentageExp; // prevents bar from overflowing
-        int filledWidthExp = (int) (barWidthExp * percentageExp);
+        final int filledWidthExp = (int) (barWidthExp * percentageExp);
         g.setColor(Color.CYAN);
         g.fillRect(barXExp, barYExp, filledWidthExp, barHeightExp); 
         g.setColor(Color.ORANGE);
@@ -82,7 +82,6 @@ public class TextureRender {
         g.fillRect(barXLife, barYLife, barWidthLife, barHeightLife);
         float percentage = player.getLifePercentage();
         percentage = percentage > 1 ? 1 : percentage; // prevents bar from overflowing
-        System.out.println("life p " + percentage);
         final int filledWidth = (int) (barWidthLife * percentage);
         g.setColor(Color.GREEN);
         g.fillRect(barXLife, barYLife, filledWidth, barHeightLife);
