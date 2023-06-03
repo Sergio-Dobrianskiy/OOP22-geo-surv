@@ -5,15 +5,18 @@ import it.unibo.geosurv.model.Handler;
 import it.unibo.geosurv.model.bullets.Bullet;
 
 /**
- * Behavior that removes object in case of collision
+ * Behavior that doesn't react on collision.
  */
 public class NoCollisionBehavior implements ICollisionBehavior {
-    
+
+    /**
+     * Constructor for this class.
+     */
     public NoCollisionBehavior() {
     }
 
     /**
-     * Object doesn't react to collisions
+     * Object doesn't react to collisions.
      */
     @Override
     public void collide(final GameObject ths, final Handler handler) {
