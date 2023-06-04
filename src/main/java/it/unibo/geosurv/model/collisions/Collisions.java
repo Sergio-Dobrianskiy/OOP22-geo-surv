@@ -6,7 +6,6 @@ import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.Handler;
 import it.unibo.geosurv.model.ID;
 import it.unibo.geosurv.model.bullets.Bullet;
-import it.unibo.geosurv.model.bullets.AutoBullet;
 import it.unibo.geosurv.model.drops.Experience;
 import it.unibo.geosurv.model.drops.Life;
 import it.unibo.geosurv.model.monsters.Monster;
