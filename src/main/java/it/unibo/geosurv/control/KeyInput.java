@@ -49,7 +49,7 @@ public class KeyInput extends KeyAdapter {
                 handler.setDown(true);
                 break;
             case KeyEvent.VK_P:
-                game.pause();
+                game.statePause();
                 break;
             case KeyEvent.VK_G:
                 game.switchDebug();

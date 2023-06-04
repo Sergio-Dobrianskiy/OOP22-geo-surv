@@ -195,13 +195,49 @@ public class Game extends Canvas implements Runnable, TickingObject {
     /**
      * pauses/resumes the game.
      */
-    public void pause() {
+    public void statePause() {
         if (this.state == GameState.RUNNING) {
             this.state = GameState.PAUSE;
         } else if (this.state == GameState.PAUSE) {
             this.state = GameState.RUNNING;
         }
         repaint();
+    }
+
+    /**
+     * wins the game.
+     */
+    public void stateWon() {
+        if (this.state == GameState.RUNNING) {
+            this.state = GameState.WON;
+        }
+    }
+
+    /**
+     * loses the game.
+     */
+    public void stateLost() {
+        if (this.state == GameState.RUNNING) {
+            this.state = GameState.LOST;
+        }
+    }
+
+    /**
+     * enters the menu.
+     */
+    public void stateMenu() {
+        if (this.state == GameState.RUNNING || this.state == GameState.LOADING || this.state == GameState.WON || this.state == GameState.LOST) {
+            this.state = GameState.MENU;
+        }
+    }
+
+    /**
+     * enters the running state.
+     */
+    public void stateRunning() {
+        if (this.state == GameState.MENU || this.state == GameState.PAUSE) {
+            this.state = GameState.RUNNING;
+        }
     }
 
     /**

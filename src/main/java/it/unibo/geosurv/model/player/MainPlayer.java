@@ -9,14 +9,16 @@ import it.unibo.geosurv.control.weapons.WeaponLevels;
 import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.Handler;
 import it.unibo.geosurv.model.ID;
-import it.unibo.geosurv.model.ObserverEntity;
+import it.unibo.geosurv.model.IObservable;
+import it.unibo.geosurv.model.IObserverEntity;
 import it.unibo.geosurv.model.collisions.Collisions;
 import it.unibo.geosurv.view.graphics.Texture;
 
 /**
  * Represents Player.
+ * 
  */
-public class MainPlayer extends GameObject implements MainPlayerInterf {
+public class MainPlayer extends GameObject implements MainPlayerInterf, IObservable {
 
     /**
      * Player's height.
@@ -29,11 +31,11 @@ public class MainPlayer extends GameObject implements MainPlayerInterf {
     /**
      * Player's speed.
      */
-    private final int playerSpeed = 5;
+    private static final int playerSpeed = 5;
     /**
      * Player's maximum live.
      */
-    private final int maxLife = 100;
+    private static final int maxLife = 100;
 
     public final static int EXPERIENCE = 500;
     private static final int MAX_HITS_PER_SECOND = 2;
@@ -44,7 +46,7 @@ public class MainPlayer extends GameObject implements MainPlayerInterf {
     private Collisions collisions;
     private PlayerMovement playerMovement;
     private PlayerLevels playerLevels;
-    private List<ObserverEntity> observers;
+    private List<IObserverEntity> observers;
     private ArrayList<Weapon> weapons;
     private WeaponLevels weaponLevels;
 
@@ -112,7 +114,19 @@ public class MainPlayer extends GameObject implements MainPlayerInterf {
         if (this.getExperience() == 0) {
             return 0;
         }
-        return ((float) this.getExperience() / this.getMaxExperience()) * 100;
+        return (float) this.getExperience() / this.getMaxExperience();
+    }
+    
+    /**
+     * TODO: javadoc
+     * 
+     * @return
+     */
+    public float getLifePercentage() {
+        if (this.getLife() == 0) {
+            return 0;
+        }
+        return (float) this.getLife() / this.getMaxLife();
     }
 
     @Override
@@ -136,7 +150,7 @@ public class MainPlayer extends GameObject implements MainPlayerInterf {
      * @return player's maximum life
      */
     public final int getMaxLife() {
-        return this.life;
+        return this.maxLife;
     }
 
     /**
@@ -145,7 +159,7 @@ public class MainPlayer extends GameObject implements MainPlayerInterf {
      * @return player's speed
      */
     public final int getSpeed() {
-        return this.playerSpeed;
+        return playerSpeed;
     }
 
     @Override
@@ -154,21 +168,19 @@ public class MainPlayer extends GameObject implements MainPlayerInterf {
     }
 
     @Override
-    public final void addObserver(final ObserverEntity observer) {
+    public final void addObserver(final IObserverEntity observer) {
         this.observers.add(observer);
     }
 
     @Override
-    public final void removeObserver(final ObserverEntity observer) {
+    public final void removeObserver(final IObserverEntity observer) {
         this.observers.remove(observer);
     }
 
-    /**
-     * notifies each observer.
-     */
-    private void notifyObservers() {
-        for (final ObserverEntity observer : observers) {
-            observer.update(this);
+    @Override
+    public void notifyObservers() {
+        for (final IObserverEntity observer : observers) {
+            observer.update();
         }
     }
 

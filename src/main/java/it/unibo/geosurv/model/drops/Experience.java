@@ -3,7 +3,9 @@ package it.unibo.geosurv.model.drops;
 import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.Handler;
 import it.unibo.geosurv.model.ID;
-import it.unibo.geosurv.model.ObserverEntity;
+import it.unibo.geosurv.model.IObserverEntity;
+import it.unibo.geosurv.model.collisions.ICollisionBehavior;
+import it.unibo.geosurv.model.collisions.RemoveOnCollisionBehavior;
 import it.unibo.geosurv.model.player.MainPlayer;
 import it.unibo.geosurv.view.graphics.Texture;
 
@@ -11,16 +13,18 @@ import it.unibo.geosurv.view.graphics.Texture;
  * Class for experience pills, created at monsters death.
  * More experience make player go to new levels.
  */
-public class Experience extends GameObject implements ObserverEntity<MainPlayer> {
+public class Experience extends GameObject implements IObserverEntity {
 
     private static int experienceCounter = 0;
     protected static final int EXPERIENCE_HEIGHT = 25;
     protected static final int EXPERIENCE_WIDTH = 20;
+    private final MainPlayer player;
+    private final Handler handler;
     private int experience;
     private float mx; // Player Position throu observer
     private float my; // Player Position throu observer
-    private final MainPlayer player;
     private float pickUpSpeed = 10;
+    private ICollisionBehavior collisionBehavior;
 
     /**
      * The experience pill is created at monster's death, at the posistion where
@@ -31,15 +35,17 @@ public class Experience extends GameObject implements ObserverEntity<MainPlayer>
      * @param exp     experience quantity
      * @param handler
      */
-    public Experience(final float x, final float y, final int exp, final Handler handler) {
+    public Experience(final float x, final float y, final int exp, final Handler h) {
         super(x, y, ID.Experience);
         this.experience = exp;
         Experience.experienceCounter++;
         this.height = EXPERIENCE_HEIGHT;
         this.width = EXPERIENCE_WIDTH;
         this.texture = Texture.EXPERIENCE;
-        this.player = handler.getPlayer();
+        this.handler = h;
+        this.player = this.handler.getPlayer();
         this.player.addObserver(this);
+        this.collisionBehavior = new RemoveOnCollisionBehavior();
     }
 
     @Override
@@ -66,9 +72,9 @@ public class Experience extends GameObject implements ObserverEntity<MainPlayer>
     }
 
     @Override
-    public final void update(final MainPlayer mainPlayer) {
-        mx = mainPlayer.getX();
-        my = mainPlayer.getY();
+    public final void update() {
+        mx = this.player.getX();
+        my = this.player.getY();
     }
 
     /**
@@ -107,6 +113,13 @@ public class Experience extends GameObject implements ObserverEntity<MainPlayer>
         float dx = x2 - x1;
         float dy = y2 - y1;
         return (float) Math.sqrt(dx * dx + dy * dy);
+    }
+
+    /**
+     * starts collision behavior, no behavior by default.
+     */
+    public void collide() {
+        this.collisionBehavior.collide(this, this.handler);
     }
 
 }

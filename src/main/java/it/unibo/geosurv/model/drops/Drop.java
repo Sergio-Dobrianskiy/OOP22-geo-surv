@@ -46,7 +46,7 @@ public class Drop implements IDrop<GameObject> {
      * @return life objet
      */
     public Life dropLife() {
-        return new Life(this.m.getX(), this.m.getY());
+        return new Life(this.m.getX(), this.m.getY(), this.h);
     }
 
     /**
@@ -74,4 +74,5 @@ public class Drop implements IDrop<GameObject> {
         b.setY(this.m.getY());
         return b;
     }
+
 }
