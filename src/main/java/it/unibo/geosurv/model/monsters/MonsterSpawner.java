@@ -1,7 +1,6 @@
 package it.unibo.geosurv.model.monsters;
 
 import java.util.stream.Stream;
-
 import it.unibo.geosurv.control.TickingObject;
 import it.unibo.geosurv.model.Handler;
 
@@ -15,7 +14,6 @@ public class MonsterSpawner implements TickingObject {
     // // at any given time
     // private final static int MAX_R_MONSTERS = 100;
     private final Handler handler;
-    private static int numMonsters;
     // private static GameObject tempPlayer;
     // static Game game;
     private static int spawnRate = 1; // in monsters per second
@@ -58,10 +56,6 @@ public class MonsterSpawner implements TickingObject {
             flood();
             // }
         }
-    }
-
-    public static int getNumMonsters() {
-        return numMonsters;
     }
 
     @Override
