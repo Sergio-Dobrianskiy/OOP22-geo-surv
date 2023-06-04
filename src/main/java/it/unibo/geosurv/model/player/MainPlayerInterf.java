@@ -1,7 +1,5 @@
 package it.unibo.geosurv.model.player;
 
-import it.unibo.geosurv.model.ObserverEntity;
-
 /**
  * Interface which model the player.
  */
@@ -35,20 +33,6 @@ public interface MainPlayerInterf {
      * @param life
      */
     void setLife(int life);
-
-    /**
-     * adds an observer to the player.
-     * 
-     * @param observer
-     */
-    void addObserver(ObserverEntity observer);
-
-    /**
-     * removes an observer from the player.
-     * 
-     * @param observer
-     */
-    void removeObserver(ObserverEntity observer);
 
     /**
      * Player life is diminished by damage.
