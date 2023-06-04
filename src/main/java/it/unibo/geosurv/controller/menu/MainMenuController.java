@@ -1,8 +1,5 @@
 package it.unibo.geosurv.controller.menu;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 import it.unibo.geosurv.model.Game;
 
 public class MainMenuController {
@@ -11,24 +8,18 @@ public class MainMenuController {
 
     public MainMenuController(MenuView menuView) {
         this.menuView = menuView;
-
-        // Coonect the actionListeners
-        menuView.getStartButton().addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                startGame();
-            }
-        });
-
-        menuView.getCloseButton().addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                closeApplication();
-            }
-        });
+        setupButtonListeners();
+    }
+    
+    /* Configure actionListeners */
+    private void setupButtonListeners() {
+        menuView.getStartButton().addActionListener(e -> startGame());
+        menuView.getCloseButton().addActionListener(e -> closeMenu());
     }
 
     /* Open Menu */
     public void startMenu() {
-        menuView.setVisible(true);
+        menuView.getFrame().setVisible(true);
     }
 
     /* Close Menu */
@@ -39,7 +30,7 @@ public class MainMenuController {
     
     /* Start to play */
     private void startGame() {
-        menuView.setVisible(false);
+        menuView.getFrame().setVisible(false);
         game = new Game();
         game.start();
     }
