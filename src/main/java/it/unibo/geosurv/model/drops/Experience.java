@@ -3,7 +3,7 @@ package it.unibo.geosurv.model.drops;
 import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.Handler;
 import it.unibo.geosurv.model.ID;
-import it.unibo.geosurv.model.ObserverEntity;
+import it.unibo.geosurv.model.IObserverEntity;
 import it.unibo.geosurv.model.collisions.ICollisionBehavior;
 import it.unibo.geosurv.model.collisions.RemoveOnCollisionBehavior;
 import it.unibo.geosurv.model.player.MainPlayer;
@@ -13,13 +13,13 @@ import it.unibo.geosurv.view.graphics.Texture;
  * Class for experience pills, created at monsters death.
  * More experience make player go to new levels.
  */
-public class Experience extends GameObject implements ObserverEntity<MainPlayer> {
+public class Experience extends GameObject implements IObserverEntity {
 
     private static int experienceCounter = 0;
     protected static final int EXPERIENCE_HEIGHT = 25;
     protected static final int EXPERIENCE_WIDTH = 20;
     private final MainPlayer player;
-    private final Handler handler;;
+    private final Handler handler;
     private int experience;
     private float mx; // Player Position throu observer
     private float my; // Player Position throu observer
@@ -72,9 +72,9 @@ public class Experience extends GameObject implements ObserverEntity<MainPlayer>
     }
 
     @Override
-    public final void update(final MainPlayer mainPlayer) {
-        mx = mainPlayer.getX();
-        my = mainPlayer.getY();
+    public final void update() {
+        mx = this.player.getX();
+        my = this.player.getY();
     }
 
     /**
