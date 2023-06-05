@@ -3,7 +3,7 @@ package it.unibo.geosurv.model.player;
 /**
  * Interface which model the player.
  */
-public interface MainPlayerInterf {
+public interface IPlayer {
 
     /**
      * Actions player does each tick.

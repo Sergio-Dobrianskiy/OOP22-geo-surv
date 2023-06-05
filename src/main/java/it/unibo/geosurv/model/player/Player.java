@@ -18,7 +18,7 @@ import it.unibo.geosurv.view.graphics.Texture;
  * Represents Player.
  * 
  */
-public class Player extends GameObject implements MainPlayerInterf, IObservable {
+public class Player extends GameObject implements IPlayer, IObservable {
 
     /**
      * Player's height.
