@@ -89,7 +89,9 @@ public class MenuView extends JFrame {
         frame.pack();
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
-
+        frame.toFront();
+        frame.setAlwaysOnTop(true); 
+        frame.setAlwaysOnTop(false);
     }
 
     /**
