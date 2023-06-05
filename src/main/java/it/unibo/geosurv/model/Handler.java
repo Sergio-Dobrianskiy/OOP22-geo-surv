@@ -20,11 +20,11 @@ public class Handler implements TickingObject {
      */
     public void tick() {
         for (int i = 0; i < gameObjects.size(); i++) {
-            GameObject tempObject = gameObjects.get(i);
+            final GameObject tempObject = gameObjects.get(i);
             tempObject.tick();
         }
         for (int i = 0; i < tickingObjects.size(); i++) {
-            TickingObject tempObject = tickingObjects.get(i);
+            final TickingObject tempObject = tickingObjects.get(i);
             tempObject.tick();
         }
     }

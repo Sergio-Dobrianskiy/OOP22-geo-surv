@@ -2,7 +2,6 @@ package it.unibo.geosurv;
 
 import it.unibo.geosurv.controller.menu.MainMenuController;
 import it.unibo.geosurv.controller.menu.MenuView;
-//import it.unibo.geosurv.model.Game;
 
 /**
  * Main class for this game.
@@ -19,11 +18,11 @@ public final class Main {
      *
      * @param args parameters for the game
      */
-    public static void main(final String args[]) {
+    public static void main(final String[] args) {
 
-        MenuView menuView = new MenuView(); // view
+        final MenuView menuView = new MenuView(); // view
         // Game game = new Game(); // model
-        MainMenuController mainMenuController = new MainMenuController(menuView); // controller
+        final MainMenuController mainMenuController = new MainMenuController(menuView); // controller
 
         mainMenuController.startMenu(); // game menu
 

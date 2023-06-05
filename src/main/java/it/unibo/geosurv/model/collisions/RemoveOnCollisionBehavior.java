@@ -4,7 +4,7 @@ import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.Handler;
 
 /**
- * Behavior that removes object in case of collision
+ * Behavior that removes object in case of collision.
  */
 public class RemoveOnCollisionBehavior implements ICollisionBehavior {
 
@@ -13,8 +13,9 @@ public class RemoveOnCollisionBehavior implements ICollisionBehavior {
      */
     public RemoveOnCollisionBehavior() {
     }
+
     /**
-     * Behavior that removes object in case of collision
+     * Behavior that removes object in case of collision.
      */
     @Override
     public void collide(final GameObject ths, final Handler handler) {

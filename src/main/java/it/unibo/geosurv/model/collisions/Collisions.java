@@ -34,7 +34,7 @@ public class Collisions {
         final ArrayList<GameObject> tmpObjects = handler.getGameObjects();
         final Player player = handler.getPlayer();
         for (int i = 0; i < tmpObjects.size(); i++) {
-            GameObject tempObject = tmpObjects.get(i);
+            final GameObject tempObject = tmpObjects.get(i);
             if (Collisions.isColliding(player, tempObject, ID.Block)) { // if player touches wall => stop
                 player.collide();
             }
@@ -59,9 +59,9 @@ public class Collisions {
      * @param bullet to check
      */
     public void checkBulletCollisionss(final Bullet bullet) {
-        ArrayList<GameObject> tmpObjects = handler.getGameObjects();
+        final ArrayList<GameObject> tmpObjects = handler.getGameObjects();
         for (int i = 0; i < tmpObjects.size(); i++) {
-            GameObject tempObject = tmpObjects.get(i);
+            final GameObject tempObject = tmpObjects.get(i);
 
             if (Collisions.isColliding(bullet, tempObject, ID.Block)) {
                 bullet.collide();

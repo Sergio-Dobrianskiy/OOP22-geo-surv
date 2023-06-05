@@ -47,7 +47,7 @@ public class MenuView extends JFrame {
         panel.setLayout(new BorderLayout());
 
         /* Title */
-        JLabel title = new JLabel("Geo-Survivors");
+        final JLabel title = new JLabel("Geo-Survivors");
 
         /* Setting title  */
         title.setFont(new Font("Arial", Font.BOLD, 32));
