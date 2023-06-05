@@ -171,7 +171,7 @@ public class Game extends Canvas implements Runnable, TickingObject {
 
             /* Background obscured */
             g.setColor(backgroundPauseColor);
-            g.fillRect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
+            g.fillRect((int) camera.getX(), (int) camera.getY(), WINDOW_WIDTH, WINDOW_HEIGHT);
 
             g.setColor(Color.WHITE);
 
@@ -179,8 +179,8 @@ public class Game extends Canvas implements Runnable, TickingObject {
             int textWidth = fm.stringWidth(pauseText);
             int textHeight = fm.getHeight();
 
-            int x_pause = (WINDOW_WIDTH - textWidth) / 2;
-            int y_pause = (WINDOW_HEIGHT - textHeight) / 2;
+            int x_pause = (WINDOW_WIDTH - textWidth) / 2 + (int) camera.getX();
+            int y_pause = (WINDOW_HEIGHT - textHeight) / 2 + (int) camera.getY();
 
             g.drawString(pauseText, x_pause, y_pause);
         
