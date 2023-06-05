@@ -31,12 +31,12 @@ public class Collisions {
      * check if the player is colliding.
      */
     public void checkPlayerCollisions() {
-        ArrayList<GameObject> tmpObjects = handler.getGameObjects();
-        Player player = handler.getPlayer();
+        final ArrayList<GameObject> tmpObjects = handler.getGameObjects();
+        final Player player = handler.getPlayer();
         for (int i = 0; i < tmpObjects.size(); i++) {
             GameObject tempObject = tmpObjects.get(i);
             if (Collisions.isColliding(player, tempObject, ID.Block)) { // if player touches wall => stop
-                this.stopMovements();
+                player.collide();
             }
             if (Collisions.isColliding(player, tempObject, ID.Monster)) { // if player touches Monsters
                 player.hit(((Monster) tempObject).getPower());
@@ -98,14 +98,5 @@ public class Collisions {
      */
     public static boolean isColliding(final GameObject obj1, final GameObject obj2) {
         return obj1.getShape().getBounds2D().intersects(obj2.getShape().getBounds2D());
-    }
-
-    /**
-     * Stops player movements.
-     */
-    public void stopMovements() {
-        Player player = handler.getPlayer();
-        player.setX(player.getX() + player.getVelX() * -1);
-        player.setY(player.getY() + player.getVelY() * -1);
     }
 }

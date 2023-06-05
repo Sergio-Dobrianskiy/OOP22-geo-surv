@@ -12,6 +12,8 @@ import it.unibo.geosurv.model.ID;
 import it.unibo.geosurv.model.IObservable;
 import it.unibo.geosurv.model.IObserverEntity;
 import it.unibo.geosurv.model.collisions.Collisions;
+import it.unibo.geosurv.model.collisions.ICollisionBehavior;
+import it.unibo.geosurv.model.collisions.StopPlayerBehavior;
 import it.unibo.geosurv.view.graphics.Texture;
 
 /**
@@ -48,6 +50,9 @@ public class Player extends GameObject implements IPlayer, IObservable {
     private List<IObserverEntity<? extends GameObject>> observers;
     private ArrayList<Weapon> weapons;
     private WeaponLevels weaponLevels;
+    private ICollisionBehavior collisionBehavior;
+    private Handler handler;
+    
 
     /**
      * Constructor for this class.
@@ -63,12 +68,14 @@ public class Player extends GameObject implements IPlayer, IObservable {
         this.observers = new ArrayList<>();
         this.height = PLAYER_HEIGHT;
         this.width = PLAYER_WIDTH;
+        this.handler = handler;
         this.collisions = new Collisions(handler);
         this.playerMovement = new PlayerMovement(handler);
         // this.texture = Texture.PLAYER_DUCK; // alternative texture
         this.texture = Texture.PLAYER_MOUSE;
         this.playerLevels = new PlayerLevels(this);
         this.weapons = new ArrayList<>();
+        this.collisionBehavior = new StopPlayerBehavior();
     }
 
     @Override
@@ -221,6 +228,11 @@ public class Player extends GameObject implements IPlayer, IObservable {
      */
     public boolean isAlive() {
         return life > 0;
+    }
+
+    @Override
+    public void collide() {
+        this.collisionBehavior.collide(this, this.handler);
     }
 
 }

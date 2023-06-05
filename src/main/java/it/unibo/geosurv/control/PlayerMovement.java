@@ -56,6 +56,4 @@ public class PlayerMovement implements IPlayerMovement {
             player.setVelX(0);
         }
     }
-
-
 }

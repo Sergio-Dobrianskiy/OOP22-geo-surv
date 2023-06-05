@@ -72,4 +72,8 @@ public interface IPlayer {
      */
     int getMaxLife();
     
+    /**
+     * manages players collisions.
+     */
+    void collide();
 }
