@@ -3,7 +3,7 @@ package it.unibo.geosurv.model.monsters;
 import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.Handler;
 import it.unibo.geosurv.model.ID;
-import it.unibo.geosurv.model.ObserverEntity;
+import it.unibo.geosurv.model.IObserverEntity;
 import it.unibo.geosurv.model.drops.Drop;
 import it.unibo.geosurv.model.player.MainPlayer;
 import it.unibo.geosurv.model.utility.Func;
@@ -12,9 +12,8 @@ import it.unibo.geosurv.model.utility.Pair;
 /**
  * Abstract Class for generic evil.
  * 
- * @param <O>
  */
-public abstract class Monster extends GameObject implements IMonster, ObserverEntity<MainPlayer> {
+public abstract class Monster extends GameObject implements IMonster, IObserverEntity {
 
     private static final int DEFAULT_EXPERIENCE = 1;
     private static final int BOUNCING_SPEED_MULTIPLYER = 10;
@@ -141,9 +140,9 @@ public abstract class Monster extends GameObject implements IMonster, ObserverEn
     }
 
     @Override
-    public void update(final MainPlayer mp) {
-        mx = mp.getX();
-        my = mp.getY();
+    public void update() {
+        mx = this.player.getX();
+        my = this.player.getY();
     }
 
     @Override
@@ -172,7 +171,7 @@ public abstract class Monster extends GameObject implements IMonster, ObserverEn
     @Override
     public void setStartingPosition(final float minDistance, final float maxDistance) {
         Pair<Float, Float> randomPosition = Func.randomPoint(minDistance, maxDistance);
-        update(player); // to get player position
+        update(); // to get player position
         this.setX(mx + randomPosition.getX());
         this.setY(my + randomPosition.getY());
         // System.out.println("[" + mx + "," + my + "]");
@@ -180,7 +179,6 @@ public abstract class Monster extends GameObject implements IMonster, ObserverEn
 
     @Override
     public void removeMonster(Monster monster) {
-        monster = null;
         monstersCounter--;
         monstersDeadCounter++;
     }

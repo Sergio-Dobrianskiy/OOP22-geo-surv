@@ -58,10 +58,10 @@ public class LaserGun extends Weapon {
      * creates 1/2/4 lasers the player.
      */
     protected void shoot() {
-        float px = this.player.getX();
-        float py = this.player.getY();
-        float xCorrection = (longSide + MainPlayer.PLAYER_WIDTH) / 2;
-        float yCorrection = (longSide + MainPlayer.PLAYER_HEIGHT) / 2;
+        final float px = this.player.getX();
+        final float py = this.player.getY();
+        final float xCorrection = (longSide + MainPlayer.PLAYER_WIDTH) / 2;
+        final float yCorrection = (longSide + MainPlayer.PLAYER_HEIGHT) / 2;
 
         if (this.currentLevel >= 1) {
             this.handler.addObject(new Laser(px + xCorrection, py, this.handler, getDamage(), longSide, shortSide, Texture.LASER_H)); // right

@@ -59,9 +59,9 @@ public class ExplosionGun extends Weapon {
      */
     @Override
     protected void shoot() {
-        GameObject player = handler.getPlayer();
-        float x = player.getX();
-        float y = player.getY();
+        final GameObject player = handler.getPlayer();
+        final float x = player.getX();
+        final float y = player.getY();
         Pair<Float, Float> pair;
 
         for (int i = 0; i <= currentLevel * explosionsPerLevel; i++) {
