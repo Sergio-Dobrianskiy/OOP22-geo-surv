@@ -71,7 +71,7 @@ public class Game extends Canvas implements Runnable, TickingObject {
     public Game() {
         this.state = GameState.LOADING;
 
-        new Window(WINDOW_WIDTH, WINDOW_HEIGHT, "Geo Survival xxx", this);
+        new Window(WINDOW_WIDTH, WINDOW_HEIGHT, "Geo-Survivors", this);
 
         handler = new Handler();
         loader = new Loader(handler);
