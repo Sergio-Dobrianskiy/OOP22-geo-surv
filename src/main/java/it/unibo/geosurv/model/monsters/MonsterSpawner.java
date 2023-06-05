@@ -74,12 +74,12 @@ public class MonsterSpawner implements TickingObject {
 
         } else if (diff == 20) {
             m = tm.createMonster(this.handler);
-            m.setBig(true);
+            m.setIsBig(true);
         } else if (diff < 40) {
             m = rm.createMonster(this.handler);
         } else if (diff == 40) {
             m = rm.createMonster(this.handler);
-            m.setBig(true);
+            m.setIsBig(true);
         } else {
             m = rm.createMonster(this.handler);
         }
@@ -98,7 +98,7 @@ public class MonsterSpawner implements TickingObject {
         Stream.generate(() -> rm.createMonster(this.handler))
                 .limit(1)
                 .forEach(m -> {
-                    m.setBig(true);
+                    m.setIsBig(true);
                     handler.addObject(m);
                 });
 

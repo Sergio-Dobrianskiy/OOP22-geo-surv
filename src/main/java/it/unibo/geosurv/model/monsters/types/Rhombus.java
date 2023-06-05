@@ -40,4 +40,9 @@ public class Rhombus extends Monster {
         /* do nothing on tick() because object remains where it's created */
     }
 
+    @Override
+    public void setIsBig(boolean b) {
+        // Rhombus cannot be bigger at the moment.
+    }
+
 }

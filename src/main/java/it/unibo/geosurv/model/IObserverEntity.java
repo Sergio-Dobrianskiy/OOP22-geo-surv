@@ -3,7 +3,7 @@ package it.unibo.geosurv.model;
 /**
  * Interface for observers.
  * 
- * @param E specific type for the observer
+ * @param <E> specific type for the observer
  */
 public interface IObserverEntity<E> {
     /**

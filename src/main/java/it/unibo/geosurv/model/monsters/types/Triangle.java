@@ -52,16 +52,9 @@ public class Triangle extends Monster {
 
     }
 
-    /**
-     * @return whether a triangle is big or not.
-     */
-    public boolean isBig() {
-        return isBig;
-    }
 
     @Override
-    public final void setBig(final boolean isBig) {
-        this.isBig = isBig;
+    public final void setIsBig(final boolean isBig) {
         this.health = MAX_HEALTH;
         this.speed = MAX_SPEED;
         this.power = MAX_POWER;

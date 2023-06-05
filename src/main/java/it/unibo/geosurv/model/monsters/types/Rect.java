@@ -22,7 +22,6 @@ public class Rect extends Monster {
     private static final int POWER = 8; // power of (big) Rect
     private static int counter;
     private String name = "Rect-";
-    // private static final boolean isBig = false;
 
     /**
      * Rect constructor.
@@ -49,8 +48,7 @@ public class Rect extends Monster {
     }
 
     @Override
-    public final void setBig(final boolean isBig) {
-        this.isBig = isBig;
+    public final void setIsBig(final boolean isBig) {
         this.health = MAX_HEALTH;
         this.speed = MAX_SPEED;
         this.power = POWER;

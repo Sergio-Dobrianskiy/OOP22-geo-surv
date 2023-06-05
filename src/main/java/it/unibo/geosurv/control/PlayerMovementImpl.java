@@ -8,7 +8,7 @@ import it.unibo.geosurv.model.player.MainPlayer;
  */
 public class PlayerMovementImpl implements PlayerMovement {
 
-    private Handler handler;
+    private final Handler handler;
     private MainPlayer player;
 
     /**
@@ -28,7 +28,6 @@ public class PlayerMovementImpl implements PlayerMovement {
      public void movePlayer() {
         if (player == null) {                // TODO: rework
             player = handler.getPlayer();
-            System.out.println("null");
             return;
         }
 

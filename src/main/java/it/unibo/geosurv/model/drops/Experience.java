@@ -30,10 +30,10 @@ public class Experience extends GameObject implements IObserverEntity<MainPlayer
      * The experience pill is created at monster's death, at the posistion where
      * moster dies.
      * 
-     * @param x       position
-     * @param y       position
-     * @param exp     experience quantity
-     * @param handler
+     * @param x   position
+     * @param y   position
+     * @param exp experience quantity
+     * @param h   handler
      */
     public Experience(final float x, final float y, final int exp, final Handler h) {
         super(x, y, ID.Experience);
@@ -49,7 +49,7 @@ public class Experience extends GameObject implements IObserverEntity<MainPlayer
     }
 
     @Override
-    public void tick() {
+    public final void tick() {
         if (player.getLevel() > 1) {
             reachTarget();
         }
@@ -100,7 +100,7 @@ public class Experience extends GameObject implements IObserverEntity<MainPlayer
     }
 
     /**
-     * calculate distance beetwen two point (x1,y1) and (x2,y2) in a 2d space
+     * calculate distance beetwen two point (x1,y1) and (x2,y2) in a 2d space.
      * 
      * @param x1 first point x
      * @param y1 first point y

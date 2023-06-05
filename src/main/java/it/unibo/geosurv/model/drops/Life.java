@@ -13,11 +13,11 @@ import it.unibo.geosurv.view.graphics.Texture;
  */
 public class Life extends GameObject {
 
-    private static final int LIFE = 10;
-    private static final int LIFE_HEIGHT = 25;
-    private static final int LIFE_WIDTH = 20;
+    private static final int DEFAULT_LIFE = 10;
+    private static final int DEFAULT_LIFE_HEIGHT = 25;
+    private static final int DEFAULT_LIFE_WIDTH = 20;
     private final Handler handler;
-    private ICollisionBehavior collisionBehavior;
+    private final ICollisionBehavior collisionBehavior;
 
     /**
      * Life pill constructor.
@@ -30,8 +30,8 @@ public class Life extends GameObject {
 
     public Life(final float x, final float y, final Handler h) {
         super(x, y, ID.Life);
-        this.height = LIFE_HEIGHT;
-        this.width = LIFE_WIDTH;
+        this.height = DEFAULT_LIFE_HEIGHT;
+        this.width = DEFAULT_LIFE_WIDTH;
         this.texture = Texture.LIFE;
         this.handler = h;
         this.collisionBehavior = new RemoveOnCollisionBehavior();
@@ -47,8 +47,8 @@ public class Life extends GameObject {
     /**
      * @return int amount of experience in the pill
      */
-    public int getLife() {
-        return LIFE;
+    public int getDefaultLife() {
+        return DEFAULT_LIFE;
     }
 
     /**

@@ -8,7 +8,6 @@ import it.unibo.geosurv.model.monsters.types.Ball;
 /**
  * Class which manages the logics of dropping objects (life and experience).
  * 
- * @param <T>
  */
 public class Drop implements IDrop<GameObject> {
 
@@ -16,6 +15,12 @@ public class Drop implements IDrop<GameObject> {
     private Monster m;
     private Handler h;
 
+    /**
+     * Droppable object constructor.
+     * 
+     * @param m monster
+     * @param h handler
+     */
     public Drop(final Monster m, final Handler h) {
         this.m = m;
         this.h = h;
@@ -33,12 +38,17 @@ public class Drop implements IDrop<GameObject> {
 
     }
 
+    /**
+     * Evaluates if a life should be dropped (probability 1/50).
+     * 
+     * @return true if life should be dropped
+     */
     public boolean shouldDropLife() {
         // Generate a random number between 0 and 49
         double num = Math.random();
         int randomNumber = (int) (num * LIFE_PILLS_PROB);
         // Return true if the random number is 0 (probability of 1/50)
-        // System.out.println("Math.random() + " + num + " random: " + randomNumber);
+
         return randomNumber == 0;
     }
 

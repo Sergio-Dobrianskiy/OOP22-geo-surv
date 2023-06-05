@@ -1,5 +1,8 @@
 package it.unibo.geosurv.model.monsters;
 
+/**
+ * Interface to model Monsters.
+ */
 public interface IMonster {
 
     /**
@@ -19,15 +22,6 @@ public interface IMonster {
      */
     boolean isDead();
 
-    // unire le due in drop?? ed usare un unico method drop()
-    // Experience dropExperience();
-
-    // Life dropLife();
-
-    // boolean shouldDropLife();
-
-    // GameObject drop();
-
     /**
      * Entity's been hit by player weapon.
      * 
@@ -45,7 +39,7 @@ public interface IMonster {
      * 
      * @param b
      */
-    void setBig(boolean b);
+    void setIsBig(boolean b);
 
     /**
      * Set the starting position of a monster after it's born.
@@ -56,13 +50,6 @@ public interface IMonster {
      * @param maxDistance from player
      */
     void setStartingPosition(float minDistance, float maxDistance);
-
-    /**
-     * Remove the monster and decrease monsters counter.
-     * 
-     * @param monster
-     */
-    void removeMonster(Monster monster);
 
     /**
      * Entity dies, drop experience or life and it is removed.

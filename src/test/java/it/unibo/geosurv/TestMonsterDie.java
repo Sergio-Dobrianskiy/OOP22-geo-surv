@@ -48,10 +48,6 @@ class TestMonsterDie {
                 .forEach((i) -> {
                     assertTrue(isInPlayerAndExperienceOrLife(i));
                 });
-
-        // list.forEach((i) -> i.removeMonster(i));
-
-        // m.removeMonster(m);
     }
 
     boolean isInPlayerAndExperienceOrLife(final GameObject go) {
