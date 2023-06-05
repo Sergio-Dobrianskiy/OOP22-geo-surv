@@ -46,5 +46,5 @@ public interface MainPlayerInterf {
      *  
      * @return true if the player is alive
      */
-    public boolean isAlive();
+    boolean isAlive();
 }
