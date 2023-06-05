@@ -1,6 +1,7 @@
 package it.unibo.geosurv.model.collisions;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.Handler;
@@ -31,7 +32,7 @@ public class Collisions {
      * check if the player is colliding.
      */
     public void checkPlayerCollisions() {
-        ArrayList<GameObject> tmpObjects = handler.getGameObjects();
+        List<GameObject> tmpObjects = handler.getGameObjects();
         MainPlayer player = handler.getPlayer();
         for (int i = 0; i < tmpObjects.size(); i++) {
             GameObject tempObject = tmpObjects.get(i);
@@ -46,7 +47,7 @@ public class Collisions {
                 ((Experience) tempObject).collide();
             }
             if (Collisions.isColliding(player, tempObject, ID.Life)) { // if player touches life pills
-                handler.getPlayer().setLife(((Life) tempObject).getLife());
+                handler.getPlayer().setLife(((Life) tempObject).getDefaultLife());
                 // handler.removeObject(tempObject);
                 ((Life) tempObject).collide();
             }
@@ -59,7 +60,7 @@ public class Collisions {
      * @param bullet to check
      */
     public void checkBulletCollisionss(final Bullet bullet) {
-        ArrayList<GameObject> tmpObjects = handler.getGameObjects();
+        List<GameObject> tmpObjects = handler.getGameObjects();
         for (int i = 0; i < tmpObjects.size(); i++) {
             GameObject tempObject = tmpObjects.get(i);
 
