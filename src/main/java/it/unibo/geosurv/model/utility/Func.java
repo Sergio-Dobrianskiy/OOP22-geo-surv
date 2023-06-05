@@ -1,7 +1,6 @@
 package it.unibo.geosurv.model.utility;
 
 import java.awt.geom.Point2D;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 

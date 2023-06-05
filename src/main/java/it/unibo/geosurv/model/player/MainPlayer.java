@@ -46,7 +46,7 @@ public class MainPlayer extends GameObject implements MainPlayerInterf, IObserva
     private PlayerMovement playerMovement;
     private PlayerLevels playerLevels;
     private List<IObserverEntity<? extends GameObject>> observers;
-    private ArrayList<Weapon> weapons;
+    // private List<Weapon> weapons;
     private WeaponLevels weaponLevels;
 
     /**
@@ -68,7 +68,7 @@ public class MainPlayer extends GameObject implements MainPlayerInterf, IObserva
         // this.texture = Texture.PLAYER_DUCK; // alternative texture
         this.texture = Texture.PLAYER_MOUSE;
         this.playerLevels = new PlayerLevels(this);
-        this.weapons = new ArrayList<>();
+        // this.weapons = new ArrayList<>();
     }
 
     @Override
@@ -202,9 +202,9 @@ public class MainPlayer extends GameObject implements MainPlayerInterf, IObserva
      * 
      * @param weapons player's weapons
      */
-    public void setWeapons(final ArrayList<Weapon> weapons) {
-        this.weapons = weapons;
-        this.weaponLevels = new WeaponLevels(weapons);
+    public void setWeapons(final List<Weapon> w) {
+        // this.weapons = w;
+        this.weaponLevels = new WeaponLevels(w);
     }
 
     /**

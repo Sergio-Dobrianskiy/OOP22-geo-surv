@@ -1,6 +1,6 @@
 package it.unibo.geosurv.control.weapons;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -8,15 +8,15 @@ import java.util.Random;
  */
 public class WeaponLevels {
 
-    private ArrayList<Weapon> weapons;
+    private List<Weapon> weapons;
 
     /**
      * Constructor for this class.
      *
-     * @param weapons array of player's weapons
+     * @param w array of player's weapons
      */
-    public WeaponLevels(final ArrayList<Weapon> weapons) {
-        this.weapons = weapons;
+    public WeaponLevels(final List<Weapon> w) {
+        this.weapons = w;
     }
 
     /**
