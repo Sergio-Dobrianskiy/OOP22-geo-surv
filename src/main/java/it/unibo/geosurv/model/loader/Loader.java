@@ -13,7 +13,7 @@ import it.unibo.geosurv.model.block.Block;
 import it.unibo.geosurv.model.block.BlockFactory;
 import it.unibo.geosurv.model.block.BlockType;
 import it.unibo.geosurv.model.monsters.MonsterSpawner;
-import it.unibo.geosurv.model.player.MainPlayer;
+import it.unibo.geosurv.model.player.Player;
 import it.unibo.geosurv.view.graphics.Camera;
 import it.unibo.geosurv.view.graphics.Texture;
 
@@ -59,7 +59,7 @@ public class Loader implements ILoader {
      *
      */
     public void loadAll() {
-        handler.addPlayer(new MainPlayer(playerStartingX, playerStartingY, handler)); // TODO: remove?
+        handler.addPlayer(new Player(playerStartingX, playerStartingY, handler)); // TODO: remove?
         this.loadTextures();
         this.loadGuns();
         loadLevel(Texture.SMALL_MAP.extractTexture());

@@ -33,14 +33,14 @@ public class PlayerLevels {
      * total experience needed to level up.
      */
     private int expToLevelUp;
-    private final MainPlayer player;
+    private final Player player;
 
     /**
      * Constructor for this class.
      *
      * @param player game's player
      */
-    public PlayerLevels(final MainPlayer player) {
+    public PlayerLevels(final Player player) {
         this.currentLevel = this.startingLevel;
         this.currentExperience = 0;
         this.expToLevelUp = this.baseExp;

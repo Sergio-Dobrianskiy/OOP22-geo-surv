@@ -16,7 +16,7 @@ import it.unibo.geosurv.control.weapons.Weapon;
 import it.unibo.geosurv.control.weapons.WeaponFactory;
 import it.unibo.geosurv.control.weapons.WeaponType;
 import it.unibo.geosurv.model.Handler;
-import it.unibo.geosurv.model.player.MainPlayer;
+import it.unibo.geosurv.model.player.Player;
 
 /**
  * testing weapons.
@@ -29,7 +29,7 @@ public class TestWeapons<A> {
         final Handler handler = new Handler();
         Weapon weapon;
         final WeaponFactory weaponFactory = new WeaponFactory(handler);
-        handler.addPlayer(new MainPlayer(0, 0, handler));
+        handler.addPlayer(new Player(0, 0, handler));
 
         weapon = weaponFactory.createWeapon(WeaponType.AutoGun, 0).get();
         assertEquals(AutoGun.class, weapon.getClass());
@@ -50,7 +50,7 @@ public class TestWeapons<A> {
         final Handler handler = new Handler();
         Weapon weapon;
         final WeaponFactory weaponFactory = new WeaponFactory(handler);
-        handler.addPlayer(new MainPlayer(0, 0, handler));
+        handler.addPlayer(new Player(0, 0, handler));
 
         weapon = weaponFactory.createWeapon(WeaponType.AutoGun, 0).get();
         assertEquals(0, weapon.getLevel());
@@ -70,7 +70,7 @@ public class TestWeapons<A> {
         final Handler handler = new Handler();
         Weapon weapon;
         final WeaponFactory weaponFactory = new WeaponFactory(handler);
-        handler.addPlayer(new MainPlayer(0, 0, handler));
+        handler.addPlayer(new Player(0, 0, handler));
 
         weapon = weaponFactory.createWeapon(WeaponType.SatelliteGun, 0).get();
         assertEquals(0, weapon.getLevel());
@@ -90,7 +90,7 @@ public class TestWeapons<A> {
         final Handler handler = new Handler();
         Weapon weapon;
         final WeaponFactory weaponFactory = new WeaponFactory(handler);
-        handler.addPlayer(new MainPlayer(0, 0, handler));
+        handler.addPlayer(new Player(0, 0, handler));
 
         weapon = weaponFactory.createWeapon(WeaponType.ExplosionGun, 0).get();
         assertEquals(0, weapon.getLevel());
@@ -110,7 +110,7 @@ public class TestWeapons<A> {
         final Handler handler = new Handler();
         Weapon weapon;
         final WeaponFactory weaponFactory = new WeaponFactory(handler);
-        handler.addPlayer(new MainPlayer(0, 0, handler));
+        handler.addPlayer(new Player(0, 0, handler));
 
         weapon = weaponFactory.createWeapon(WeaponType.LaserGun, 0).get();
         assertEquals(0, weapon.getLevel());
@@ -130,7 +130,7 @@ public class TestWeapons<A> {
         final Handler handler = new Handler();
         Weapon weapon;
         final WeaponFactory weaponFactory = new WeaponFactory(handler);
-        handler.addPlayer(new MainPlayer(0, 0, handler));
+        handler.addPlayer(new Player(0, 0, handler));
 
         weapon = weaponFactory.createWeapon(WeaponType.LaserGun, 1).get();
         assertEquals(1, weapon.getLevel());
@@ -155,7 +155,7 @@ public class TestWeapons<A> {
         ArrayList<Weapon> weapons = new ArrayList<>();
         Weapon weapon;
         final WeaponFactory weaponFactory = new WeaponFactory(handler);
-        handler.addPlayer(new MainPlayer(0, 0, handler));
+        handler.addPlayer(new Player(0, 0, handler));
 
         weapons.add(weaponFactory.createWeapon(WeaponType.AutoGun, 0).get());
         weapons.add(weaponFactory.createWeapon(WeaponType.SatelliteGun, 0).get());

@@ -2,7 +2,7 @@ package it.unibo.geosurv.model;
 
 import java.util.ArrayList;
 import it.unibo.geosurv.control.TickingObject;
-import it.unibo.geosurv.model.player.MainPlayer;
+import it.unibo.geosurv.model.player.Player;
 
 /**
  * Represents the Handler.
@@ -11,7 +11,7 @@ public class Handler implements TickingObject {
 
     private ArrayList<GameObject> gameObjects = new ArrayList<>();
     private ArrayList<TickingObject> tickingObjects = new ArrayList<>();
-    private MainPlayer player;
+    private Player player;
     private boolean up = false, down = false, left = false, right = false;
 
 
@@ -48,13 +48,13 @@ public class Handler implements TickingObject {
         tickingObjects.remove(tempObject);
     }
 
-    public MainPlayer addPlayer(MainPlayer player) {
+    public Player addPlayer(Player player) {
         this.player = player;
         this.gameObjects.add(player);
         return player;
     }
 
-    public MainPlayer getPlayer() {
+    public Player getPlayer() {
         return this.player;
     }
 

@@ -18,7 +18,7 @@ import it.unibo.geosurv.view.graphics.Texture;
  * Represents Player.
  * 
  */
-public class MainPlayer extends GameObject implements MainPlayerInterf, IObservable {
+public class Player extends GameObject implements MainPlayerInterf, IObservable {
 
     /**
      * Player's height.
@@ -56,7 +56,7 @@ public class MainPlayer extends GameObject implements MainPlayerInterf, IObserva
      * @param y       explosion coordinate
      * @param handler game's Handler
      */
-    public MainPlayer(final float x, final float y, final Handler handler) {
+    public Player(final float x, final float y, final Handler handler) {
         super(x, y, ID.Player);
         this.life = maxLife;
         this.lastHitTime = 0;

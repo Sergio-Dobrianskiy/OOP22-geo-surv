@@ -6,19 +6,19 @@ import it.unibo.geosurv.model.ID;
 import it.unibo.geosurv.model.IObserverEntity;
 import it.unibo.geosurv.model.collisions.ICollisionBehavior;
 import it.unibo.geosurv.model.collisions.RemoveOnCollisionBehavior;
-import it.unibo.geosurv.model.player.MainPlayer;
+import it.unibo.geosurv.model.player.Player;
 import it.unibo.geosurv.view.graphics.Texture;
 
 /**
  * Class for experience pills, created at monsters death.
  * More experience make player go to new levels.
  */
-public class Experience extends GameObject implements IObserverEntity<MainPlayer> {
+public class Experience extends GameObject implements IObserverEntity<Player> {
 
     private static int experienceCounter = 0;
     protected static final int EXPERIENCE_HEIGHT = 25;
     protected static final int EXPERIENCE_WIDTH = 20;
-    private final MainPlayer player;
+    private final Player player;
     private final Handler handler;
     private int experience;
     private float mx; // Player Position throu observer

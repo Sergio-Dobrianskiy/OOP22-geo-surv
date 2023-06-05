@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.Handler;
 import it.unibo.geosurv.model.ID;
-import it.unibo.geosurv.model.player.MainPlayer;
+import it.unibo.geosurv.model.player.Player;
 import it.unibo.geosurv.model.drops.Experience;
 import it.unibo.geosurv.model.monsters.Monster;
 
@@ -33,7 +33,7 @@ public class TextureRender {
 
     public void renderView(final Graphics g) {
         final ArrayList<GameObject> gameObjects = handler.getGameObjects();
-        final MainPlayer player = handler.getPlayer();
+        final Player player = handler.getPlayer();
         for (final GameObject to : gameObjects) {
             final int xx = getRenderX(to);
             final int yy = getRenderY(to);
@@ -48,7 +48,7 @@ public class TextureRender {
      * @param g
      * @param player game's player
      */
-    public void renderUI(final Graphics g, final MainPlayer player) {
+    public void renderUI(final Graphics g, final Player player) {
 
         final int x = (int) player.getX();
         final int y = (int) player.getY();

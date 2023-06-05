@@ -6,7 +6,7 @@ import it.unibo.geosurv.model.Handler;
 import it.unibo.geosurv.model.ID;
 import it.unibo.geosurv.model.IObserverEntity;
 import it.unibo.geosurv.model.drops.Drop;
-import it.unibo.geosurv.model.player.MainPlayer;
+import it.unibo.geosurv.model.player.Player;
 import it.unibo.geosurv.model.utility.Func;
 import it.unibo.geosurv.model.utility.Pair;
 
@@ -14,7 +14,7 @@ import it.unibo.geosurv.model.utility.Pair;
  * Abstract Class for generic evil.
  * 
  */
-public abstract class Monster extends GameObject implements IMonster, IObserverEntity<MainPlayer> {
+public abstract class Monster extends GameObject implements IMonster, IObserverEntity<Player> {
 
     private static final int DEFAULT_EXPERIENCE = 1;
     private static final int BOUNCING_SPEED_MULTIPLYER = 10;
@@ -32,7 +32,7 @@ public abstract class Monster extends GameObject implements IMonster, IObserverE
     protected int power; // power which the plyer is hit by when in contact with a monster
     protected float mx; // Player Position throu observer
     protected float my; // Player Position throu observer
-    protected MainPlayer player;
+    protected Player player;
     protected double speed;
     protected boolean isBig;
     protected Drop dropStrategy; // strategy for dropping life or experience

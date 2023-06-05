@@ -1,7 +1,7 @@
 package it.unibo.geosurv.control;
 
 import it.unibo.geosurv.model.Handler;
-import it.unibo.geosurv.model.player.MainPlayer;
+import it.unibo.geosurv.model.player.Player;
 
 /**
  * manages player movement.
@@ -9,7 +9,7 @@ import it.unibo.geosurv.model.player.MainPlayer;
 public class PlayerMovementImpl implements PlayerMovement {
 
     private Handler handler;
-    private MainPlayer player;
+    private Player player;
 
     /**
      * Constructor for this class.
