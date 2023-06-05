@@ -56,7 +56,7 @@ public class Ball extends Monster {
         this.setY(this.getY() + this.velY);
 
         // added a little bit of deviation with Math.random
-        float angle = (float) (Math.atan2(my - this.getY() + 8, mx - this.getX() + 4) + Math.random());
+        final float angle = (float) (Math.atan2(my - this.getY() + 8, mx - this.getX() + 4) + Math.random());
         this.velX = (float) ((this.speed) * Math.cos(angle));
         this.velY = (float) ((this.speed) * Math.sin(angle));
     }

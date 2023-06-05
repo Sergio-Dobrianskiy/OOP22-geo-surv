@@ -109,19 +109,11 @@ public abstract class Monster extends GameObject implements IMonster, IObserverE
      */
     public void bounce() {
 
-        boolean isBouncing = false;
-
-        if (!isBouncing) { // start bouncing behavior
-            isBouncing = true;
-
             // reverse the horizontal and vertical velocities to bounce the object off the
             // player
             this.velX = -this.velX * BOUNCING_SPEED_MULTIPLYER;
             this.velY = -this.velY * BOUNCING_SPEED_MULTIPLYER;
 
-            // System.out.println(this.toString() + " inverting direction..");
-        }
-        isBouncing = false;
     }
 
     @Override
@@ -150,7 +142,7 @@ public abstract class Monster extends GameObject implements IMonster, IObserverE
         this.setX(this.getX() + this.velX);
         this.setY(this.getY() + this.velY);
 
-        float angle = (float) Math.atan2(my - this.getY() + 8, mx - this.getX() + 4);
+        final float angle = (float) Math.atan2(my - this.getY() + 8, mx - this.getX() + 4);
 
         this.velX = (float) ((this.speed) * Math.cos(angle));
         this.velY = (float) ((this.speed) * Math.sin(angle));

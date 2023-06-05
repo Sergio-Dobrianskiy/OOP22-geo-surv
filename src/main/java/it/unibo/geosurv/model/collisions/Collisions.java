@@ -1,6 +1,5 @@
 package it.unibo.geosurv.model.collisions;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import it.unibo.geosurv.model.GameObject;
@@ -43,7 +42,7 @@ public class Collisions {
                 player.hit(((Monster) tempObject).getPower());
             }
             if (Collisions.isColliding(player, tempObject, ID.Experience)) { // if player touches experience pills
-                handler.getPlayer().setExperience(((Experience) tempObject).getExperience());
+                handler.getPlayer().setExperience(((Experience) tempObject).getExp());
                 ((Experience) tempObject).collide();
             }
             if (Collisions.isColliding(player, tempObject, ID.Life)) { // if player touches life pills

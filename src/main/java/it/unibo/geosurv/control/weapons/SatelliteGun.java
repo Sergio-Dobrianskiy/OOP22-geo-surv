@@ -1,6 +1,8 @@
 package it.unibo.geosurv.control.weapons;
 
 import java.util.ArrayList;
+import java.util.List;
+
 import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.Handler;
 import it.unibo.geosurv.model.bullets.Satellite;
@@ -13,29 +15,29 @@ public class SatelliteGun extends Weapon {
     /**
      * Satellites orbit speed.
      */
-    private final float orbitSpeed = 0.05f;
+	private static final float orbitSpeed = 0.05f;
     /**
      * Satellites orbit radius.
      */
-    private final float orbitRadius = 150f;
+	private static final float orbitRadius = 150f;
     /**
      * Radians in a circle.
      */
-    private final double radiansInCircle = 6.28319d; // 360° = radians 6.28319
+	private static final double radiansInCircle = 6.28319d; // 360° = radians 6.28319
     /**
      * Default Satellites damage.
      */
-    private final int damage = 3;
+	private static final int damage = 3;
     /**
      * Default number of Satellites per weapon level.
      */
-    private final int satellitesPerLevel = 3;
+	private static final int satellitesPerLevel = 3;
 	
     private  double angleDifference;
     private Handler handler;
     private GameObject tempPlayer;
     private double angle = 0d;
-    private ArrayList<GameObject> satellites;
+	private List<GameObject> satellites;
     private int index;
 	
 	/**
@@ -74,7 +76,7 @@ public class SatelliteGun extends Weapon {
 	 * @return float y coordinate of the satellite
 	 */	
 	public float getXPos(final double angle) {
-		return (float) (this.tempPlayer.getX() + (Math.cos(angle) * this.orbitRadius));
+		return (float) (this.tempPlayer.getX() + (Math.cos(angle) * orbitRadius));
 	}
 	
 	/**
@@ -85,7 +87,7 @@ public class SatelliteGun extends Weapon {
 	 * @return float y coordinate of the satellite
 	 */	
 	public float getYPos(final double angle) {
-		return (float) (this.tempPlayer.getY() + (Math.sin(angle) * this.orbitRadius));
+		return (float) (this.tempPlayer.getY() + (Math.sin(angle) * orbitRadius));
 	}
 
 	/**
@@ -93,7 +95,7 @@ public class SatelliteGun extends Weapon {
 	 */
 	@Override
 	protected void shoot() {
-		this.angle += this.orbitSpeed;
+		this.angle += orbitSpeed;
 		this.angleDifference = radiansInCircle / satellites.size();
 		this.index = 0;
 
@@ -115,7 +117,7 @@ public class SatelliteGun extends Weapon {
 		if (currentLevel < MAX_LVL) {
 			currentLevel += 1;
 			while (satellites.size() < (currentLevel * satellitesPerLevel)) {
-				System.out.println("size " + satellites.size());
+				// System.out.println("size " + satellites.size());
 				this.addSatellite();
 			}
 		return true;
