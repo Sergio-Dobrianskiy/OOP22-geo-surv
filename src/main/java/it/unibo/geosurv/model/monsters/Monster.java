@@ -91,7 +91,7 @@ public abstract class Monster extends GameObject implements IMonster, IObserverE
 
     @Override
     public void hit(final int weaponDamage) {
-        long currentTime = System.currentTimeMillis();
+        final long currentTime = System.currentTimeMillis();
         if (currentTime - lastHitTime >= HIT_COOLDOWN) {
             this.health -= weaponDamage;
             lastHitTime = currentTime;

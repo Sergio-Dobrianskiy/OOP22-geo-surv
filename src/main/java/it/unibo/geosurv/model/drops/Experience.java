@@ -17,7 +17,7 @@ public class Experience extends GameObject implements IObserverEntity<MainPlayer
 
     private static final int EXPERIENCE_HEIGHT = 25;
     private static final int EXPERIENCE_WIDTH = 20;
-    private static final float pickUpSpeed = 10;
+    private static final float PICK_UP_SPEED = 10;
     private static int experienceCounter;
     private final MainPlayer player;
     private final Handler handler;
@@ -83,7 +83,7 @@ public class Experience extends GameObject implements IObserverEntity<MainPlayer
      */
     public void reachTarget() {
         // distance from the player and experience pill
-        float distance = calculateDistance(player.getX(), player.getY(), this.getX(), this.getY());
+        final float distance = calculateDistance(player.getX(), player.getY(), this.getX(), this.getY());
         // maxDistance: to determine the max distance a pill can reach the player and
         // increment +10% distance each level
         final float maxDistance = 80 + (10 * player.getLevel());
@@ -94,8 +94,8 @@ public class Experience extends GameObject implements IObserverEntity<MainPlayer
 
             final float angle = (float) Math.atan2(my - this.getY() + 8, mx - this.getX() + 4);
 
-            this.velX = (float) ((pickUpSpeed) * Math.cos(angle));
-            this.velY = (float) ((pickUpSpeed) * Math.sin(angle));
+            this.velX = (float) ((PICK_UP_SPEED) * Math.cos(angle));
+            this.velY = (float) ((PICK_UP_SPEED) * Math.sin(angle));
         }
     }
 

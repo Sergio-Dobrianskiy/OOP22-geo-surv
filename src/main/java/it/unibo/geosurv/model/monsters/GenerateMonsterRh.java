@@ -13,7 +13,7 @@ public class GenerateMonsterRh implements GenerateMonster<Monster, Handler> {
 
     @Override
     public final Monster createMonster(final Handler h) {
-        Monster r = new Rhombus(h);
+        final Monster r = new Rhombus(h);
         r.setStartingPosition(MIN_DISTANCE, MAX_DISTANCE);
         return r;
     }

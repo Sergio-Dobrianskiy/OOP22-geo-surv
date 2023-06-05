@@ -12,8 +12,8 @@ import it.unibo.geosurv.model.monsters.types.Ball;
 public class Drop implements IDrop<GameObject> {
 
     private static final int LIFE_PILLS_PROB = 50; // probability to get a life pill: 1/50 at monster death
-    private Monster m;
-    private Handler h;
+    private final Monster m;
+    private final Handler h;
 
     /**
      * Droppable object constructor.
@@ -45,8 +45,8 @@ public class Drop implements IDrop<GameObject> {
      */
     public boolean shouldDropLife() {
         // Generate a random number between 0 and 49
-        double num = Math.random();
-        int randomNumber = (int) (num * LIFE_PILLS_PROB);
+        final double num = Math.random();
+        final int randomNumber = (int) (num * LIFE_PILLS_PROB);
         // Return true if the random number is 0 (probability of 1/50)
 
         return randomNumber == 0;
@@ -68,8 +68,8 @@ public class Drop implements IDrop<GameObject> {
 
     public boolean shouldDropMonsterBall() {
         // Generate a random number between 0 and 49
-        double num = Math.random();
-        int randomNumber = (int) (num * 10);
+        final double num = Math.random();
+        final int randomNumber = (int) (num * 10);
         // Return true if the random number is 0 (probability of 1/50)
         // System.out.println("Math.random() + " + num + " random: " + randomNumber);
         return randomNumber == 0;
@@ -79,7 +79,7 @@ public class Drop implements IDrop<GameObject> {
      * @return a new Ball monster
      */
     public Ball dropBall() {
-        Ball b = new Ball(this.h);
+        final Ball b = new Ball(this.h);
         b.setX(this.m.getX());
         b.setY(this.m.getY());
         return b;
