@@ -23,11 +23,6 @@ public interface IPlayer {
     void setExperience(int experience);
 
     /**
-     * @return how much health the Player has left.
-     */
-    int getLife();
-
-    /**
      * heals/damages the player.
      * 
      * @param life
@@ -47,4 +42,34 @@ public interface IPlayer {
      * @return true if the player is alive
      */
     boolean isAlive();
+    
+    /**
+     * Returns the level the player is in.
+     * 
+     */
+    int getLevel();
+    
+    /**
+     * 
+     */
+    float getExpPercentage();
+    
+    /**
+     * 
+     */
+    float getLifePercentage();
+    
+    
+    /**
+     * @return how much health the Player has left.
+     */
+    int getLife();
+    
+    /**
+     * returns player maximum life.
+     * 
+     * @return player's maximum life
+     */
+    int getMaxLife();
+    
 }
