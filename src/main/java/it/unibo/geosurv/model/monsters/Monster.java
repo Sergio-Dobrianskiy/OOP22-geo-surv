@@ -191,4 +191,9 @@ public abstract class Monster extends GameObject implements IMonster, IObserverE
     public static int getMonstersDeadCounter() {
         return monstersDeadCounter;
     }
+    
+    @Override
+    public void collide() {
+        
+    }
 }

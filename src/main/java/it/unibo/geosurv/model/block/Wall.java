@@ -35,4 +35,8 @@ public class Wall extends Block {
     @Override
     public void tick() {
     }
+    
+    @Override
+    public void collide() {
+    }
 }

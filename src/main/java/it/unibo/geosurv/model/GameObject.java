@@ -149,4 +149,6 @@ public abstract class GameObject implements TickingObject, IGameObject {
     public RectangularShape getShape() {
         return new Rectangle(this.getRenderX(), getRenderY(), this.width, this.height);
     }
+    
+    public abstract void collide();
 }

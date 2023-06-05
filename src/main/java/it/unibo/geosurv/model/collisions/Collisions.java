@@ -43,12 +43,12 @@ public class Collisions {
             }
             if (Collisions.isColliding(player, tempObject, ID.Experience)) { // if player touches experience pills
                 handler.getPlayer().setExperience(((Experience) tempObject).getExperience());
-                ((Experience) tempObject).collide();
+                tempObject.collide();
             }
             if (Collisions.isColliding(player, tempObject, ID.Life)) { // if player touches life pills
                 handler.getPlayer().setLife(((Life) tempObject).getLife());
                 // handler.removeObject(tempObject);
-                ((Life) tempObject).collide();
+                tempObject.collide();
             }
         }
     }
