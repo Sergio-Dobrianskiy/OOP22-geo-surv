@@ -2,8 +2,8 @@ package it.unibo.geosurv.model.player;
 
 import java.util.ArrayList;
 import java.util.List;
+import it.unibo.geosurv.control.IPlayerMovement;
 import it.unibo.geosurv.control.PlayerMovement;
-import it.unibo.geosurv.control.PlayerMovementImpl;
 import it.unibo.geosurv.control.weapons.Weapon;
 import it.unibo.geosurv.control.weapons.WeaponLevels;
 import it.unibo.geosurv.model.GameObject;
@@ -43,7 +43,7 @@ public class Player extends GameObject implements IPlayer, IObservable {
     private long lastHitTime; // last time Player is touched/hit by a monster
     private int life;
     private Collisions collisions;
-    private PlayerMovement playerMovement;
+    private IPlayerMovement playerMovement;
     private PlayerLevels playerLevels;
     private List<IObserverEntity<? extends GameObject>> observers;
     private ArrayList<Weapon> weapons;
@@ -64,7 +64,7 @@ public class Player extends GameObject implements IPlayer, IObservable {
         this.height = PLAYER_HEIGHT;
         this.width = PLAYER_WIDTH;
         this.collisions = new Collisions(handler);
-        this.playerMovement = new PlayerMovementImpl(handler);
+        this.playerMovement = new PlayerMovement(handler);
         // this.texture = Texture.PLAYER_DUCK; // alternative texture
         this.texture = Texture.PLAYER_MOUSE;
         this.playerLevels = new PlayerLevels(this);

@@ -1,16 +1,61 @@
 package it.unibo.geosurv.control;
 
+import it.unibo.geosurv.model.Handler;
+import it.unibo.geosurv.model.player.Player;
+
 /**
- * interface for player's movement.
+ * manages player movement.
  */
-public interface PlayerMovement {
+public class PlayerMovement implements IPlayerMovement {
+
+    private Handler handler;
+    private Player player;
 
     /**
-     * moves player.
+     * Constructor for this class.
+     *
+     * @param handler game's Handler
      */
-    void movePlayer();
+    public PlayerMovement(final Handler handler) {
+        this.handler = handler;
+        this.player = handler.getPlayer();
+    }
+
     /**
-     * stops player.
+     * manages player movement.
      */
-    void stopMovements();
+    @Override
+     public void movePlayer() {
+        if (player == null) {                // TODO: rework
+            player = handler.getPlayer();
+            System.out.println("null");
+            return;
+        }
+
+        if (handler.isUp()) {
+            player.setVelY(-player.getSpeed());
+        } else if (!handler.isDown()) {
+            player.setVelY(0);
+        }
+
+        if (handler.isDown()) {
+            player.setVelY(player.getSpeed());
+        } else if (!handler.isUp()) {
+            player.setVelY(0);
+        }
+
+        if (handler.isRight()) {
+            player.setVelX(player.getSpeed());
+        } else if (!handler.isLeft()) {
+            player.setVelX(0);
+        }
+
+        if (handler.isLeft()) {
+            player.setVelX(-player.getSpeed());
+        } else if (!handler.isRight()) {
+            player.setVelX(0);
+        }
+    }
+
+
 }
