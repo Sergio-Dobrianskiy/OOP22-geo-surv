@@ -38,7 +38,7 @@ public class MonsterSpawner implements TickingObject {
         currentTime = System.currentTimeMillis();
         currentSecond = (int) ((currentTime / 1000)); // update current second
         int diff = (int) (currentSecond - this.begin);
-        System.out.println(diff + " :: " + this.begin + " :: " + (currentSecond - this.begin / 1000));
+        //System.out.println(diff + " :: " + this.begin + " :: " + (currentSecond - this.begin / 1000));
         elapsedTime = currentTime - lastSpawnTime;
         if (diff > 21) {
             spawnRate = 2;

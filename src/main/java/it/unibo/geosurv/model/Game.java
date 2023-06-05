@@ -7,14 +7,12 @@ import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferStrategy;
-import java.awt.Component;
 
 import it.unibo.geosurv.control.GameState;
 import it.unibo.geosurv.control.KeyInput;
 import it.unibo.geosurv.control.TickingObject;
 import it.unibo.geosurv.model.loader.ILoader;
 import it.unibo.geosurv.model.loader.Loader;
-import it.unibo.geosurv.model.monsters.MonsterSpawner;
 import it.unibo.geosurv.view.graphics.Camera;
 import it.unibo.geosurv.view.graphics.TextureRender;
 import it.unibo.geosurv.view.graphics.Window;
@@ -57,7 +55,6 @@ public class Game extends Canvas implements Runnable, TickingObject {
     private TextureRender textureRender;
     private final Camera camera;
     private final ILoader loader;
-    private static long startTime;
     private GameState state;
     private String pauseText = "Pause";
     private Font pauseFont = new Font("Arial", Font.BOLD, 150);
@@ -165,9 +162,9 @@ public class Game extends Canvas implements Runnable, TickingObject {
             textureRender.showDebug(g);
         }
         textureRender.renderView(g);
-        
-        /* Game management paused  */
-        if( state == GameState.PAUSE) {
+
+        /* Game management paused */
+        if (state == GameState.PAUSE) {
 
             /* Background obscured */
             g.setColor(backgroundPauseColor);
@@ -183,7 +180,7 @@ public class Game extends Canvas implements Runnable, TickingObject {
             int y_pause = (WINDOW_HEIGHT - textHeight) / 2 + (int) camera.getY();
 
             g.drawString(pauseText, x_pause, y_pause);
-        
+
         }
 
         ////////////////////////////////////// above here we draw to the game

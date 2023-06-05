@@ -41,12 +41,11 @@ public class MainPlayer extends GameObject implements MainPlayerInterf, IObserva
     private static final int MAX_HITS_PER_SECOND = 2;
     private static final long HIT_COOLDOWN = 1000 / MAX_HITS_PER_SECOND;
     private long lastHitTime; // last time Player is touched/hit by a monster
-    private Handler handler;
     private int life;
     private Collisions collisions;
     private PlayerMovement playerMovement;
     private PlayerLevels playerLevels;
-    private List<IObserverEntity> observers;
+    private List<IObserverEntity<? extends GameObject>> observers;
     private ArrayList<Weapon> weapons;
     private WeaponLevels weaponLevels;
 
@@ -59,7 +58,6 @@ public class MainPlayer extends GameObject implements MainPlayerInterf, IObserva
      */
     public MainPlayer(final float x, final float y, final Handler handler) {
         super(x, y, ID.Player);
-        this.handler = handler;
         this.life = maxLife;
         this.lastHitTime = 0;
         this.observers = new ArrayList<>();
@@ -116,7 +114,7 @@ public class MainPlayer extends GameObject implements MainPlayerInterf, IObserva
         }
         return (float) this.getExperience() / this.getMaxExperience();
     }
-    
+
     /**
      * TODO: javadoc
      * 
@@ -150,7 +148,7 @@ public class MainPlayer extends GameObject implements MainPlayerInterf, IObserva
      * @return player's maximum life
      */
     public final int getMaxLife() {
-        return this.maxLife;
+        return maxLife;
     }
 
     /**
@@ -164,22 +162,24 @@ public class MainPlayer extends GameObject implements MainPlayerInterf, IObserva
 
     @Override
     public final void setLife(final int plusLife) {
-        this.life += plusLife;
+        this.life = this.life + plusLife > this.getMaxLife()    // life cannot be more than maxLife
+                ? this.getMaxLife()
+                : this.life + plusLife;
     }
 
     @Override
-    public final void addObserver(final IObserverEntity observer) {
+    public final void addObserver(final IObserverEntity<? extends GameObject> observer) {
         this.observers.add(observer);
     }
 
     @Override
-    public final void removeObserver(final IObserverEntity observer) {
+    public final void removeObserver(final IObserverEntity<? extends GameObject> observer) {
         this.observers.remove(observer);
     }
 
     @Override
     public void notifyObservers() {
-        for (final IObserverEntity observer : observers) {
+        for (final IObserverEntity<? extends GameObject> observer : observers) {
             observer.update();
         }
     }
@@ -216,7 +216,7 @@ public class MainPlayer extends GameObject implements MainPlayerInterf, IObserva
 
     /**
      * check if the player is alive
-     *  
+     * 
      * @return true if the player is alive
      */
     public boolean isAlive() {

@@ -1,5 +1,8 @@
 package it.unibo.geosurv.model;
 
+/**
+ * Interface for Observable
+ */
 public interface IObservable {
 
     /**
@@ -7,14 +10,14 @@ public interface IObservable {
      * 
      * @param observer
      */
-    void addObserver(IObserverEntity observer);
+    void addObserver(IObserverEntity<? extends GameObject> observer);
 
     /**
      * removes an observer from the player.
      * 
      * @param observer
      */
-    void removeObserver(IObserverEntity observer);
+    void removeObserver(IObserverEntity<? extends GameObject> observer);
 
     /**
      * notifies each observer.

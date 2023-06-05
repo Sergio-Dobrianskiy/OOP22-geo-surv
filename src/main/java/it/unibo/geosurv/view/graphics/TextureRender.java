@@ -1,6 +1,5 @@
 package it.unibo.geosurv.view.graphics;
 
-import java.awt.Font;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;

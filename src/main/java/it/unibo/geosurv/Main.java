@@ -2,7 +2,7 @@ package it.unibo.geosurv;
 
 import it.unibo.geosurv.controller.menu.MainMenuController;
 import it.unibo.geosurv.controller.menu.MenuView;
-import it.unibo.geosurv.model.Game;
+//import it.unibo.geosurv.model.Game;
 
 /**
  * Main class for this game.
@@ -27,9 +27,9 @@ public final class Main {
 
         mainMenuController.startMenu(); // game menu
 
-        Game game = mainMenuController.getGame();
+        //Game game = mainMenuController.getGame();
 
         // Start the game
-        game.start();
+        //game.start();
     }
 }
