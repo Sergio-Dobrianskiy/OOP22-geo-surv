@@ -102,4 +102,8 @@ public class Handler implements TickingObject {
         this.right = right;
     }
 
+    public void clearHandler() {
+        gameObjects.clear();
+        tickingObjects.clear();
+    }
 }
