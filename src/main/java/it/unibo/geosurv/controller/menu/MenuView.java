@@ -38,7 +38,7 @@ public class MenuView extends JFrame {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 // Load the background image
-                Image backgroundMenu = new ImageIcon("/Users/thomas/Desktop/OOP22-geo-surv/src/main/resources/BackgroundMenu.jpg").getImage();
+                Image backgroundMenu = new ImageIcon(getClass().getResource("/background/BackgroundMenu.jpg")).getImage();
                 // Draw the background image
                 g.drawImage(backgroundMenu, 0, 0, null);
             }

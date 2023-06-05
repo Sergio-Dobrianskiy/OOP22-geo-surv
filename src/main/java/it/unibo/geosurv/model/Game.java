@@ -253,4 +253,11 @@ public class Game extends Canvas implements Runnable, TickingObject {
     public boolean isDebugMode() {
         return debugMode;
     }
+
+    /**
+     * method for clear Handler
+     */
+    public void clearHandler() {
+        handler.clearHandler();
+    }
 }
