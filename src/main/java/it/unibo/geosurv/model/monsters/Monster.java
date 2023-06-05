@@ -1,5 +1,6 @@
 package it.unibo.geosurv.model.monsters;
 
+
 import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.Handler;
 import it.unibo.geosurv.model.ID;
@@ -13,7 +14,7 @@ import it.unibo.geosurv.model.utility.Pair;
  * Abstract Class for generic evil.
  * 
  */
-public abstract class Monster extends GameObject implements IMonster, IObserverEntity {
+public abstract class Monster extends GameObject implements IMonster, IObserverEntity<MainPlayer> {
 
     private static final int DEFAULT_EXPERIENCE = 1;
     private static final int BOUNCING_SPEED_MULTIPLYER = 10;

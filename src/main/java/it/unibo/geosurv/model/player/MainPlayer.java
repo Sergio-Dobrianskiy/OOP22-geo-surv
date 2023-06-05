@@ -45,7 +45,7 @@ public class MainPlayer extends GameObject implements MainPlayerInterf, IObserva
     private Collisions collisions;
     private PlayerMovement playerMovement;
     private PlayerLevels playerLevels;
-    private List<IObserverEntity> observers;
+    private List<IObserverEntity<? extends GameObject>> observers;
     private ArrayList<Weapon> weapons;
     private WeaponLevels weaponLevels;
 
@@ -162,22 +162,24 @@ public class MainPlayer extends GameObject implements MainPlayerInterf, IObserva
 
     @Override
     public final void setLife(final int plusLife) {
-        this.life += plusLife;
+        this.life = this.life + plusLife > this.getMaxLife()    // life cannot be more than maxLife
+                ? this.getMaxLife()
+                : this.life + plusLife;
     }
 
     @Override
-    public final void addObserver(final IObserverEntity observer) {
+    public final void addObserver(final IObserverEntity<? extends GameObject> observer) {
         this.observers.add(observer);
     }
 
     @Override
-    public final void removeObserver(final IObserverEntity observer) {
+    public final void removeObserver(final IObserverEntity<? extends GameObject> observer) {
         this.observers.remove(observer);
     }
 
     @Override
     public void notifyObservers() {
-        for (final IObserverEntity observer : observers) {
+        for (final IObserverEntity<? extends GameObject> observer : observers) {
             observer.update();
         }
     }
