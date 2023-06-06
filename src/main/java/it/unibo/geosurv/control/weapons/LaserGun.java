@@ -57,6 +57,7 @@ public class LaserGun extends Weapon {
     /**
      * creates 1/2/4 lasers the player.
      */
+    @Override
     protected void shoot() {
         final float px = this.player.getX();
         final float py = this.player.getY();

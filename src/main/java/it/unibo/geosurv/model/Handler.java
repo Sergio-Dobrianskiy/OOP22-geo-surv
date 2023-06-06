@@ -11,8 +11,8 @@ import it.unibo.geosurv.model.player.MainPlayer;
  */
 public class Handler implements TickingObject {
 
-    private CopyOnWriteArrayList<GameObject> gameObjects = new CopyOnWriteArrayList<>();
-    private CopyOnWriteArrayList<TickingObject> tickingObjects = new CopyOnWriteArrayList<>();
+    private final CopyOnWriteArrayList<GameObject> gameObjects = new CopyOnWriteArrayList<>();
+    private final CopyOnWriteArrayList<TickingObject> tickingObjects = new CopyOnWriteArrayList<>();
     private MainPlayer player;
     private boolean up;
     private boolean down;

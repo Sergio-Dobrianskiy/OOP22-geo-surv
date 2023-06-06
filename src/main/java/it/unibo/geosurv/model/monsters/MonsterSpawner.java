@@ -9,16 +9,10 @@ import it.unibo.geosurv.model.Handler;
  */
 public class MonsterSpawner implements TickingObject {
 
-    // private final static int SPAWN_INTERVAL = 500; // specifies the time interval
-    // (in milliseconds) between monster
-    // // spawns (500 = 2 monster each sec)
-    // private final static int MAX_T_MONSTERS = 5; // 50 // specifies the maximum
-    // number of monsters that can be spawned
-    // // at any given time
-    // private final static int MAX_R_MONSTERS = 100;
+    private static final int TIME_LEVEL_1 = 20;
+    private static final int TIME_LEVEL_2 = 40;
+    private static final int TIME_LEVEL_3 = 60;
     private final Handler handler;
-    // private static GameObject tempPlayer;
-    // static Game game;
     private static int spawnRate = 1; // in monsters per second
     private final long begin;
     private final GenerateMonsterT tm;
@@ -52,9 +46,10 @@ public class MonsterSpawner implements TickingObject {
         currentTime = System.currentTimeMillis();
         currentSecond = (int) ((currentTime / 1000)); // update current second
         // final int diff = (int) (currentSecond - this.begin);
-        //System.out.println(diff + " :: " + this.begin + " :: " + (currentSecond - this.begin / 1000));
+        // System.out.println(diff() + " :: " + this.begin + " :: " + (currentSecond -
+        // this.begin / 1000));
         elapsedTime = currentTime - lastSpawnTime;
-        if (diff() > 21) {
+        if (diff() > TIME_LEVEL_1) {
             spawnRate = 2;
         }
         if (elapsedTime >= 1000 / spawnRate) {
@@ -64,7 +59,7 @@ public class MonsterSpawner implements TickingObject {
 
             generateFixedPositionMonsters();
         }
-        if (diff() > 60) {
+        if (diff() > TIME_LEVEL_3) {
             spawnRate = 3;
             // if (elapsedTime >= 1000 / SPAWN_RATE) {
             flood();
@@ -88,14 +83,14 @@ public class MonsterSpawner implements TickingObject {
         // final int diff = (int) (currentSecond - this.begin);
         Monster m;
 
-        if ((diff()) < 20) {
+        if ((diff()) < TIME_LEVEL_1) {
             m = tm.createMonster(this.handler);
-        } else if (diff() == 20) {
+        } else if (diff() == TIME_LEVEL_1) {
             m = tm.createMonster(this.handler);
             m.setIsBig(true);
-        } else if (diff() < 40) {
+        } else if (diff() < TIME_LEVEL_2) {
             m = rm.createMonster(this.handler);
-        } else if (diff() == 40) {
+        } else if (diff() == TIME_LEVEL_2) {
             m = rm.createMonster(this.handler);
             m.setIsBig(true);
         } else {

@@ -18,11 +18,13 @@ public abstract class GameObject implements TickingObject, IGameObject {
     /**
      * gameObject velocity.
      */
-    protected float velX = 0, velY = 0;
+    protected float velX;
+    protected float velY;
     /**
      * gameObject dimensions.
      */
-    protected int height = 0, width = 0;
+    protected int height;
+    protected int width;
     /**
      * gameObject texture.
      */

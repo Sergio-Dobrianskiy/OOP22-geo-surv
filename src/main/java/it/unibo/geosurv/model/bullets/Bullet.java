@@ -16,10 +16,10 @@ public abstract class Bullet extends GameObject {
      */
     protected long lifeSpan = 5000L;     // max milliseconds of life
     protected ICollisionBehavior collisionBehavior;
-    private int damage;
-    private long creationTime;
     protected final Handler handler;
-    private Collisions collisions;
+    private int damage;
+    private final long creationTime;
+    private final Collisions collisions;
 
     /**
      * Constructor for this class.
@@ -58,8 +58,8 @@ public abstract class Bullet extends GameObject {
      * @param velY y component of velocity vector
      */
     private void updatePosition(final float velX, final float velY) {
-        this.setX(this.getX() + this.velX);
-        this.setY(this.getY() + this.velY);
+        this.setX(this.getX() + velX);
+        this.setY(this.getY() + velY);
     }
 
     /**

@@ -53,6 +53,7 @@ public class Ball extends Monster {
     /**
      * Modified by addition of a little bit of deviation with Math.random.
      */
+    @Override
     public void reachTarget() {
         this.setX(this.getX() + this.velX);
         this.setY(this.getY() + this.velY);
