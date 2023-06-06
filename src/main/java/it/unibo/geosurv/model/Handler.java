@@ -1,6 +1,8 @@
 package it.unibo.geosurv.model;
 
-import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArrayList;
+
 import it.unibo.geosurv.control.TickingObject;
 import it.unibo.geosurv.model.player.MainPlayer;
 
@@ -9,22 +11,28 @@ import it.unibo.geosurv.model.player.MainPlayer;
  */
 public class Handler implements TickingObject {
 
-    private ArrayList<GameObject> gameObjects = new ArrayList<>();
-    private ArrayList<TickingObject> tickingObjects = new ArrayList<>();
+    private CopyOnWriteArrayList<GameObject> gameObjects = new CopyOnWriteArrayList<>();
+    private CopyOnWriteArrayList<TickingObject> tickingObjects = new CopyOnWriteArrayList<>();
     private MainPlayer player;
-    private boolean up = false, down = false, left = false, right = false;
+    private boolean up;
+    private boolean down;
+    private boolean left;
+    private boolean right;
 
 
     /**
      * calls tick() for every gameObject and tickingObject.
      */
     public void tick() {
-        for (int i = 0; i < gameObjects.size(); i++) {
-            GameObject tempObject = gameObjects.get(i);
+        Iterator<GameObject> iterator = gameObjects.iterator();
+        while (iterator.hasNext()) {
+            GameObject tempObject = iterator.next();
             tempObject.tick();
         }
-        for (int i = 0; i < tickingObjects.size(); i++) {
-            TickingObject tempObject = tickingObjects.get(i);
+
+        Iterator<TickingObject> it = tickingObjects.iterator();
+        while (it.hasNext()) {
+            TickingObject tempObject = it.next();
             tempObject.tick();
         }
     }
@@ -62,11 +70,11 @@ public class Handler implements TickingObject {
         return this.gameObjects.size();
     }
 
-    public ArrayList<GameObject> getGameObjects() {
+    public CopyOnWriteArrayList<GameObject> getGameObjects() {
         return this.gameObjects;
     }
 
-    public ArrayList<TickingObject> getTickingbjects() {
+    public CopyOnWriteArrayList<TickingObject> getTickingbjects() {
         return this.tickingObjects;
     }
 
