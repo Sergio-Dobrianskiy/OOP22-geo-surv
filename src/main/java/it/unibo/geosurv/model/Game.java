@@ -223,7 +223,7 @@ public class Game extends Canvas implements Runnable, TickingObject {
      * enters the menu.
      */
     public void stateMenu() {
-        if (this.state == GameState.RUNNING || this.state == GameState.LOADING || this.state == GameState.WON || this.state == GameState.LOST) {
+        if (this.state == GameState.WON || this.state == GameState.LOST) {
             this.state = GameState.MENU;
         }
     }
@@ -234,6 +234,15 @@ public class Game extends Canvas implements Runnable, TickingObject {
     public void stateRunning() {
         if (this.state == GameState.MENU || this.state == GameState.PAUSE) {
             this.state = GameState.RUNNING;
+        }
+    }
+    
+    /**
+     * enters the loading state.
+     */
+    public void stateLoading() {
+        if (this.state == GameState.MENU) {
+            this.state = GameState.LOADING;
         }
     }
 
