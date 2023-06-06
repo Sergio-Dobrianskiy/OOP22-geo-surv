@@ -15,29 +15,29 @@ public class SatelliteGun extends Weapon {
     /**
      * Satellites orbit speed.
      */
-	private static final float orbitSpeed = 0.05f;
+	private static final float ORBIT_SPEED = 0.05f;
     /**
      * Satellites orbit radius.
      */
-	private static final float orbitRadius = 150f;
+	private static final float ORBIT_RADIUS = 150f;
     /**
      * Radians in a circle.
      */
-	private static final double radiansInCircle = 2 * Math.PI; // 6.28319d; 360° = radians 6.28319
+	private static final double RADIANS_IN_CIRCLE = 2 * Math.PI; // 6.28319d; 360° = radians 6.28319
     /**
      * Default Satellites damage.
      */
-	private static final int damage = 3;
+	private static final int DAMAGE = 3;
     /**
      * Default number of Satellites per weapon level.
      */
-	private static final int satellitesPerLevel = 3;
+	private static final int SATELLITES_PER_LEVEL = 3;
 	
-    private  double angleDifference;
-    private Handler handler;
-    private GameObject tempPlayer;
-    private double angle = 0d;
-	private List<GameObject> satellites;
+	private final Handler handler;
+	private final GameObject tempPlayer;
+	private final List<GameObject> satellites;
+	private double angleDifference;
+	private double angle;
     private int index;
 	
 	/**
@@ -56,7 +56,8 @@ public class SatelliteGun extends Weapon {
 	 * Adds a rotating satellite.
 	 */	
 	public void addSatellite() {
-		GameObject satellite = handler.addObject(new Satellite(this.getXPos(angle), this.getYPos(angle), handler, damage));
+		final GameObject satellite = new Satellite(this.getXPos(angle), this.getYPos(angle), handler, DAMAGE);
+		handler.addObject(satellite);
 		this.satellites.add(satellite);
 	}
 	
@@ -76,7 +77,7 @@ public class SatelliteGun extends Weapon {
 	 * @return float y coordinate of the satellite
 	 */	
 	public float getXPos(final double angle) {
-		return (float) (this.tempPlayer.getX() + (Math.cos(angle) * orbitRadius));
+		return (float) (this.tempPlayer.getX() + (Math.cos(angle) * ORBIT_RADIUS));
 	}
 	
 	/**
@@ -87,7 +88,7 @@ public class SatelliteGun extends Weapon {
 	 * @return float y coordinate of the satellite
 	 */	
 	public float getYPos(final double angle) {
-		return (float) (this.tempPlayer.getY() + (Math.sin(angle) * orbitRadius));
+		return (float) (this.tempPlayer.getY() + (Math.sin(angle) * ORBIT_RADIUS));
 	}
 
 	/**
@@ -95,12 +96,12 @@ public class SatelliteGun extends Weapon {
 	 */
 	@Override
 	protected void shoot() {
-		this.angle += orbitSpeed;
-		this.angleDifference = radiansInCircle / satellites.size();
+		this.angle += ORBIT_SPEED;
+		this.angleDifference = RADIANS_IN_CIRCLE / satellites.size();
 		this.index = 0;
 
 		this.satellites.forEach(b -> {
-			double actualAngle = this.angle + (angleDifference * this.index);
+			final double actualAngle = this.angle + (angleDifference * this.index);
 			b.setX(this.getXPos(actualAngle));
 			b.setY(this.getYPos(actualAngle));
 			this.index++;
@@ -116,7 +117,7 @@ public class SatelliteGun extends Weapon {
 	public boolean levelUp() {
 		if (currentLevel < MAX_LVL) {
 			currentLevel += 1;
-			while (satellites.size() < (currentLevel * satellitesPerLevel)) {
+			while (satellites.size() < (currentLevel * SATELLITES_PER_LEVEL)) {
 				// System.out.println("size " + satellites.size());
 				this.addSatellite();
 			}
