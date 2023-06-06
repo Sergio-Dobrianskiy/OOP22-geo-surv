@@ -56,38 +56,19 @@ public abstract class Monster extends GameObject implements IMonster, IObserverE
     }
 
     @Override
-    public int getHealth() {
+    public final int getHealth() {
         return this.health;
     }
 
     @Override
-    public int getPower() {
+    public final int getPower() {
         return power;
     }
 
     @Override
-    public boolean isDead() {
+    public final boolean isDead() {
         return this.getHealth() <= 0;
     }
-
-    /**
-     * At death, Entity drop experience pill.
-     * 
-     * @return Experience pill
-     */
-    // public Experience dropExperience() {
-    // return new Experience(this.getX(), this.getY(), DEFAULT_EXPERIENCE,
-    // this.handler);
-    // }
-
-    /**
-     * At death, Entity drop experience pill.
-     * 
-     * @return Experience pill
-     */
-    // public Life dropLife() {
-    // return new Life(this.getX(), this.getY());
-    // }
 
     @Override
     public void hit(final int weaponDamage) {
@@ -117,7 +98,7 @@ public abstract class Monster extends GameObject implements IMonster, IObserverE
     }
 
     @Override
-    public void die() {
+    public final void die() {
         this.handler.addObject(this.dropStrategy.drop());
         this.handler.removeObject(this); // monster is removed from Monsters list
         monstersCounter--;
@@ -132,11 +113,16 @@ public abstract class Monster extends GameObject implements IMonster, IObserverE
     }
 
     @Override
-    public void update() {
+    public final void update() {
         mx = this.player.getX();
         my = this.player.getY();
     }
 
+    /**
+     * Try to reach the target as defined by {@link IMonster}.
+     * Subclasses extending reachtarget should override this method to provide
+     * specific implementation details.
+     */
     @Override
     public void reachTarget() {
         this.setX(this.getX() + this.velX);
@@ -150,7 +136,7 @@ public abstract class Monster extends GameObject implements IMonster, IObserverE
 
 
     @Override
-    public void setStartingPosition(final float minDistance, final float maxDistance) {
+    public final void setStartingPosition(final float minDistance, final float maxDistance) {
         final Pair<Float, Float> randomPosition = Func.randomPoint(minDistance, maxDistance);
         update(); // to get player position
         this.setX(mx + randomPosition.getX());

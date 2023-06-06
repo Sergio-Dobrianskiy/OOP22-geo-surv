@@ -50,7 +50,9 @@ public class Ball extends Monster {
         this.texture = Texture.BALL_BIG;
     }
 
-    @Override
+    /**
+     * Modified by addition of a little bit of deviation with Math.random.
+     */
     public void reachTarget() {
         this.setX(this.getX() + this.velX);
         this.setY(this.getY() + this.velY);

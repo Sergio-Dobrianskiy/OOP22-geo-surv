@@ -54,28 +54,27 @@ public class Game extends Canvas implements Runnable, TickingObject {
     private final Handler handler;
     private final TextureRender textureRender;
     private final Camera camera;
-    private final ILoader loader;
     private GameState state;
     private final String pauseText = "Pause";
     private final Font pauseFont = new Font("Arial", Font.BOLD, 150);
     private final Color backgroundPauseColor = new Color(0, 0, 0, 150);
     private boolean debugMode;
 
-
     /**
      * constructor for this class.
      */
     public Game() {
+        final ILoader loader;
         this.state = GameState.LOADING;
 
         new Window(WINDOW_WIDTH, WINDOW_HEIGHT, "Geo-Survivors", this);
 
-        handler = new Handler();
-        loader = new Loader(handler);
-        textureRender = new TextureRender(handler);
+        this.handler = new Handler();
+        loader = new Loader(this.handler);
+        this.textureRender = new TextureRender(this.handler);
 
         loader.loadAll(); // loads Player, textures, weapons, level
-        this.addKeyListener(new KeyInput(this, handler));
+        this.addKeyListener(new KeyInput(this, this.handler));
 
         camera = loader.loadCamera(); // loads camera
 
@@ -122,10 +121,13 @@ public class Game extends Canvas implements Runnable, TickingObject {
             final long now = System.nanoTime();
             delta += (now - lastTime) / NANO_PER_TICK;
             lastTime = now;
+            // System.out.println("***" + delta);
             while (delta > 1) {
                 this.tick();
                 this.render();
-                delta--;
+                delta -= 1;
+                // System.out.println("->" + delta);
+
                 // frames++;
             }
 

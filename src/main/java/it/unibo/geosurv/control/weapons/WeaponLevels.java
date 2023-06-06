@@ -9,6 +9,7 @@ import java.util.Random;
 public class WeaponLevels {
 
     private List<Weapon> weapons;
+    private Random random;
 
     /**
      * Constructor for this class.
@@ -17,6 +18,7 @@ public class WeaponLevels {
      */
     public WeaponLevels(final List<Weapon> w) {
         this.weapons = w;
+        this.random = new Random();
     }
 
     /**
@@ -24,9 +26,8 @@ public class WeaponLevels {
      */
     public void levelUpWeapon() {
         boolean upgraded = false;
-        Random random = new Random();
         while (!upgraded) {
-            int index = random.nextInt(this.weapons.size());
+            int index = this.random.nextInt(this.weapons.size());
             Weapon tmpWeapon = weapons.get(index);
             upgraded = tmpWeapon.levelUp();
         }

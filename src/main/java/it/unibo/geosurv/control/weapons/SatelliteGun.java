@@ -23,7 +23,7 @@ public class SatelliteGun extends Weapon {
     /**
      * Radians in a circle.
      */
-	private static final double radiansInCircle = 6.28319d; // 360° = radians 6.28319
+	private static final double radiansInCircle = 2 * Math.PI; // 6.28319d; 360° = radians 6.28319
     /**
      * Default Satellites damage.
      */

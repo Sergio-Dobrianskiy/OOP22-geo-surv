@@ -107,11 +107,11 @@ public class TextureRender {
     }
 
     public int getRenderX(final GameObject obj) {
-        return (int) (obj.getX() - (obj.getWidth() / 2));
+        return (int) obj.getX() - obj.getWidth() / 2;
     }
 
     public int getRenderY(final GameObject obj) {
-        return (int) (obj.getY() - (obj.getHeight() / 2));
+        return (int) obj.getY() - obj.getHeight() / 2;
     }
 
     /** Show debug info */

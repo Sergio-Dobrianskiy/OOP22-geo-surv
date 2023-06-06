@@ -127,12 +127,12 @@ public abstract class GameObject implements TickingObject, IGameObject {
 
     @Override
     public int getRenderX() {
-        return (int) (x - (this.width / 2));
+        return (int) x - this.width / 2;
     }
 
     @Override
     public int getRenderY() {
-        return (int) (y - (this.height / 2));
+        return (int) y - this.height / 2;
     }
 
     @Override

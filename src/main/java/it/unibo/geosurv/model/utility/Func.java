@@ -14,6 +14,8 @@ import it.unibo.geosurv.model.ID;
 
 public final class Func {
 
+	final static Random random = new Random();
+
 	/**
 	 * To prevent creation of instances.
 	 */
@@ -39,7 +41,6 @@ public final class Func {
 		// + "Warning: min should be minor to max");
 		// min = max - 10;
 		// }
-		final Random random = new Random();
 		final double angle = 2 * Math.PI * Math.random();
 		final double minRandom = min / max; // proportion: max / 1 = min / x
 		final double radius = Math.sqrt(random.nextDouble(minRandom, 1));

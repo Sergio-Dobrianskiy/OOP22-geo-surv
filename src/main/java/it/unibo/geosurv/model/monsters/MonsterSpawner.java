@@ -4,6 +4,9 @@ import java.util.stream.Stream;
 import it.unibo.geosurv.control.TickingObject;
 import it.unibo.geosurv.model.Handler;
 
+/**
+ * Class to manage spawn of monsters.
+ */
 public class MonsterSpawner implements TickingObject {
 
     // private final static int SPAWN_INTERVAL = 500; // specifies the time interval
@@ -20,14 +23,21 @@ public class MonsterSpawner implements TickingObject {
     private final long begin;
     private final GenerateMonsterT tm;
     private final GenerateMonsterR rm;
+    private final GenerateMonsterRh rhm;
     private long lastSpawnTime;
     private int currentSecond;
     private long currentTime;
 
+    /**
+     * Inizialize monster creation factories.
+     * 
+     * @param h handler
+     */
     public MonsterSpawner(final Handler h) {
         this.handler = h;
         this.tm = new GenerateMonsterT();
         this.rm = new GenerateMonsterR();
+        this.rhm = new GenerateMonsterRh();
         this.begin = System.currentTimeMillis() / 1000;
 
     }
@@ -63,7 +73,7 @@ public class MonsterSpawner implements TickingObject {
     }
 
     @Override
-    public void tick() {
+    public final void tick() {
         spawnMonsters();
     }
 
@@ -80,7 +90,6 @@ public class MonsterSpawner implements TickingObject {
 
         if ((diff()) < 20) {
             m = tm.createMonster(this.handler);
-
         } else if (diff() == 20) {
             m = tm.createMonster(this.handler);
             m.setIsBig(true);
@@ -92,14 +101,14 @@ public class MonsterSpawner implements TickingObject {
         } else {
             m = rm.createMonster(this.handler);
         }
+
         return m;
     }
 
     /**
-     * monsters created all through the game
+     * monsters created all through the game.
      */
     private void generateFixedPositionMonsters() {
-        final GenerateMonsterRh rhm = new GenerateMonsterRh();
         final Monster rh = rhm.createMonster(this.handler);
         handler.addObject(rh);
     }
