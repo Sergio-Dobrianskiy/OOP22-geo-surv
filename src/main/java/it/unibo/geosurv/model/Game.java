@@ -13,6 +13,7 @@ import it.unibo.geosurv.control.KeyInput;
 import it.unibo.geosurv.control.TickingObject;
 import it.unibo.geosurv.model.loader.ILoader;
 import it.unibo.geosurv.model.loader.Loader;
+import it.unibo.geosurv.model.player.Player;
 import it.unibo.geosurv.view.graphics.Camera;
 import it.unibo.geosurv.view.graphics.TextureRender;
 import it.unibo.geosurv.view.graphics.Window;
@@ -59,6 +60,8 @@ public class Game extends Canvas implements Runnable, TickingObject {
     private final Font pauseFont = new Font("Arial", Font.BOLD, 150);
     private final Color backgroundPauseColor = new Color(0, 0, 0, 150);
     private boolean debugMode;
+
+    private Player player;
 
     /**
      * constructor for this class.
@@ -143,6 +146,7 @@ public class Game extends Canvas implements Runnable, TickingObject {
     public void tick() {
         if (state == GameState.RUNNING) {
             handler.tick();
+            checkPlayerLife();
         }
         camera.tick();
     }
@@ -270,5 +274,15 @@ public class Game extends Canvas implements Runnable, TickingObject {
      */
     public void clearHandler() {
         handler.clearHandler();
+    }
+    /**
+     * method for check the life of the Player and if he still alive 
+     */
+
+    private void checkPlayerLife() {
+        player = handler.getPlayer(); // Aggiornamento della variabile player
+        if (player != null && !player.isAlive()) {
+            stateLost();
+        }
     }
 }
