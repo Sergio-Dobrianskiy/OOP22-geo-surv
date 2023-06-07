@@ -116,8 +116,8 @@ public class TextureRender {
 
     /** Show debug info */
     public void showDebug(final Graphics g) {
-        final int xPos = 850;
-        final int yPos = 80;
+        final int xPos = (int) this.handler.getPlayer().getX() - 120;
+        final int yPos = (int) this.handler.getPlayer().getY();
         final List<GameObject> gameObjects = handler.getGameObjects();
 
         g.setColor(Color.RED);
