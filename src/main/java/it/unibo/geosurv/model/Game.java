@@ -56,10 +56,15 @@ public class Game extends Canvas implements Runnable, TickingObject {
     private final TextureRender textureRender;
     private final Camera camera;
     private GameState state;
+    private boolean debugMode;
+    /* Variables used for pause */
     private final String pauseText = "Pause";
     private final Font pauseFont = new Font("Arial", Font.BOLD, 150);
     private final Color backgroundPauseColor = new Color(0, 0, 0, 150);
-    private boolean debugMode;
+    /* Variables used for gameOver */
+    private final String gameOverText = "Game Over";
+    private final Font gameOverFont = new Font("Arial", Font.BOLD, 100);
+    private final Color gameOverColor = Color.RED;
 
     private Player player;
 
@@ -188,6 +193,23 @@ public class Game extends Canvas implements Runnable, TickingObject {
 
             g.drawString(pauseText, xPause, yPause);
 
+        }
+        
+        /* Game management lost */
+        if (state == GameState.LOST) {
+            g.setColor(backgroundPauseColor);
+            g.fillRect((int) camera.getX(), (int) camera.getY(), WINDOW_WIDTH, WINDOW_HEIGHT);
+        
+            g.setFont(gameOverFont);
+            g.setColor(gameOverColor);
+        
+            FontMetrics fm = g.getFontMetrics();
+            final int textWidth = fm.stringWidth(gameOverText);
+            final int textHeight = fm.getHeight();
+            final int xGameOver = (WINDOW_WIDTH - textWidth) / 2 + (int) camera.getX();
+            final int yGameOver = (WINDOW_HEIGHT - textHeight) / 2 + (int) camera.getY();
+        
+            g.drawString(gameOverText, xGameOver, yGameOver);
         }
 
         ////////////////////////////////////// above here we draw to the game
