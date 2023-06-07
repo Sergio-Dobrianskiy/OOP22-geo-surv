@@ -93,6 +93,12 @@ public class MenuView extends JFrame {
         optionsListPanel.setLayout(new GridLayout(3, 1, 0, 10));
         optionsListPanel.setBorder(BorderFactory.createEmptyBorder(20, 0, 20, 0));
 
+        JLabel option1Label = new JLabel(" - Move the player with arrow keys or WASD");
+        option1Label.setFont(new Font("Arial", Font.PLAIN, 20));
+        option1Label.setForeground(Color.WHITE);
+        option1Label.setHorizontalAlignment(JLabel.CENTER);
+        optionsListPanel.add(option1Label);
+
         /* For debug 
         JLabel note = new JLabel("Press 'g' for debug");
 
