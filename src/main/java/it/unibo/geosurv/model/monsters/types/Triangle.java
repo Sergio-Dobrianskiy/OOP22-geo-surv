@@ -17,8 +17,8 @@ public class Triangle extends Monster {
     private static final int MAX_H_DIMENSION = 50; // max height of (big) triangle
     private static final int DEFAULT_W_DIMENSION = 20; // default width of triangle
     private static final int MAX_W_DIMENSION = 50; // max width of (big) triangle
-    private static final int DEFAULT_HEALTH = 2; // default health of triangle
-    private static final int MAX_HEALTH = 10; // default health of BIG triangle
+    private static final int DEFAULT_HEALTH = 5; // default health of triangle
+    private static final int MAX_HEALTH = 20; // default health of BIG triangle
     private static final int DEFAULT_POWER = 5; // default power of triangle
     private static final int MAX_POWER = 5; // default power of BIG triangle
     private static int counter;
@@ -52,16 +52,9 @@ public class Triangle extends Monster {
 
     }
 
-    /**
-     * @return whether a triangle is big or not.
-     */
-    public boolean isBig() {
-        return isBig;
-    }
 
     @Override
-    public final void setBig(final boolean isBig) {
-        this.isBig = isBig;
+    public final void setIsBig(final boolean isBig) {
         this.health = MAX_HEALTH;
         this.speed = MAX_SPEED;
         this.power = MAX_POWER;

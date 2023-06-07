@@ -14,27 +14,27 @@ public class LaserGun extends Weapon {
     /**
      * laser short side length.
      */
-    private final int shortSide = 32;
+    private static final int shortSide = 32;
     /**
      * laser long side length.
      */
-    private final int longSide = 286;
+    private static final int longSide = 286;
     /**
      * laser cycle in ms.
      */
-    private final long laserCycle = 3000L;
+    private static final long laserCycle = 3000L;
     /**
      * laser damage at level 1.
      */
-    private final int damageLevel1 = 2;
+    private static final int damageLevel1 = 2;
     /**
      * laser damage at level 2.
      */
-    private final int damageLevel2 = 4;
+    private static final int damageLevel2 = 4;
     /**
      * laser damage at level 3.
      */
-    private final int damageLevel3 = 6;
+    private static final int damageLevel3 = 6;
 
     private Handler handler;
     private GameObject player;
@@ -50,13 +50,14 @@ public class LaserGun extends Weapon {
         this.cycle = laserCycle;
         this.player = handler.getPlayer();
         this.damageLvl1 = damageLevel1;
-        this.damageLvl1 = damageLevel2;
-        this.damageLvl1 = damageLevel3;
+        this.damageLvl2 = damageLevel2;
+        this.damageLvl3 = damageLevel3;
     }
 
     /**
      * creates 1/2/4 lasers the player.
      */
+    @Override
     protected void shoot() {
         final float px = this.player.getX();
         final float py = this.player.getY();

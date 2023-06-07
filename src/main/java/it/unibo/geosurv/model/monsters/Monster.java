@@ -11,8 +11,7 @@ import it.unibo.geosurv.model.utility.Func;
 import it.unibo.geosurv.model.utility.Pair;
 
 /**
- * Abstract Class for generic evil.
- * 
+ * Abstract Class for generic monsters.
  */
 public abstract class Monster extends GameObject implements IMonster, IObserverEntity<Player> {
 
@@ -34,8 +33,8 @@ public abstract class Monster extends GameObject implements IMonster, IObserverE
     protected float my; // Player Position throu observer
     protected Player player;
     protected double speed;
-    protected boolean isBig;
-    protected Drop dropStrategy; // strategy for dropping life or experience
+
+    private final Drop dropStrategy; // strategy for dropping life or experience
 
     /**
      * Monster constructor.
@@ -57,42 +56,23 @@ public abstract class Monster extends GameObject implements IMonster, IObserverE
     }
 
     @Override
-    public int getHealth() {
+    public final int getHealth() {
         return this.health;
     }
 
     @Override
-    public int getPower() {
+    public final int getPower() {
         return power;
     }
 
     @Override
-    public boolean isDead() {
+    public final boolean isDead() {
         return this.getHealth() <= 0;
     }
 
-    /**
-     * At death, Entity drop experience pill.
-     * 
-     * @return Experience pill
-     */
-    // public Experience dropExperience() {
-    // return new Experience(this.getX(), this.getY(), DEFAULT_EXPERIENCE,
-    // this.handler);
-    // }
-
-    /**
-     * At death, Entity drop experience pill.
-     * 
-     * @return Experience pill
-     */
-    // public Life dropLife() {
-    // return new Life(this.getX(), this.getY());
-    // }
-
     @Override
     public void hit(final int weaponDamage) {
-        long currentTime = System.currentTimeMillis();
+        final long currentTime = System.currentTimeMillis();
         if (currentTime - lastHitTime >= HIT_COOLDOWN) {
             this.health -= weaponDamage;
             lastHitTime = currentTime;
@@ -110,27 +90,19 @@ public abstract class Monster extends GameObject implements IMonster, IObserverE
      */
     public void bounce() {
 
-        boolean isBouncing = false;
-
-        if (!isBouncing) { // start bouncing behavior
-            isBouncing = true;
-
             // reverse the horizontal and vertical velocities to bounce the object off the
             // player
             this.velX = -this.velX * BOUNCING_SPEED_MULTIPLYER;
             this.velY = -this.velY * BOUNCING_SPEED_MULTIPLYER;
 
-            // System.out.println(this.toString() + " inverting direction..");
-        }
-        isBouncing = false;
     }
 
     @Override
-    public void die() {
-
+    public final void die() {
         this.handler.addObject(this.dropStrategy.drop());
         this.handler.removeObject(this); // monster is removed from Monsters list
-        this.removeMonster(this);
+        monstersCounter--;
+        monstersDeadCounter++;
     }
 
     /**
@@ -141,53 +113,47 @@ public abstract class Monster extends GameObject implements IMonster, IObserverE
     }
 
     @Override
-    public void update() {
+    public final void update() {
         mx = this.player.getX();
         my = this.player.getY();
     }
 
+    /**
+     * Try to reach the target as defined by {@link IMonster}.
+     * Subclasses extending reachtarget should override this method to provide
+     * specific implementation details.
+     */
     @Override
     public void reachTarget() {
         this.setX(this.getX() + this.velX);
         this.setY(this.getY() + this.velY);
-        // evaluated only once at creation istead of each tick()
-        // tempPlayer = Func.findPlayer(handler);
 
-        // int mx = (int) this.tempPlayer.getX();
-        // int my = (int) this.tempPlayer.getY();
-        //
-
-        float angle = (float) Math.atan2(my - this.getY() + 8, mx - this.getX() + 4);
+        final float angle = (float) Math.atan2(my - this.getY() + 8, mx - this.getX() + 4);
 
         this.velX = (float) ((this.speed) * Math.cos(angle));
         this.velY = (float) ((this.speed) * Math.sin(angle));
-        // System.out.println("T trying to reach the target");
     }
 
-    @Override
-    public void setBig(final boolean b) {
-        this.isBig = b;
-    }
 
     @Override
-    public void setStartingPosition(final float minDistance, final float maxDistance) {
-        Pair<Float, Float> randomPosition = Func.randomPoint(minDistance, maxDistance);
+    public final void setStartingPosition(final float minDistance, final float maxDistance) {
+        final Pair<Float, Float> randomPosition = Func.randomPoint(minDistance, maxDistance);
         update(); // to get player position
         this.setX(mx + randomPosition.getX());
         this.setY(my + randomPosition.getY());
         // System.out.println("[" + mx + "," + my + "]");
     }
 
-    @Override
-    public void removeMonster(Monster monster) {
-        monstersCounter--;
-        monstersDeadCounter++;
-    }
-
+    /**
+     * @return default experience a monster drop when dies.
+     */
     public int getDefaultExperience() {
         return DEFAULT_EXPERIENCE;
     }
 
+    /**
+     * @return number of dead monsters.
+     */
     public static int getMonstersDeadCounter() {
         return monstersDeadCounter;
     }

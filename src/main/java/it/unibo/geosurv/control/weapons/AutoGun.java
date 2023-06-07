@@ -15,40 +15,40 @@ public class AutoGun extends Weapon {
     /**
      * default bullet speed.
      */
-    private final int bulletSpeed = 10;
+    private static final int BULLET_SPEED = 10;
     /**
      * default AutoGun maximum range.
      */
-    private final int maxRange = 400;
+    private static final int MAX_RANGE = 400;
     /**
      * default Weapon damage at level 1.
      */
-    private final int damageLevel1 = 3;
+    private static final int DAMAGE_LEVEL_1 = 3;
     /**
      * default Weapon damage at level 2.
      */
-    private final int damageLevel2 = 4;
+    private static final int DAMAGE_LEVEL_2 = 4;
     /**
      * default Weapon damage at level 3.
      */
-    private final int damageLevel3 = 5;
+    private static final int DAMAGE_LEVEL_3 = 5;
     /**
      * default delta from 2nd shot.
      */
-    private final float level2delta = 0.1f;
+    private static final float LEVEL_2_DELTA = 0.1f;
     /**
      * default delta from 3rd shot.
      */
-    private final float level3delta = 0.2f;
+    private static final float LEVEL_3_DELTA = 0.2f;
 
-    private Handler handler;
-    private GameObject player;
+    private final Handler handler;
+    private final GameObject player;
     private GameObject closestEnemy;
     private long lastTime;
     private float closestEnemyDistance;
-    private double delta = 0;
-    private boolean secondaryShooting = false;
-    private boolean tertiaryShooting = false;
+    private double delta;
+    private boolean secondaryShooting;
+    private boolean tertiaryShooting;
 
     /**
      * Constructor for this class.
@@ -60,9 +60,9 @@ public class AutoGun extends Weapon {
         this.handler = handler;
         this.lastTime = System.nanoTime();
         this.player = handler.getPlayer();
-        this.damageLvl1 = damageLevel1;
-        this.damageLvl2 = damageLevel2;
-        this.damageLvl3 = damageLevel3;
+        this.damageLvl1 = DAMAGE_LEVEL_1;
+        this.damageLvl2 = DAMAGE_LEVEL_2;
+        this.damageLvl3 = DAMAGE_LEVEL_3;
     }
 
     /**
@@ -70,18 +70,18 @@ public class AutoGun extends Weapon {
      */
     @Override
     public void tick() {
-        double second = Game.SECOND_IN_NANO;
+        final double second = Game.SECOND_IN_NANO;
 
         if (this.currentLevel > 0) { // TODO: sistemare
-            long now = System.nanoTime();
+            final long now = System.nanoTime();
             this.delta = (now - this.lastTime) / second;
 
-            if (this.secondaryShooting && this.delta > level2delta) {
+            if (this.secondaryShooting && this.delta > LEVEL_2_DELTA) {
                 this.shoot();
                 this.secondaryShooting = false;
             }
 
-            if (this.tertiaryShooting && this.delta > level3delta) {
+            if (this.tertiaryShooting && this.delta > LEVEL_3_DELTA) {
                 this.shoot();
                 this.tertiaryShooting = false;
             }
@@ -95,7 +95,7 @@ public class AutoGun extends Weapon {
 
                 this.closestEnemyDistance = (float) Point2D.distance(player.getX(), player.getY(), closestEnemy.getX(),
                         closestEnemy.getY());
-                if (this.closestEnemyDistance <= maxRange) {
+                if (this.closestEnemyDistance <= MAX_RANGE) {
                     this.shoot();
 
                     if (this.currentLevel >= 2) { // TODO: sistemare
@@ -113,11 +113,12 @@ public class AutoGun extends Weapon {
     /**
      * shoots a bullet at the nearest enemy.
      */
+    @Override
     protected void shoot() {
         final Pair<Float, Float> angle = Func.findAngle2(this.player, this.closestEnemy);
-        GameObject tempBullet = handler
-                .addObject(new AutoBullet(player.getX(), player.getY(), handler, this.getDamage()));
-        tempBullet.setVelX((float) ((bulletSpeed) * angle.getX()));
-        tempBullet.setVelY((float) ((bulletSpeed) * angle.getY()));
+        final GameObject tempBullet = new AutoBullet(player.getX(), player.getY(), handler, this.getDamage());
+        this.handler.addObject(tempBullet);
+        tempBullet.setVelX((float) ((BULLET_SPEED) * angle.getX()));
+        tempBullet.setVelY((float) ((BULLET_SPEED) * angle.getY()));
     }
 }

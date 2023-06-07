@@ -40,16 +40,8 @@ public class Ball extends Monster {
         this.reachTarget();
     }
 
-    /**
-     * @return whether a Ball is big or not.
-     */
-    public boolean isBig() {
-        return isBig;
-    }
-
     @Override
-    public final void setBig(final boolean isBig) {
-        this.isBig = isBig;
+    public final void setIsBig(final boolean isBig) {
         this.health = MAX_HEALTH;
         this.speed = MAX_SPEED;
         this.power = MAX_POWER;
@@ -58,13 +50,16 @@ public class Ball extends Monster {
         this.texture = Texture.BALL_BIG;
     }
 
+    /**
+     * Modified by addition of a little bit of deviation with Math.random.
+     */
     @Override
     public void reachTarget() {
         this.setX(this.getX() + this.velX);
         this.setY(this.getY() + this.velY);
 
         // added a little bit of deviation with Math.random
-        float angle = (float) (Math.atan2(my - this.getY() + 8, mx - this.getX() + 4) + Math.random());
+        final float angle = (float) (Math.atan2(my - this.getY() + 8, mx - this.getX() + 4) + Math.random());
         this.velX = (float) ((this.speed) * Math.cos(angle));
         this.velY = (float) ((this.speed) * Math.sin(angle));
     }

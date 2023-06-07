@@ -48,7 +48,7 @@ public class Player extends GameObject implements IPlayer, IObservable {
     private IPlayerMovement playerMovement;
     private PlayerLevels playerLevels;
     private List<IObserverEntity<? extends GameObject>> observers;
-    private ArrayList<Weapon> weapons;
+    // private List<Weapon> weapons;
     private WeaponLevels weaponLevels;
     private ICollisionBehavior collisionBehavior;
     private Handler handler;
@@ -74,7 +74,7 @@ public class Player extends GameObject implements IPlayer, IObservable {
         // this.texture = Texture.PLAYER_DUCK; // alternative texture
         this.texture = Texture.PLAYER_MOUSE;
         this.playerLevels = new PlayerLevels(this);
-        this.weapons = new ArrayList<>();
+        //this.weapons = new ArrayList<>();
         this.collisionBehavior = new StopPlayerBehavior();
     }
 
@@ -169,7 +169,7 @@ public class Player extends GameObject implements IPlayer, IObservable {
 
     @Override
     public final void setLife(final int plusLife) {
-        this.life = this.life + plusLife > this.getMaxLife()    // life cannot be more than maxLife
+        this.life = this.life + plusLife > this.getMaxLife() // life cannot be more than maxLife
                 ? this.getMaxLife()
                 : this.life + plusLife;
     }
@@ -209,9 +209,9 @@ public class Player extends GameObject implements IPlayer, IObservable {
      * 
      * @param weapons player's weapons
      */
-    public void setWeapons(final ArrayList<Weapon> weapons) {
-        this.weapons = weapons;
-        this.weaponLevels = new WeaponLevels(weapons);
+    public void setWeapons(final List<Weapon> w) {
+        // this.weapons = w;
+        this.weaponLevels = new WeaponLevels(w);
     }
 
     /**

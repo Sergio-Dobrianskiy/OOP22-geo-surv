@@ -49,33 +49,32 @@ public class Game extends Canvas implements Runnable, TickingObject {
     private static final double NANO_PER_TICK = SECOND_IN_NANO / TICKS_PER_SECOND;
     private static final int FRAMES_IN_BUFFER = 3;
 
-    private boolean isRunning = false;
+    private boolean isRunning;
     private Thread thread;
     private final Handler handler;
-    private TextureRender textureRender;
+    private final TextureRender textureRender;
     private final Camera camera;
-    private final ILoader loader;
     private GameState state;
-    private String pauseText = "Pause";
-    private Font pauseFont = new Font("Arial", Font.BOLD, 150);
-    private Color backgroundPauseColor = new Color(0, 0, 0, 150);
-
-    private boolean debugMode = false;
+    private final String pauseText = "Pause";
+    private final Font pauseFont = new Font("Arial", Font.BOLD, 150);
+    private final Color backgroundPauseColor = new Color(0, 0, 0, 150);
+    private boolean debugMode;
 
     /**
      * constructor for this class.
      */
     public Game() {
+        final ILoader loader;
         this.state = GameState.LOADING;
 
         new Window(WINDOW_WIDTH, WINDOW_HEIGHT, "Geo-Survivors", this);
 
-        handler = new Handler();
-        loader = new Loader(handler);
-        textureRender = new TextureRender(handler);
+        this.handler = new Handler();
+        loader = new Loader(this.handler);
+        this.textureRender = new TextureRender(this.handler);
 
         loader.loadAll(); // loads Player, textures, weapons, level
-        this.addKeyListener(new KeyInput(this, handler));
+        this.addKeyListener(new KeyInput(this, this.handler));
 
         camera = loader.loadCamera(); // loads camera
 
@@ -110,6 +109,7 @@ public class Game extends Canvas implements Runnable, TickingObject {
         }
     }
 
+    @Override
     public void run() {
         this.requestFocus();
         long lastTime = System.nanoTime();
@@ -118,13 +118,16 @@ public class Game extends Canvas implements Runnable, TickingObject {
         // int frames = 0;
 
         while (isRunning) {
-            long now = System.nanoTime();
+            final long now = System.nanoTime();
             delta += (now - lastTime) / NANO_PER_TICK;
             lastTime = now;
+            // System.out.println("***" + delta);
             while (delta > 1) {
                 this.tick();
                 this.render();
-                delta--;
+                delta -= 1;
+                // System.out.println("->" + delta);
+
                 // frames++;
             }
 
@@ -136,6 +139,7 @@ public class Game extends Canvas implements Runnable, TickingObject {
         stop();
     }
 
+    @Override
     public void tick() {
         if (state == GameState.RUNNING) {
             handler.tick();
@@ -144,13 +148,13 @@ public class Game extends Canvas implements Runnable, TickingObject {
     }
 
     public void render() {
-        BufferStrategy bs = this.getBufferStrategy();
+        final BufferStrategy bs = this.getBufferStrategy();
         if (bs == null) {
             this.createBufferStrategy(FRAMES_IN_BUFFER);
             return;
         }
-        Graphics g = bs.getDrawGraphics();
-        Graphics2D g2d = (Graphics2D) g;
+        final Graphics g = bs.getDrawGraphics();
+        final Graphics2D g2d = (Graphics2D) g;
 
         ///////////////////////////////////// below here we draw to the game
         g.setColor(Color.black);
@@ -173,13 +177,12 @@ public class Game extends Canvas implements Runnable, TickingObject {
             g.setColor(Color.WHITE);
 
             FontMetrics fm = g.getFontMetrics();
-            int textWidth = fm.stringWidth(pauseText);
-            int textHeight = fm.getHeight();
+            final int textWidth = fm.stringWidth(pauseText);
+            final int textHeight = fm.getHeight();
+            final int xPause = (WINDOW_WIDTH - textWidth) / 2 + (int) camera.getX();
+            final int yPause = (WINDOW_HEIGHT - textHeight) / 2 + (int) camera.getY();
 
-            int x_pause = (WINDOW_WIDTH - textWidth) / 2 + (int) camera.getX();
-            int y_pause = (WINDOW_HEIGHT - textHeight) / 2 + (int) camera.getY();
-
-            g.drawString(pauseText, x_pause, y_pause);
+            g.drawString(pauseText, xPause, yPause);
 
         }
 

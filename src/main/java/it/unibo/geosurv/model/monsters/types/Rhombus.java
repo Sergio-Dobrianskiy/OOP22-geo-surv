@@ -12,7 +12,7 @@ public class Rhombus extends Monster {
     private static final int DEFAULT_HEALTH = 2;
     private static final int DEFAULT_H_DIMENSION = 32;
     private static final int DEFAULT_W_DIMENSION = 32;
-    private static int counter = 0;
+    private static int counter;
     private String name = "Rhombus-";
 
     /**
@@ -38,6 +38,11 @@ public class Rhombus extends Monster {
     @Override
     public void tick() {
         /* do nothing on tick() because object remains where it's created */
+    }
+
+    @Override
+    public void setIsBig(final boolean b) {
+        // Rhombus cannot be bigger at the moment.
     }
 
 }

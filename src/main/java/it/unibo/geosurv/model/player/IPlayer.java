@@ -35,10 +35,10 @@ public interface IPlayer {
      * @param damage
      */
     void hit(int damage);
-    
+
     /**
      * check if the player is alive
-     *  
+     * 
      * @return true if the player is alive
      */
     boolean isAlive();

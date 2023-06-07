@@ -8,7 +8,7 @@ import it.unibo.geosurv.model.player.Player;
  */
 public class PlayerMovement implements IPlayerMovement {
 
-    private Handler handler;
+    private final Handler handler;
     private Player player;
 
     /**
@@ -25,10 +25,9 @@ public class PlayerMovement implements IPlayerMovement {
      * manages player movement.
      */
     @Override
-     public void movePlayer() {
-        if (player == null) {                // TODO: rework
+    public void movePlayer() {
+        if (player == null) { // TODO: rework
             player = handler.getPlayer();
-            System.out.println("null");
             return;
         }
 
@@ -56,4 +55,11 @@ public class PlayerMovement implements IPlayerMovement {
             player.setVelX(0);
         }
     }
+
+    @Override
+    public void stopMovements() {
+        // player.setX(player.getX() + player.getVelX() * -1);
+        // player.setY(player.getY() + player.getVelY() * -1);
+    }
+
 }

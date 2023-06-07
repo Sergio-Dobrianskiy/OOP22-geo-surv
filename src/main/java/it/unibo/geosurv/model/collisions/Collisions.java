@@ -1,6 +1,6 @@
 package it.unibo.geosurv.model.collisions;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.Handler;
@@ -31,8 +31,8 @@ public class Collisions {
      * check if the player is colliding.
      */
     public void checkPlayerCollisions() {
-        final ArrayList<GameObject> tmpObjects = handler.getGameObjects();
-        final Player player = handler.getPlayer();
+        List<GameObject> tmpObjects = handler.getGameObjects();
+        Player player = handler.getPlayer();
         for (int i = 0; i < tmpObjects.size(); i++) {
             final GameObject tempObject = tmpObjects.get(i);
             if (Collisions.isColliding(player, tempObject, ID.Block)) { // if player touches wall => stop
@@ -42,11 +42,11 @@ public class Collisions {
                 player.hit(((Monster) tempObject).getPower());
             }
             if (Collisions.isColliding(player, tempObject, ID.Experience)) { // if player touches experience pills
-                handler.getPlayer().setExperience(((Experience) tempObject).getExperience());
-                tempObject.collide();
+                handler.getPlayer().setExperience(((Experience) tempObject).getExp());
+                ((Experience) tempObject).collide();
             }
             if (Collisions.isColliding(player, tempObject, ID.Life)) { // if player touches life pills
-                handler.getPlayer().setLife(((Life) tempObject).getLife());
+                handler.getPlayer().setLife(((Life) tempObject).getDefaultLife());
                 // handler.removeObject(tempObject);
                 tempObject.collide();
             }
@@ -59,7 +59,7 @@ public class Collisions {
      * @param bullet to check
      */
     public void checkBulletCollisionss(final Bullet bullet) {
-        final ArrayList<GameObject> tmpObjects = handler.getGameObjects();
+        List<GameObject> tmpObjects = handler.getGameObjects();
         for (int i = 0; i < tmpObjects.size(); i++) {
             final GameObject tempObject = tmpObjects.get(i);
 
@@ -98,5 +98,14 @@ public class Collisions {
      */
     public static boolean isColliding(final GameObject obj1, final GameObject obj2) {
         return obj1.getShape().getBounds2D().intersects(obj2.getShape().getBounds2D());
+    }
+
+    /**
+     * Stops player movements.
+     */
+    public void stopMovements() {
+        Player player = handler.getPlayer();
+        player.setX(player.getX() + player.getVelX() * -1);
+        player.setY(player.getY() + player.getVelY() * -1);
     }
 }

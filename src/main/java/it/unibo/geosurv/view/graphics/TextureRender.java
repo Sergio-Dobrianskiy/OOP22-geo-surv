@@ -2,7 +2,8 @@ package it.unibo.geosurv.view.graphics;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.util.ArrayList;
+import java.util.List;
+
 import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.Handler;
 import it.unibo.geosurv.model.ID;
@@ -32,7 +33,7 @@ public class TextureRender {
     }
 
     public void renderView(final Graphics g) {
-        final ArrayList<GameObject> gameObjects = handler.getGameObjects();
+        final List<GameObject> gameObjects = handler.getGameObjects();
         final Player player = handler.getPlayer();
         for (final GameObject to : gameObjects) {
             final int xx = getRenderX(to);
@@ -106,18 +107,18 @@ public class TextureRender {
     }
 
     public int getRenderX(final GameObject obj) {
-        return (int) (obj.getX() - (obj.getWidth() / 2));
+        return (int) obj.getX() - obj.getWidth() / 2;
     }
 
     public int getRenderY(final GameObject obj) {
-        return (int) (obj.getY() - (obj.getHeight() / 2));
+        return (int) obj.getY() - obj.getHeight() / 2;
     }
 
     /** Show debug info */
     public void showDebug(final Graphics g) {
         final int xPos = 850;
         final int yPos = 80;
-        final ArrayList<GameObject> gameObjects = handler.getGameObjects();
+        final List<GameObject> gameObjects = handler.getGameObjects();
 
         g.setColor(Color.RED);
         // g.drawString("FPS: " + this.fps, 850, 50);

@@ -12,11 +12,11 @@ public class AutoBullet extends Bullet {
     /**
      * bulletImpl's height.
      */
-    private final int bulletImpHeight = 15;
+    private static final int bulletImpHeight = 15;
     /**
      * bulletImpl's width.
      */
-    private final int bulletImpWidth = 15;
+    private static final int bulletImpWidth = 15;
 
     /**
      * Constructor for this class.

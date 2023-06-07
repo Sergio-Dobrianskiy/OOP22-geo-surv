@@ -1,6 +1,8 @@
 package it.unibo.geosurv.model;
 
-import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArrayList;
+
 import it.unibo.geosurv.control.TickingObject;
 import it.unibo.geosurv.model.player.Player;
 
@@ -9,99 +11,165 @@ import it.unibo.geosurv.model.player.Player;
  */
 public class Handler implements TickingObject {
 
-    private ArrayList<GameObject> gameObjects = new ArrayList<>();
-    private ArrayList<TickingObject> tickingObjects = new ArrayList<>();
+    private final CopyOnWriteArrayList<GameObject> gameObjects = new CopyOnWriteArrayList<>();
+    private final CopyOnWriteArrayList<TickingObject> tickingObjects = new CopyOnWriteArrayList<>();
     private Player player;
-    private boolean up = false, down = false, left = false, right = false;
-
+    private boolean up;
+    private boolean down;
+    private boolean left;
+    private boolean right;
 
     /**
      * calls tick() for every gameObject and tickingObject.
      */
+    @Override
     public void tick() {
-        for (int i = 0; i < gameObjects.size(); i++) {
-            final GameObject tempObject = gameObjects.get(i);
+        final Iterator<GameObject> goIterator = gameObjects.iterator();
+        final Iterator<TickingObject> toIterator = tickingObjects.iterator();
+        while (goIterator.hasNext()) {
+            GameObject tempObject = goIterator.next();
             tempObject.tick();
         }
-        for (int i = 0; i < tickingObjects.size(); i++) {
-            final TickingObject tempObject = tickingObjects.get(i);
+
+        while (toIterator.hasNext()) {
+            TickingObject tempObject = toIterator.next();
             tempObject.tick();
         }
     }
 
-
-    public GameObject addObject(final GameObject tempObject) {
+    /**
+     * Add tempObject to gameObjects.
+     * 
+     * @param tempObject
+     */
+    public void addObject(final GameObject tempObject) {
         gameObjects.add(tempObject);
-        return tempObject;
     }
 
+    /**
+     * Remove tempObject from gameObjects.
+     * 
+     * @param tempObject
+     */
     public void removeObject(final GameObject tempObject) {
         gameObjects.remove(tempObject);
     }
 
-    public TickingObject addTickingObject(final TickingObject tempObject) {
+    /**
+     * Add tickingObject.
+     * 
+     * @param tempObject
+     */
+    public void addTickingObject(final TickingObject tempObject) {
         tickingObjects.add(tempObject);
-        return tempObject;
     }
 
+    /**
+     * Remove tickingObject.
+     * 
+     * @param tempObject
+     */
     public void removeTickingObject(final TickingObject tempObject) {
         tickingObjects.remove(tempObject);
     }
 
-    public Player addPlayer(Player player) {
+    /**
+     * Add player to gameObjects.
+     * 
+     * @param player
+     */
+    public void addPlayer(final Player player) {
         this.player = player;
         this.gameObjects.add(player);
-        return player;
     }
 
+    /**
+     * @return player.
+     */
     public Player getPlayer() {
         return this.player;
     }
 
+    /**
+     * @return gameObjects size.
+     */
     public int getObjectsSize() {
         return this.gameObjects.size();
     }
 
-    public ArrayList<GameObject> getGameObjects() {
+    /**
+     * @return gameObjects.
+     */
+    public CopyOnWriteArrayList<GameObject> getGameObjects() {
         return this.gameObjects;
     }
 
-    public ArrayList<TickingObject> getTickingbjects() {
+    /**
+     * @return tickingObjects.
+     */
+    public CopyOnWriteArrayList<TickingObject> getTickingbjects() {
         return this.tickingObjects;
     }
 
+    /**
+     * @return if isUp
+     */
     public boolean isUp() {
         return up;
     }
 
-    public void setUp(boolean up) {
+    /**
+     * @param up
+     */
+    public void setUp(final boolean up) {
         this.up = up;
     }
 
+    /**
+     * @return if isDown.
+     */
     public boolean isDown() {
         return down;
     }
 
-    public void setDown(boolean down) {
+    /**
+     * @param down
+     */
+    public void setDown(final boolean down) {
         this.down = down;
     }
 
+    /**
+     * @return if isLeft
+     */
     public boolean isLeft() {
         return left;
     }
 
-    public void setLeft(boolean left) {
+    /**
+     * @param left
+     */
+    public void setLeft(final boolean left) {
         this.left = left;
     }
 
+    /**
+     * @return if isRight
+     */
     public boolean isRight() {
         return right;
     }
 
-    public void setRight(boolean right) {
+    /**
+     * @param right
+     */
+    public void setRight(final boolean right) {
         this.right = right;
     }
 
+    /**
+     * Clear handler.
+     */
     public void clearHandler() {
         gameObjects.clear();
         tickingObjects.clear();

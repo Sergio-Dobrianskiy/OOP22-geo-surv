@@ -13,31 +13,31 @@ public class ExplosionGun extends Weapon {
     /**
      * minimum range at witch explosion can appear.
      */
-    private final float minRange = 10f;
+    private static final float minRange = 10f;
     /**
      * maximum range at witch explosion can appear.
      */
-    private final float maxRange = 200f;
+    private static final float maxRange = 200f;
     /**
      * explosion cycle in ms.
      */
-    private final long explosionCycle = 4000L;
+    private static final long explosionCycle = 4000L;
     /**
      * explosion damage at level 1.
      */
-    private final int damageLevel1 = 3;
+    private static final int damageLevel1 = 3;
     /**
      * explosion damage at level 2.
      */
-    private final int damageLevel2 = 6;
+    private static final int damageLevel2 = 6;
     /**
      * explosion damage at level 3.
      */
-    private final int damageLevel3 = 9;
+    private static final int damageLevel3 = 9;
     /**
      * explosion damage at level 3.
      */
-    private final int explosionsPerLevel = 2;
+    private static final int explosionsPerLevel = 2;
 
     private Handler handler;
     /**
@@ -46,12 +46,12 @@ public class ExplosionGun extends Weapon {
      * @param handler game's Handler
      */
     public ExplosionGun(final Handler handler) {
-        super();
+
         this.handler = handler; 
         this.cycle = explosionCycle;
         this.damageLvl1 = damageLevel1;
-        this.damageLvl1 = damageLevel2;
-        this.damageLvl1 = damageLevel3;
+        this.damageLvl2 = damageLevel2;
+        this.damageLvl3 = damageLevel3;
     }
 
     /**

@@ -9,4 +9,9 @@ public interface IPlayerMovement {
      * moves player.
      */
     void movePlayer();
+
+    /**
+     * stops player.
+     */
+    void stopMovements();
 }
