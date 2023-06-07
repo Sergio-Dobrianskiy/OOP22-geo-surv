@@ -153,7 +153,7 @@ public class TestWeapons<A> {
 
         final Handler handler = new Handler();
         ArrayList<Weapon> weapons = new ArrayList<>();
-        Weapon weapon;
+        // Weapon weapon;
         final WeaponFactory weaponFactory = new WeaponFactory(handler);
         handler.addPlayer(new Player(0, 0, handler));
 

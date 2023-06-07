@@ -59,7 +59,7 @@ public class Loader implements ILoader {
      *
      */
     public void loadAll() {
-        handler.addPlayer(new Player(playerStartingX, playerStartingY, handler)); // TODO: remove?
+        handler.addPlayer(new Player(playerStartingX, playerStartingY, handler));
         this.loadTextures();
         this.loadGuns();
         loadLevel(Texture.SMALL_MAP.extractTexture());

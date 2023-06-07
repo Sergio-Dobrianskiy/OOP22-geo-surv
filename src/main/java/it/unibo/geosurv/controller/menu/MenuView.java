@@ -16,7 +16,7 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 
 /**
- * TODO: javadoc.
+ * Class which implements menu for user.
  */
 public class MenuView extends JFrame {
 
