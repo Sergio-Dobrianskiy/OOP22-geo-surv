@@ -8,6 +8,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -75,6 +76,22 @@ public class MenuView extends JFrame {
         buttonPanel.add(closeButton);
 
         panel.add(buttonPanel, BorderLayout.CENTER);
+
+        /* Options */
+        JPanel optionsPanel = new JPanel();
+        optionsPanel.setOpaque(false);
+        optionsPanel.setLayout(new BorderLayout());  
+
+        JLabel optionsLabel = new JLabel("Options:");
+        optionsLabel.setFont(new Font("Arial", Font.BOLD, 24));
+        optionsLabel.setForeground(Color.WHITE);
+        optionsLabel.setHorizontalAlignment(JLabel.CENTER);
+        optionsPanel.add(optionsLabel, BorderLayout.NORTH);
+
+        JPanel optionsListPanel = new JPanel();
+        optionsListPanel.setOpaque(false);
+        optionsListPanel.setLayout(new GridLayout(3, 1, 0, 10));
+        optionsListPanel.setBorder(BorderFactory.createEmptyBorder(20, 0, 20, 0));
 
         /* For debug 
         JLabel note = new JLabel("Press 'g' for debug");
