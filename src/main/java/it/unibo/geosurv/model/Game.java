@@ -65,6 +65,7 @@ public class Game extends Canvas implements Runnable, TickingObject {
     private final String gameOverText = "Game Over";
     private final Font gameOverFont = new Font("Arial", Font.BOLD, 100);
     private final Color gameOverColor = Color.RED;
+    private final Color backgroundGameOverColor = new Color(0, 0, 0, 250);
 
     private Player player;
 
@@ -197,7 +198,7 @@ public class Game extends Canvas implements Runnable, TickingObject {
         
         /* Game management lost */
         if (state == GameState.LOST) {
-            g.setColor(backgroundPauseColor);
+            g.setColor(backgroundGameOverColor);
             g.fillRect((int) camera.getX(), (int) camera.getY(), WINDOW_WIDTH, WINDOW_HEIGHT);
         
             g.setFont(gameOverFont);
