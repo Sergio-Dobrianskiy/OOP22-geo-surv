@@ -48,7 +48,7 @@ public class MenuView extends JFrame {
         panel.setLayout(new BorderLayout());
 
         /* Title */
-        final JLabel title = new JLabel("Geo-Survivors");
+        JLabel title = new JLabel("Geo-Survivors");
 
         /* Setting title  */
         title.setFont(new Font("Arial", Font.BOLD, 32));
@@ -128,9 +128,7 @@ public class MenuView extends JFrame {
         frame.pack();
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
-        frame.toFront();
-        frame.setAlwaysOnTop(true); 
-        frame.setAlwaysOnTop(false);
+
     }
 
     /**
