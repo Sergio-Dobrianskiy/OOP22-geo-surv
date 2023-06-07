@@ -4,7 +4,7 @@ import java.util.Iterator;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 import it.unibo.geosurv.control.TickingObject;
-import it.unibo.geosurv.model.player.MainPlayer;
+import it.unibo.geosurv.model.player.Player;
 
 /**
  * Represents the Handler.
@@ -13,7 +13,7 @@ public class Handler implements TickingObject {
 
     private final CopyOnWriteArrayList<GameObject> gameObjects = new CopyOnWriteArrayList<>();
     private final CopyOnWriteArrayList<TickingObject> tickingObjects = new CopyOnWriteArrayList<>();
-    private MainPlayer player;
+    private Player player;
     private boolean up;
     private boolean down;
     private boolean left;
@@ -78,7 +78,7 @@ public class Handler implements TickingObject {
      * 
      * @param player
      */
-    public void addPlayer(final MainPlayer player) {
+    public void addPlayer(final Player player) {
         this.player = player;
         this.gameObjects.add(player);
     }
@@ -86,7 +86,7 @@ public class Handler implements TickingObject {
     /**
      * @return player.
      */
-    public MainPlayer getPlayer() {
+    public Player getPlayer() {
         return this.player;
     }
 

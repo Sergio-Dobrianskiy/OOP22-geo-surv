@@ -3,7 +3,7 @@ package it.unibo.geosurv.control.weapons;
 import it.unibo.geosurv.model.Handler;
 import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.bullets.Laser;
-import it.unibo.geosurv.model.player.MainPlayer;
+import it.unibo.geosurv.model.player.Player;
 import it.unibo.geosurv.view.graphics.Texture;
 
 /**
@@ -61,8 +61,8 @@ public class LaserGun extends Weapon {
     protected void shoot() {
         final float px = this.player.getX();
         final float py = this.player.getY();
-        final float xCorrection = (longSide + MainPlayer.PLAYER_WIDTH) / 2;
-        final float yCorrection = (longSide + MainPlayer.PLAYER_HEIGHT) / 2;
+        final float xCorrection = (longSide + Player.PLAYER_WIDTH) / 2;
+        final float yCorrection = (longSide + Player.PLAYER_HEIGHT) / 2;
 
         if (this.currentLevel >= 1) {
             this.handler.addObject(new Laser(px + xCorrection, py, this.handler, getDamage(), longSide, shortSide, Texture.LASER_H)); // right

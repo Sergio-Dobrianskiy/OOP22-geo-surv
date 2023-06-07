@@ -12,7 +12,7 @@ import it.unibo.geosurv.model.monsters.Monster;
 import it.unibo.geosurv.model.monsters.types.Rect;
 import it.unibo.geosurv.model.monsters.types.Rhombus;
 import it.unibo.geosurv.model.monsters.types.Triangle;
-import it.unibo.geosurv.model.player.MainPlayer;
+import it.unibo.geosurv.model.player.Player;
 
 /**
  * Test for {@link Monster} creation.
@@ -23,7 +23,7 @@ class TestMonsterCreation {
     void createTMonsters() {
 
         Handler h = new Handler();
-        h.addPlayer(new MainPlayer(0, 0, h));
+        h.addPlayer(new Player(0, 0, h));
 
         GenerateMonsterT tFact = new GenerateMonsterT();
         Monster t = tFact.createMonster(h);
@@ -36,7 +36,7 @@ class TestMonsterCreation {
     void createRMonsters() {
 
         Handler h = new Handler();
-        h.addPlayer(new MainPlayer(0, 0, h));
+        h.addPlayer(new Player(0, 0, h));
 
         GenerateMonsterR rFact = new GenerateMonsterR();
         Monster r = rFact.createMonster(h);
@@ -49,7 +49,7 @@ class TestMonsterCreation {
     void createRhMonsters() {
 
         Handler h = new Handler();
-        h.addPlayer(new MainPlayer(0, 0, h));
+        h.addPlayer(new Player(0, 0, h));
 
         GenerateMonsterRh rhFact = new GenerateMonsterRh();
         Monster rh = rhFact.createMonster(h);
@@ -62,7 +62,7 @@ class TestMonsterCreation {
     void createDifferentTypeOfMonsters() {
 
         Handler h = new Handler();
-        h.addPlayer(new MainPlayer(0, 0, h));
+        h.addPlayer(new Player(0, 0, h));
         int counter = 0;
         GenerateMonsterT tFact = new GenerateMonsterT();
         GenerateMonsterR rFact = new GenerateMonsterR();

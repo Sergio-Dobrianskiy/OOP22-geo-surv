@@ -2,8 +2,8 @@ package it.unibo.geosurv.model.player;
 
 import java.util.ArrayList;
 import java.util.List;
+import it.unibo.geosurv.control.IPlayerMovement;
 import it.unibo.geosurv.control.PlayerMovement;
-import it.unibo.geosurv.control.PlayerMovementImpl;
 import it.unibo.geosurv.control.weapons.Weapon;
 import it.unibo.geosurv.control.weapons.WeaponLevels;
 import it.unibo.geosurv.model.GameObject;
@@ -18,7 +18,7 @@ import it.unibo.geosurv.view.graphics.Texture;
  * Represents Player.
  * 
  */
-public class MainPlayer extends GameObject implements MainPlayerInterf, IObservable {
+public class Player extends GameObject implements IPlayer, IObservable {
 
     /**
      * Player's height.
@@ -43,7 +43,7 @@ public class MainPlayer extends GameObject implements MainPlayerInterf, IObserva
     private long lastHitTime; // last time Player is touched/hit by a monster
     private int life;
     private Collisions collisions;
-    private PlayerMovement playerMovement;
+    private IPlayerMovement playerMovement;
     private PlayerLevels playerLevels;
     private List<IObserverEntity<? extends GameObject>> observers;
     // private List<Weapon> weapons;
@@ -56,7 +56,7 @@ public class MainPlayer extends GameObject implements MainPlayerInterf, IObserva
      * @param y       explosion coordinate
      * @param handler game's Handler
      */
-    public MainPlayer(final float x, final float y, final Handler handler) {
+    public Player(final float x, final float y, final Handler handler) {
         super(x, y, ID.Player);
         this.life = maxLife;
         this.lastHitTime = 0;
@@ -64,7 +64,7 @@ public class MainPlayer extends GameObject implements MainPlayerInterf, IObserva
         this.height = PLAYER_HEIGHT;
         this.width = PLAYER_WIDTH;
         this.collisions = new Collisions(handler);
-        this.playerMovement = new PlayerMovementImpl(handler);
+        this.playerMovement = new PlayerMovement(handler);
         // this.texture = Texture.PLAYER_DUCK; // alternative texture
         this.texture = Texture.PLAYER_MOUSE;
         this.playerLevels = new PlayerLevels(this);
@@ -162,7 +162,7 @@ public class MainPlayer extends GameObject implements MainPlayerInterf, IObserva
 
     @Override
     public final void setLife(final int plusLife) {
-        this.life = this.life + plusLife > this.getMaxLife()    // life cannot be more than maxLife
+        this.life = this.life + plusLife > this.getMaxLife() // life cannot be more than maxLife
                 ? this.getMaxLife()
                 : this.life + plusLife;
     }

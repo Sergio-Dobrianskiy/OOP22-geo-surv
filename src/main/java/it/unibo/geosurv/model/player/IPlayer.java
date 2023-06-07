@@ -3,7 +3,7 @@ package it.unibo.geosurv.model.player;
 /**
  * Interface which model the player.
  */
-public interface MainPlayerInterf {
+public interface IPlayer {
 
     /**
      * Actions player does each tick.
@@ -40,10 +40,10 @@ public interface MainPlayerInterf {
      * @param damage
      */
     void hit(int damage);
-    
+
     /**
      * check if the player is alive
-     *  
+     * 
      * @return true if the player is alive
      */
     boolean isAlive();

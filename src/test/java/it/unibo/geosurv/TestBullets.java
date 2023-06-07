@@ -10,7 +10,7 @@ import it.unibo.geosurv.model.bullets.Bullet;
 import it.unibo.geosurv.model.bullets.Explosion;
 import it.unibo.geosurv.model.bullets.Laser;
 import it.unibo.geosurv.model.bullets.Satellite;
-import it.unibo.geosurv.model.player.MainPlayer;
+import it.unibo.geosurv.model.player.Player;
 import it.unibo.geosurv.view.graphics.Texture;
 
 /**
@@ -29,7 +29,7 @@ public class TestBullets {
         final int damage = 10;
         final int size = 10;
         Bullet bullet;
-        handler.addPlayer(new MainPlayer(0, 0, handler));
+        handler.addPlayer(new Player(0, 0, handler));
 
         bullet = new AutoBullet(0, 0, handler, damage);
         assertEquals(AutoBullet.class, bullet.getClass());
@@ -54,7 +54,7 @@ public class TestBullets {
         final int damage = 10;
         final int size = 10;
         Bullet bullet;
-        handler.addPlayer(new MainPlayer(0, 0, handler));
+        handler.addPlayer(new Player(0, 0, handler));
 
         bullet = new AutoBullet(0, 0, handler, damage);
         assertEquals(damage, bullet.getDamage());

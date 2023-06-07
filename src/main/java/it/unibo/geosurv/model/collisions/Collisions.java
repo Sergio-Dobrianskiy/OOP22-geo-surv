@@ -9,7 +9,7 @@ import it.unibo.geosurv.model.bullets.Bullet;
 import it.unibo.geosurv.model.drops.Experience;
 import it.unibo.geosurv.model.drops.Life;
 import it.unibo.geosurv.model.monsters.Monster;
-import it.unibo.geosurv.model.player.MainPlayer;
+import it.unibo.geosurv.model.player.Player;
 
 /**
  * Manages game collisions.
@@ -32,7 +32,7 @@ public class Collisions {
      */
     public void checkPlayerCollisions() {
         List<GameObject> tmpObjects = handler.getGameObjects();
-        MainPlayer player = handler.getPlayer();
+        Player player = handler.getPlayer();
         for (int i = 0; i < tmpObjects.size(); i++) {
             GameObject tempObject = tmpObjects.get(i);
             if (Collisions.isColliding(player, tempObject, ID.Block)) { // if player touches wall => stop
@@ -104,7 +104,7 @@ public class Collisions {
      * Stops player movements.
      */
     public void stopMovements() {
-        MainPlayer player = handler.getPlayer();
+        Player player = handler.getPlayer();
         player.setX(player.getX() + player.getVelX() * -1);
         player.setY(player.getY() + player.getVelY() * -1);
     }

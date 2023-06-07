@@ -2,7 +2,7 @@ package it.unibo.geosurv.view.graphics;
 
 import it.unibo.geosurv.model.Game;
 import it.unibo.geosurv.model.Handler;
-import it.unibo.geosurv.model.player.MainPlayer;
+import it.unibo.geosurv.model.player.Player;
 
 /**
  * represents game's camera.
@@ -11,7 +11,7 @@ public class Camera {
 
     private float x;
     private float y;
-    private final MainPlayer tempPlayer;
+    private final Player tempPlayer;
 
     /**
      * constructor for this class.
