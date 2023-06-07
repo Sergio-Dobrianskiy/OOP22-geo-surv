@@ -48,7 +48,7 @@ public class MenuView extends JFrame {
         panel.setLayout(new BorderLayout());
 
         /* Title */
-        final JLabel title = new JLabel("Geo-Survivors");
+        JLabel title = new JLabel("Geo-Survivors");
 
         /* Setting title  */
         title.setFont(new Font("Arial", Font.BOLD, 32));
@@ -99,11 +99,21 @@ public class MenuView extends JFrame {
         option1Label.setHorizontalAlignment(JLabel.CENTER);
         optionsListPanel.add(option1Label);
 
-        JLabel option2Label = new JLabel("2) Press 'P' to pause the game");
+        JLabel option2Label = new JLabel(" - Press 'P' to pause the game");
         option2Label.setFont(new Font("Arial", Font.PLAIN, 20));
         option2Label.setForeground(Color.WHITE);
         option2Label.setHorizontalAlignment(JLabel.CENTER);
-        optionsListPanel.add(option2Label);   
+        optionsListPanel.add(option2Label);
+
+        JLabel option3Label = new JLabel(" - Press 'G' for debug");
+        option3Label.setFont(new Font("Arial", Font.PLAIN, 20));
+        option3Label.setForeground(Color.WHITE);
+        option3Label.setHorizontalAlignment(JLabel.CENTER);
+        optionsListPanel.add(option3Label);
+
+        optionsPanel.add(optionsListPanel, BorderLayout.CENTER);
+
+        panel.add(optionsPanel, BorderLayout.SOUTH);
 
         /* For debug 
         JLabel note = new JLabel("Press 'g' for debug");
@@ -118,9 +128,7 @@ public class MenuView extends JFrame {
         frame.pack();
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
-        frame.toFront();
-        frame.setAlwaysOnTop(true); 
-        frame.setAlwaysOnTop(false);
+
     }
 
     /**
