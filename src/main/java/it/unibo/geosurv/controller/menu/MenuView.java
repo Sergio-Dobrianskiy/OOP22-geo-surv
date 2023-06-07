@@ -8,6 +8,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -75,6 +76,34 @@ public class MenuView extends JFrame {
         buttonPanel.add(closeButton);
 
         panel.add(buttonPanel, BorderLayout.CENTER);
+
+        /* Options */
+        JPanel optionsPanel = new JPanel();
+        optionsPanel.setOpaque(false);
+        optionsPanel.setLayout(new BorderLayout());  
+
+        JLabel optionsLabel = new JLabel("Options:");
+        optionsLabel.setFont(new Font("Arial", Font.BOLD, 24));
+        optionsLabel.setForeground(Color.WHITE);
+        optionsLabel.setHorizontalAlignment(JLabel.CENTER);
+        optionsPanel.add(optionsLabel, BorderLayout.NORTH);
+
+        JPanel optionsListPanel = new JPanel();
+        optionsListPanel.setOpaque(false);
+        optionsListPanel.setLayout(new GridLayout(3, 1, 0, 10));
+        optionsListPanel.setBorder(BorderFactory.createEmptyBorder(20, 0, 20, 0));
+
+        JLabel option1Label = new JLabel(" - Move the player with arrow keys or WASD");
+        option1Label.setFont(new Font("Arial", Font.PLAIN, 20));
+        option1Label.setForeground(Color.WHITE);
+        option1Label.setHorizontalAlignment(JLabel.CENTER);
+        optionsListPanel.add(option1Label);
+
+        JLabel option2Label = new JLabel("2) Press 'P' to pause the game");
+        option2Label.setFont(new Font("Arial", Font.PLAIN, 20));
+        option2Label.setForeground(Color.WHITE);
+        option2Label.setHorizontalAlignment(JLabel.CENTER);
+        optionsListPanel.add(option2Label);   
 
         /* For debug 
         JLabel note = new JLabel("Press 'g' for debug");
