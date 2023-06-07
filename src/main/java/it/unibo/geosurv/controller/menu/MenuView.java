@@ -99,6 +99,12 @@ public class MenuView extends JFrame {
         option1Label.setHorizontalAlignment(JLabel.CENTER);
         optionsListPanel.add(option1Label);
 
+        JLabel option2Label = new JLabel("2) Press 'P' to pause the game");
+        option2Label.setFont(new Font("Arial", Font.PLAIN, 20));
+        option2Label.setForeground(Color.WHITE);
+        option2Label.setHorizontalAlignment(JLabel.CENTER);
+        optionsListPanel.add(option2Label);   
+
         /* For debug 
         JLabel note = new JLabel("Press 'g' for debug");
 
