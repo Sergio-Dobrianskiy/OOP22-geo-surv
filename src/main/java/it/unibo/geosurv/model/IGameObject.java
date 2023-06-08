@@ -24,11 +24,6 @@ public interface IGameObject {
     void setId(ID id);
 
     /**
-     * this object's behavior.
-     */
-    void tick();
-
-    /**
      * get object's x coordinate.
      * @return object's x coordinate
      */
