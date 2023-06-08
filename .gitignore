@@ -28,6 +28,7 @@ build
 # report/*.gz
 # report/*.toc
 # report/*.pdf
-report/
-!report/*.tex
-!report/img/
+# Allow all report dir at the moment
+!report/
+#!report/*.tex
+#!report/img/*
