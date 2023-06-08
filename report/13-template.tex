@@ -263,10 +263,10 @@ In \Cref{img:goodarch} è esemplificato il diagramma UML architetturale.
 \begin{enumerate}
 
 	
-	\item WeaponFactory
+	\item Factory Pattern: WeaponFactory
 			
 	\begin{itemize}
-		\item Problema 1: creare un'istanza delle armi presenti nel gioco durante la fase di loading indipendentemente dall'implmentazione della classe astratta Weapon.
+		\item Problema: creare un'istanza delle armi presenti nel gioco durante la fase di loading indipendentemente dall'implmentazione della classe astratta Weapon.
 		\item Soluzione: ho deciso di usare il metodo Factory che permette di separare il codice della costruzione dell'oggetto dal codice che lo adrà ad utilizzare.
 		\item Schema:
 		\begin{figure}[H]
@@ -275,20 +275,37 @@ In \Cref{img:goodarch} è esemplificato il diagramma UML architetturale.
 			\caption{Schema UML dell'implementazione del pattern \emph{Factory}}
 			\label{img:Factory Pattern}
 		\end{figure}
-		\item Pattern
+	\end{itemize}
+	
+		\item Strategy Pattern: CollisionBehavior
+	\begin{itemize}
+		\item Problema: gestire le collissioni dei GameObject presenti in gioco in modo efficiente 
+		\item Soluzione ho deciso di usare lo Strategy Pattern che permette di definire uan serie di algoritmi in classi separate e di poterli inserire in modo intercambiabile all'interno di altre classi.
+		In questo modo per assegnare a lo stesso comportamento a più di una classe non sarà necessario scrivere lo stesso codice più volte o usare l'ereditarietà.
+		Inoltre gli algoritmi alla base di ciascun comportamento sono facilmente mantenibili e modificabili. \\
+		Nella versiona attuale di gioco ho creato 3 algoritmi ciascuno gestito da una classe che implementa l'interfaccia ICollisionBehavior. 
+		Un esempio dell'utilizzo di queste classi lo si può trovare nella gestione di tutte le Bullet. Di default tutte le classi che estendono la classe astratta Bullet avranno l'algoritmo NoCollisionBehavior, mentre in AutoBullet verrà usato l'algoritmo presente in RemoveOnCollisionBehavior.
+		\item Schema:
+		\begin{figure}[H]
+			\centering{}
+			\includegraphics[width=\textwidth]{img/strategy.png}
+			\caption{Schema UML dell'implementazione del pattern \emph{Strategy}. }
+			\label{img:Strategy Pattern}
+		\end{figure}
 		
 	\end{itemize}
-		\item Problema 1
+	\item Template Method Pattern
 	\begin{itemize}
-		\item Soluzione
-		\item Schema
-		\item Pattern
-	\end{itemize}
-	\item Problema 2
-	\begin{itemize}
-		\item Soluzione
-		\item Schema
-		\item Pattern
+		\item Problema: implmentare l'algoritmo che permetta a ciascuna arma di sparare
+		\item Soluzione: ho deciso di utilizzare il Template Method in quanto il comportamento di ciascuna arma è unico e non verrà usato altrove.
+		La classe astratta Weapon contiene l'algoritmo che permette alle armi che estenderanno di sparare in modo ciclico, ma il metodo che richiama lo sparo stesso è astratto e richiede di essere implmentato.
+		\item Schema:
+		\begin{figure}[H]
+			\centering{}
+			\includegraphics[width=\textwidth]{img/template.png}
+			\caption{Schema UML dell'implementazione del pattern \emph{Template}}
+			\label{img:Template Pattern}
+		\end{figure}
 	\end{itemize}
 	
 	
