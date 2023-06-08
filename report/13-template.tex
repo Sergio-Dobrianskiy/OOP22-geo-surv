@@ -261,7 +261,24 @@ In \Cref{img:goodarch} è esemplificato il diagramma UML architetturale.
 \subsubsection*{Sergio Dobrianskiy:}
 %
 \begin{enumerate}
-	\item Problema 1
+
+	
+	\item WeaponFactory
+			
+	\begin{itemize}
+		\item Problema 1: creare un'istanza delle armi presenti nel gioco durante la fase di loading indipendentemente dall'implmentazione della classe astratta Weapon.
+		\item Soluzione: ho deciso di usare il metodo Factory che permette di separare il codice della costruzione dell'oggetto dal codice che lo adrà ad utilizzare.
+		\item Schema:
+		\begin{figure}[H]
+			\centering{}
+			\includegraphics[width=\textwidth]{img/factory.png}
+			\caption{Schema UML dell'implementazione del pattern \emph{Factory}}
+			\label{img:Factory Pattern}
+		\end{figure}
+		\item Pattern
+		
+	\end{itemize}
+		\item Problema 1
 	\begin{itemize}
 		\item Soluzione
 		\item Schema
@@ -273,6 +290,9 @@ In \Cref{img:goodarch} è esemplificato il diagramma UML architetturale.
 		\item Schema
 		\item Pattern
 	\end{itemize}
+	
+	
+	
 \end{enumerate}
 %
 \subsubsection*{Pierangelo Motta:}
