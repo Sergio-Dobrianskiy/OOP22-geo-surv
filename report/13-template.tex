@@ -29,7 +29,6 @@
 \date{\today}
 %
 \begin{document}
-%
 \maketitle
 %
 \tableofcontents
@@ -288,8 +287,7 @@ In \Cref{img:goodarch} è esemplificato il diagramma UML architetturale.
 
 \item Problematica: creare tipi di mostri diversi durante tutto l'arco temporale di gioco.	
 \paragraph*{}
-Ho utilizzato il pattern \emph{Factory Method} per avere delle factory che permettessero la creazione trasparente di mostri diversi.
-
+Ho utilizzato il pattern \emph{Factory Method} per avere delle factory che permettessero la creazione trasparente di mostri diversi. La classe MonsterSpawner utilizza le factory per generare mostri diversi e con caratteristiche diverse in base allo scorrere del tempo.
 
 \begin{figure}[H]
 	\centering{}
@@ -314,22 +312,38 @@ Nel primo caso ho implementato il pattern \emph{Observer}, in maniera tale che o
 \label{img:Observer Pattern}
 \end{figure}
 
-Nota: in un secondo tempo è stato possibile estendere in maniera agevole la funzionalità all'oggeto "Experience", implemntando l'interfaccia IObserverEntity:
+Nel secondo caso si è utilizzata una funzione di utilità Func.randomPoint() predisposta da Sergio per il calcolo delle coordinate nell'area compresa fra i due cerchi.	
+
+\item Fare in modo che il player possa raccogliere experience anche a distanza, attraverso quello che sembra una sorta di magnetismo.
+\begin{itemize}
+	\item Estendendo la funzionalità del punto precedente è stato possibile estendere in maniera agevole la funzionalità alla classe "Experience", in un secondo tempo, implementando l'interfaccia IObserverEntity:
+\end{itemize}
 \begin{figure}[H]
 	\centering{}
 \includegraphics[width=\textwidth]{img/monsterObserver2Mermaid.png}
 	\caption{Schema UML dell'implementazione del pattern \emph{Observer} per "Monster" ed "Experience"}
 \label{img:Observer Pattern}
 \end{figure}
-
-Nel secondo caso si è utilizzata una funzione di utilità Func.randomPoint() predisposta da Sergio per il calcolo delle coordinate nell'area compresa fra i due cerchi.	
-
+%
+\begin{itemize}
+	\item Il metodo reachTarget() è stato sovrascritto perchè il player inizia a raccogliere "pillole di esperienza" sormontandole. Con l'aumentare del livello raggiunto aumenta proporzionalmente la distanza da cui il player può raccogliere "pillole" con il solo avvicinarsi.
+\end{itemize}
+%
 \item Problema: creare un'ondata finale di mostri per concludere il gioco.
 \begin{itemize}
-	\item ho creato una funzione flood() che, come le altre funzioni che determinano la creazione di mostri, viene eseguita un'unica volta in base al flusso temporale e, al suo interno, viene utilizzato uno \emph{stream} continuo che genera un tipo di mostri fino alla fine del gioco. 
+	\item ho creato una funzione flood() che, come le altre funzioni che determinano la creazione di mostri, viene eseguita un'unica volta (nella classe MonsterSpawner) in base al tempo trascorso da inizio gioco. Al suo interno, viene utilizzato uno \emph{stream} continuo che genera un determinato tipo di mostri, fino alla fine del gioco. 
 \end{itemize}
-	
-\item Problema: soluzione foreach crash??
+%
+\item Drop di oggetti diversi alla morte di mostri
+%
+\begin{itemize}
+	\item Alla morte di ogni mostro può essere rilascita (drop) una "pillola di esperienza", una "pillola di vita" o un mostro di tipo "Ball".
+	\item La classe Drop, che implementa l'interfaccia IDrop, contiene la strategia con cui viene selezionata la tipologia di oggetto di cui fare il drop.
+	\item Schema
+	\item Pattern
+\end{itemize}
+%	
+\item Problema: foreach crash??
 \begin{itemize}
 	\item Soluzione CopyOnWriteArrayList
 	\item Schema
