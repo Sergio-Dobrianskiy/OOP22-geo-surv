@@ -2,13 +2,13 @@ package it.unibo.geosurv.model;
 
 import java.awt.Rectangle;
 import java.awt.geom.RectangularShape;
-import it.unibo.geosurv.control.TickingObject;
+import it.unibo.geosurv.control.ITickingObject;
 import it.unibo.geosurv.view.graphics.Texture;
 
 /**
  * Abstract class for every game object in the game.
  */
-public abstract class GameObject implements TickingObject, IGameObject {
+public abstract class GameObject implements ITickingObject, IGameObject {
     /**
      * gameObject coordinates.
      */

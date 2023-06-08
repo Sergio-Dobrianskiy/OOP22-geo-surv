@@ -1,13 +1,13 @@
 package it.unibo.geosurv.model.monsters;
 
 import java.util.stream.Stream;
-import it.unibo.geosurv.control.TickingObject;
+import it.unibo.geosurv.control.ITickingObject;
 import it.unibo.geosurv.model.Handler;
 
 /**
  * Class to manage spawn of monsters.
  */
-public class MonsterSpawner implements TickingObject {
+public class MonsterSpawner implements ITickingObject {
 
     private static final int TIME_LEVEL_1 = 20;
     private static final int TIME_LEVEL_2 = 40;

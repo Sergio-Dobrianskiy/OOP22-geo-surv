@@ -3,16 +3,16 @@ package it.unibo.geosurv.model;
 import java.util.Iterator;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-import it.unibo.geosurv.control.TickingObject;
+import it.unibo.geosurv.control.ITickingObject;
 import it.unibo.geosurv.model.player.Player;
 
 /**
  * Represents the Handler.
  */
-public class Handler implements TickingObject {
+public class Handler implements ITickingObject {
 
     private final CopyOnWriteArrayList<GameObject> gameObjects = new CopyOnWriteArrayList<>();
-    private final CopyOnWriteArrayList<TickingObject> tickingObjects = new CopyOnWriteArrayList<>();
+    private final CopyOnWriteArrayList<ITickingObject> tickingObjects = new CopyOnWriteArrayList<>();
     private Player player;
     private boolean up;
     private boolean down;
@@ -25,14 +25,14 @@ public class Handler implements TickingObject {
     @Override
     public void tick() {
         final Iterator<GameObject> goIterator = gameObjects.iterator();
-        final Iterator<TickingObject> toIterator = tickingObjects.iterator();
+        final Iterator<ITickingObject> toIterator = tickingObjects.iterator();
         while (goIterator.hasNext()) {
             GameObject tempObject = goIterator.next();
             tempObject.tick();
         }
 
         while (toIterator.hasNext()) {
-            TickingObject tempObject = toIterator.next();
+            ITickingObject tempObject = toIterator.next();
             tempObject.tick();
         }
     }
@@ -60,7 +60,7 @@ public class Handler implements TickingObject {
      * 
      * @param tempObject
      */
-    public void addTickingObject(final TickingObject tempObject) {
+    public void addTickingObject(final ITickingObject tempObject) {
         tickingObjects.add(tempObject);
     }
 
@@ -69,7 +69,7 @@ public class Handler implements TickingObject {
      * 
      * @param tempObject
      */
-    public void removeTickingObject(final TickingObject tempObject) {
+    public void removeTickingObject(final ITickingObject tempObject) {
         tickingObjects.remove(tempObject);
     }
 
@@ -107,7 +107,7 @@ public class Handler implements TickingObject {
     /**
      * @return tickingObjects.
      */
-    public CopyOnWriteArrayList<TickingObject> getTickingbjects() {
+    public CopyOnWriteArrayList<ITickingObject> getTickingbjects() {
         return this.tickingObjects;
     }
 

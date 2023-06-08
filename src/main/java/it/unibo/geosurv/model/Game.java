@@ -9,7 +9,7 @@ import java.awt.image.BufferStrategy;
 
 import it.unibo.geosurv.control.GameState;
 import it.unibo.geosurv.control.KeyInput;
-import it.unibo.geosurv.control.TickingObject;
+import it.unibo.geosurv.control.ITickingObject;
 import it.unibo.geosurv.model.loader.ILoader;
 import it.unibo.geosurv.model.loader.Loader;
 import it.unibo.geosurv.view.graphics.Camera;
@@ -19,7 +19,7 @@ import it.unibo.geosurv.view.graphics.Window;
 /**
  * Represents the main Game class.
  */
-public class Game extends Canvas implements Runnable, TickingObject {
+public class Game extends Canvas implements Runnable, ITickingObject {
 
     private static final long serialVersionUID = 1L;
     /**

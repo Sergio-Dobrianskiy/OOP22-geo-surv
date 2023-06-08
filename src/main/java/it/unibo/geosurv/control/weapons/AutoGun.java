@@ -45,8 +45,6 @@ public class AutoGun extends Weapon {
     private final GameObject player;
     private GameObject closestEnemy;
     private long lastTime;
-    private float closestEnemyDistance;
-    private double delta;
     private boolean secondaryShooting;
     private boolean tertiaryShooting;
 
@@ -70,44 +68,59 @@ public class AutoGun extends Weapon {
      */
     @Override
     public void tick() {
-        final double second = Game.SECOND_IN_NANO;
-
-        if (this.currentLevel > 0) { // TODO: sistemare
+        if (this.currentLevel > 0) {
             final long now = System.nanoTime();
-            this.delta = (now - this.lastTime) / second;
+            final double delta = (now - this.lastTime) / Game.SECOND_IN_NANO;
 
-            if (this.secondaryShooting && this.delta > LEVEL_2_DELTA) {
-                this.shoot();
-                this.secondaryShooting = false;
-            }
+            this.secondShoot(delta);
+            this.thirdShoot(delta);
 
-            if (this.tertiaryShooting && this.delta > LEVEL_3_DELTA) {
-                this.shoot();
-                this.tertiaryShooting = false;
-            }
-
-            if (this.delta >= 1) {
+            if (delta >= 1) {
                 this.lastTime = now;
+
                 this.closestEnemy = Func.findClosestEnemy(handler);
                 if (this.closestEnemy == null) {
                     return;
                 }
 
-                this.closestEnemyDistance = (float) Point2D.distance(player.getX(), player.getY(), closestEnemy.getX(),
-                        closestEnemy.getY());
-                if (this.closestEnemyDistance <= MAX_RANGE) {
-                    this.shoot();
-
-                    if (this.currentLevel >= 2) { // TODO: sistemare
-                        this.secondaryShooting = true;
-                    }
-
-                    if (this.currentLevel >= 3) { // TODO: sistemare
-                        this.tertiaryShooting = true;
-                    }
-                }
+                this.shoot();
+                this.secondaryShooting = this.currentLevel >= 2;
+                this.tertiaryShooting = this.currentLevel >= 3;
             }
         }
+    }
+
+    /**
+     * shoots gun a second time if possible.
+     * 
+     * @param delta time difference with first shoot
+     */
+    private void secondShoot(final double delta) {
+        if (this.secondaryShooting && delta > LEVEL_2_DELTA) {
+            this.shoot();
+            this.secondaryShooting = false;
+        }
+    }
+
+    /**
+     * shoots gun a third time if possible.
+     * 
+     * @param delta time difference with first shoot
+     */
+    private void thirdShoot(final double delta) {
+        if (this.tertiaryShooting && delta > LEVEL_3_DELTA) {
+            this.shoot();
+            this.tertiaryShooting = false;
+        }
+    }
+
+    /**
+     * return distance to closest enemy.
+     * 
+     * @return distance to closest enemy
+     */
+    private double enemyDistance() {
+        return Point2D.distance(player.getX(), player.getY(), closestEnemy.getX(), closestEnemy.getY());
     }
 
     /**
@@ -115,10 +128,12 @@ public class AutoGun extends Weapon {
      */
     @Override
     protected void shoot() {
-        final Pair<Float, Float> angle = Func.findAngle2(this.player, this.closestEnemy);
-        final GameObject tempBullet = new AutoBullet(player.getX(), player.getY(), handler, this.getDamage());
-        this.handler.addObject(tempBullet);
-        tempBullet.setVelX((float) ((BULLET_SPEED) * angle.getX()));
-        tempBullet.setVelY((float) ((BULLET_SPEED) * angle.getY()));
+        if (this.closestEnemy != null && this.enemyDistance() <= MAX_RANGE) {
+            final Pair<Float, Float> angle = Func.findAngle2(this.player, this.closestEnemy);
+            final GameObject tempBullet = new AutoBullet(player.getX(), player.getY(), handler, this.getDamage());
+            this.handler.addObject(tempBullet);
+            tempBullet.setVelX((float) ((BULLET_SPEED) * angle.getX()));
+            tempBullet.setVelY((float) ((BULLET_SPEED) * angle.getY()));
+        }
     }
 }
