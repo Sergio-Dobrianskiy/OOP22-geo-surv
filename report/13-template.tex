@@ -240,7 +240,7 @@ Conseguentemente, GLaDOS è un ``observable'' per Output.
 
 \begin{figure}[h]
 	\centering{}
-	\includegraphics[width=\textwidth]{img/arch}
+	\includegraphics[width=\textwidth,scale=0.5]{img/arch}
 	\caption{Schema UML architetturale di GLaDOS. L'interfaccia \texttt{GLaDOS} è il controller del sistema, mentre \texttt{Input} ed \texttt{Output} sono le interfacce che mappano la view (o, più correttamente in questo specifico esempio, il boundary). Un'eventuale interfaccia grafica interattiva dovrà implementarle entrambe.}
 	\label{img:goodarch}
 \end{figure}
@@ -279,19 +279,24 @@ In \Cref{img:goodarch} è esemplificato il diagramma UML architetturale.
 \subsubsection*{Pierangelo Motta:}
 %
 \begin{enumerate}
-\item Problematica: creare tipi di mostri diversi con metodi comuni
+\item Problema: configurare metodi comuni a diversi tipi di mostri.
 \begin{itemize}
 	\item E' stata utilizzata la abstract class "Monster" (che implementa l'interfaccia IMonster) per definire i metodi comuni a tutte le classi che estendono la abstract class: "Triangle", "Rect", "Rhombus" e "Ball"(aggiunta in seguito).
-	\item Ho utilizzato il Pattern Factory Method per avere delle Factory che permettessero la creazione trasparente di mostri diversi.
+	\item Schema
+	\item Pattern
 \end{itemize}
 
+\item Problematica: creare tipi di mostri diversi durante tutto l'arco temporale di gioco.	
+\paragraph*{}
+Ho utilizzato il pattern \emph{Factory Method} per avere delle factory che permettessero la creazione trasparente di mostri diversi.
+
+
 \begin{figure}[H]
-\centering{}
+	\centering{}
 \includegraphics[width=\textwidth]{img/GenerateMonsters.png}
-\caption{Schema UML dell'implementazione, con rappresentate le entità principali ed i rapporti fra loro}
+	\caption{Schema UML dell'implementazione, con rappresentate le entità principali ed i rapporti fra loro}
 \label{img:Generate Monsters}
 \end{figure}
-
 
 \item Problematica: posizionare correttamente i mostri alla "nascita" e fare in modo che raggiungano il player.
 %
@@ -300,26 +305,35 @@ Per la soluzione occorrono due condizioni legate dalla posizione del player nell
 	\item i mostri devono conoscere la posizione del player in ogni istante utile in quanto devono cercare di raggiungerlo per attaccarlo;
 	\item i mostri devono nascere in una posizione casuale in un'area delimitata da due cerchi concentrici (di distanza minima e massima definibili) con al centro il player.
 \end{itemize}
+Nel primo caso ho implementato il pattern \emph{Observer}, in maniera tale che ogni mostro creato si registri in una lista di \emph{observers} del player. Ad ogni tick() temporale il player \emph{notifica} tutti gli osservatori. 
 
-\item Problema: configurare metodi comuni a diversi tipi di mostri
+\begin{figure}[H]
+	\centering{}
+\includegraphics[width=\textwidth]{img/monsterObserver.png}
+	\caption{Schema UML dell'implementazione del pattern \emph{Observer}}
+\label{img:Observer Pattern}
+\end{figure}
+
+Nota: in un secondo tempo è stato possibile estendere in maniera agevole la funzionalità all'oggeto "Experience", implemntando l'interfaccia IObserverEntity:
+\begin{figure}[H]
+	\centering{}
+\includegraphics[width=\textwidth]{img/monsterObserver2Mermaid.png}
+	\caption{Schema UML dell'implementazione del pattern \emph{Observer} per "Monster" ed "Experience"}
+\label{img:Observer Pattern}
+\end{figure}
+
+Nel secondo caso si è utilizzata una funzione di utilità Func.randomPoint() predisposta da Sergio per il calcolo delle coordinate nell'area compresa fra i due cerchi.	
+
+\item Problema: creare un'ondata finale di mostri per concludere il gioco.
 \begin{itemize}
-\item Soluzione Interface + Abstract Class
-\item Schema
-\item Pattern
+	\item ho creato una funzione flood() che, come le altre funzioni che determinano la creazione di mostri, viene eseguita un'unica volta in base al flusso temporale e, al suo interno, viene utilizzato uno \emph{stream} continuo che genera un tipo di mostri fino alla fine del gioco. 
 \end{itemize}
-
-\item Problema: creare un'ondata finale di mostri per concludere il gioco
-\begin{itemize}
-		\item Soluzione
-		\item Schema
-		\item Pattern
-	\end{itemize}
 	
-\item Problema: foreach crash
+\item Problema: soluzione foreach crash??
 \begin{itemize}
-\item Soluzione CopyOnWriteArrayList
-\item Schema
-\item Pattern
+	\item Soluzione CopyOnWriteArrayList
+	\item Schema
+	\item Pattern
 \end{itemize}
 \end{enumerate}
 %
