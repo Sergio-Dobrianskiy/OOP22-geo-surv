@@ -25,7 +25,7 @@
 	\\
     Matteo Trezza
 }
-
+%
 \date{\today}
 %
 \begin{document}
@@ -33,7 +33,6 @@
 \maketitle
 %
 \tableofcontents
-
 %
 \chapter{Obbiettivo}
 L'obbiettivo è di realizzare un videogioco ispirato a “Vampire Survivors” (\href{https://store.steampowered.com/app/1794680/Vampire_Survivors/}{Steampowered.com}), un reverse bullet hell 2D con visuale dall'alto centrata sul giocatore.
@@ -280,18 +279,26 @@ In \Cref{img:goodarch} è esemplificato il diagramma UML architetturale.
 \subsubsection*{Pierangelo Motta:}
 %
 \begin{enumerate}
-\item Problematica: creare tipi di mostri diversi
+\item Problematica: creare tipi di mostri diversi con metodi comuni
 \begin{itemize}
-	\item Soluzione Pattern
-	\item Schema
-	\item Pattern
+	\item E' stata utilizzata la abstract class "Monster" (che implementa l'interfaccia IMonster) per definire i metodi comuni a tutte le classi che estendono la abstract class: "Triangle", "Rect", "Rhombus" e "Ball"(aggiunta in seguito).
+	\item Ho utilizzato il Pattern Factory Method per avere delle Factory che permettessero la creazione trasparente di mostri diversi.
 \end{itemize}
 
-\item Problema: posizionare correttamente i mostri alla "nascita"
+\begin{figure}[H]
+\centering{}
+\includegraphics[width=\textwidth]{img/GenerateMonsters.png}
+\caption{Schema UML dell'implementazione, con rappresentate le entità principali ed i rapporti fra loro}
+\label{img:Generate Monsters}
+\end{figure}
+
+
+\item Problematica: posizionare correttamente i mostri alla "nascita" e fare in modo che raggiungano il player.
+%
+Per la soluzione occorrono due condizioni legate dalla posizione del player nella mappa di gioco:
 \begin{itemize}
-	\item Soluzione Observer
-	\item Schema
-	\item Pattern
+	\item i mostri devono conoscere la posizione del player in ogni istante utile in quanto devono cercare di raggiungerlo per attaccarlo;
+	\item i mostri devono nascere in una posizione casuale in un'area delimitata da due cerchi concentrici (di distanza minima e massima definibili) con al centro il player.
 \end{itemize}
 
 \item Problema: configurare metodi comuni a diversi tipi di mostri
