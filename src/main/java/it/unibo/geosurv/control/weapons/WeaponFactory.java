@@ -7,9 +7,13 @@ import it.unibo.geosurv.model.Handler;
  * Factory that creates Weapons.
  */
 public class WeaponFactory implements IWeaponFactory {
-
     private final Handler handler;
-    
+
+    /**
+     * Constructor for this class.
+     * 
+     * @param handler
+     */
     public WeaponFactory(final Handler handler) {
         this.handler = handler;
     }
@@ -22,7 +26,7 @@ public class WeaponFactory implements IWeaponFactory {
      * @return the created weapon
      */
     @Override
-    public Optional<Weapon> createWeapon(WeaponType type, int level) {
+    public Optional<Weapon> createWeapon(final WeaponType type, final int level) {
         Weapon weapon;
         switch (type) {
         case AutoGun:
@@ -40,12 +44,11 @@ public class WeaponFactory implements IWeaponFactory {
         default:
             return Optional.empty();
         }
-        
+
         while (level > weapon.getLevel()) {
             weapon.levelUp();
         }
-        
+ 
         return Optional.of(weapon);
     }
-
 }

@@ -10,42 +10,118 @@ import it.unibo.geosurv.view.graphics.Texture;
  */
 public interface IGameObject {
 
-	ID getId();
+    /**
+     * returns GameObjects' ID.
+     * 
+     * @return GameObjects' ID
+     */
+    ID getId();
 
-	void setId(ID id);
+    /**
+     * set object's id.
+     * @param id object's id
+     */
+    void setId(ID id);
 
-	void tick();
+    /**
+     * this object's behavior.
+     */
+    void tick();
 
-	float getX();
+    /**
+     * get object's x coordinate.
+     * @return object's x coordinate
+     */
+    float getX();
 
-	void setX(float x);
+    /**
+     * set object's x coordinate.
+     * @param x object's x coordinate
+     */
+    void setX(float x);
 
-	float getY();
+    /**
+     * get object's y coordinate.
+     * @return object's y coordinate
+     */
+    float getY();
 
-	void setY(float y);
+    /**
+     * set object's y coordinate.
+     * @param y object's y coordinate
+     */
+    void setY(float y);
 
-	float getVelX();
+    /**
+     * get object's velocity x vector.
+     * @return object's velocity x vector
+     */
+    float getVelX();
 
-	void setVelX(float velX);
+    /**
+     * set object's velocity x vector.
+     * @param velX object's velocity x vector
+     */
+    void setVelX(float velX);
 
-	float getVelY();
+    /**
+     * get object's velocity y vector.
+     * @return object's velocity y vector
+     */
+    float getVelY();
 
-	void setVelY(float velY);
+    /**
+     * set object's velocity y vector.
+     * @param velY object's velocity y vector
+     */
+    void setVelY(float velY);
 
-	int getHeight();
+    /**
+     * get object's height.
+     * @return object's width
+     */
+    int getHeight();
 
-	int getWidth();
+    /**
+     * get object's width.
+     * @return object's width
+     */
+    int getWidth();
 
-	void setHeight(int height);
+    /**
+     * set object's height.
+     * @param height object's width
+     */
+    void setHeight(int height);
 
-	void setWidth(int width);
+    /**
+     * set object's width.
+     * @param width object's width
+     */
+    void setWidth(int width);
 
-	int getRenderX();
+    /**
+     * return x coordinate for object's sprite.
+     * @return object sprite y coordinate
+     */
+    int getRenderX();
 
-	int getRenderY();
+    /**
+     * return y coordinate for object's sprite.
+     * @return object sprite y coordinate
+     */
+    int getRenderY();
 
-	RectangularShape getShape();
+    /**
+     * return GameObject's hitbox (that is a Rectangle by default).
+     * 
+     * @return RectangularShape centered on the GameObject
+     */
+    RectangularShape getShape();
 
-	Texture getTexture();
-
+    /**
+     * return object's texture.
+     * @return object's texture
+     */
+    Texture getTexture();
 }
