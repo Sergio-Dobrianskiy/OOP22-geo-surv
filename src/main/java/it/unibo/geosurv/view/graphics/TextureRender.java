@@ -57,14 +57,14 @@ public class TextureRender {
         // exp
         final int barWidthExp = 100;
         final int barHeightExp = 6;
-        final int barXExp = (int) (x - barWidthExp / 2); // bar x coordinate
-        final int barYExp = (int) y - barHeightExp - 30;
+        final int barXExp = x - barWidthExp / 2; // bar x coordinate
+        final int barYExp = y - barHeightExp - 30;
 
         // life
         final int barWidthLife = 100;
         final int barHeightLife = 10;
-        final int barXLife = (int) (x - barWidthLife / 2); // bar x coordinate
-        final int barYLife = (int) y - barHeightLife - 40;
+        final int barXLife = x - barWidthLife / 2; // bar x coordinate
+        final int barYLife = y - barHeightLife - 40;
 
         /* Draw bar progress for player's experience */
         g.setColor(Color.BLACK);
@@ -90,13 +90,13 @@ public class TextureRender {
 
         // Draw debug text
         g.setColor(Color.white);
-        g.drawString("Life: " + player.getLife(), (int) x + player.getWidth(), (int) y);
-        g.drawString("Exp: " + (int) player.getExpPercentage() + "%", (int) x + player.getWidth(), (int) y + 20);
-        g.drawString("Curr: " + player.getExperience(), (int) x + player.getWidth(), (int) y + 40);
-        g.drawString("Max: " + player.getMaxExperience(), (int) x + player.getWidth(), (int) y + 60);
-        g.drawString("Lvl: " + player.getLevel(), (int) x + player.getWidth(), (int) y + 80);
+        g.drawString("Life: " + player.getLife(), x + player.getWidth(), y);
+        g.drawString("Exp: " + (int) player.getExpPercentage() + "%", x + player.getWidth(), y + 20);
+        g.drawString("Curr: " + player.getExperience(), x + player.getWidth(), y + 40);
+        g.drawString("Max: " + player.getMaxExperience(), x + player.getWidth(), y + 60);
+        g.drawString("Lvl: " + player.getLevel(), x + player.getWidth(), y + 80);
         g.drawString("Monsters: " + Monster.getMonstersCounter() + " [" + Monster.getMonstersDeadCounter() + "]",
-                (int) x + player.getWidth(), (int) y + 100);
+                x + player.getWidth(), y + 100);
     }
 
     public void renderHitBoxes(final Graphics g, final Color color, final GameObject obj) {

@@ -39,7 +39,7 @@ public class ExplosionGun extends Weapon {
      */
     private static final int explosionsPerLevel = 2;
 
-    private Handler handler;
+    private final Handler handler;
     /**
      * Constructor for this class.
      *

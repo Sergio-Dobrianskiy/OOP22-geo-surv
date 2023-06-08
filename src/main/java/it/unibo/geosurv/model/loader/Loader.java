@@ -43,7 +43,7 @@ public class Loader implements ILoader {
      */
     private final int maxRGB = 255;
 
-    private Handler handler;
+    private final Handler handler;
 
     /**
      * Constructor for this class.

@@ -25,7 +25,7 @@ public class Wall extends Block {
     public Wall(final float x, final float y) {
         super(x, y);
         this.height = blockHeight;
-        this.width = (int) blockWidth;
+        this.width = blockWidth;
         this.texture = Texture.BLOCK;
     }
 

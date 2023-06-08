@@ -3,7 +3,7 @@ package it.unibo.geosurv.controller.menu;
 import it.unibo.geosurv.model.Game;
 
 public class MainMenuController {
-    private MenuView menuView;
+    private final MenuView menuView;
     private Game game;
 
     public MainMenuController(MenuView menuView) {

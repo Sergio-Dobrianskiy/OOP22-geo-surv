@@ -8,7 +8,7 @@ import it.unibo.geosurv.model.Handler;
  */
 public class WeaponFactory implements IWeaponFactory {
 
-    private Handler handler;
+    private final Handler handler;
     
     public WeaponFactory(final Handler handler) {
         this.handler = handler;

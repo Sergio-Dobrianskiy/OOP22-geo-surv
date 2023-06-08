@@ -8,8 +8,8 @@ import java.util.Random;
  */
 public class WeaponLevels {
 
-    private List<Weapon> weapons;
-    private Random random;
+    private final List<Weapon> weapons;
+    private final Random random;
 
     /**
      * Constructor for this class.

@@ -132,8 +132,8 @@ public class AutoGun extends Weapon {
             final Pair<Float, Float> angle = Func.findAngle2(this.player, this.closestEnemy);
             final GameObject tempBullet = new AutoBullet(player.getX(), player.getY(), handler, this.getDamage());
             this.handler.addObject(tempBullet);
-            tempBullet.setVelX((float) ((BULLET_SPEED) * angle.getX()));
-            tempBullet.setVelY((float) ((BULLET_SPEED) * angle.getY()));
+            tempBullet.setVelX((BULLET_SPEED) * angle.getX());
+            tempBullet.setVelY((BULLET_SPEED) * angle.getY());
         }
     }
 }
