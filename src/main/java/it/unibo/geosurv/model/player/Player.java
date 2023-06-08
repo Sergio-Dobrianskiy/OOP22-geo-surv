@@ -44,14 +44,14 @@ public class Player extends GameObject implements IPlayer, IObservable {
     private static final long HIT_COOLDOWN = 1000 / MAX_HITS_PER_SECOND;
     private long lastHitTime; // last time Player is touched/hit by a monster
     private int life;
-    private Collisions collisions;
-    private IPlayerMovement playerMovement;
-    private PlayerLevels playerLevels;
-    private List<IObserverEntity<? extends GameObject>> observers;
+    private final Collisions collisions;
+    private final IPlayerMovement playerMovement;
+    private final PlayerLevels playerLevels;
+    private final List<IObserverEntity<? extends GameObject>> observers;
     // private List<Weapon> weapons;
     private WeaponLevels weaponLevels;
-    private ICollisionBehavior collisionBehavior;
-    private Handler handler;
+    private final ICollisionBehavior collisionBehavior;
+    private final Handler handler;
     
 
     /**

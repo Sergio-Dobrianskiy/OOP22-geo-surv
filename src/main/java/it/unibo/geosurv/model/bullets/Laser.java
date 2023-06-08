@@ -16,11 +16,11 @@ public class Laser extends Bullet {
      */
     private final long laserlifeSpan = 2000L;
 
-    private GameObject player;
-    private int initialPlayerX;
-    private int initialPlayerY;
-    private int initialLaserX;
-    private int initialLaserY;
+    private final GameObject player;
+    private final int initialPlayerX;
+    private final int initialPlayerY;
+    private final int initialLaserX;
+    private final int initialLaserY;
 
     /**
      * Constructor for this class.

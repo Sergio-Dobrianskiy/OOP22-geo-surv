@@ -12,11 +12,17 @@ import it.unibo.geosurv.model.collisions.NoCollisionBehavior;
  */
 public abstract class Bullet extends GameObject {
     /**
-     * Bullet's default life span.
+     * Bullet's default life span in milliseconds.
      */
-    protected long lifeSpan = 5000L;     // max milliseconds of life
+    protected long lifeSpan = 5000L;
+    /**
+     * Bullet's collision behavior.
+     */
     protected ICollisionBehavior collisionBehavior;
-    protected final Handler handler;
+    /**
+     * Bullet's handler.
+     */
+    protected Handler handler;
     private int damage;
     private final long creationTime;
     private final Collisions collisions;

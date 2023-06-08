@@ -36,8 +36,8 @@ public class LaserGun extends Weapon {
      */
     private static final int damageLevel3 = 6;
 
-    private Handler handler;
-    private GameObject player;
+    private final Handler handler;
+    private final GameObject player;
 
     /**
      * Constructor for this class.

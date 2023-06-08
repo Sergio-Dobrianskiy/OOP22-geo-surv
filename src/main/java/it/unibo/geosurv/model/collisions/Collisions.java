@@ -16,7 +16,7 @@ import it.unibo.geosurv.model.player.Player;
  */
 public class Collisions {
 
-    private Handler handler;
+    private final Handler handler;
 
     /**
      * Constructor for this class.
@@ -43,7 +43,7 @@ public class Collisions {
             }
             if (Collisions.isColliding(player, tempObject, ID.Experience)) { // if player touches experience pills
                 handler.getPlayer().setExperience(((Experience) tempObject).getExp());
-                ((Experience) tempObject).collide();
+                tempObject.collide();
             }
             if (Collisions.isColliding(player, tempObject, ID.Life)) { // if player touches life pills
                 handler.getPlayer().setLife(((Life) tempObject).getDefaultLife());

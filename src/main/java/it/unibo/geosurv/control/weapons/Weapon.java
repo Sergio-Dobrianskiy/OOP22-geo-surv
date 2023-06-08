@@ -1,11 +1,11 @@
 package it.unibo.geosurv.control.weapons;
 
-import it.unibo.geosurv.control.TickingObject;
+import it.unibo.geosurv.control.ITickingObject;
 
 /**
  * Represents a Weapon.
  */
-public abstract class Weapon implements TickingObject {
+public abstract class Weapon implements ITickingObject {
     /**
      * default Weapon damage at level 1.
      */
@@ -30,7 +30,7 @@ public abstract class Weapon implements TickingObject {
     private long lastShoot = 0;
 
     /**
-     * time in milliseconds between shots.
+     * default time in milliseconds between shots.
      */
     protected long cycle = 2000L;
 

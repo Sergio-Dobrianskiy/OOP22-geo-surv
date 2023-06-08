@@ -2,13 +2,13 @@ package it.unibo.geosurv.model;
 
 import java.awt.Rectangle;
 import java.awt.geom.RectangularShape;
-import it.unibo.geosurv.control.TickingObject;
+import it.unibo.geosurv.control.ITickingObject;
 import it.unibo.geosurv.view.graphics.Texture;
 
 /**
  * Abstract class for every game object in the game.
  */
-public abstract class GameObject implements TickingObject, IGameObject {
+public abstract class GameObject implements ITickingObject, IGameObject {
     /**
      * gameObject coordinates.
      */
@@ -33,7 +33,6 @@ public abstract class GameObject implements TickingObject, IGameObject {
      * gameObject id.
      */
     protected ID id;
-    // protected ICollisionBehavior collisionBehavior;
 
     /**
      * Constructor for this class.
@@ -59,84 +58,135 @@ public abstract class GameObject implements TickingObject, IGameObject {
         return id;
     }
 
+    /**
+     * set object's id.
+     */
     @Override
     public void setId(final ID id) {
         this.id = id;
     }
 
+    /**
+     * this object's behavior.
+     */
     @Override
     public abstract void tick();
 
+    /**
+     * get object's x coordinate.
+     */
     @Override
     public float getX() {
         return x;
     }
 
+    /**
+     * set object's x coordinate.
+     */
     @Override
     public void setX(final float x) {
         this.x = x;
     }
 
+    /**
+     * get object's y coordinate.
+     */
     @Override
     public float getY() {
         return y;
     }
 
+    /**
+     * set object's y coordinate.
+     */
     @Override
     public void setY(final float y) {
         this.y = y;
     }
 
+    /**
+     * get object's velocity x vector.
+     */
     @Override
     public float getVelX() {
         return velX;
     }
 
+    /**
+     * set object's velocity x vector.
+     */
     @Override
     public void setVelX(final float velX) {
         this.velX = velX;
     }
 
+    /**
+     * get object's velocity y vector.
+     */
     @Override
     public float getVelY() {
         return velY;
     }
 
+    /**
+     * set object's velocity y vector.
+     */
     @Override
     public void setVelY(final float velY) {
         this.velY = velY;
     }
 
+    /**
+     * get object's height.
+     */
     @Override
     public int getHeight() {
         return this.height;
     }
 
+    /**
+     * get object's width.
+     */
     @Override
     public int getWidth() {
         return this.width;
     }
 
+    /**
+     * set object's height.
+     */
     @Override
     public void setHeight(final int height) {
         this.height = height;
     }
 
+    /**
+     * set object's width.
+     */
     @Override
     public void setWidth(final int width) {
         this.width = width;
     }
 
+    /**
+     * return x coordinate for object's sprite.
+     */
     @Override
     public int getRenderX() {
         return (int) x - this.width / 2;
     }
 
+    /**
+     * return y coordinate for object's sprite.
+     */
     @Override
     public int getRenderY() {
         return (int) y - this.height / 2;
     }
 
+    /**
+     * return object's texture.
+     */
     @Override
     public Texture getTexture() {
         return this.texture;
@@ -151,6 +201,9 @@ public abstract class GameObject implements TickingObject, IGameObject {
     public RectangularShape getShape() {
         return new Rectangle(this.getRenderX(), getRenderY(), this.width, this.height);
     }
-    
+
+    /**
+     * handle collision with another object.
+     */
     public abstract void collide();
 }
