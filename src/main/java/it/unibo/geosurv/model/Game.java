@@ -49,6 +49,9 @@ public class Game extends Canvas implements Runnable, ITickingObject {
      */
     private static final double NANO_PER_TICK = SECOND_IN_NANO / TICKS_PER_SECOND;
     private static final int FRAMES_IN_BUFFER = 3;
+    /* 1 minute in seconds */
+    private static final double VICTORY_TIME = 60.0; 
+    
 
     private boolean isRunning;
     private Thread thread;
@@ -66,6 +69,9 @@ public class Game extends Canvas implements Runnable, ITickingObject {
     private final Font gameOverFont = new Font("Arial", Font.BOLD, 100);
     private final Color gameOverColor = Color.RED;
     private final Color backgroundGameOverColor = new Color(0, 0, 0, 250);
+    /* Variables for victory */
+    private double elapsedTime;
+    private boolean hasWon;
 
     private Player player;
 
@@ -150,9 +156,14 @@ public class Game extends Canvas implements Runnable, ITickingObject {
 
     @Override
     public void tick() {
+        elapsedTime += 1.0 / TICKS_PER_SECOND; //update the elapsed time
         if (state == GameState.RUNNING) {
             handler.tick();
             checkPlayerLife();
+        }
+        if (elapsedTime >= VICTORY_TIME && player != null && player.isAlive()) {
+            stateWon();
+            hasWon = true;
         }
         camera.tick();
     }
@@ -211,6 +222,22 @@ public class Game extends Canvas implements Runnable, ITickingObject {
             final int yGameOver = (WINDOW_HEIGHT - textHeight) / 2 + (int) camera.getY();
         
             g.drawString(gameOverText, xGameOver, yGameOver);
+        }
+
+        if (hasWon) {
+            g.setColor(backgroundGameOverColor);
+            g.fillRect((int) camera.getX(), (int) camera.getY(), WINDOW_WIDTH, WINDOW_HEIGHT);
+            
+            g.setFont(gameOverFont);
+            g.setColor(gameOverColor);
+
+            FontMetrics fm = g.getFontMetrics();
+            final int textWidth = fm.stringWidth("Victory");
+            final int textHeight = fm.getHeight();
+            final int xGameOver = (WINDOW_WIDTH - textWidth) / 2 + (int) camera.getX();
+            final int yGameOver = (WINDOW_HEIGHT - textHeight) / 2 + (int) camera.getY();
+            
+            g.drawString("Victory", xGameOver, yGameOver);
         }
 
         ////////////////////////////////////// above here we draw to the game
