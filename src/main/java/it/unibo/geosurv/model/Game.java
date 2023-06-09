@@ -71,7 +71,8 @@ public class Game extends Canvas implements Runnable, ITickingObject {
     private final Color backgroundGameOverColor = new Color(0, 0, 0, 250);
     /* Variables for victory */
     private double elapsedTime;
-    private boolean hasWon;
+    //private boolean hasWon;
+    private final Color winColor = Color.GREEN;
 
     private Player player;
 
@@ -163,7 +164,7 @@ public class Game extends Canvas implements Runnable, ITickingObject {
         }
         if (elapsedTime >= VICTORY_TIME && player != null && player.isAlive()) {
             stateWon();
-            hasWon = true;
+            //hasWon = true;
         }
         camera.tick();
     }
@@ -224,12 +225,12 @@ public class Game extends Canvas implements Runnable, ITickingObject {
             g.drawString(gameOverText, xGameOver, yGameOver);
         }
 
-        if (hasWon) {
+        if (state == GameState.WON) {
             g.setColor(backgroundGameOverColor);
             g.fillRect((int) camera.getX(), (int) camera.getY(), WINDOW_WIDTH, WINDOW_HEIGHT);
             
             g.setFont(gameOverFont);
-            g.setColor(gameOverColor);
+            g.setColor(winColor);
 
             FontMetrics fm = g.getFontMetrics();
             final int textWidth = fm.stringWidth("Victory");
