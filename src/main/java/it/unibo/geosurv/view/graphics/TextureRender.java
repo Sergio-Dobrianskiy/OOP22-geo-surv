@@ -137,9 +137,7 @@ public class TextureRender {
                 g.drawString(to.toString(), xx + 10, yy + 10);
                 this.renderHitBoxes(g, Color.red, to);
             }
-
         }
-
     }
 
     // protected void drawRect(final Graphics g, final Color color, final GameObject

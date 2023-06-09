@@ -98,7 +98,7 @@ public class Loader implements ILoader {
      */
     private void loadGuns() {
         final WeaponFactory weaponFactory = new WeaponFactory(this.handler);
-        ArrayList<Weapon> weapons = new ArrayList<>();
+        final ArrayList<Weapon> weapons = new ArrayList<>();
 
         Optional<Weapon> weapon = weaponFactory.createWeapon(WeaponType.AUTO_GUN, 1);
         if (weapon.isEmpty()) {

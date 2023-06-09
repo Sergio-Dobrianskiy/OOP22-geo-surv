@@ -14,7 +14,7 @@ public class Laser extends Bullet {
     /**
      * laser's life span.
      */
-    private final long laserlifeSpan = 2000L;
+    private static final long LASER_LIFESPAN = 2000L;
 
     private final GameObject player;
     private final int initialPlayerX;
@@ -44,7 +44,7 @@ public class Laser extends Bullet {
         this.initialLaserX = (int) x;
         this.initialLaserY = (int) y;
         this.texture = texture;
-        this.lifeSpan = laserlifeSpan;
+        this.lifeSpan = LASER_LIFESPAN;
     }
 
     /**
@@ -80,8 +80,7 @@ public class Laser extends Bullet {
      */
     @Override
     public Rectangle getShape() {
-        return new Rectangle((int) this.getX() - (this.width / 2), (int) this.getY() - (this.height / 2), this.width,
-                this.height);
+        return new Rectangle((int) this.getX() - (this.width / 2), (int) this.getY() - (this.height / 2), this.width, this.height);
     }
 
 }

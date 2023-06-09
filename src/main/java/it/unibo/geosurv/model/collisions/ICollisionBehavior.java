@@ -7,8 +7,6 @@ import it.unibo.geosurv.model.Handler;
  * Interface for behaviors in case of collision.
  */
 public interface ICollisionBehavior {
-    // TODO: STRATEGY PATTERN
-
     /**
      * behavior in case of collision.
      * @param ths "this" class

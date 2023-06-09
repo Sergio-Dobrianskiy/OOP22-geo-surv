@@ -12,11 +12,11 @@ public class AutoBullet extends Bullet {
     /**
      * bulletImpl's height.
      */
-    private static final int bulletImpHeight = 15;
+    private static final int AUTOBULLET_HEIGHT = 15;
     /**
      * bulletImpl's width.
      */
-    private static final int bulletImpWidth = 15;
+    private static final int AUTOBULLET_WIDTH = 15;
 
     /**
      * Constructor for this class.
@@ -28,8 +28,8 @@ public class AutoBullet extends Bullet {
      */
     public AutoBullet(final float x, final float y, final Handler handler, final int damage) {
         super(x, y, handler, damage);
-        this.height = bulletImpHeight;
-        this.width = bulletImpWidth;
+        this.height = AUTOBULLET_HEIGHT;
+        this.width = AUTOBULLET_WIDTH;
         this.texture = Texture.BULLET;
         this.collisionBehavior = new RemoveOnCollisionBehavior();
     }

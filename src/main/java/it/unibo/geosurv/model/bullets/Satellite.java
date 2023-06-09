@@ -10,11 +10,11 @@ public class Satellite extends Bullet {
     /**
      * satellite height.
      */
-    private final int satelliteHeight = 15;
+    private static final int SATELLITE_HEIGHT = 15;
     /**
      * satellite width.
      */
-    private final int satelliteWidth = 15;
+    private static final int SATELLITE_WIDTH = 15;
 
     /**
      * Constructor for this class.
@@ -26,8 +26,8 @@ public class Satellite extends Bullet {
      */
     public Satellite(final float x, final float y, final Handler handler, final int damage) {
         super(x, y, handler, damage);
-        this.height = satelliteHeight;
-        this.width = satelliteWidth;
+        this.height = SATELLITE_HEIGHT;
+        this.width = SATELLITE_WIDTH;
         this.texture = Texture.SATELLITE;
     }
 

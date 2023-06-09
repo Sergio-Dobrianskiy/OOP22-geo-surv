@@ -11,12 +11,6 @@ import it.unibo.geosurv.model.player.Player;
 public class StopPlayerBehavior implements ICollisionBehavior {
 
     /**
-     * Constructor for this class.
-     */
-    public StopPlayerBehavior() {
-    }
-
-    /**
      * Behavior that removes object in case of collision.
      */
     @Override
