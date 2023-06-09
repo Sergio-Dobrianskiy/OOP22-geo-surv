@@ -5,19 +5,19 @@ package it.unibo.geosurv.model.block;
  */
 public enum BlockType {
     /**
-     * Empty space
+     * Empty space.
      */
-    Empty,
+    EMPTY,
     /**
-     * Heals the player
+     * Heals the player.
      */
-    HealingFloar,
+    HEALING_FLOOR,
     /**
-     * Damages the player
+     * Damages the player.
      */
-    Lava,
+    LAVA,
     /**
      * Impenetrable wall.
      */
-    Wall,
+    WALL,
 }

@@ -148,7 +148,7 @@ public class Loader implements ILoader {
                 int blue = (pixel) & 0xff;
 
                 if (blue == maxRGB) {
-                    final Optional<Block> block = blockFactory.createBlock(BlockType.Wall, xx * GAME_GRID_WIDTH, yy * GAME_GRID_HEIGHT);
+                    final Optional<Block> block = blockFactory.createBlock(BlockType.WALL, xx * GAME_GRID_WIDTH, yy * GAME_GRID_HEIGHT);
                     if (block.isEmpty()) {
                         System.out.println("Error creating Wall!");
                     } else {

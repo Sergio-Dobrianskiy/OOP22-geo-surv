@@ -33,19 +33,24 @@
 \contentsline {section}{\numberline {3.1}Testing automatizzato}{24}{section.3.1}%
 \contentsline {section}{\numberline {3.2}Metodologia di lavoro}{25}{section.3.2}%
 \contentsline {section}{\numberline {3.3}Note di sviluppo}{27}{section.3.3}%
-\contentsline {subsection}{\numberline {3.3.1}Esempio}{29}{subsection.3.3.1}%
-\contentsline {subsubsection}{Utilizzo della libreria SLF4J}{29}{section*.47}%
-\contentsline {subsubsection}{Utilizzo di \texttt {LoadingCache} dalla libreria Google Guava}{29}{section*.48}%
-\contentsline {subsubsection}{Utilizzo di \texttt {Stream} e lambda expressions}{30}{section*.49}%
-\contentsline {subsubsection}{Scrittura di metodo generico con parametri contravarianti}{30}{section*.50}%
-\contentsline {subsubsection}{Protezione da corse critiche usando \texttt {Semaphore}}{30}{section*.51}%
-\contentsline {chapter}{\numberline {4}Commenti finali}{31}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Autovalutazione e lavori futuri}{31}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Difficoltà incontrate e commenti per i docenti}{31}{section.4.2}%
-\contentsline {chapter}{\numberline {A}Guida utente}{33}{appendix.Alph1}%
-\contentsline {paragraph}{}{33}{section*.52}%
-\contentsline {paragraph}{}{33}{section*.53}%
-\contentsline {paragraph}{}{33}{section*.54}%
-\contentsline {chapter}{\numberline {B}Esercitazioni di laboratorio}{34}{appendix.Alph2}%
-\contentsline {subsection}{\numberline {B.0.1}paolino.paperino@studio.unibo.it}{34}{subsection.Alph2.0.1}%
-\contentsline {subsection}{\numberline {B.0.2}paperon.depaperoni@studio.unibo.it}{34}{subsection.Alph2.0.2}%
+\contentsline {paragraph}{}{28}{section*.45}%
+\contentsline {paragraph}{}{28}{section*.46}%
+\contentsline {paragraph}{}{28}{section*.47}%
+\contentsline {paragraph}{}{28}{section*.48}%
+\contentsline {paragraph}{}{28}{section*.49}%
+\contentsline {subsection}{\numberline {3.3.1}Esempio}{30}{subsection.3.3.1}%
+\contentsline {subsubsection}{Utilizzo della libreria SLF4J}{30}{section*.52}%
+\contentsline {subsubsection}{Utilizzo di \texttt {LoadingCache} dalla libreria Google Guava}{30}{section*.53}%
+\contentsline {subsubsection}{Utilizzo di \texttt {Stream} e lambda expressions}{30}{section*.54}%
+\contentsline {subsubsection}{Scrittura di metodo generico con parametri contravarianti}{31}{section*.55}%
+\contentsline {subsubsection}{Protezione da corse critiche usando \texttt {Semaphore}}{31}{section*.56}%
+\contentsline {chapter}{\numberline {4}Commenti finali}{32}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Autovalutazione e lavori futuri}{32}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Difficoltà incontrate e commenti per i docenti}{32}{section.4.2}%
+\contentsline {chapter}{\numberline {A}Guida utente}{34}{appendix.Alph1}%
+\contentsline {paragraph}{}{34}{section*.57}%
+\contentsline {paragraph}{}{34}{section*.58}%
+\contentsline {paragraph}{}{34}{section*.59}%
+\contentsline {chapter}{\numberline {B}Esercitazioni di laboratorio}{35}{appendix.Alph2}%
+\contentsline {subsection}{\numberline {B.0.1}paolino.paperino@studio.unibo.it}{35}{subsection.Alph2.0.1}%
+\contentsline {subsection}{\numberline {B.0.2}paperon.depaperoni@studio.unibo.it}{35}{subsection.Alph2.0.2}%
