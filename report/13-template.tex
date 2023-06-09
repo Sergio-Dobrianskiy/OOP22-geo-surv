@@ -261,18 +261,55 @@ In \Cref{img:goodarch} è esemplificato il diagramma UML architetturale.
 \subsubsection*{Sergio Dobrianskiy:}
 %
 \begin{enumerate}
-	\item Problema 1
+
+	
+	\item Factory Pattern: WeaponFactory
+			
 	\begin{itemize}
-		\item Soluzione
-		\item Schema
-		\item Pattern
+		\item Problema: creare un'istanza delle armi presenti nel gioco durante la fase di loading indipendentemente dall'implmentazione della classe astratta Weapon.
+		\item Soluzione: ho deciso di usare il metodo Factory che permette di separare il codice della costruzione dell'oggetto dal codice che lo adrà ad utilizzare.
+		\item Schema:
+		\begin{figure}[H]
+			\centering{}
+			\includegraphics[width=\textwidth]{img/factory.png}
+			\caption{Schema UML dell'implementazione del pattern \emph{Factory}}
+			\label{img:Factory Pattern}
+		\end{figure}
 	\end{itemize}
-	\item Problema 2
+	
+		\item Strategy Pattern: CollisionBehavior
 	\begin{itemize}
-		\item Soluzione
-		\item Schema
-		\item Pattern
+		\item Problema: gestire le collissioni dei GameObject presenti in gioco in modo efficiente 
+		\item Soluzione ho deciso di usare lo Strategy Pattern che permette di definire uan serie di algoritmi in classi separate e di poterli inserire in modo intercambiabile all'interno di altre classi.
+		In questo modo per assegnare a lo stesso comportamento a più di una classe non sarà necessario scrivere lo stesso codice più volte o usare l'ereditarietà.
+		Inoltre gli algoritmi alla base di ciascun comportamento sono facilmente mantenibili e modificabili. \\
+		Nella versiona attuale di gioco ho creato 3 algoritmi ciascuno gestito da una classe che implementa l'interfaccia ICollisionBehavior. 
+		Un esempio dell'utilizzo di queste classi lo si può trovare nella gestione di tutte le Bullet. Di default tutte le classi che estendono la classe astratta Bullet avranno l'algoritmo NoCollisionBehavior, mentre in AutoBullet verrà usato l'algoritmo presente in RemoveOnCollisionBehavior.
+		\item Schema:
+		\begin{figure}[H]
+			\centering{}
+			\includegraphics[width=\textwidth]{img/strategy.png}
+			\caption{Schema UML dell'implementazione del pattern \emph{Strategy}. }
+			\label{img:Strategy Pattern}
+		\end{figure}
+		
 	\end{itemize}
+	\item Template Method Pattern
+	\begin{itemize}
+		\item Problema: implmentare l'algoritmo che permetta a ciascuna arma di sparare
+		\item Soluzione: ho deciso di utilizzare il Template Method in quanto il comportamento di ciascuna arma è unico e non verrà usato altrove.
+		La classe astratta Weapon contiene l'algoritmo che permette alle armi che estenderanno di sparare in modo ciclico, ma il metodo che richiama lo sparo stesso è astratto e richiede di essere implmentato.
+		\item Schema:
+		\begin{figure}[H]
+			\centering{}
+			\includegraphics[width=\textwidth]{img/template.png}
+			\caption{Schema UML dell'implementazione del pattern \emph{Template}}
+			\label{img:Template Pattern}
+		\end{figure}
+	\end{itemize}
+	
+	
+	
 \end{enumerate}
 %
 \subsubsection*{Pierangelo Motta:}
@@ -538,10 +575,11 @@ Motta:
 	\item TestMonsterDie: verifica in step successivi della presenza nel gioco del "Player" e di un numero N di mostri. Alla morte di tutti i mostri verifica della presenza delle altre possibili tipologie di entità nate di conseguenza: "Experience", "Life" oppure "Ball" (mostro zombie)
 \end{itemize}
 %
-Dobrianskiy:
+Sergio Dobrianskiy:
 \begin{itemize}
-	\item xxxxxxxxxxxx
-	\item yyyyyyyyyyyyyyyy
+	\item TestBullets: per verificare la creazione e il corretto funzionamento delle 4 classi che estendono Bullet.
+	\item TestWeapons: per verificare la creazione e il corretto funzionamento delle 4 classi che estendono Weapon.
+	\item TestCollisions: per verificare la creazione e il corretto funzionamento della meccanica di collisione tra vari GameObject. Assicura anche che elementi come AutoBullet vengano rimossi dopo che è accaduta una collisione, mentre elementi come Satellite rimangano in gioco.
 \end{itemize}
 %
 Testa:
@@ -571,7 +609,42 @@ Test che richiedono l'intervento da parte dell'utente sono considerati \textit{n
 	\item I test, quando eseguiti, falliscono.
 \end{itemize}
 
+\paragraph{}
+\paragraph{}
+\paragraph{}
+\paragraph{}
 \section{Metodologia di lavoro}
+Il gruppo ha lavorato in modo coeso sia durante la scelta del tipo progetto da realizzare che successivamente per la stesura di una lista di funzionalità minime da portare a termine. Ciascun membro ha scelto da questa lista le parti sulle quali avrebbe lavorato. Fatto ciò, sempre in gruppo, abbiamo deciso un design architetturale da seguire. 
+
+Lungo il corso di tutto il progetto sono stati utilizzati un gruppo Whatsapp per la comunicazione quotidiana, un canale discord per le riunioni settimanali e un documento condiviso su Google Drive per appunti e materiale utile. Dato che i membri del gruppo vivono lontani tra di loro almeno due sono lavoratori full time non è stato possibile organizzare incontri dal vivo. 
+
+Lavorando al progetto ci siamo resi conto che il modello architetturale previsto nelle prime fasi era inadeguato. Questo problema è stato risolto agilmente grazie alla comunicazione frequente tra i membri. 
+
+Un'ulteriore difficotà è nata a causa di problemi personali del collega Matteo Trezza che,  nonostante i tentativi di aiuto, ha faticato a stare al passo con il resto del gruppo e alla fine ha dovuto ritirarsi. Dato il bisogno di portare avanti le parti di Matteo, in sua assenza abbiamo provveduto a spartircele in base alle necessità e preferenze di ciascuno dei membri rimanenti.
+
+Per condividere il codice è stato usato fin da subito Git. Ci siamo impegnati a non lavorare direttamente sul branch \textit{master} e di creare per ciascuna feature un branch separato. Per consentire a tutti di avere un codice aggiornato abbiamo cercato di fare dei merge frequenti.
+
+Di seguto è indicata nel dettaglio la suddivisione dei compiti:
+
+\subsection*{Sergio Dobrianskiy:}
+\begin{itemize}
+	\item Gestione delle armi e dei proiettili
+	\item Gestione delle collisioni (java.awt)
+	\item Architettura dei GameObject e TickingObject
+	\item Gestione caricamento e loop di gioco (Loader e Handler)
+	\item Gestione delle texture/sprite
+	\item Gestione dei controlli del giocatore
+	
+	Inizialmente avevo scelto di occuparmi solo delle armi, dei proiettili e delle collisioni, ma data la necessità e l'interesse personale ho finito per occuparmi in modo massiccio anche degli altri punti indicati nella lista. 
+	
+	Per la gestione delle collisioni ho utilizzato le funzioni geometriche presenti in \textit{java.awt}.
+	
+	Come indicato nella sezione apposita, ho adattaro del codice preso dal progetto OOP21-ciccio-pier per la creazione della classe Texture e la gestione degli sprite.
+\end{itemize}
+\paragraph{}
+\paragraph{}
+\paragraph{}
+\paragraph{}
 
 Ci aspettiamo, leggendo questa sezione, di trovare conferma alla divisione operata nella sezione del design di dettaglio, e di capire come è stato svolto il lavoro di integrazione.
 %
@@ -630,6 +703,33 @@ che dimostrino proefficienza con funzionalità avanzate del linguaggio e capacit
 		      \item Permalink GitHub al punto nel codice in cui è stata utilizzata
 	      \end{itemize}
 \end{itemize}
+
+\paragraph{}
+\paragraph{}
+\paragraph{}
+\paragraph{}
+\paragraph{}
+
+Per facilitarci nello sviluppo del gioco, soprattutto nelle fasi iniziali, abbiamo seguito dei tutorial oppure sono state usate delle funzionalità di un altro progetto, di seguito viene fortina una lista:
+\begin{itemize}
+	\item Per la creazione da zero del motore di gioco e del motore grafico abbiamo preso spunto da due tutorial presi da Youtube: 
+	 \begin{itemize}
+	 	\item \href{https://www.youtube.com/playlist?list=PLWms45O3n--5vDnNd6aiu1CSWX3JlCU1n}{Java Game Programming Wizard Course}
+	 	\item \href{https://www.youtube.com/playlist?list=PLWms45O3n--5vv69_AlMw23O1Z31CaW1F}{Java Programming Let's Build a Zombie Game}
+	 \end{itemize}
+	 In particolare con l'aiuto di questi due tutorial sono state create le classi Game, GameObject, Handler, KeyInput usate per ottenere una versione rudimentale del motore di gioco e del suo motore grafico.
+	 Da quel momento in poi le classi sono state fortemente riviste nelle funzionalità e riadattate ad una logica OOP.
+	 
+	 \item Per il caricamento e la gestione delle texture/sprite che avviene in particolare nelle classi Texture e Loader e la creazione di Block durante il cariamento della mappa è stato preso e riadattato del codice dal progetto 
+	 \href{https://github.com/Valdi1111/OOP21-ciccio-pier}{OOP21-ciccio-pier} consegnato da un altro gruppo per l'esame di Programmazione ad Oggetti.
+	 
+\end{itemize}
+
+\paragraph{}
+\paragraph{}
+\paragraph{}
+\paragraph{}
+\paragraph{}
 
 In questa sezione, \textit{dopo l'elenco},
 vanno menzionati ed attributi con precisione eventuali pezzi di codice ``riadattati'' (o scopiazzati...) da Internet o da altri progetti,
@@ -730,6 +830,17 @@ futuri.
 Al fine di evitare pregiudizi involontari, l'intero capitolo verrà letto dai docenti solo dopo aver formulato la valutazione.
 
 \section{Autovalutazione e lavori futuri}
+\subsubsection*{Sergio Dobrianskiy:}
+
+Ho  cercato i membri per formare il gruppo e proposto l'idea di gioco sulla quale lavorare.
+Durante lo svolgimento del progetto ho cercato di indirizzare ciascun membro su obbiettivi a breve termine che mi sembravano più importanti, in particolar modo durante le fasi iniziali ho insistito sulle funzionalità necessarie a tutto gruppo per poter procedere nello sviluppo. 
+Quando mi sono reso conto che il collega Matteo Trezza non avrebbe portato a termine la sua parte di progetto mi sono occupato di una buona parte delle sue funzionalità minime.
+
+Sono soddisfatto del lavoro fatto da me e dal gruppo, l'organizzazione e il team work sono stati ottimi. Inoltre creare da zero un gioco, anche se semplice, mi ha appassionato e mi ha permesso di imparare molto.
+Il mio punto debole è stata la totale inesperienza con lo sviluppo di un gioco che mi ha reso impossibile avere un'idea chiara sulla scaletta di cosa sviluppare nel medio-lungo periodo. Inoltre la scarsa famigliarità iniziale con i pattern di programmazione mi hanno costretto a un refactoring in corso d'opera. 
+
+Se dovessi continuare a lavorare al progetto vorrei lavorare su una versione mobile e riscrivere in modo migliore la parte del motore di gioco.
+
 
 \textbf{È richiesta una sezione per ciascun membro del gruppo, obbligatoriamente}.
 %

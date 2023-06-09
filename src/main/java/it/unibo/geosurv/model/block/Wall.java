@@ -10,11 +10,11 @@ public class Wall extends Block {
     /**
      * block's height.
      */
-    private final int blockHeight = 32;
+    private static final int BLOCK_HEIGHT = 32;
     /**
      * block's width.
      */
-    private final int blockWidth = 32;
+    private static final int BLOCK_WIDTH = 32;
 
     /**
      * Constructor for this class.
@@ -24,8 +24,8 @@ public class Wall extends Block {
      */
     public Wall(final float x, final float y) {
         super(x, y);
-        this.height = blockHeight;
-        this.width = blockWidth;
+        this.height = BLOCK_HEIGHT;
+        this.width = BLOCK_WIDTH;
         this.texture = Texture.BLOCK;
     }
 
@@ -35,7 +35,7 @@ public class Wall extends Block {
     @Override
     public void tick() {
     }
-    
+
     @Override
     public void collide() {
     }

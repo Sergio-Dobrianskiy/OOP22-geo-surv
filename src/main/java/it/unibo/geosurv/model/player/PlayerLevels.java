@@ -8,19 +8,19 @@ public class PlayerLevels {
     /**
      * player starts at level 1.
      */
-    private final int startingLevel = 1;
+    private static final int STARTING_LEVEL = 1;
     /**
      * player's maximum level (currently: 4 weapons * 3 levels each).
      */
-    private final int maxLevel = 12;
+    private static final int MAX_LEVEL = 12;
     /**
      * experience needed to level up from level 1 to 2.
      */
-    private final int baseExp = 2;
+    private static final int BASE_EXP = 4;
     /**
      * experience multiplier for each level up.
      */
-    private final float levelMultiplier = 1.1f;
+    private static final float LEVEL_MULTIPLIER = 1.3f;
     /**
      * player's current level.
      */
@@ -41,9 +41,9 @@ public class PlayerLevels {
      * @param player game's player
      */
     public PlayerLevels(final Player player) {
-        this.currentLevel = this.startingLevel;
+        this.currentLevel = PlayerLevels.STARTING_LEVEL;
         this.currentExperience = 0;
-        this.expToLevelUp = this.baseExp;
+        this.expToLevelUp = PlayerLevels.BASE_EXP;
         this.player = player;
     }
 
@@ -54,7 +54,7 @@ public class PlayerLevels {
      */
     public void expUp(final int exp) {
         this.currentExperience += exp;
-        if (this.currentExperience > this.expToLevelUp && this.currentLevel < this.maxLevel) {
+        if (this.currentExperience > this.expToLevelUp && this.currentLevel < PlayerLevels.MAX_LEVEL) {
             this.levelUp();
         }
     }
@@ -64,10 +64,10 @@ public class PlayerLevels {
      * 
      */
     public void levelUp() {
-        if (this.currentLevel < this.maxLevel) {
+        if (this.currentLevel < PlayerLevels.MAX_LEVEL) {
             this.currentLevel += 1;
             this.currentExperience = 0;
-            this.expToLevelUp *= this.levelMultiplier;
+            this.expToLevelUp *= PlayerLevels.LEVEL_MULTIPLIER;
             this.player.levelUpWeapon();
         }
     }

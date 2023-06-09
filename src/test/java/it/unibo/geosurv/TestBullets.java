@@ -17,7 +17,7 @@ import it.unibo.geosurv.view.graphics.Texture;
  * testing bullets.
  *
  */
-public class TestBullets {
+class TestBullets {
 
     /**
      * testing creation of bullets.

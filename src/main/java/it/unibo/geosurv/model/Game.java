@@ -125,6 +125,9 @@ public class Game extends Canvas implements Runnable, ITickingObject {
         }
     }
 
+    /**
+     * manages game cycles.
+     */
     @Override
     public void run() {
         this.requestFocus();
@@ -137,13 +140,11 @@ public class Game extends Canvas implements Runnable, ITickingObject {
             final long now = System.nanoTime();
             delta += (now - lastTime) / NANO_PER_TICK;
             lastTime = now;
-            // System.out.println("***" + delta);
+
             while (delta > 1) {
                 this.tick();
                 this.render();
                 delta -= 1;
-                // System.out.println("->" + delta);
-
                 // frames++;
             }
 
@@ -155,6 +156,9 @@ public class Game extends Canvas implements Runnable, ITickingObject {
         stop();
     }
 
+    /**
+     * handles game logic.
+     */
     @Override
     public void tick() {
         elapsedTime += 1.0 / TICKS_PER_SECOND; //update the elapsed time
@@ -169,6 +173,9 @@ public class Game extends Canvas implements Runnable, ITickingObject {
         camera.tick();
     }
 
+    /**
+     * handles game graphics.
+     */
     public void render() {
         final BufferStrategy bs = this.getBufferStrategy();
         if (bs == null) {
@@ -198,14 +205,13 @@ public class Game extends Canvas implements Runnable, ITickingObject {
 
             g.setColor(Color.WHITE);
 
-            FontMetrics fm = g.getFontMetrics();
+            final FontMetrics fm = g.getFontMetrics();
             final int textWidth = fm.stringWidth(pauseText);
             final int textHeight = fm.getHeight();
             final int xPause = (WINDOW_WIDTH - textWidth) / 2 + (int) camera.getX();
             final int yPause = (WINDOW_HEIGHT - textHeight) / 2 + (int) camera.getY();
 
             g.drawString(pauseText, xPause, yPause);
-
         }
         
         /* Game management lost */
@@ -294,7 +300,7 @@ public class Game extends Canvas implements Runnable, ITickingObject {
             this.state = GameState.RUNNING;
         }
     }
-    
+
     /**
      * enters the loading state.
      */
@@ -321,7 +327,7 @@ public class Game extends Canvas implements Runnable, ITickingObject {
     }
 
     /**
-     * method for clear Handler
+     * method for clear Handler.
      */
     public void clearHandler() {
         handler.clearHandler();

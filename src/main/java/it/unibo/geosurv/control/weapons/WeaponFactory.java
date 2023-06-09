@@ -29,16 +29,16 @@ public class WeaponFactory implements IWeaponFactory {
     public Optional<Weapon> createWeapon(final WeaponType type, final int level) {
         Weapon weapon;
         switch (type) {
-        case AutoGun:
+        case AUTO_GUN:
             weapon = new AutoGun(this.handler);
             break;
-        case ExplosionGun:
+        case EXPLOSION_GUN:
             weapon = new ExplosionGun(this.handler);
             break;
-        case LaserGun:
+        case LASER_GUN:
             weapon = new LaserGun(this.handler);
             break;
-        case SatelliteGun:
+        case SATELLITE_GUN:
             weapon = new SatelliteGun(this.handler);
             break;
         default:

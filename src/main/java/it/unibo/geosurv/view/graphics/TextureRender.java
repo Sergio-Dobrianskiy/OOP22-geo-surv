@@ -2,6 +2,7 @@ package it.unibo.geosurv.view.graphics;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.util.Iterator;
 import java.util.List;
 
 import it.unibo.geosurv.model.GameObject;
@@ -17,10 +18,7 @@ import it.unibo.geosurv.model.monsters.Monster;
 public class TextureRender {
 
     private final Handler handler;
-    // private static final boolean HIT_BOXES = false;
-    // private static final int FRAMES_IN_BUFFER = 3;
-    // private static final int WINDOW_WIDTH = 1000;
-    // private static final int WINDOW_HEIGHT = 600;
+    private static final boolean DEBUG_MODE = false;
 
     /**
      * Constructor for this class.
@@ -33,12 +31,13 @@ public class TextureRender {
     }
 
     public void renderView(final Graphics g) {
-        final List<GameObject> gameObjects = handler.getGameObjects();
+        final Iterator<GameObject> goIterator = handler.getGameObjects().iterator();
         final Player player = handler.getPlayer();
-        for (final GameObject to : gameObjects) {
-            final int xx = getRenderX(to);
-            final int yy = getRenderY(to);
-            g.drawImage(to.getTexture().extractTexture(), xx, yy, to.getWidth(), to.getHeight(), null);
+        while (goIterator.hasNext()) {
+            final GameObject tempObject = goIterator.next();
+            final int xx = getRenderX(tempObject);
+            final int yy = getRenderY(tempObject);
+            g.drawImage(tempObject.getTexture().extractTexture(), xx, yy, tempObject.getWidth(), tempObject.getHeight(), null);
         }
         renderUI(g, player);
     }
@@ -89,14 +88,16 @@ public class TextureRender {
         g.drawRect(barXLife - 1, barYLife - 1, barWidthLife + 1, barHeightLife + 1); // border
 
         // Draw debug text
-        g.setColor(Color.white);
-        g.drawString("Life: " + player.getLife(), x + player.getWidth(), y);
-        g.drawString("Exp: " + (int) player.getExpPercentage() + "%", x + player.getWidth(), y + 20);
-        g.drawString("Curr: " + player.getExperience(), x + player.getWidth(), y + 40);
-        g.drawString("Max: " + player.getMaxExperience(), x + player.getWidth(), y + 60);
-        g.drawString("Lvl: " + player.getLevel(), x + player.getWidth(), y + 80);
-        g.drawString("Monsters: " + Monster.getMonstersCounter() + " [" + Monster.getMonstersDeadCounter() + "]",
-                x + player.getWidth(), y + 100);
+        if (DEBUG_MODE) {
+            g.setColor(Color.white);
+            g.drawString("Life: " + player.getLife(), x + player.getWidth(), y);
+            g.drawString("Exp: " + (int) player.getExpPercentage() + "%", x + player.getWidth(), y + 20);
+            g.drawString("Curr: " + player.getExperience(), x + player.getWidth(), y + 40);
+            g.drawString("Max: " + player.getMaxExperience(), x + player.getWidth(), y + 60);
+            g.drawString("Lvl: " + player.getLevel(), x + player.getWidth(), y + 80);
+            g.drawString("Monsters: " + Monster.getMonstersCounter() + " [" + Monster.getMonstersDeadCounter() + "]",
+                    x + player.getWidth(), y + 100);
+        }
     }
 
     public void renderHitBoxes(final Graphics g, final Color color, final GameObject obj) {
@@ -136,9 +137,7 @@ public class TextureRender {
                 g.drawString(to.toString(), xx + 10, yy + 10);
                 this.renderHitBoxes(g, Color.red, to);
             }
-
         }
-
     }
 
     // protected void drawRect(final Graphics g, final Color color, final GameObject

@@ -9,12 +9,6 @@ import it.unibo.geosurv.model.Handler;
 public class RemoveOnCollisionBehavior implements ICollisionBehavior {
 
     /**
-     * Constructor for this class.
-     */
-    public RemoveOnCollisionBehavior() {
-    }
-
-    /**
      * Behavior that removes object in case of collision.
      */
     @Override

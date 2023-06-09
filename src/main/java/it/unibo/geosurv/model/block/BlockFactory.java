@@ -18,7 +18,7 @@ public class BlockFactory implements IBlockFactory {
      */
     @Override
     public Optional<Block> createBlock(final BlockType type, final float x, final float y) {
-        if (type == BlockType.Wall) {
+        if (type == BlockType.WALL) {
             return Optional.of(new Wall(x, y));
         }
         return Optional.empty();

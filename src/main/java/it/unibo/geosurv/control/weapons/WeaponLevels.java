@@ -27,8 +27,8 @@ public class WeaponLevels {
     public void levelUpWeapon() {
         boolean upgraded = false;
         while (!upgraded) {
-            int index = this.random.nextInt(this.weapons.size());
-            Weapon tmpWeapon = weapons.get(index);
+            final int index = this.random.nextInt(this.weapons.size());
+            final Weapon tmpWeapon = weapons.get(index);
             upgraded = tmpWeapon.levelUp();
         }
     }

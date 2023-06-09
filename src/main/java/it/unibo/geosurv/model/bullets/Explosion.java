@@ -12,15 +12,15 @@ public class Explosion extends Bullet {
     /**
      * explosion's height.
      */
-    private final int explosionHeight = 64;
+    private static final int EXPLOSION_HEIGHT = 64;
     /**
      * explosion's width.
      */
-    private final int explosionWidth = 64;
+    private static final int EXPLOSION_WIDTH = 64;
     /**
      * explosion's life span.
      */
-    private final long explosionLifeSpan = 2000L;
+    private static final long EXPLOSION_LIFESPAN = 2000L;
 
     /**
      * Constructor for this class.
@@ -32,9 +32,9 @@ public class Explosion extends Bullet {
      */
     public Explosion(final float x, final float y, final Handler handler, final int damage) {
         super(x, y, handler, damage);
-        super.lifeSpan = explosionLifeSpan;
-        this.height = explosionHeight;
-        this.width = explosionWidth;
+        super.lifeSpan = EXPLOSION_LIFESPAN;
+        this.height = EXPLOSION_HEIGHT;
+        this.width = EXPLOSION_WIDTH;
         this.texture = Texture.EXPLOSION;
     }
 
@@ -48,4 +48,3 @@ public class Explosion extends Bullet {
         return new Ellipse2D.Float(getRenderX(), getRenderY(), this.width, this.height);
     }
 }
-

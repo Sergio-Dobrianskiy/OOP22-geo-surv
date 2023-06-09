@@ -33,13 +33,12 @@ public class Player extends GameObject implements IPlayer, IObservable {
     /**
      * Player's speed.
      */
-    private static final int playerSpeed = 5;
+    private static final int PLATER_SPEED = 5;
     /**
      * Player's maximum live.
      */
-    private static final int maxLife = 100;
+    private static final int MAX_LIFE = 100;
 
-    public final static int EXPERIENCE = 500;
     private static final int MAX_HITS_PER_SECOND = 2;
     private static final long HIT_COOLDOWN = 1000 / MAX_HITS_PER_SECOND;
     private long lastHitTime; // last time Player is touched/hit by a monster
@@ -48,11 +47,10 @@ public class Player extends GameObject implements IPlayer, IObservable {
     private final IPlayerMovement playerMovement;
     private final PlayerLevels playerLevels;
     private final List<IObserverEntity<? extends GameObject>> observers;
-    // private List<Weapon> weapons;
     private WeaponLevels weaponLevels;
     private final ICollisionBehavior collisionBehavior;
     private final Handler handler;
-    
+
 
     /**
      * Constructor for this class.
@@ -63,7 +61,7 @@ public class Player extends GameObject implements IPlayer, IObservable {
      */
     public Player(final float x, final float y, final Handler handler) {
         super(x, y, ID.Player);
-        this.life = maxLife;
+        this.life = MAX_LIFE;
         this.lastHitTime = 0;
         this.observers = new ArrayList<>();
         this.height = PLAYER_HEIGHT;
@@ -155,7 +153,7 @@ public class Player extends GameObject implements IPlayer, IObservable {
      * @return player's maximum life
      */
     public final int getMaxLife() {
-        return maxLife;
+        return MAX_LIFE;
     }
 
     /**
@@ -164,7 +162,7 @@ public class Player extends GameObject implements IPlayer, IObservable {
      * @return player's speed
      */
     public final int getSpeed() {
-        return playerSpeed;
+        return PLATER_SPEED;
     }
 
     @Override
@@ -197,7 +195,7 @@ public class Player extends GameObject implements IPlayer, IObservable {
      * @param damage
      */
     public void hit(final int damage) {
-        long currentTime = System.currentTimeMillis();
+        final long currentTime = System.currentTimeMillis();
         if (currentTime - lastHitTime >= HIT_COOLDOWN) {
             this.setLife(-damage);
             lastHitTime = currentTime;
@@ -222,7 +220,7 @@ public class Player extends GameObject implements IPlayer, IObservable {
     }
 
     /**
-     * check if the player is alive
+     * check if the player is alive.
      * 
      * @return true if the player is alive
      */

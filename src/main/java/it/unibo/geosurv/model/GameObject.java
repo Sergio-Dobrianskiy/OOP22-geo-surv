@@ -10,15 +10,21 @@ import it.unibo.geosurv.view.graphics.Texture;
  */
 public abstract class GameObject implements ITickingObject, IGameObject {
     /**
-     * gameObject coordinates.
+     * gameObject x coordinate.
      */
     private float x;
+    /**
+     * gameObject y coordinate.
+     */
     private float y;
 
     /**
-     * gameObject velocity.
+     * gameObject x velocity.
      */
     protected float velX;
+    /**
+     * gameObject y velocity.
+     */
     protected float velY;
     /**
      * gameObject dimensions.

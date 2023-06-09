@@ -26,7 +26,7 @@ public class PlayerMovement implements IPlayerMovement {
      */
     @Override
     public void movePlayer() {
-        if (player == null) { // TODO: rework
+        if (player == null) {
             player = handler.getPlayer();
             return;
         }
@@ -55,11 +55,4 @@ public class PlayerMovement implements IPlayerMovement {
             player.setVelX(0);
         }
     }
-
-    @Override
-    public void stopMovements() {
-        // player.setX(player.getX() + player.getVelX() * -1);
-        // player.setY(player.getY() + player.getVelY() * -1);
-    }
-
 }
