@@ -32,7 +32,7 @@ public class Collisions {
     public void checkPlayerCollisions() {
         final Iterator<GameObject> goIterator = handler.getGameObjects().iterator();
         final Player player = handler.getPlayer();
-        
+
         while (goIterator.hasNext()) {
             final GameObject tempObject = goIterator.next();
             if (Collisions.isColliding(player, tempObject, ID.Block)) {     // if player touches wall => stop
@@ -59,7 +59,7 @@ public class Collisions {
      */
     public void checkBulletCollisionss(final Bullet bullet) {
         final Iterator<GameObject> goIterator = handler.getGameObjects().iterator();
-        
+
         while (goIterator.hasNext()) {
             final GameObject tempObject = goIterator.next();
 
