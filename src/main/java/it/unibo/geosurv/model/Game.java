@@ -12,6 +12,7 @@ import it.unibo.geosurv.control.KeyInput;
 import it.unibo.geosurv.control.ITickingObject;
 import it.unibo.geosurv.model.loader.ILoader;
 import it.unibo.geosurv.model.loader.Loader;
+import it.unibo.geosurv.model.player.Player;
 import it.unibo.geosurv.view.graphics.Camera;
 import it.unibo.geosurv.view.graphics.TextureRender;
 import it.unibo.geosurv.view.graphics.Window;
@@ -54,10 +55,18 @@ public class Game extends Canvas implements Runnable, ITickingObject {
     private final TextureRender textureRender;
     private final Camera camera;
     private GameState state;
-    private static final String pauseText = "Pause";
-    // private final Font pauseFont = new Font("Arial", Font.BOLD, 150);
-    private final Color backgroundPauseColor = new Color(0, 0, 0, 150);
     private boolean debugMode;
+    /* Variables used for pause */
+    private final String pauseText = "Pause";
+    private final Font pauseFont = new Font("Arial", Font.BOLD, 150);
+    private final Color backgroundPauseColor = new Color(0, 0, 0, 150);
+    /* Variables used for gameOver */
+    private final String gameOverText = "Game Over";
+    private final Font gameOverFont = new Font("Arial", Font.BOLD, 100);
+    private final Color gameOverColor = Color.RED;
+    private final Color backgroundGameOverColor = new Color(0, 0, 0, 250);
+
+    private Player player;
 
     /**
      * constructor for this class.
@@ -142,6 +151,7 @@ public class Game extends Canvas implements Runnable, ITickingObject {
     public void tick() {
         if (state == GameState.RUNNING) {
             handler.tick();
+            checkPlayerLife();
         }
         camera.tick();
     }
@@ -183,6 +193,23 @@ public class Game extends Canvas implements Runnable, ITickingObject {
 
             g.drawString(pauseText, xPause, yPause);
 
+        }
+        
+        /* Game management lost */
+        if (state == GameState.LOST) {
+            g.setColor(backgroundGameOverColor);
+            g.fillRect((int) camera.getX(), (int) camera.getY(), WINDOW_WIDTH, WINDOW_HEIGHT);
+        
+            g.setFont(gameOverFont);
+            g.setColor(gameOverColor);
+        
+            FontMetrics fm = g.getFontMetrics();
+            final int textWidth = fm.stringWidth(gameOverText);
+            final int textHeight = fm.getHeight();
+            final int xGameOver = (WINDOW_WIDTH - textWidth) / 2 + (int) camera.getX();
+            final int yGameOver = (WINDOW_HEIGHT - textHeight) / 2 + (int) camera.getY();
+        
+            g.drawString(gameOverText, xGameOver, yGameOver);
         }
 
         ////////////////////////////////////// above here we draw to the game
@@ -269,5 +296,15 @@ public class Game extends Canvas implements Runnable, ITickingObject {
      */
     public void clearHandler() {
         handler.clearHandler();
+    }
+    /**
+     * method for check the life of the Player and if he still alive 
+     */
+
+    private void checkPlayerLife() {
+        player = handler.getPlayer(); // Aggiornamento della variabile player
+        if (player != null && !player.isAlive()) {
+            stateLost();
+        }
     }
 }
