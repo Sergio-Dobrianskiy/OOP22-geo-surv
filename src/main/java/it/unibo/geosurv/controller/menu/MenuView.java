@@ -82,7 +82,7 @@ public class MenuView extends JFrame {
         optionsPanel.setOpaque(false);
         optionsPanel.setLayout(new BorderLayout());  
 
-        JLabel optionsLabel = new JLabel("Options:");
+        JLabel optionsLabel = new JLabel("Controls:");
         optionsLabel.setFont(new Font("Arial", Font.BOLD, 24));
         optionsLabel.setForeground(Color.WHITE);
         optionsLabel.setHorizontalAlignment(JLabel.CENTER);

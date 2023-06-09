@@ -24,6 +24,9 @@ public class KeyInput extends KeyAdapter {
         this.handler = handler;
     }
 
+    /**
+     * Manages key presses.
+     */
     @Override
     public void keyPressed(final KeyEvent e) {
         final int key = e.getKeyCode();
@@ -59,8 +62,11 @@ public class KeyInput extends KeyAdapter {
 
     }
 
+    /**
+     * Manages key releases.
+     */
     @Override
-    public void keyReleased(KeyEvent e) {
+    public void keyReleased(final KeyEvent e) {
         final int key = e.getKeyCode();
         switch (key) {
             case KeyEvent.VK_LEFT:

@@ -13,31 +13,31 @@ public class ExplosionGun extends Weapon {
     /**
      * minimum range at witch explosion can appear.
      */
-    private static final float minRange = 10f;
+    private static final float MIN_RANGE = 10f;
     /**
      * maximum range at witch explosion can appear.
      */
-    private static final float maxRange = 200f;
+    private static final float MAX_RANGE = 200f;
     /**
      * explosion cycle in ms.
      */
-    private static final long explosionCycle = 4000L;
+    private static final long EXPLOSION_CYCLE = 4000L;
     /**
      * explosion damage at level 1.
      */
-    private static final int damageLevel1 = 3;
+    private static final int DAMAGE_LEVEL_1 = 3;
     /**
      * explosion damage at level 2.
      */
-    private static final int damageLevel2 = 6;
+    private static final int DAMAGE_LEVEL_2 = 6;
     /**
      * explosion damage at level 3.
      */
-    private static final int damageLevel3 = 9;
+    private static final int DAMAGE_LEVEL_3 = 9;
     /**
      * explosion damage at level 3.
      */
-    private static final int explosionsPerLevel = 2;
+    private static final int EXPLOSION_PER_LEVEL = 2;
 
     private final Handler handler;
     /**
@@ -48,10 +48,10 @@ public class ExplosionGun extends Weapon {
     public ExplosionGun(final Handler handler) {
 
         this.handler = handler; 
-        this.cycle = explosionCycle;
-        this.damageLvl1 = damageLevel1;
-        this.damageLvl2 = damageLevel2;
-        this.damageLvl3 = damageLevel3;
+        this.CYCLE = EXPLOSION_CYCLE;
+        this.damageLvl1 = DAMAGE_LEVEL_1;
+        this.damageLvl2 = DAMAGE_LEVEL_2;
+        this.damageLvl3 = DAMAGE_LEVEL_3;
     }
 
     /**
@@ -64,8 +64,8 @@ public class ExplosionGun extends Weapon {
         final float y = player.getY();
         Pair<Float, Float> pair;
 
-        for (int i = 0; i <= currentLevel * explosionsPerLevel; i++) {
-            pair = Func.randomPoint(minRange, maxRange);
+        for (int i = 0; i <= currentLevel * EXPLOSION_PER_LEVEL; i++) {
+            pair = Func.randomPoint(MIN_RANGE, MAX_RANGE);
             handler.addObject(new Explosion(pair.getX() + x, pair.getY() + y, handler, getDamage()));
         }
     }

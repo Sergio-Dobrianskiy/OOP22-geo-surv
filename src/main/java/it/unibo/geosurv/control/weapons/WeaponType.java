@@ -1,20 +1,23 @@
 package it.unibo.geosurv.control.weapons;
 
+/**
+ * Manages all weapon types in the game.
+ */
 public enum WeaponType {
     /**
-     * Automatic gun
+     * Automatic gun.
      */
-    AutoGun,
+    AUTO_GUN,
     /**
-     * Creates explosions
+     * Creates explosions.
      */
-    ExplosionGun,
+    EXPLOSION_GUN,
     /**
-     * Shots lasers
+     * Shots lasers.
      */
-    LaserGun,
+    LASER_GUN,
     /**
      * Creates satellites.
      */
-    SatelliteGun,
+    SATELLITE_GUN,
 }

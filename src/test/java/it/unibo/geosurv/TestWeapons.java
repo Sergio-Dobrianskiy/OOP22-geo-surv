@@ -31,16 +31,16 @@ class TestWeapons {
         final WeaponFactory weaponFactory = new WeaponFactory(handler);
         handler.addPlayer(new Player(0, 0, handler));
 
-        weapon = weaponFactory.createWeapon(WeaponType.AutoGun, 0).get();
+        weapon = weaponFactory.createWeapon(WeaponType.AUTO_GUN, 0).get();
         assertEquals(AutoGun.class, weapon.getClass());
 
-        weapon = weaponFactory.createWeapon(WeaponType.SatelliteGun, 0).get();
+        weapon = weaponFactory.createWeapon(WeaponType.SATELLITE_GUN, 0).get();
         assertEquals(SatelliteGun.class, weapon.getClass());
 
-        weapon = weaponFactory.createWeapon(WeaponType.ExplosionGun, 0).get();
+        weapon = weaponFactory.createWeapon(WeaponType.EXPLOSION_GUN, 0).get();
         assertEquals(ExplosionGun.class, weapon.getClass());
 
-        weapon = weaponFactory.createWeapon(WeaponType.LaserGun, 0).get();
+        weapon = weaponFactory.createWeapon(WeaponType.LASER_GUN, 0).get();
         assertEquals(LaserGun.class, weapon.getClass());
     }
 
@@ -52,7 +52,7 @@ class TestWeapons {
         final WeaponFactory weaponFactory = new WeaponFactory(handler);
         handler.addPlayer(new Player(0, 0, handler));
 
-        weapon = weaponFactory.createWeapon(WeaponType.AutoGun, 0).get();
+        weapon = weaponFactory.createWeapon(WeaponType.AUTO_GUN, 0).get();
         assertEquals(0, weapon.getLevel());
         weapon.levelUp();
         assertEquals(1, weapon.getLevel());
@@ -72,7 +72,7 @@ class TestWeapons {
         final WeaponFactory weaponFactory = new WeaponFactory(handler);
         handler.addPlayer(new Player(0, 0, handler));
 
-        weapon = weaponFactory.createWeapon(WeaponType.SatelliteGun, 0).get();
+        weapon = weaponFactory.createWeapon(WeaponType.SATELLITE_GUN, 0).get();
         assertEquals(0, weapon.getLevel());
         weapon.levelUp();
         assertEquals(1, weapon.getLevel());
@@ -92,7 +92,7 @@ class TestWeapons {
         final WeaponFactory weaponFactory = new WeaponFactory(handler);
         handler.addPlayer(new Player(0, 0, handler));
 
-        weapon = weaponFactory.createWeapon(WeaponType.ExplosionGun, 0).get();
+        weapon = weaponFactory.createWeapon(WeaponType.EXPLOSION_GUN, 0).get();
         assertEquals(0, weapon.getLevel());
         weapon.levelUp();
         assertEquals(1, weapon.getLevel());
@@ -112,7 +112,7 @@ class TestWeapons {
         final WeaponFactory weaponFactory = new WeaponFactory(handler);
         handler.addPlayer(new Player(0, 0, handler));
 
-        weapon = weaponFactory.createWeapon(WeaponType.LaserGun, 0).get();
+        weapon = weaponFactory.createWeapon(WeaponType.LASER_GUN, 0).get();
         assertEquals(0, weapon.getLevel());
         weapon.levelUp();
         assertEquals(1, weapon.getLevel());
@@ -132,17 +132,17 @@ class TestWeapons {
         final WeaponFactory weaponFactory = new WeaponFactory(handler);
         handler.addPlayer(new Player(0, 0, handler));
 
-        weapon = weaponFactory.createWeapon(WeaponType.LaserGun, 1).get();
+        weapon = weaponFactory.createWeapon(WeaponType.LASER_GUN, 1).get();
         assertEquals(1, weapon.getLevel());
         weapon.levelUp();
         assertEquals(2, weapon.getLevel());
 
-        weapon = weaponFactory.createWeapon(WeaponType.AutoGun, 2).get();
+        weapon = weaponFactory.createWeapon(WeaponType.AUTO_GUN, 2).get();
         assertEquals(2, weapon.getLevel());
         weapon.levelUp();
         assertEquals(3, weapon.getLevel());
 
-        weapon = weaponFactory.createWeapon(WeaponType.ExplosionGun, 3).get();
+        weapon = weaponFactory.createWeapon(WeaponType.EXPLOSION_GUN, 3).get();
         assertEquals(3, weapon.getLevel());
         weapon.levelUp();
         assertEquals(3, weapon.getLevel());
@@ -157,10 +157,10 @@ class TestWeapons {
         final WeaponFactory weaponFactory = new WeaponFactory(handler);
         handler.addPlayer(new Player(0, 0, handler));
 
-        weapons.add(weaponFactory.createWeapon(WeaponType.AutoGun, 0).get());
-        weapons.add(weaponFactory.createWeapon(WeaponType.SatelliteGun, 0).get());
-        weapons.add(weaponFactory.createWeapon(WeaponType.ExplosionGun, 0).get());
-        weapons.add(weaponFactory.createWeapon(WeaponType.LaserGun, 0).get());
+        weapons.add(weaponFactory.createWeapon(WeaponType.AUTO_GUN, 0).get());
+        weapons.add(weaponFactory.createWeapon(WeaponType.SATELLITE_GUN, 0).get());
+        weapons.add(weaponFactory.createWeapon(WeaponType.EXPLOSION_GUN, 0).get());
+        weapons.add(weaponFactory.createWeapon(WeaponType.LASER_GUN, 0).get());
 
         weapons.forEach(w -> assertTrue(isJustWeapons(w)));
 

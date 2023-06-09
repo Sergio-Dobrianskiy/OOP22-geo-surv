@@ -100,25 +100,25 @@ public class Loader implements ILoader {
         final WeaponFactory weaponFactory = new WeaponFactory(this.handler);
         ArrayList<Weapon> weapons = new ArrayList<>();
 
-        Optional<Weapon> weapon = weaponFactory.createWeapon(WeaponType.AutoGun, 1);
+        Optional<Weapon> weapon = weaponFactory.createWeapon(WeaponType.AUTO_GUN, 1);
         if (weapon.isEmpty()) {
             System.out.println("Error creating AutoGun!");
         } else {
             weapons.add(weapon.get());
         }
-        weapon = weaponFactory.createWeapon(WeaponType.SatelliteGun, 0);
+        weapon = weaponFactory.createWeapon(WeaponType.SATELLITE_GUN, 0);
         if (weapon.isEmpty()) {
             System.out.println("Error creating SatelliteGun!");
         } else {
             weapons.add(weapon.get());
         }
-        weapon = weaponFactory.createWeapon(WeaponType.ExplosionGun, 0);
+        weapon = weaponFactory.createWeapon(WeaponType.EXPLOSION_GUN, 0);
         if (weapon.isEmpty()) {
             System.out.println("Error creating ExplosionGun!");
         } else {
             weapons.add(weapon.get());
         }
-        weapon = weaponFactory.createWeapon(WeaponType.LaserGun, 0);
+        weapon = weaponFactory.createWeapon(WeaponType.LASER_GUN, 0);
         if (weapon.isEmpty()) {
             System.out.println("Error creating LaserGun!");
         } else {

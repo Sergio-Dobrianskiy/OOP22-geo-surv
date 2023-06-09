@@ -16,11 +16,11 @@ public class PlayerLevels {
     /**
      * experience needed to level up from level 1 to 2.
      */
-    private final int baseExp = 2;
+    private final int baseExp = 4;
     /**
      * experience multiplier for each level up.
      */
-    private final float levelMultiplier = 1.1f;
+    private final float levelMultiplier = 1.3f;
     /**
      * player's current level.
      */

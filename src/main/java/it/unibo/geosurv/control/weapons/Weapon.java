@@ -9,15 +9,15 @@ public abstract class Weapon implements ITickingObject {
     /**
      * default Weapon damage at level 1.
      */
-    protected int damageLvl1 = 1;
+    protected int damageLvl1 = 2;
     /**
      * default Weapon damage at level 2.
      */
-    protected int damageLvl2 = 2;
+    protected int damageLvl2 = 4;
     /**
      * default Weapon damage at level 3.
      */
-    protected int damageLvl3 = 3;
+    protected int damageLvl3 = 6;
 
     /**
      * maximum level of a weapon.
@@ -32,7 +32,7 @@ public abstract class Weapon implements ITickingObject {
     /**
      * default time in milliseconds between shots.
      */
-    protected long cycle = 2000L;
+    protected static long CYCLE = 2000L;
 
     /**
      * current level of a weapon.
@@ -79,8 +79,8 @@ public abstract class Weapon implements ITickingObject {
      * @return boolean returns true if a new cycle has started
      */
     private boolean isNewCycle() {
-        long currentTime = System.currentTimeMillis();
-        if ((currentTime - this.lastShoot) > this.cycle) {
+        final long currentTime = System.currentTimeMillis();
+        if ((currentTime - this.lastShoot) > this.CYCLE) {
             this.lastShoot = currentTime;
             return true;
         }
@@ -104,7 +104,7 @@ public abstract class Weapon implements ITickingObject {
                 return 0;
         }
     }
-    
+
     /**
      * returns weapon level.
      * @return 
