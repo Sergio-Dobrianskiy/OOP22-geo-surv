@@ -11,7 +11,13 @@ import it.unibo.geosurv.model.player.Player;
  */
 public class Handler implements ITickingObject {
 
+    /**
+     * contains player, monster, bullets.
+     */
     private final CopyOnWriteArrayList<GameObject> gameObjects = new CopyOnWriteArrayList<>();
+    /**
+     * contains weapons, spawners.
+     */
     private final CopyOnWriteArrayList<ITickingObject> tickingObjects = new CopyOnWriteArrayList<>();
     private Player player;
     private boolean up;
@@ -26,13 +32,8 @@ public class Handler implements ITickingObject {
     public void tick() {
         final Iterator<GameObject> goIterator = gameObjects.iterator();
         final Iterator<ITickingObject> toIterator = tickingObjects.iterator();
-        while (goIterator.hasNext()) {
-            goIterator.next().tick();
-        }
-
-        while (toIterator.hasNext()) {
-            toIterator.next().tick();
-        }
+        goIterator.forEachRemaining(GameObject::tick);
+        toIterator.forEachRemaining(ITickingObject::tick);
     }
 
     /**

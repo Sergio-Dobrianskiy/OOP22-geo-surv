@@ -51,7 +51,7 @@ public abstract class Bullet extends GameObject {
     public void tick() {
         if (this.stillAlive()) {
             updatePosition(this.velX, this.velY);
-            this.collisions.checkBulletCollisionss(this);
+            this.collisions.checkBulletCollisions(this);
         } else {
             handler.removeObject(this);
         }

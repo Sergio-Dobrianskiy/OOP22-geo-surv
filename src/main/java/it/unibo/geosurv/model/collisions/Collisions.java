@@ -33,23 +33,22 @@ public class Collisions {
         final Iterator<GameObject> goIterator = handler.getGameObjects().iterator();
         final Player player = handler.getPlayer();
 
-        while (goIterator.hasNext()) {
-            final GameObject tempObject = goIterator.next();
-            if (Collisions.isColliding(player, tempObject, ID.Block)) {     // if player touches wall => stop
+        goIterator.forEachRemaining(obj -> {
+            if (Collisions.isColliding(player, obj, ID.Block)) {     // if player touches wall => stop
                 player.collide();
             }
-            if (Collisions.isColliding(player, tempObject, ID.Monster)) {   // if player touches Monsters
-                player.hit(((Monster) tempObject).getPower());
+            if (Collisions.isColliding(player, obj, ID.Monster)) {   // if player touches Monsters
+                player.hit(((Monster) obj).getPower());
             }
-            if (Collisions.isColliding(player, tempObject, ID.Experience)) { // if player touches experience pills
-                handler.getPlayer().setExperience(((Experience) tempObject).getExp());
-                tempObject.collide();
+            if (Collisions.isColliding(player, obj, ID.Experience)) { // if player touches experience pills
+                handler.getPlayer().setExperience(((Experience) obj).getExp());
+                obj.collide();
             }
-            if (Collisions.isColliding(player, tempObject, ID.Life)) {      // if player touches life pills
-                handler.getPlayer().setLife(((Life) tempObject).getDefaultLife());
-                tempObject.collide();
+            if (Collisions.isColliding(player, obj, ID.Life)) {      // if player touches life pills
+                handler.getPlayer().setLife(((Life) obj).getDefaultLife());
+                obj.collide();
             }
-        }
+        });
     }
 
     /**
@@ -57,20 +56,18 @@ public class Collisions {
      * 
      * @param bullet to check
      */
-    public void checkBulletCollisionss(final Bullet bullet) {
+    public void checkBulletCollisions(final Bullet bullet) {
         final Iterator<GameObject> goIterator = handler.getGameObjects().iterator();
 
-        while (goIterator.hasNext()) {
-            final GameObject tempObject = goIterator.next();
-
-            if (Collisions.isColliding(bullet, tempObject, ID.Block)) {
+        goIterator.forEachRemaining(obj -> {
+            if (Collisions.isColliding(bullet, obj, ID.Block)) {            // if bullet collides with a block
                 bullet.collide();
 
-            } else if (Collisions.isColliding(bullet, tempObject, ID.Monster)) {
-                ((Monster) tempObject).hit(bullet.getDamage());
+            } else if (Collisions.isColliding(bullet, obj, ID.Monster)) {   // if bullet collides with a monster
+                ((Monster) obj).hit(bullet.getDamage());
                 bullet.collide();
             }
-        }
+        });
     }
 
     /**

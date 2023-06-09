@@ -125,7 +125,7 @@ public class Loader implements ILoader {
             weapons.add(weapon.get());
         }
 
-        weapons.forEach(w -> handler.addTickingObject(w));
+        weapons.forEach(handler::addTickingObject);
         handler.getPlayer().setWeapons(weapons);
     }
 
