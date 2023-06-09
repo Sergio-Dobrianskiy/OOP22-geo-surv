@@ -2,11 +2,8 @@ package it.unibo.geosurv;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import java.util.Optional;
-
 import org.junit.jupiter.api.Test;
-
 import it.unibo.geosurv.model.Handler;
 import it.unibo.geosurv.model.ID;
 import it.unibo.geosurv.model.block.Block;
