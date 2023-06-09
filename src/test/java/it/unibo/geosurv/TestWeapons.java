@@ -22,7 +22,7 @@ import it.unibo.geosurv.model.player.Player;
  * testing weapons.
  *
  */
-public class TestWeapons<A> {
+class TestWeapons {
     @Test
     void createWeapons() {
 
@@ -152,7 +152,7 @@ public class TestWeapons<A> {
     void createJustWeapons() {
 
         final Handler handler = new Handler();
-        ArrayList<Weapon> weapons = new ArrayList<>();
+        final ArrayList<Weapon> weapons = new ArrayList<>();
         // Weapon weapon;
         final WeaponFactory weaponFactory = new WeaponFactory(handler);
         handler.addPlayer(new Player(0, 0, handler));
