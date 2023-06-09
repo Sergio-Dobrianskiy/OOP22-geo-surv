@@ -2,6 +2,7 @@ package it.unibo.geosurv.model;
 
 import java.awt.Canvas;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -58,7 +59,7 @@ public class Game extends Canvas implements Runnable, ITickingObject {
     private boolean debugMode;
     /* Variables used for pause */
     private final String pauseText = "Pause";
-    private final Font pauseFont = new Font("Arial", Font.BOLD, 150);
+    //private final Font pauseFont = new Font("Arial", Font.BOLD, 150);
     private final Color backgroundPauseColor = new Color(0, 0, 0, 150);
     /* Variables used for gameOver */
     private final String gameOverText = "Game Over";
