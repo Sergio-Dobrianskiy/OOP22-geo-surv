@@ -309,7 +309,10 @@ Per la soluzione occorrono due condizioni legate dalla posizione del player nell
 	\item i mostri devono conoscere la posizione del player in ogni istante utile in quanto devono cercare di raggiungerlo per attaccarlo;
 	\item i mostri devono nascere in una posizione casuale in un'area delimitata da due cerchi concentrici (di distanza minima e massima definibili) con al centro il player.
 \end{itemize}
-Nel primo caso ho implementato il pattern \emph{Observer}, in maniera tale che ogni mostro creato si registri in una lista di \emph{observers} del player(che è \emph{Observable}). Ad ogni tick() temporale il player \emph{notifica} tutti gli osservatori. 
+Nel primo caso ho implementato il pattern \emph{Observer}, in maniera tale che ogni mostro creato si registri in una lista di \emph{observers} del player(che è \emph{Observable}). Ad ogni tick() temporale il player \emph{notifica} tutti gli osservatori.
+\paragraph{}
+Ho reso generica l'interfaccia IObserverEntity \textless E\textgreater \space in maniera tale che anche altri oggetti oltre al player possano essere osservati. I metodi dell'interfaccia IObservable hanno come parametro una \emph{"bounded wildcard"} che rappresenta la possibilità di utilizzare un oggetto che appartenga ad una sottoclasse di GameObject. 
+ 
 
 \begin{figure}[H]
 	\centering{}
