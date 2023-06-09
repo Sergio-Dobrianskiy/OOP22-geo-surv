@@ -315,12 +315,18 @@ In \Cref{img:goodarch} è esemplificato il diagramma UML architetturale.
 \subsubsection*{Pierangelo Motta:}
 %
 \begin{enumerate}
-\item Problema: configurare metodi comuni a diversi tipi di mostri.
+\item Problematica: configurare metodi comuni a diversi tipi di mostri.
 \begin{itemize}
 	\item E' stata utilizzata la abstract class "Monster" (che implementa l'interfaccia IMonster) per definire i metodi comuni a tutte le classi che estendono la abstract class: "Triangle", "Rect", "Rhombus" e "Ball"(aggiunta in seguito).
-	\item Schema
-	\item Pattern
+	\\\\Nel caso di comportamenti diversi da parte di alcuni mostri rispetto ai metodi definiti nella classe astratta, si è utilizzato l'"\emph{@override}" del metodo. Ad esempio il percorso per raggiungere il player effettuato dal mostro di tipo "Ball" è disturbato da piccole variazioni.
 \end{itemize}
+
+\begin{figure}[H]
+	\centering{}
+\includegraphics[width=\textwidth]{img/MonsterReachTarget.png}
+	\caption{Esempio del metodo reachTarget()}
+\label{img:Generate Monsters}
+\end{figure}
 
 \item Problematica: creare tipi di mostri diversi durante tutto l'arco temporale di gioco.	
 \paragraph*{}
@@ -340,7 +346,10 @@ Per la soluzione occorrono due condizioni legate dalla posizione del player nell
 	\item i mostri devono conoscere la posizione del player in ogni istante utile in quanto devono cercare di raggiungerlo per attaccarlo;
 	\item i mostri devono nascere in una posizione casuale in un'area delimitata da due cerchi concentrici (di distanza minima e massima definibili) con al centro il player.
 \end{itemize}
-Nel primo caso ho implementato il pattern \emph{Observer}, in maniera tale che ogni mostro creato si registri in una lista di \emph{observers} del player. Ad ogni tick() temporale il player \emph{notifica} tutti gli osservatori. 
+Nel primo caso ho implementato il pattern \emph{Observer}, in maniera tale che ogni mostro creato si registri in una lista di \emph{observers} del player(che è \emph{Observable}). Ad ogni tick() temporale il player \emph{notifica} tutti gli osservatori.
+\paragraph{}
+Ho reso generica l'interfaccia IObserverEntity \textless E\textgreater \space in maniera tale che anche altri oggetti oltre al player possano essere osservati. I metodi dell'interfaccia IObservable hanno come parametro una \emph{"bounded wildcard"} che rappresenta la possibilità di utilizzare un oggetto che appartenga ad una sottoclasse di GameObject. 
+ 
 
 \begin{figure}[H]
 	\centering{}
@@ -351,9 +360,9 @@ Nel primo caso ho implementato il pattern \emph{Observer}, in maniera tale che o
 
 Nel secondo caso si è utilizzata una funzione di utilità Func.randomPoint() predisposta da Sergio per il calcolo delle coordinate nell'area compresa fra i due cerchi.	
 
-\item Fare in modo che il player possa raccogliere experience anche a distanza, attraverso quello che sembra una sorta di magnetismo.
+\item Permettere al player di raccogliere "Experience" anche a distanza, attraverso quello che sembra una sorta di magnetismo.
 \begin{itemize}
-	\item Estendendo la funzionalità del punto precedente è stato possibile estendere in maniera agevole la funzionalità alla classe "Experience", in un secondo tempo, implementando l'interfaccia IObserverEntity:
+	\item Estendendo la funzionalità del punto precedente è stato possibile implementare in maniera agevole la funzionalità alla classe "Experience", in un secondo tempo, attraverso l'interfaccia IObserverEntity:
 \end{itemize}
 \begin{figure}[H]
 	\centering{}
@@ -363,7 +372,7 @@ Nel secondo caso si è utilizzata una funzione di utilità Func.randomPoint() pr
 \end{figure}
 %
 \begin{itemize}
-	\item Il metodo reachTarget() è stato sovrascritto perchè il player inizia a raccogliere "pillole di esperienza" sormontandole. Con l'aumentare del livello raggiunto aumenta proporzionalmente la distanza da cui il player può raccogliere "pillole" con il solo avvicinarsi.
+	\item Il metodo reachTarget() della classe Experience è stato sovrascritto perchè il player inizia a raccogliere "pillole di esperienza" sormontandole. Con l'aumentare del livello raggiunto aumenta proporzionalmente la distanza da cui il player può raccogliere "pillole" con il solo avvicinarsi.
 \end{itemize}
 %
 \item Problema: creare un'ondata finale di mostri per concludere il gioco.
@@ -572,7 +581,7 @@ Motta:
 	\item settaggio ambiente di test Junit
 	\item TestMonsterCreation: per verificare la creazione di tipi diversi di entità utilizzando le factory
 	\item TestMonsterCreation: per verificare l'esistenza dei mostri attraverso il corretto conteggio degli stessi
-	\item TestMonsterDie: verifica in step successivi della presenza nel gioco del "Player" e di un numero N di mostri. Alla morte di tutti i mostri verifica della presenza delle altre possibili tipologie di entità nate di conseguenza: "Experience", "Life" oppure "Ball" (mostro zombie)
+	\item TestMonsterDie: verifica in step successivi della presenza nel gioco del "Player" e di un numero N di mostri. Alla morte di tutti i mostri verifica della presenza delle altre possibili tipologie di entità nate di conseguenza: "Experience", "Life" oppure "Ball" (mostro zombie).
 \end{itemize}
 %
 Sergio Dobrianskiy:
@@ -861,7 +870,7 @@ Ovviamente \textit{il contenuto della sezione non impatterà il voto finale}.
 \chapter{Guida utente}
 
 %{\color{red}Credo si possa eliminare visto la schermata menu di gioco}
-Il player deve sfuggire ai mostri muovendosi con le le frecce direzionali o con i comuni tasti W (su) A(destra) S(giù) D(destra).
+Il player deve sfuggire ai mostri muovendosi con le le frecce direzionali o con i comuni tasti W (su) A(sinistra) S(giù) D(destra).
 \paragraph{}
 Il player inizia il gioco con un'arma a disposizione e, all'aumentare di livello, vengono aggiunte nuove armi e tutte si potenziano.
 %
