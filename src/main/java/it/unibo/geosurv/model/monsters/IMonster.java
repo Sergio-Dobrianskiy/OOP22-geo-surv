@@ -35,11 +35,9 @@ public interface IMonster {
     void reachTarget();
 
     /**
-     * Define if a monster is a big one.
-     * 
-     * @param b
+     * Set if a monster is a big one.
      */
-    void setIsBig(boolean b);
+    void setBig();
 
     /**
      * Set the starting position of a monster after it's born.

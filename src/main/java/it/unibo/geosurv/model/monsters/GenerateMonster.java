@@ -17,4 +17,10 @@ public interface GenerateMonster<O, I> {
      */
     O createMonster(I i);
 
+    /**
+     * Builder constructor to make Big Monsters.
+     *
+     * @return GenerateMonster<O, I>
+     */
+    GenerateMonster<O, I> toBig();
 }

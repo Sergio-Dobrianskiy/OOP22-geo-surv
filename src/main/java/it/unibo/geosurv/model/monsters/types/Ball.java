@@ -41,7 +41,7 @@ public class Ball extends Monster {
     }
 
     @Override
-    public final void setIsBig(final boolean isBig) {
+    public final void setBig() {
         this.health = MAX_HEALTH;
         this.speed = MAX_SPEED;
         this.power = MAX_POWER;

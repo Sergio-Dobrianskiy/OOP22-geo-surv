@@ -86,13 +86,13 @@ public class MonsterSpawner implements ITickingObject {
         if ((diff()) < TIME_LEVEL_1) {
             m = tm.createMonster(this.handler);
         } else if (diff() == TIME_LEVEL_1) {
-            m = tm.createMonster(this.handler);
-            m.setIsBig(true);
+            m = tm.toBig().createMonster(this.handler);
+            // m.setBig();
         } else if (diff() < TIME_LEVEL_2) {
             m = rm.createMonster(this.handler);
         } else if (diff() == TIME_LEVEL_2) {
-            m = rm.createMonster(this.handler);
-            m.setIsBig(true);
+            m = rm.toBig().createMonster(this.handler);
+            // m.setBig();
         } else {
             m = rm.createMonster(this.handler);
         }
@@ -104,7 +104,7 @@ public class MonsterSpawner implements ITickingObject {
      * monsters created all through the game.
      */
     private void generateFixedPositionMonsters() {
-        final Monster rh = rhm.createMonster(this.handler);
+        final Monster rh = rhm.toBig().createMonster(this.handler);
         handler.addObject(rh);
     }
 
@@ -113,12 +113,9 @@ public class MonsterSpawner implements ITickingObject {
      */
     private void flood() {
 
-        Stream.generate(() -> rm.createMonster(this.handler))
+        Stream.generate(() -> rm.toBig().createMonster(this.handler))
                 .limit(1)
-                .forEach(m -> {
-                    m.setIsBig(true);
-                    handler.addObject(m);
-                });
+                .forEach(m -> handler.addObject(m));
 
     }
 

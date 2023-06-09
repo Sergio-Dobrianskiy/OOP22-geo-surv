@@ -18,4 +18,17 @@ public class GenerateMonsterRh implements GenerateMonster<Monster, Handler> {
         return r;
     }
 
+    // **
+
+    /**
+     * Rhombus cannot be bigger at the moment.
+     * 
+     * @return GenerateMonsterRh
+     */
+    @Override
+    public GenerateMonster<Monster, Handler> toBig() {
+        // no big rhombus at the moment.
+        return this;
+    }
+
 }

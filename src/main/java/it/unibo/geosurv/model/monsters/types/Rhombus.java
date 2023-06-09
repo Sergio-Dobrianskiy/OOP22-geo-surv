@@ -41,7 +41,7 @@ public class Rhombus extends Monster {
     }
 
     @Override
-    public void setIsBig(final boolean b) {
+    public void setBig() {
         // Rhombus cannot be bigger at the moment.
     }
 
