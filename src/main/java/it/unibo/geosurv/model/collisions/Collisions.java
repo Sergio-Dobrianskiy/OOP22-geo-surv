@@ -1,7 +1,6 @@
 package it.unibo.geosurv.model.collisions;
 
-import java.util.List;
-
+import java.util.Iterator;
 import it.unibo.geosurv.model.GameObject;
 import it.unibo.geosurv.model.Handler;
 import it.unibo.geosurv.model.ID;
@@ -31,23 +30,23 @@ public class Collisions {
      * check if the player is colliding.
      */
     public void checkPlayerCollisions() {
-        List<GameObject> tmpObjects = handler.getGameObjects();
-        Player player = handler.getPlayer();
-        for (int i = 0; i < tmpObjects.size(); i++) {
-            final GameObject tempObject = tmpObjects.get(i);
-            if (Collisions.isColliding(player, tempObject, ID.Block)) { // if player touches wall => stop
+        final Iterator<GameObject> goIterator = handler.getGameObjects().iterator();
+        final Player player = handler.getPlayer();
+        
+        while (goIterator.hasNext()) {
+            final GameObject tempObject = goIterator.next();
+            if (Collisions.isColliding(player, tempObject, ID.Block)) {     // if player touches wall => stop
                 player.collide();
             }
-            if (Collisions.isColliding(player, tempObject, ID.Monster)) { // if player touches Monsters
+            if (Collisions.isColliding(player, tempObject, ID.Monster)) {   // if player touches Monsters
                 player.hit(((Monster) tempObject).getPower());
             }
             if (Collisions.isColliding(player, tempObject, ID.Experience)) { // if player touches experience pills
                 handler.getPlayer().setExperience(((Experience) tempObject).getExp());
                 tempObject.collide();
             }
-            if (Collisions.isColliding(player, tempObject, ID.Life)) { // if player touches life pills
+            if (Collisions.isColliding(player, tempObject, ID.Life)) {      // if player touches life pills
                 handler.getPlayer().setLife(((Life) tempObject).getDefaultLife());
-                // handler.removeObject(tempObject);
                 tempObject.collide();
             }
         }
@@ -59,9 +58,10 @@ public class Collisions {
      * @param bullet to check
      */
     public void checkBulletCollisionss(final Bullet bullet) {
-        List<GameObject> tmpObjects = handler.getGameObjects();
-        for (int i = 0; i < tmpObjects.size(); i++) {
-            final GameObject tempObject = tmpObjects.get(i);
+        final Iterator<GameObject> goIterator = handler.getGameObjects().iterator();
+        
+        while (goIterator.hasNext()) {
+            final GameObject tempObject = goIterator.next();
 
             if (Collisions.isColliding(bullet, tempObject, ID.Block)) {
                 bullet.collide();
@@ -104,7 +104,7 @@ public class Collisions {
      * Stops player movements.
      */
     public void stopMovements() {
-        Player player = handler.getPlayer();
+        final Player player = handler.getPlayer();
         player.setX(player.getX() + player.getVelX() * -1);
         player.setY(player.getY() + player.getVelY() * -1);
     }

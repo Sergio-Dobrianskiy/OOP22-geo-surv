@@ -27,13 +27,11 @@ public class Handler implements ITickingObject {
         final Iterator<GameObject> goIterator = gameObjects.iterator();
         final Iterator<ITickingObject> toIterator = tickingObjects.iterator();
         while (goIterator.hasNext()) {
-            GameObject tempObject = goIterator.next();
-            tempObject.tick();
+            goIterator.next().tick();
         }
 
         while (toIterator.hasNext()) {
-            ITickingObject tempObject = toIterator.next();
-            tempObject.tick();
+            toIterator.next().tick();
         }
     }
 

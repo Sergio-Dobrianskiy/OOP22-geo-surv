@@ -135,17 +135,17 @@ public class Loader implements ILoader {
      * @param image that models the game world
      */
     private void loadLevel(final BufferedImage image) {
-        int w = image.getWidth();
-        int h = image.getHeight();
-        BlockFactory blockFactory = new BlockFactory();
+        final int w = image.getWidth();
+        final int h = image.getHeight();
+        final BlockFactory blockFactory = new BlockFactory();
 
         for (int xx = 0; xx < w; xx++) {
             for (int yy = 0; yy < h; yy++) {
-                int pixel = image.getRGB(xx, yy);
+                final int pixel = image.getRGB(xx, yy);
                 // int red = (pixel >> 16) & 0xff;
                 // green not used at the moment
                 // int green = (pixel >> 8) & 0xff;
-                int blue = (pixel) & 0xff;
+                final int blue = (pixel) & 0xff;
 
                 if (blue == maxRGB) {
                     final Optional<Block> block = blockFactory.createBlock(BlockType.WALL, xx * GAME_GRID_WIDTH, yy * GAME_GRID_HEIGHT);
