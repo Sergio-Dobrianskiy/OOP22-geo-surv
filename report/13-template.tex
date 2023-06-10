@@ -31,8 +31,8 @@
 %
 \tableofcontents
 %
-\chapter{Obbiettivo}
-L'obbiettivo è di realizzare un videogioco ispirato a “Vampire Survivors” (\href{https://store.steampowered.com/app/1794680/Vampire_Survivors/}{Steampowered.com}), un reverse bullet hell 2D con visuale dall'alto centrata sul giocatore.
+\chapter{Obiettivo}
+L'obiettivo è di realizzare un videogioco ispirato a “Vampire Survivors” (\href{https://store.steampowered.com/app/1794680/Vampire_Survivors/}{Steampowered.com}), un reverse bullet hell 2D con visuale dall'alto centrata sul giocatore.
 Il giocatore dovrà cercare di sopravvivere il più a lungo possibile a ondate di mostri che gli appariranno attorno. Le armi in possesso del giocatore verranno attivate in automatico durante la partita e si potranno potenziare salendo di livello.
 
 \section{Requisiti}
@@ -130,13 +130,41 @@ Ne consegue un esempio di quanto appena descritto per la gestione del Menu all'i
 
 \begin{figure}[H]
 	\centering{}
-	\includegraphics[scale=0.4]{img/mvc.png}
+	\includegraphics[scale=0.3]{img/mvc.png}
 	\caption{Schema UML del pattern iniziale MVC}
 	\label{img:tickingObjectTree}
 \end{figure}
 
+\paragraph{}
+Durante tutto l'arco del progetto abbiamo cercato di seguire quanto più possibile le linee guida del pattern MVC.
+\\
+Ogni elemento di gioco diverso dal player si muove in modo autonomo, una volta generato.
+Le azioni di movimento del player sono l'unica interazione che determina modifiche del model.
+\\
+Si è cercato di dividere gli aspetti logici dalla presentazione grafica.
+\\
+\begin{figure}[H]
+	\centering{}
+	\includegraphics[scale=0.4]{img/mvc_sample.png}
+	\caption{Schema UML di interazione}
+	\label{img:tickingObjectTree}
+\end{figure}
 
-\section{Design dettagliato}
+\paragraph{}
+In Game la funzione run() si occupa di richiamare il metodo tick() contenuto in Handler e il metodo render() contenuto in TextureRender.
+\\
+La classe Handler contiene gli ArrayList dei GameObject e dei TickingObject presenti nel gioco, ad ogni ciclo vengono eseguiti i tick() di tutte le entità, questo aggiorna la logica di gioco.
+\\
+La classe TextureRender ottiene la lista dei GameObject presenti nel gioco e disegna le loro sprite. 
+\\
+
+\begin{figure}[H]
+	\centering{}
+	\includegraphics[scale=0.3]{img/game_handler.png}
+	\caption{Schema UML di interazione}
+	\label{img:tickingObjectTree}
+\end{figure}
+
 
 \subsection*{Gerarchia delle entità in gioco}
 
@@ -201,98 +229,6 @@ Per gestire gli stati nel gioco abbiamo pensato di implementare un sistema che s
 	\item \textbf{Won} e \textbf{Lost}: stato attivato dalla vittoria o dalla sconfitta del giocatore.
 \end{itemize}
 
-\section{Architettura}
-
-Durante tutto l'arco del progetto abbiamo cercato di seguire quanto più possibile le linee guida del pattern MVC.
-\\
-Ogni elemento di gioco diverso dal player si muove in modo autonomo, una volta generato.
-Le azioni di movimento del player sono l'unica interazione che determina modifiche del model.
-\\
-Si è cercato di dividere gli aspetti logici dalla presentazione grafica. 
-\\
-\begin{figure}[H]
-	\centering{}
-	\includegraphics[scale=0.5]{img/mvc_sample.png}
-	\caption{Schema UML di interazione}
-	\label{img:tickingObjectTree}
-\end{figure}
-
-classe motore -> loop (game) e chiama metodi dell'handler
-
-handler
-
-ticking automatico
-
-rendering
-
-
-Questa sezione spiega come le componenti principali del software interagiscono fra loro.
-%
-In particolare, qui va spiegato \textbf{se} e \textbf{come} è stato utilizzato il pattern
-architetturale model-view-controller (e/o alcune sue declinazioni specifiche, come entity-control-boundary).
-
-Se non è stato utilizzato MVC, va spiegata in maniera molto accurata l'architettura scelta, giustificandola in modo appropriato.
-
-Se è stato scelto MVC, vanno identificate con precisione le interfacce e classi che rappresentano i punti d'ingresso per modello, view, e controller.
-Raccomandiamo di sfruttare la definizione del dominio fatta in fase di analisi per capire quale sia l'entry point del model, e di non realizzare un'unica macro-interfaccia che, spesso, finisce con l'essere il prodromo ad una ``God class''.
-%
-Consigliamo anche di separare bene controller e model, facendo attenzione a non includere nel secondo strategie d'uso che appartengono al primo.
-
-In questa sezione vanno descritte, per ciascun componente architetturale che ruoli ricopre (due o tre ruoli al massimo), ed in che modo interagisce (ossia, scambia informazioni) con gli altri componenti dell'architettura.
-%
-Raccomandiamo di porre particolare attenzione al design dell'interazione fra view e controller: se ben progettato, sostituire in blocco la view non dovrebbe causare alcuna modifica nel controller (tantomeno nel model).
-
-\subsection*{Elementi positivi}
-\begin{itemize}
-	\item Si mostrano pochi, mirati schemi UML dai quali si deduce con chiarezza quali sono le parti principali del software e come interagiscono fra loro.
-	\item Si mette in evidenza se e come il pattern architetturale model-view-controller è stato applicato, anche con l'uso di un UML che mostri le interfacce principali ed i rapporti fra loro.
-	\item Si discute se sia semplice o meno, con l'architettura scelta, sostituire in blocco la view: in un MVC ben fatto, controller e modello non dovrebbero in alcun modo cambiare se si transitasse da una libreria grafica ad un'altra (ad esempio, da Swing a JavaFX, o viceversa).
-\end{itemize}
-
-\subsection*{Elementi negativi}
-\begin{itemize}
-	\item L'architettura è fatta in modo che sia impossibile riusare il modello per un software diverso che affronta lo stesso problema.
-	\item L'architettura è tale che l'aggiunta di una funzionalità sul controller impatta pesantemente su view e/o modello.
-	\item L'architettura è tale che la sostituzione in blocco della view impatta sul controller o, peggio ancora, sul modello.
-	\item Si presentano UML caotici, difficili da leggere.
-	\item Si presentano UML in cui sono mostrati elementi di dettaglio non appartenenti all'architettura, ad esempio includenti campi o con metodi che non interessano la parte di interazione fra le componenti principali del software.
-	\item Si presentano schemi UML con classi (nel senso UML del termine) che ``galleggiano'' nello schema, non connesse, ossia senza relazioni con il resto degli elementi inseriti.
-	\item Si presentano elementi di design di dettaglio, ad esempio tutte le classi e interfacce del modello o della view.
-	\item Si discutono aspetti implementativi, ad esempio eventuali librerie usate oppure dettagli di codice.
-\end{itemize}
-
-\subsection*{Esempio}
-
-L'architettura di GLaDOS segue il pattern architetturale MVC.
-%
-GLaDOS implementa l'interfaccia AI, ed è il controller del sistema.
-Essendo una intelligenza artificiale, è una classe attiva.
-%
-GLaDOS accetta la registrazione di Input ed Output, che fanno parte della ``view'' di MVC, e sono il ``boundary'' di ECB.
-Gli Input rappresentano delle nuove informazioni che vengono fornite all'IA, ad esempio delle modifiche nel valore di un sensore, oppure un comando da parte dell'operatore.
-Questi input infatti forniscono eventi.
-Ottenere un evento è un'operazione bloccante: chi la esegue resta in attesa di un effettivo evento.
-Di fatto, quindi, GLaDOS si configura come entità \textit{reattiva}.
-Ogni volta che c'è un cambio alla situazione del soggetto, GLaDOS notifica i suoi Output,
-informandoli su quale sia la situazione corrente.
-%
-Conseguentemente, GLaDOS è un ``observable'' per Output.
-
-\begin{figure}[h]
-	\centering{}
-	\includegraphics[width=\textwidth,scale=0.5]{img/arch}
-	\caption{Schema UML architetturale di GLaDOS. L'interfaccia \texttt{GLaDOS} è il controller del sistema, mentre \texttt{Input} ed \texttt{Output} sono le interfacce che mappano la view (o, più correttamente in questo specifico esempio, il boundary). Un'eventuale interfaccia grafica interattiva dovrà implementarle entrambe.}
-	\label{img:goodarch}
-\end{figure}
-
-Con questa architettura, possono essere aggiunti un numero arbitrario di input ed output
-all'intelligenza artificiale.
-%
-Ovviamente, mentre l'aggiunta di output è semplice e non richiede alcuna modifica all'IA, la
-presenza di nuovi tipi di evento richiede invece in potenza aggiunte o rifiniture a GLaDOS.
-%
-Questo è dovuto al fatto che nuovi Input rappresentano di fatto nuovi elementi della business
-logic, la cui alterazione od espansione inevitabilmente impatta il controller del progetto.
 
 \section{Design dettagliato}
 
@@ -649,16 +585,13 @@ Funzionalità avanzate utilizzate:
 
 
 
-
-
-
 \chapter{Commenti finali}
 
 \section{Autovalutazione e lavori futuri}
 \subsubsection*{Sergio Dobrianskiy:}
 
 Ho  cercato i membri per formare il gruppo e proposto l'idea di gioco sulla quale lavorare.
-Durante lo svolgimento del progetto ho cercato di indirizzare ciascun membro su obbiettivi a breve termine che mi sembravano più importanti, in particolar modo durante le fasi iniziali ho insistito sulle funzionalità necessarie a tutto gruppo per poter procedere nello sviluppo. 
+Durante lo svolgimento del progetto ho cercato di indirizzare ciascun membro su obiettivi a breve termine che mi sembravano più importanti, in particolar modo durante le fasi iniziali ho insistito sulle funzionalità necessarie a tutto gruppo per poter procedere nello sviluppo. 
 Quando mi sono reso conto che il collega Matteo Trezza non avrebbe portato a termine la sua parte di progetto mi sono occupato di una buona parte delle sue funzionalità minime.
 
 Sono soddisfatto del lavoro fatto da me e dal gruppo, l'organizzazione e il team work sono stati ottimi. Inoltre creare da zero un gioco, anche se semplice, mi ha appassionato e mi ha permesso di imparare molto.
