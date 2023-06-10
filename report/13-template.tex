@@ -106,20 +106,20 @@ Il giocatore dovrà cercare di sopravvivere il più a lungo possibile a ondate d
 
 
 \section{Analisi e modello del dominio}
- Il giocatore verrà posizionato su mappa predefinita e non generato in modo casuale e dovrà essere in grado di muoversi nelle 4 dimensioni di un mondo 2d. 
- La mappa dovrà avere dei bordi per impedire al giocatore di uscirne. 
+Il giocatore verrà posizionato su mappa predefinita e non generato in modo casuale e dovrà essere in grado di muoversi nelle 4 dimensioni di un mondo 2d. 
+La mappa dovrà avere dei bordi per impedire al giocatore di uscirne. 
 
 
- Attorno al giocatore appariranno dei mostri che tenteranno di raggiungerlo, se ci riusciranno inizieranno a causare danno. I mostri dovranno essere in grado di trovare il giocatore e cercare di inseguirlo e raggiungerlo.
+Attorno al giocatore appariranno dei mostri che tenteranno di raggiungerlo, se ci riusciranno inizieranno a causare danno. I mostri dovranno essere in grado di trovare il giocatore e cercare di inseguirlo e raggiungerlo.
  
  
- Per difendersi dai mostri il giocatore sbloccherà delle armi che potranno essere potenziate. Ciascuna arma dovrà avere una sua meccanica, ad esempio sparare al nemico più vicino, far roteare i colpi attorno al giocatore, ecc. 
+Per difendersi dai mostri il giocatore sbloccherà delle armi che potranno essere potenziate. Ciascuna arma dovrà avere una sua meccanica, ad esempio sparare al nemico più vicino, far roteare i colpi attorno al giocatore, ecc. 
  
  
- Alla morte dei nemici dovranno apparire sul livello delle gemme che il giocatore dovrà poter raccogliere per guadagnare esperienza o vita. In caso sfortunato, alla morte di un nemico potrebbe apparire un nuovo mostro.
+Alla morte dei nemici dovranno apparire sul livello delle gemme che il giocatore dovrà poter raccogliere per guadagnare esperienza o vita. In caso sfortunato, alla morte di un nemico potrebbe apparire un nuovo mostro.
  
  
- Si dovrà trovare il giusto numero di entità su schermo e un metodo efficace per controllarle per non compromettere le prestazioni del gioco.
+Si dovrà trovare il giusto numero di entità su schermo e un metodo efficace per controllarle per non compromettere le prestazioni del gioco.
  
 
 
@@ -127,7 +127,14 @@ Il giocatore dovrà cercare di sopravvivere il più a lungo possibile a ondate d
 \section{Architettura}
 
 Abbiamo scelto di realizzare il gioco seguendo il pattern di programmazione MVC.
-...
+
+\begin{figure}[H]
+	\centering{}
+	\includegraphics[scale=0.4]{img/mvc.png}
+	\caption{Schema UML del pattern iniziale MVC}
+	\label{img:tickingObjectTree}
+\end{figure}
+
 
 \section{Design dettagliato}
 
