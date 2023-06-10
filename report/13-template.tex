@@ -281,8 +281,8 @@ In \Cref{img:goodarch} è esemplificato il diagramma UML architetturale.
 	\begin{itemize}
 		\item Problema: gestire le collisioni dei GameObject presenti in gioco in modo efficiente 
 		\item Soluzione ho deciso di usare lo Strategy Pattern che permette di definire una serie di algoritmi in classi separate e di poterli inserire in modo intercambiabile all'interno di altre classi.
-		In questo modo per assegnare lo stesso comportamento a più di una classe non sarà necessario scrivere lo stesso codice più volte o usare l'ereditarietà.
-		Inoltre gli algoritmi alla base di ciascun comportamento sono facilmente mantenibili e modificabili. \\
+		In questo modo per assegnare lo stesso comportamento a più di una classe non sarà necessario scrivere lo stesso codice più volte e rispettare il principio DRY.
+		Gli algoritmi alla base di ciascun comportamento sono facilmente mantenibili e modificabili. \\
 		Nella versiona attuale di gioco ho creato 3 algoritmi ciascuno gestito da una classe che implementa l'interfaccia ICollisionBehavior. 
 		Un esempio dell'utilizzo di queste classi lo si può trovare nella gestione di tutte le Bullet. Di default tutte le classi che estendono la classe astratta Bullet avranno l'algoritmo NoCollisionBehavior, mentre in AutoBullet verrà usato l'algoritmo presente in RemoveOnCollisionBehavior.
 		\item Schema:
@@ -826,6 +826,22 @@ Funzionalità avanzate utilizzate:
  	 \begin{itemize}
  	 	\item Permalink: \url{https://github.com/Sergio-Dobrianskiy/OOP22-geo-surv/blob/1d19887356d83d29b39fe301273ba64ba44ce662/src/main/java/it/unibo/geosurv/model/collisions/Collisions.java#LL33C9-L51C12}
  	 	\item Permalink: \url{https://github.com/Sergio-Dobrianskiy/OOP22-geo-surv/blob/5962bab31e3fd7033c2b8bd0e84b13aa7f7c85ef/src/main/java/it/unibo/geosurv/model/Handler.java#LL35C6-L35C6}
+ 	 \end{itemize}
+ 	 
+ 	 \item Utilizzo Optional
+ 	 \begin{itemize}
+ 	 	\item Permalink: \url{https://github.com/Sergio-Dobrianskiy/OOP22-geo-surv/blob/90872064704901ac999cb7efdd65f191599eefa4/src/main/java/it/unibo/geosurv/control/weapons/WeaponFactory.java#L29}
+ 	 \end{itemize}
+ 	 
+ 	 \item Sviluppo di algoritmi di utility per il progetto, in particolare quello che restituisce un punto random in un cerchio o in un anello attorno a un punto
+ 	 \begin{itemize}
+ 	 	\item Permalink: \url{https://github.com/Sergio-Dobrianskiy/OOP22-geo-surv/blob/90872064704901ac999cb7efdd65f191599eefa4/src/main/java/it/unibo/geosurv/model/utility/Func.java#LL32C1-L32C1}
+ 	 \end{itemize}
+ 	 
+	\item Utilizzo di java.awt e java.awt.geom per la gestione delle collisisoni
+ 	 \begin{itemize}
+ 	 	\item Permalink: \url{https://github.com/Sergio-Dobrianskiy/OOP22-geo-surv/blob/90872064704901ac999cb7efdd65f191599eefa4/src/main/java/it/unibo/geosurv/model/GameObject.java#L207}
+ 	 	\item Permalink: \url{https://github.com/Sergio-Dobrianskiy/OOP22-geo-surv/blob/90872064704901ac999cb7efdd65f191599eefa4/src/main/java/it/unibo/geosurv/model/collisions/Collisions.java#LL84C7-L84C7}
  	 \end{itemize}
 \end{itemize}
 

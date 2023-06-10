@@ -72,8 +72,7 @@ public class Player extends GameObject implements IPlayer, IObservable {
         // this.texture = Texture.PLAYER_DUCK; // alternative texture
         this.texture = Texture.PLAYER_MOUSE;
         this.playerLevels = new PlayerLevels(this);
-        //this.weapons = new ArrayList<>();
-        this.collisionBehavior = new StopPlayerBehavior();
+                 this.collisionBehavior = new StopPlayerBehavior();
     }
 
     @Override
