@@ -11,7 +11,7 @@ public class MonsterSpawner implements ITickingObject {
 
     private static final int TIME_LEVEL_1 = 20;
     private static final int TIME_LEVEL_2 = 40;
-    private static final int TIME_LEVEL_3 = 60;
+    private static final int TIME_LEVEL_3 = 55;
     private final Handler handler;
     private static int spawnRate = 1; // in monsters per second
     private final long begin;
