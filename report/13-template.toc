@@ -20,50 +20,48 @@
 \contentsline {paragraph}{}{6}{section*.20}%
 \contentsline {section}{\numberline {2.3}Architettura}{6}{section.2.3}%
 \contentsline {section}{\numberline {2.4}Design dettagliato}{9}{section.2.4}%
-\contentsline {subsubsection}{Personalità intercambiabili}{19}{section*.31}%
-\contentsline {paragraph}{Problema}{19}{section*.32}%
-\contentsline {paragraph}{Soluzione}{19}{section*.33}%
-\contentsline {subsubsection}{Riuso del codice delle personalità}{20}{section*.34}%
-\contentsline {paragraph}{Problema}{20}{section*.35}%
-\contentsline {paragraph}{Soluzione}{20}{section*.36}%
-\contentsline {subsubsection}{Gestione di output multipli}{21}{section*.37}%
-\contentsline {paragraph}{Problema}{21}{section*.38}%
-\contentsline {paragraph}{Soluzione}{21}{section*.39}%
-\contentsline {chapter}{\numberline {3}Sviluppo}{24}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Testing automatizzato}{24}{section.3.1}%
-\contentsline {paragraph}{}{25}{section*.43}%
-\contentsline {paragraph}{}{25}{section*.44}%
-\contentsline {paragraph}{}{25}{section*.45}%
+\contentsline {paragraph}{}{14}{section*.27}%
+\contentsline {subsubsection}{Personalità intercambiabili}{20}{section*.32}%
+\contentsline {paragraph}{Problema}{20}{section*.33}%
+\contentsline {paragraph}{Soluzione}{20}{section*.34}%
+\contentsline {subsubsection}{Riuso del codice delle personalità}{21}{section*.35}%
+\contentsline {paragraph}{Problema}{21}{section*.36}%
+\contentsline {paragraph}{Soluzione}{21}{section*.37}%
+\contentsline {subsubsection}{Gestione di output multipli}{22}{section*.38}%
+\contentsline {paragraph}{Problema}{22}{section*.39}%
+\contentsline {paragraph}{Soluzione}{22}{section*.40}%
+\contentsline {chapter}{\numberline {3}Sviluppo}{25}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Testing automatizzato}{25}{section.3.1}%
+\contentsline {paragraph}{}{26}{section*.44}%
+\contentsline {paragraph}{}{26}{section*.45}%
 \contentsline {paragraph}{}{26}{section*.46}%
-\contentsline {section}{\numberline {3.2}Metodologia di lavoro}{26}{section.3.2}%
-\contentsline {paragraph}{}{27}{section*.48}%
-\contentsline {paragraph}{}{27}{section*.49}%
-\contentsline {paragraph}{}{27}{section*.50}%
-\contentsline {paragraph}{}{27}{section*.51}%
-\contentsline {section}{\numberline {3.3}Note di sviluppo}{28}{section.3.3}%
-\contentsline {paragraph}{}{29}{section*.54}%
-\contentsline {paragraph}{}{29}{section*.55}%
-\contentsline {paragraph}{}{29}{section*.56}%
-\contentsline {paragraph}{}{29}{section*.57}%
-\contentsline {paragraph}{}{29}{section*.58}%
+\contentsline {paragraph}{}{27}{section*.47}%
+\contentsline {section}{\numberline {3.2}Metodologia di lavoro}{27}{section.3.2}%
+\contentsline {paragraph}{}{28}{section*.49}%
+\contentsline {paragraph}{}{28}{section*.50}%
+\contentsline {paragraph}{}{28}{section*.51}%
+\contentsline {paragraph}{}{28}{section*.52}%
+\contentsline {section}{\numberline {3.3}Note di sviluppo}{29}{section.3.3}%
+\contentsline {paragraph}{}{30}{section*.55}%
+\contentsline {paragraph}{}{30}{section*.56}%
+\contentsline {paragraph}{}{30}{section*.57}%
+\contentsline {paragraph}{}{30}{section*.58}%
 \contentsline {paragraph}{}{30}{section*.59}%
-\contentsline {paragraph}{}{30}{section*.60}%
-\contentsline {paragraph}{}{30}{section*.61}%
-\contentsline {paragraph}{}{30}{section*.62}%
-\contentsline {paragraph}{}{30}{section*.63}%
-\contentsline {subsection}{\numberline {3.3.1}Esempio}{32}{subsection.3.3.1}%
-\contentsline {subsubsection}{Utilizzo della libreria SLF4J}{32}{section*.66}%
-\contentsline {subsubsection}{Utilizzo di \texttt {LoadingCache} dalla libreria Google Guava}{32}{section*.67}%
-\contentsline {subsubsection}{Utilizzo di \texttt {Stream} e lambda expressions}{32}{section*.68}%
-\contentsline {subsubsection}{Scrittura di metodo generico con parametri contravarianti}{33}{section*.69}%
-\contentsline {subsubsection}{Protezione da corse critiche usando \texttt {Semaphore}}{33}{section*.70}%
-\contentsline {chapter}{\numberline {4}Commenti finali}{34}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Autovalutazione e lavori futuri}{34}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Difficoltà incontrate e commenti per i docenti}{35}{section.4.2}%
-\contentsline {chapter}{\numberline {A}Guida utente}{36}{appendix.Alph1}%
-\contentsline {paragraph}{}{36}{section*.72}%
-\contentsline {paragraph}{}{36}{section*.73}%
-\contentsline {paragraph}{}{36}{section*.74}%
-\contentsline {chapter}{\numberline {B}Esercitazioni di laboratorio}{37}{appendix.Alph2}%
-\contentsline {subsection}{\numberline {B.0.1}paolino.paperino@studio.unibo.it}{37}{subsection.Alph2.0.1}%
-\contentsline {subsection}{\numberline {B.0.2}paperon.depaperoni@studio.unibo.it}{37}{subsection.Alph2.0.2}%
+\contentsline {paragraph}{}{31}{section*.60}%
+\contentsline {paragraph}{}{31}{section*.61}%
+\contentsline {paragraph}{}{31}{section*.62}%
+\contentsline {paragraph}{}{31}{section*.63}%
+\contentsline {paragraph}{}{31}{section*.64}%
+\contentsline {subsection}{\numberline {3.3.1}Note di sviluppo}{33}{subsection.3.3.1}%
+\contentsline {subsubsection}{Sergio Dobrianskiy}{33}{section*.67}%
+\contentsline {subsubsection}{Utilizzo della libreria SLF4J}{33}{section*.68}%
+\contentsline {subsubsection}{Utilizzo di \texttt {LoadingCache} dalla libreria Google Guava}{34}{section*.69}%
+\contentsline {subsubsection}{Utilizzo di \texttt {Stream} e lambda expressions}{34}{section*.70}%
+\contentsline {subsubsection}{Scrittura di metodo generico con parametri contravarianti}{34}{section*.71}%
+\contentsline {subsubsection}{Protezione da corse critiche usando \texttt {Semaphore}}{34}{section*.72}%
+\contentsline {chapter}{\numberline {4}Commenti finali}{35}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Autovalutazione e lavori futuri}{35}{section.4.1}%
+\contentsline {chapter}{\numberline {A}Guida utente}{37}{appendix.Alph1}%
+\contentsline {paragraph}{}{37}{section*.74}%
+\contentsline {paragraph}{}{37}{section*.75}%
+\contentsline {paragraph}{}{37}{section*.76}%
