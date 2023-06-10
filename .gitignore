@@ -9,6 +9,7 @@ build
 # Package Files
 *.jar
 !gradle/wrapper/gradle-wrapper.jar
+!OOP22-geo-surv-all.jar
 *.war
 *.nar
 *.ear
