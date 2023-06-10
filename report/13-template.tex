@@ -126,7 +126,9 @@ Si dovrà trovare il giusto numero di entità su schermo e un metodo efficace pe
 \chapter{Design}
 \section{Architettura}
 
-Abbiamo scelto di realizzare il gioco seguendo il pattern di programmazione MVC.
+Il progetto si propone di seguire le linee guida del pattern MVC, creando 3 componenti che siano in comunicazione fra di loro in maniera costante.La divisione in 3 componenti permette alla componente visiva (view) di occuparsi della rappresentazione grafica, alla componente di modellazione (model) che si occupa dello sviluppo effettivo del gioco e da una parte di controllo (controller) per gestire le componenti precedenti senza che esse interagiscono tra loro in maniera diretta. 
+
+Ne consegue un esempio di quanto appena descritto per la gestione del Menu all'interno del nostro progetto.
 
 \begin{figure}[H]
 	\centering{}
@@ -437,6 +439,40 @@ Nel secondo caso si è utilizzata una funzione di utilità Func.randomPoint() pr
 
 \subsubsection*{Thomas Testa:}
 %
+La mia parte di progettazione svolta riguarda:
+\begin{enumerate}
+    \item Player;
+    \item Camera e slicing grafico;
+    \item Gestione degli Input da tastiera;
+\end{enumerate}
+
+\textbf{Player}
+Il Player rappresenta il personaggio principale d'ogni gioco. In questo caso la classe Player estende la classe GameObject e implementa due interfacce: IPlayer e IObservable. Sono inoltre presenti ulteriori collegamenti ad altre classi utili per lo sviluppo del giocatore all'interno del gioco. Per esempio la classe Collisions è stata utile per gestire le collisioni del Player con i mostri. E così via per le restanti classi.
+
+\begin{figure}[H]
+	\centering{}
+\includegraphics[width=\textwidth]{img/Player.png}
+	\caption{Schema UML della classe Player}
+\end{figure}
+
+\textbf{Camera e slicing grafico}
+La classe Camera rappresenta la telecamera del gioco, che segue il personaggio  durante il game. La telecamera è responsabile di mantenere il personaggio al centro dello schermo e di gestire lo spostamento della visualizzazione di quest'ultimo in base ai movimenti del giocatore.
+
+\begin{figure}[H]
+	\centering{}
+\includegraphics[width=\textwidth]{img/Camera.png}
+	\caption{Schema UML della classe Camera}
+\end{figure}
+
+\textbf{Gestione degli Input}
+La classe KeyInput gestisce l'input del giocatore tramite la pressione dei tasti sulla tastiera. 'KeyInput' è una sottoclasse di KeyAdapter ed estende quest'ultima per sovrascrivere i metodi keyPressed() e keyReleased() per gestire gli eventi di pressione e rilascio dei tasti. In entrambi i metodi è stato ritenuto efficiente gestire tali eventi tramite una doppia istruzione switch. Si osservi, inoltre, che i movimenti del Player sono stati gestiti sia tramite i tasti WASD sia i tasti freccia.
+
+\begin{figure}[H]
+	\centering{}
+\includegraphics[width=\textwidth]{img/KeyInput.png}
+	\caption{Schema UML della classe KeyInput}
+\end{figure}
+
 \begin{enumerate}
 	\item Problema: Centrare la telecamera rispetto al giocatore.
 	\begin{itemize}
@@ -529,8 +565,12 @@ Di seguito è indicata nel dettaglio la suddivisione dei compiti:
 \end{itemize}
 \subsection*{Thomas Testa:}
 \begin{itemize}
-	\item hjuifsjhfcsjahfasj
-	\item dsbhnfcjdsj hjsdhjv r la parte relativa alle collisioni fra le entità è stato continuo.
+	\item Creazione e gestione Menù 
+    \item Creazione e gestione del Player (incluso i suoi movimenti)
+	\item Gestione degli input da tastiera per il movimento del Player 
+    \item Creazione classe Camera
+    \item Gestione dello slicing grafico della telecamera
+    \item Creazione mappa di gioco
 \end{itemize}
 
 \paragraph{}
@@ -635,6 +675,14 @@ Ho cercato di supportare i membri del gruppo in alcuni passaggi di carattere gen
 Cosi come Sergio, anche io ho sperimentato una fase iniziale di difficoltà nell'analisi e progettazione senza avere la visione completa dei vari passaggi e delle eventuali problematiche pratiche di implementazione. Questo a portato a diverse modifiche nel corso del tempo.
 
 Un punto di debolezza personale è non essere riuscito ad implementare codice utilizzando un approccio di tipo "funzionale".
+
+\subsubsection*{Thomas Testa:}
+
+Il progetto è stato molto stimolante. Era la prima volta che partecipavo alla creazione di un videogioco.
+
+Questo progetto mi ha permesso di ampliare le mie conoscenze riguardanti la programmazione ad oggetti, soprattutto grazie anche alla collaborazione con i componenti del mio gruppo Sergio e Pierangelo in quanto sono stati di ottimo supporto per far fronte a qualsiasi tipo di problematica riscontrata durante questa avventura. 
+
+Sono soddisfatto del lavoro fatto. Personalmente, per il codice scritto da me, avrei potuto far utilizzo di pattern o espressioni che avrebbero migliorato la qualità del codice. Sono sicuro che sotto questo punto di vista, quest'esperienza si rivelerà molto utile per eventuali progetti futuri non solo di questo genere.
 \paragraph{}
 
 \appendix
