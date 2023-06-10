@@ -625,18 +625,19 @@ Test che richiedono l'intervento da parte dell'utente sono considerati \textit{n
 \section{Metodologia di lavoro}
 Il gruppo ha lavorato in modo coeso sia durante la scelta del tipo progetto da realizzare che successivamente per la stesura di una lista di funzionalità minime da portare a termine. Ciascun membro ha scelto da questa lista le parti sulle quali avrebbe lavorato. Fatto ciò, sempre in gruppo, abbiamo deciso un design architetturale da seguire. 
 
-Lungo il corso di tutto il progetto sono stati utilizzati un gruppo Whatsapp per la comunicazione quotidiana, un canale discord per le riunioni settimanali e un documento condiviso su Google Drive per appunti e materiale utile. Dato che i membri del gruppo vivono lontani tra di loro almeno due sono lavoratori full time non è stato possibile organizzare incontri dal vivo. 
+Lungo il corso di tutto il progetto sono stati utilizzati un gruppo Whatsapp per la comunicazione quotidiana, un canale discord per le riunioni settimanali e un documento condiviso su Google Drive per appunti e materiale utile. Dato che i membri del gruppo vivono lontani tra di loro e almeno due sono lavoratori full time non è stato possibile organizzare incontri dal vivo. 
 
 Lavorando al progetto ci siamo resi conto che il modello architetturale previsto nelle prime fasi era inadeguato. Questo problema è stato risolto agilmente grazie alla comunicazione frequente tra i membri. 
 
-Un'ulteriore difficotà è nata a causa di problemi personali del collega Matteo Trezza che,  nonostante i tentativi di aiuto, ha faticato a stare al passo con il resto del gruppo e alla fine ha dovuto ritirarsi. Dato il bisogno di portare avanti le parti di Matteo, in sua assenza abbiamo provveduto a spartircele in base alle necessità e preferenze di ciascuno dei membri rimanenti.
+Un'ulteriore difficotà è nata a causa di problemi personali del collega Matteo Trezza che, nonostante i tentativi di aiuto, ha faticato a stare al passo con il resto del gruppo e alla fine ha dovuto ritirarsi. Dato il bisogno di portare avanti le parti di Matteo, in sua assenza abbiamo provveduto a spartircele in base alle necessità e preferenze di ciascuno dei membri rimanenti.
 
-Per condividere il codice è stato usato fin da subito Git. Ci siamo impegnati a non lavorare direttamente sul branch \textit{master} e di creare per ciascuna feature un branch separato. Per consentire a tutti di avere un codice aggiornato abbiamo cercato di fare dei merge frequenti.
+Per condividere il codice è stato usato fin da subito Git. Ci siamo impegnati a non lavorare direttamente sul branch \textit{master} e a creare per ciascuna feature un branch separato. Per consentire a tutti di avere un codice aggiornato abbiamo cercato di fare dei merge frequenti.
 
-Di seguto è indicata nel dettaglio la suddivisione dei compiti:
+Di seguito è indicata nel dettaglio la suddivisione dei compiti:
 
 \subsection*{Sergio Dobrianskiy:}
 \begin{itemize}
+	\item Impostazione e supporto ai colleghi relativamente al software "Git" ed al repository "GitHub"
 	\item Gestione delle armi e dei proiettili
 	\item Gestione delle collisioni (java.awt)
 	\item Architettura dei GameObject e TickingObject
@@ -651,6 +652,18 @@ Di seguto è indicata nel dettaglio la suddivisione dei compiti:
 	Come indicato nella sezione apposita, ho adattaro del codice preso dal progetto OOP21-ciccio-pier per la creazione della classe Texture e la gestione degli sprite.
 \end{itemize}
 \paragraph{}
+
+\subsection*{Pierangelo Motta:}
+\begin{itemize}
+	\item Impostazione e supporto ai colleghi per la parte di configurazione/utilizzo del tool "Gradle"
+	\item Supporto per la verifica dei warning/errori indicati dai tool "PMD", "SpotBugs" e "CheckStyle", con correzione di diverse segnalazioni 
+	\item Impostazione per la parte di configurazione/utilizzo di test Junit
+	\item Gestione delle "Drop"
+	\item Gestione informazioni di debug
+	\item Creazione e gestione delle tipologie di entità: "mostri", "pillole di vita" ed "esperienza"
+	
+	Il confronto con Sergio per la parte relativa alle collisioni fra le entità è stato continuo.
+\end{itemize}
 \paragraph{}
 \paragraph{}
 \paragraph{}
