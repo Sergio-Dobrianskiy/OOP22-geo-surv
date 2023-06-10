@@ -22,8 +22,6 @@
     Pierangelo Motta
     \\
     Thomas Testa
-	\\
-    Matteo Trezza
 }
 %
 \date{\today}
@@ -126,7 +124,7 @@ Si dovrà trovare il giusto numero di entità su schermo e un metodo efficace pe
 \chapter{Design}
 \section{Architettura}
 
-Il progetto si propone di seguire le linee guida del pattern MVC, creando 3 componenti che siano in comunicazione fra di loro in maniera costante.La divisione in 3 componenti permette alla componente visiva (view) di occuparsi della rappresentazione grafica, alla componente di modellazione (model) che si occupa dello sviluppo effettivo del gioco e da una parte di controllo (controller) per gestire le componenti precedenti senza che esse interagiscono tra loro in maniera diretta. 
+Il progetto si propone di seguire le linee guida del pattern MVC, creando 3 componenti che siano in comunicazione fra di loro in maniera costante.La divisione in 3 componenti permette alla componente visiva (view) di occuparsi della rappresentazione grafica, alla componente di modellazione (model) che si occupa dello sviluppo effettivo del gioco e da una parte di controllo (controller) per gestire le componenti precedenti senza che esse interagiscano tra loro in maniera diretta. 
 
 Ne consegue un esempio di quanto appena descritto per la gestione del Menu all'interno del nostro progetto.
 
@@ -203,19 +201,21 @@ Per gestire gli stati nel gioco abbiamo pensato di implementare un sistema che s
 	\item \textbf{Won} e \textbf{Lost}: stato attivato dalla vittoria o dalla sconfitta del giocatore.
 \end{itemize}
 
-\paragraph{}
-		
-Si parte da una visione architetturale, il cui scopo è informare il lettore di quale sia il funzionamento dell'applicativo realizzato ad alto livello.
-%
-In particolare, è necessario descrivere accuratamente in che modo i componenti principali del sistema si coordinano fra loro.
-%
-A seguire, si dettagliano alcune parti del design, quelle maggiormente rilevanti al fine di chiarificare la logica con cui sono stati affrontati i principali aspetti dell'applicazione.
-
 \section{Architettura}
 
-unica interazione fra giocatore e gioco -> movimento
-
-classe presentazione -> menu
+Durante tutto l'arco del progetto abbiamo cercato di seguire quanto più possibile le linee guida del pattern MVC.
+\\
+Ogni elemento di gioco diverso dal player si muove in modo autonomo, una volta generato.
+Le azioni di movimento del player sono l'unica interazione che determina modifiche del model.
+\\
+Si è cercato di dividere gli aspetti logici dalla presentazione grafica. 
+\\
+\begin{figure}[H]
+	\centering{}
+	\includegraphics[scale=0.5]{img/mvc_sample.png}
+	\caption{Schema UML di interazione}
+	\label{img:tickingObjectTree}
+\end{figure}
 
 classe motore -> loop (game) e chiama metodi dell'handler
 
