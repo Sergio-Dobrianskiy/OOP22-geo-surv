@@ -426,6 +426,12 @@ Nel secondo caso si è utilizzata una funzione di utilità Func.randomPoint() pr
 	\item La classe Drop, che implementa l'interfaccia IDrop, contiene la strategia con cui viene selezionata la tipologia di oggetto di cui fare il drop.
 \end{itemize}
 
+\item Rimbalzo del mostro colpito in movimento
+%
+\begin{itemize}
+	\item "Effetto" grafico per emulare quanto avviene nel gioco originale, ottenuto con un semplice metodo intervenendo sulla velocità dello stesso.
+\end{itemize}
+
 \end{enumerate}
 %
 
@@ -516,8 +522,10 @@ Di seguito è indicata nel dettaglio la suddivisione dei compiti:
 	\item Gestione delle "Drop"
 	\item Gestione informazioni di debug
 	\item Creazione e gestione delle tipologie di entità: "mostri", "pillole di vita" ed "esperienza"
+	\item Interventi in classi di altri colleghi per la gestione della vita e dell'esperienza del player e delle collisioni fra armi e "mostri"
 	
 	Il confronto con Sergio per la parte relativa alle collisioni fra le entità è stato continuo.
+
 \end{itemize}
 \subsection*{Thomas Testa:}
 \begin{itemize}
@@ -574,6 +582,31 @@ Funzionalità avanzate utilizzate:
  	 	\item Permalink: \url{https://github.com/Sergio-Dobrianskiy/OOP22-geo-surv/blob/90872064704901ac999cb7efdd65f191599eefa4/src/main/java/it/unibo/geosurv/model/collisions/Collisions.java#LL84C7-L84C7}
  	 \end{itemize}
 \end{itemize}
+
+\subsubsection{Pierangelo Motta}
+Funzionalità avanzate utilizzate:
+ \begin{itemize}
+ 	\item Utilizzo di Stream
+ 	 \begin{itemize}
+ 	 	\item Permalink: \url{https://github.com/Sergio-Dobrianskiy/OOP22-geo-surv/blob/2272bc0e95fbd9f3b223109b6c7b9012c63c97f2/src/main/java/it/unibo/geosurv/model/monsters/MonsterSpawner.java#LL116C1-L121C20}
+ 	 \end{itemize}
+ 	 
+ 	\item Utilizzo di generici
+ 	 \begin{itemize}
+ 	 	\item Permalink: \url{https://github.com/Sergio-Dobrianskiy/OOP22-geo-surv/blob/2272bc0e95fbd9f3b223109b6c7b9012c63c97f2/src/main/java/it/unibo/geosurv/model/drops/IDrop.java#LL1C1-L15C2}
+ 	 	\item Permalink: \url{https://github.com/Sergio-Dobrianskiy/OOP22-geo-surv/blob/2272bc0e95fbd9f3b223109b6c7b9012c63c97f2/src/main/java/it/unibo/geosurv/model/monsters/GenerateMonster.java#L10}
+ 	 	 	 	\item Permalink: \url{https://github.com/Sergio-Dobrianskiy/OOP22-geo-surv/blob/2272bc0e95fbd9f3b223109b6c7b9012c63c97f2/src/main/java/it/unibo/geosurv/model/IObserverEntity.java#LL8C1-L8C37}
+ 	 \end{itemize}
+	\item Utilizzo di Wildcard (upper bound)
+ 	\begin{itemize}
+ 	 	\item Permalink: \url{https://github.com/Sergio-Dobrianskiy/OOP22-geo-surv/blob/2272bc0e95fbd9f3b223109b6c7b9012c63c97f2/src/main/java/it/unibo/geosurv/model/IObservable.java#L13}
+ 	\end{itemize}
+ 	\begin{itemize}
+ 	 	\item Permalink: \url{https://github.com/Sergio-Dobrianskiy/OOP22-geo-surv/blob/2272bc0e95fbd9f3b223109b6c7b9012c63c97f2/src/main/java/it/unibo/geosurv/model/IObservable.java#L20}
+ 	\end{itemize}
+	
+\end{itemize}
+
 
 \subsubsection{Scrittura di metodo generico con parametri contravarianti}
 
