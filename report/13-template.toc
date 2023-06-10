@@ -13,55 +13,53 @@
 \contentsline {chapter}{\numberline {2}Design}{5}{chapter.2}%
 \contentsline {section}{\numberline {2.1}Architettura}{5}{section.2.1}%
 \contentsline {section}{\numberline {2.2}Design dettagliato}{5}{section.2.2}%
-\contentsline {subsection}{\numberline {2.2.1}Finite State Machine/State pattern}{5}{subsection.2.2.1}%
-\contentsline {paragraph}{}{5}{section*.17}%
-\contentsline {paragraph}{}{6}{section*.18}%
-\contentsline {paragraph}{}{6}{section*.19}%
-\contentsline {paragraph}{}{6}{section*.20}%
-\contentsline {section}{\numberline {2.3}Architettura}{6}{section.2.3}%
+\contentsline {paragraph}{}{7}{section*.19}%
+\contentsline {paragraph}{}{7}{section*.20}%
+\contentsline {paragraph}{}{7}{section*.21}%
+\contentsline {section}{\numberline {2.3}Architettura}{7}{section.2.3}%
 \contentsline {section}{\numberline {2.4}Design dettagliato}{9}{section.2.4}%
-\contentsline {paragraph}{}{14}{section*.27}%
-\contentsline {subsubsection}{Personalità intercambiabili}{20}{section*.32}%
-\contentsline {paragraph}{Problema}{20}{section*.33}%
-\contentsline {paragraph}{Soluzione}{20}{section*.34}%
-\contentsline {subsubsection}{Riuso del codice delle personalità}{21}{section*.35}%
-\contentsline {paragraph}{Problema}{21}{section*.36}%
-\contentsline {paragraph}{Soluzione}{21}{section*.37}%
-\contentsline {subsubsection}{Gestione di output multipli}{22}{section*.38}%
-\contentsline {paragraph}{Problema}{22}{section*.39}%
-\contentsline {paragraph}{Soluzione}{22}{section*.40}%
-\contentsline {chapter}{\numberline {3}Sviluppo}{25}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Testing automatizzato}{25}{section.3.1}%
-\contentsline {paragraph}{}{26}{section*.44}%
-\contentsline {paragraph}{}{26}{section*.45}%
-\contentsline {paragraph}{}{26}{section*.46}%
+\contentsline {paragraph}{}{15}{section*.28}%
+\contentsline {subsubsection}{Personalità intercambiabili}{21}{section*.33}%
+\contentsline {paragraph}{Problema}{21}{section*.34}%
+\contentsline {paragraph}{Soluzione}{21}{section*.35}%
+\contentsline {subsubsection}{Riuso del codice delle personalità}{22}{section*.36}%
+\contentsline {paragraph}{Problema}{22}{section*.37}%
+\contentsline {paragraph}{Soluzione}{22}{section*.38}%
+\contentsline {subsubsection}{Gestione di output multipli}{23}{section*.39}%
+\contentsline {paragraph}{Problema}{23}{section*.40}%
+\contentsline {paragraph}{Soluzione}{23}{section*.41}%
+\contentsline {chapter}{\numberline {3}Sviluppo}{26}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Testing automatizzato}{26}{section.3.1}%
+\contentsline {paragraph}{}{27}{section*.45}%
+\contentsline {paragraph}{}{27}{section*.46}%
 \contentsline {paragraph}{}{27}{section*.47}%
-\contentsline {section}{\numberline {3.2}Metodologia di lavoro}{27}{section.3.2}%
-\contentsline {paragraph}{}{28}{section*.49}%
-\contentsline {paragraph}{}{28}{section*.51}%
-\contentsline {paragraph}{}{28}{section*.52}%
+\contentsline {paragraph}{}{28}{section*.48}%
+\contentsline {section}{\numberline {3.2}Metodologia di lavoro}{28}{section.3.2}%
+\contentsline {paragraph}{}{29}{section*.50}%
+\contentsline {paragraph}{}{29}{section*.52}%
 \contentsline {paragraph}{}{29}{section*.53}%
-\contentsline {section}{\numberline {3.3}Note di sviluppo}{30}{section.3.3}%
-\contentsline {paragraph}{}{31}{section*.56}%
-\contentsline {paragraph}{}{31}{section*.57}%
-\contentsline {paragraph}{}{31}{section*.58}%
-\contentsline {paragraph}{}{31}{section*.59}%
-\contentsline {paragraph}{}{31}{section*.60}%
-\contentsline {paragraph}{}{31}{section*.61}%
+\contentsline {paragraph}{}{30}{section*.54}%
+\contentsline {section}{\numberline {3.3}Note di sviluppo}{31}{section.3.3}%
+\contentsline {paragraph}{}{32}{section*.57}%
+\contentsline {paragraph}{}{32}{section*.58}%
+\contentsline {paragraph}{}{32}{section*.59}%
+\contentsline {paragraph}{}{32}{section*.60}%
+\contentsline {paragraph}{}{32}{section*.61}%
 \contentsline {paragraph}{}{32}{section*.62}%
-\contentsline {paragraph}{}{32}{section*.63}%
-\contentsline {paragraph}{}{32}{section*.64}%
-\contentsline {paragraph}{}{32}{section*.65}%
-\contentsline {subsection}{\numberline {3.3.1}Note di sviluppo}{34}{subsection.3.3.1}%
-\contentsline {subsubsection}{Sergio Dobrianskiy}{34}{section*.68}%
-\contentsline {subsubsection}{Utilizzo della libreria SLF4J}{35}{section*.69}%
-\contentsline {subsubsection}{Utilizzo di \texttt {LoadingCache} dalla libreria Google Guava}{35}{section*.70}%
-\contentsline {subsubsection}{Utilizzo di \texttt {Stream} e lambda expressions}{35}{section*.71}%
-\contentsline {subsubsection}{Scrittura di metodo generico con parametri contravarianti}{35}{section*.72}%
-\contentsline {subsubsection}{Protezione da corse critiche usando \texttt {Semaphore}}{35}{section*.73}%
-\contentsline {chapter}{\numberline {4}Commenti finali}{36}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Autovalutazione e lavori futuri}{36}{section.4.1}%
-\contentsline {chapter}{\numberline {A}Guida utente}{38}{appendix.Alph1}%
-\contentsline {paragraph}{}{38}{section*.75}%
-\contentsline {paragraph}{}{38}{section*.76}%
-\contentsline {paragraph}{}{38}{section*.77}%
+\contentsline {paragraph}{}{33}{section*.63}%
+\contentsline {paragraph}{}{33}{section*.64}%
+\contentsline {paragraph}{}{33}{section*.65}%
+\contentsline {paragraph}{}{33}{section*.66}%
+\contentsline {subsection}{\numberline {3.3.1}Note di sviluppo}{35}{subsection.3.3.1}%
+\contentsline {subsubsection}{Sergio Dobrianskiy}{35}{section*.69}%
+\contentsline {subsubsection}{Utilizzo della libreria SLF4J}{36}{section*.70}%
+\contentsline {subsubsection}{Utilizzo di \texttt {LoadingCache} dalla libreria Google Guava}{36}{section*.71}%
+\contentsline {subsubsection}{Utilizzo di \texttt {Stream} e lambda expressions}{36}{section*.72}%
+\contentsline {subsubsection}{Scrittura di metodo generico con parametri contravarianti}{36}{section*.73}%
+\contentsline {subsubsection}{Protezione da corse critiche usando \texttt {Semaphore}}{36}{section*.74}%
+\contentsline {chapter}{\numberline {4}Commenti finali}{37}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Autovalutazione e lavori futuri}{37}{section.4.1}%
+\contentsline {chapter}{\numberline {A}Guida utente}{39}{appendix.Alph1}%
+\contentsline {paragraph}{}{39}{section*.76}%
+\contentsline {paragraph}{}{39}{section*.77}%
+\contentsline {paragraph}{}{39}{section*.78}%
