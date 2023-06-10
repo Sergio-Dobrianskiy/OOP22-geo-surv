@@ -279,9 +279,9 @@ In \Cref{img:goodarch} è esemplificato il diagramma UML architetturale.
 	
 		\item Strategy Pattern: CollisionBehavior
 	\begin{itemize}
-		\item Problema: gestire le collissioni dei GameObject presenti in gioco in modo efficiente 
-		\item Soluzione ho deciso di usare lo Strategy Pattern che permette di definire uan serie di algoritmi in classi separate e di poterli inserire in modo intercambiabile all'interno di altre classi.
-		In questo modo per assegnare a lo stesso comportamento a più di una classe non sarà necessario scrivere lo stesso codice più volte o usare l'ereditarietà.
+		\item Problema: gestire le collisioni dei GameObject presenti in gioco in modo efficiente 
+		\item Soluzione ho deciso di usare lo Strategy Pattern che permette di definire una serie di algoritmi in classi separate e di poterli inserire in modo intercambiabile all'interno di altre classi.
+		In questo modo per assegnare lo stesso comportamento a più di una classe non sarà necessario scrivere lo stesso codice più volte o usare l'ereditarietà.
 		Inoltre gli algoritmi alla base di ciascun comportamento sono facilmente mantenibili e modificabili. \\
 		Nella versiona attuale di gioco ho creato 3 algoritmi ciascuno gestito da una classe che implementa l'interfaccia ICollisionBehavior. 
 		Un esempio dell'utilizzo di queste classi lo si può trovare nella gestione di tutte le Bullet. Di default tutte le classi che estendono la classe astratta Bullet avranno l'algoritmo NoCollisionBehavior, mentre in AutoBullet verrà usato l'algoritmo presente in RemoveOnCollisionBehavior.
@@ -318,7 +318,7 @@ In \Cref{img:goodarch} è esemplificato il diagramma UML architetturale.
 \item Problematica: configurare metodi comuni a diversi tipi di mostri.
 \begin{itemize}
 	\item E' stata utilizzata la abstract class "Monster" (che implementa l'interfaccia IMonster) per definire i metodi comuni a tutte le classi che estendono la abstract class: "Triangle", "Rect", "Rhombus" e "Ball"(aggiunta in seguito).
-	\\\\Nel caso di comportamenti diversi da parte di alcuni mostri rispetto ai metodi definiti nella classe astratta, si è utilizzato l'"\emph{@override}" del metodo. Ad esempio il percorso per raggiungere il player effettuato dal mostro di tipo "Ball" è disturbato da piccole variazioni.
+	\\\\Nel caso di comportamenti diversi da parte di alcuni mostri rispetto ai metodi definiti nella classe astratta, si è utilizzato l'override del metodo. Ad esempio il percorso per raggiungere il player effettuato dal mostro di tipo "Ball" è disturbato da piccole variazioni.
 \end{itemize}
 
 \begin{figure}[H]
