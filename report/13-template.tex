@@ -126,7 +126,9 @@ Si dovrà trovare il giusto numero di entità su schermo e un metodo efficace pe
 \chapter{Design}
 \section{Architettura}
 
-Abbiamo scelto di realizzare il gioco seguendo il pattern di programmazione MVC.
+Il progetto si propone di seguire le linee guida del pattern MVC, creando 3 componenti che siano in comunicazione fra di loro in maniera costante.La divisione in 3 componenti permette alla componente visiva (view) di occuparsi della rappresentazione grafica, alla componente di modellazione (model) che si occupa dello sviluppo effettivo del gioco e da una parte di controllo (controller) per gestire le componenti precedenti senza che esse interagiscono tra loro in maniera diretta. 
+
+Ne consegue un esempio di quanto appena descritto per la gestione del Menu all'interno del nostro progetto.
 
 \begin{figure}[H]
 	\centering{}
