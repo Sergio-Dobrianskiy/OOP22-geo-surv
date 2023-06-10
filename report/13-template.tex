@@ -401,17 +401,19 @@ Nel secondo caso si è utilizzata una funzione di utilità Func.randomPoint() pr
 \subsubsection*{Thomas Testa:}
 %
 \begin{enumerate}
-	\item Problema 1
+	\item Problema: Centrare la telecamera rispetto al giocatore.
 	\begin{itemize}
-		\item Soluzione
-		\item Schema
-		\item Pattern
+		\item  Soluzione: la posizione della camera viene aggiornata in modo che segua il giocatore. Questo viene fatto calcolando la differenza tra la posizione del giocatore ('tempPlayer.getX()' e 'tempPlayer.getY()') e la posizione desiderata della telecamera (metà della larghezza e altezza della finestra di gioco). 
+		Inoltre è stato applicato un fattore di interpolazione ('0.05f' nel codice fornito) per ottenere un movimento quanto più possibile  fluido.
 	\end{itemize}
-	\item Problema 2
+	\item Problema: Gestire la telecamera ai bordi della mappa di gioco.
 	\begin{itemize}
-		\item Soluzione
-		\item Schema
-		\item Pattern
+		\item Soluzione: sono stati creati dei controlli che limitano la posizione della telecamera all'interno dei limiti definiti. 
+		Ad esempio, se la posizione 'x' della telecamera è inferiore a '0', viene impostata a '0' per evitare che la telecamera esca oltre il bordo sinistro del livello di gioco. Lo stesso viene fatto per i limiti superiori ('1045' per 'x' e '1500' per 'y' nel codice fornito).
+	\end{itemize}
+	\item Problema: gestire la pressione di due tasti per il movimento del Player premuti contemporaneamente.
+	\begin{itemize}
+		\item  Soluzione:la classe Handler tiene traccia dello stato dei tasti premuti tramite le variabili booleane 'up', 'down', 'left' e 'right' e poi le singole classi degli oggetti del gioco utilizzano tali informazioni per gestire l'input e l'interazione del giocatore.
 	\end{itemize}
 \end{enumerate}
 %
