@@ -477,11 +477,11 @@ Sergio Dobrianskiy:
 Thomas Testa:
 \begin{itemize}
 	\item TestPlayer: I test verificano il comportamento dei metodi della classe Player attraverso una serie di asserzioni.
-	Nel primo test, annotato con @Test, viene verificato che il valore iniziale dell'esperienza del giocatore sia 0. Viene chiamato il metodo getExperience() dell'oggetto player e il suo valore viene confrontato con l'expectedExperience (che è 0) utilizzando l'asserzione assertEquals(). Se i valori sono diversi, il test fallisce.
-    Nel secondo test, viene verificato che il livello iniziale del giocatore sia 1. Il processo è simile al primo test, ma viene utilizzato il metodo getLevel() invece di getExperience().
-    Nel terzo test, viene verificato che il valore iniziale della vita del giocatore sia 100. Il processo è simile ai test precedenti, ma viene utilizzato il metodo getLife().
-    Nel quarto test, viene testato il metodo hit(). Viene inflitto un danno di 50 al giocatore utilizzando il metodo hit(), quindi si verifica che la vita del giocatore sia diminuita a 50. Questo viene fatto confrontando il valore attuale della vita del giocatore con l'expectedLife.
-    Nel quinto test, viene testato il metodo setLife(). Viene impostata una vita negativa (-50) per il giocatore utilizzando il metodo setLife(). Tuttavia, la vita del giocatore non può essere inferiore a 0, quindi ci si aspetta che la vita effettiva sia ancora 50. Viene confrontato l'expectedLife con il valore attuale della vita del giocatore.
+	\\Nel primo test, annotato con @Test, viene verificato che il valore iniziale dell'esperienza del giocatore sia 0. Viene chiamato il metodo getExperience() dell'oggetto player e il suo valore viene confrontato con l'expectedExperience (che è 0) utilizzando l'asserzione assertEquals(). Se i valori sono diversi, il test fallisce.
+    \\Nel secondo test, viene verificato che il livello iniziale del giocatore sia 1. Il processo è simile al primo test, ma viene utilizzato il metodo getLevel() invece di getExperience().
+    \\Nel terzo test, viene verificato che il valore iniziale della vita del giocatore sia 100. Il processo è simile ai test precedenti, ma viene utilizzato il metodo getLife().
+    \\Nel quarto test, viene testato il metodo hit(). Viene inflitto un danno di 50 al giocatore utilizzando il metodo hit(), quindi si verifica che la vita del giocatore sia diminuita a 50. Questo viene fatto confrontando il valore attuale della vita del giocatore con l'expectedLife.
+    \\Nel quinto test, viene testato il metodo setLife(). Viene impostata una vita negativa (-50) per il giocatore utilizzando il metodo setLife(). Tuttavia, la vita del giocatore non può essere inferiore a 0, quindi ci si aspetta che la vita effettiva sia ancora 50. Viene confrontato l'expectedLife con il valore attuale della vita del giocatore.
 \end{itemize}
 
 \section{Metodologia di lavoro}
@@ -608,13 +608,8 @@ Funzionalità avanzate utilizzate:
 \end{itemize}
 
 
-\subsubsection{Scrittura di metodo generico con parametri contravarianti}
 
-Permalink: \url{https://github.com/AlchemistSimulator/Alchemist/blob/d8a1799027d7d685569e15316a32e6394632ce71/alchemist-incarnation-protelis/src/main/java/it/unibo/alchemist/protelis/AlchemistExecutionContext.java#L141-L143}
 
-\subsubsection{Protezione da corse critiche usando \texttt{Semaphore}}
-
-Permalink: \url{https://github.com/AlchemistSimulator/Alchemist/blob/d8a1799027d7d685569e15316a32e6394632ce71/alchemist-incarnation-protelis/src/main/java/it/unibo/alchemist/model/ProtelisIncarnation.java#L388-L440}
 
 
 \chapter{Commenti finali}
