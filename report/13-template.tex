@@ -431,6 +431,40 @@ Nel secondo caso si è utilizzata una funzione di utilità Func.randomPoint() pr
 
 \subsubsection*{Thomas Testa:}
 %
+La mia parte di progettazione svolta riguarda:
+\begin{enumerate}
+    \item Player;
+    \item Camera e slicing grafico;
+    \item Gestione degli Input da tastiera;
+\end{enumerate}
+
+\textbf{Player}
+Il Player rappresenta il personaggio principale d'ogni gioco. In questo caso la classe Player estende la classe GameObject e implementa due interfacce: IPlayer e IObservable. Sono inoltre presenti ulteriori collegamenti ad altre classi utili per lo sviluppo del giocatore all'interno del gioco. Per esempio la classe Collisions è stata utile per gestire le collisioni del Player con i mostri. E così via per le restanti classi.
+
+\begin{figure}[H]
+	\centering{}
+\includegraphics[width=\textwidth]{img/Player.png}
+	\caption{Schema UML della classe Player}
+\end{figure}
+
+\textbf{Camera e slicing grafico}
+La classe Camera rappresenta la telecamera del gioco, che segue il personaggio  durante il game. La telecamera è responsabile di mantenere il personaggio al centro dello schermo e di gestire lo spostamento della visualizzazione di quest'ultimo in base ai movimenti del giocatore.
+
+\begin{figure}[H]
+	\centering{}
+\includegraphics[width=\textwidth]{img/Camera.png}
+	\caption{Schema UML della classe Camera}
+\end{figure}
+
+\textbf{Gestione degli Input}
+La classe KeyInput gestisce l'input del giocatore tramite la pressione dei tasti sulla tastiera. 'KeyInput' è una sottoclasse di KeyAdapter ed estende quest'ultima per sovrascrivere i metodi keyPressed() e keyReleased() per gestire gli eventi di pressione e rilascio dei tasti. In entrambi i metodi è stato ritenuto efficiente gestire tali eventi tramite una doppia istruzione switch. Si osservi, inoltre, che i movimenti del Player sono stati gestiti sia tramite i tasti WASD sia i tasti freccia.
+
+\begin{figure}[H]
+	\centering{}
+\includegraphics[width=\textwidth]{img/KeyInput.png}
+	\caption{Schema UML della classe KeyInput}
+\end{figure}
+
 \begin{enumerate}
 	\item Problema: Centrare la telecamera rispetto al giocatore.
 	\begin{itemize}
