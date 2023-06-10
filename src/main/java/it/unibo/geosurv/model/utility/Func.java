@@ -29,17 +29,23 @@ public final class Func {
      *            NOTE: min must be < than max
      * @return Pair coordinates x, y
      */
-    public static Pair<Float, Float> randomPoint(final float min, final float max) {
-        // if (max <= 0) {
-        // max = 500.0f;
-        // }
-        // Correct exception if min > = max,
-        // if (min >= max) {
-        // System.out.println(
-        // "randomPoint(): min: " + min + " max: " + max
-        // + "Warning: min should be minor to max");
-        // min = max - 10;
-        // }
+    public static Pair<Float, Float> randomPoint(float min, float max) {
+        if (min < 0) {
+            min = 0.0f;
+            System.out.println("You can't use negative min values");
+        }
+
+        if (max < 0) {
+            max = 500.0f;
+            System.out.println("You can't use negative max values");
+        }
+ 
+         if (min > max) {
+             float mem = max;
+             max = min;
+             min = mem;
+             System.out.println("Check the order of min and max values");
+         }
 
         random = new Random();
         final double angle = 2 * Math.PI * Math.random();
