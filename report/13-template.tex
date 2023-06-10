@@ -432,17 +432,19 @@ Nel secondo caso si è utilizzata una funzione di utilità Func.randomPoint() pr
 \subsubsection*{Thomas Testa:}
 %
 \begin{enumerate}
-	\item Problema 1
+	\item Problema: Centrare la telecamera rispetto al giocatore.
 	\begin{itemize}
-		\item Soluzione
-		\item Schema
-		\item Pattern
+		\item  Soluzione: la posizione della camera viene aggiornata in modo che segua il giocatore. Questo viene fatto calcolando la differenza tra la posizione del giocatore ('tempPlayer.getX()' e 'tempPlayer.getY()') e la posizione desiderata della telecamera (metà della larghezza e altezza della finestra di gioco). 
+		Inoltre è stato applicato un fattore di interpolazione ('0.05f' nel codice fornito) per ottenere un movimento quanto più possibile  fluido.
 	\end{itemize}
-	\item Problema 2
+	\item Problema: Gestire la telecamera ai bordi della mappa di gioco.
 	\begin{itemize}
-		\item Soluzione
-		\item Schema
-		\item Pattern
+		\item Soluzione: sono stati creati dei controlli che limitano la posizione della telecamera all'interno dei limiti definiti. 
+		Ad esempio, se la posizione 'x' della telecamera è inferiore a '0', viene impostata a '0' per evitare che la telecamera esca oltre il bordo sinistro del livello di gioco. Lo stesso viene fatto per i limiti superiori ('1045' per 'x' e '1500' per 'y' nel codice fornito).
+	\end{itemize}
+	\item Problema: gestire la pressione di due tasti per il movimento del Player premuti contemporaneamente.
+	\begin{itemize}
+		\item  Soluzione:la classe Handler tiene traccia dello stato dei tasti premuti tramite le variabili booleane 'up', 'down', 'left' e 'right' e poi le singole classi degli oggetti del gioco utilizzano tali informazioni per gestire l'input e l'interazione del giocatore.
 	\end{itemize}
 \end{enumerate}
 %
@@ -468,8 +470,12 @@ Sergio Dobrianskiy:
 %
 Thomas Testa:
 \begin{itemize}
-	\item xxxxxxxxxxxx
-	\item yyyyyyyyyyyyyyyy
+	\item TestPlayer: I test verificano il comportamento dei metodi della classe Player attraverso una serie di asserzioni.
+	Nel primo test, annotato con @Test, viene verificato che il valore iniziale dell'esperienza del giocatore sia 0. Viene chiamato il metodo getExperience() dell'oggetto player e il suo valore viene confrontato con l'expectedExperience (che è 0) utilizzando l'asserzione assertEquals(). Se i valori sono diversi, il test fallisce.
+    Nel secondo test, viene verificato che il livello iniziale del giocatore sia 1. Il processo è simile al primo test, ma viene utilizzato il metodo getLevel() invece di getExperience().
+    Nel terzo test, viene verificato che il valore iniziale della vita del giocatore sia 100. Il processo è simile ai test precedenti, ma viene utilizzato il metodo getLife().
+    Nel quarto test, viene testato il metodo hit(). Viene inflitto un danno di 50 al giocatore utilizzando il metodo hit(), quindi si verifica che la vita del giocatore sia diminuita a 50. Questo viene fatto confrontando il valore attuale della vita del giocatore con l'expectedLife.
+    Nel quinto test, viene testato il metodo setLife(). Viene impostata una vita negativa (-50) per il giocatore utilizzando il metodo setLife(). Tuttavia, la vita del giocatore non può essere inferiore a 0, quindi ci si aspetta che la vita effettiva sia ancora 50. Viene confrontato l'expectedLife con il valore attuale della vita del giocatore.
 \end{itemize}
 
 \section{Metodologia di lavoro}
